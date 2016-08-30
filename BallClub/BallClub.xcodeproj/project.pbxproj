@@ -169,6 +169,11 @@
 		71547AF61D753A9A00264B67 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				71547B041D75604000264B67 /* Feeds */,
+				71547B051D75604000264B67 /* Games */,
+				71547B061D75604000264B67 /* Login */,
+				71547B071D75604000264B67 /* Maps */,
+				71547B081D75604000264B67 /* User */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -178,6 +183,41 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		71547B041D75604000264B67 /* Feeds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feeds;
+			sourceTree = "<group>";
+		};
+		71547B051D75604000264B67 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		71547B061D75604000264B67 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		71547B071D75604000264B67 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		71547B081D75604000264B67 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
