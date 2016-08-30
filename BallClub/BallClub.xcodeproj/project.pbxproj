@@ -18,6 +18,12 @@
 		71547AA11D7534CD00264B67 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547AA01D7534CD00264B67 /* Maps.storyboard */; };
 		71547AA31D7534F100264B67 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547AA21D7534F100264B67 /* User.storyboard */; };
 		71547AA51D75351100264B67 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547AA41D75351100264B67 /* Feeds.storyboard */; };
+		71547AF91D753BF900264B67 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AF81D753BF900264B67 /* FeedsViewController.swift */; };
+		71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AFA1D753C0600264B67 /* GamesViewController.swift */; };
+		71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AFC1D753C1200264B67 /* LoginViewController.swift */; };
+		71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AFE1D753C1C00264B67 /* MapsViewController.swift */; };
+		71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B001D753C2900264B67 /* MessagingViewController.swift */; };
+		71547B031D753C3300264B67 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B021D753C3300264B67 /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +40,12 @@
 		71547AA01D7534CD00264B67 /* Maps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
 		71547AA21D7534F100264B67 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		71547AA41D75351100264B67 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
+		71547AF81D753BF900264B67 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
+		71547AFA1D753C0600264B67 /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
+		71547AFC1D753C1200264B67 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		71547AFE1D753C1C00264B67 /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		71547B001D753C2900264B67 /* MessagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
+		71547B021D753C3300264B67 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,7 @@
 		71547AF01D753A9A00264B67 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				71547AF81D753BF900264B67 /* FeedsViewController.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -116,6 +129,7 @@
 		71547AF11D753A9A00264B67 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				71547AFA1D753C0600264B67 /* GamesViewController.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -123,6 +137,7 @@
 		71547AF21D753A9A00264B67 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				71547AFC1D753C1200264B67 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -130,6 +145,7 @@
 		71547AF31D753A9A00264B67 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				71547AFE1D753C1C00264B67 /* MapsViewController.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -137,6 +153,7 @@
 		71547AF41D753A9A00264B67 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
+				71547B001D753C2900264B67 /* MessagingViewController.swift */,
 			);
 			path = Messaging;
 			sourceTree = "<group>";
@@ -144,6 +161,7 @@
 		71547AF51D753A9A00264B67 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				71547B021D753C3300264B67 /* UserViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -238,9 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
+				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
 				71547A831D752A4300264B67 /* ViewController.swift in Sources */,
+				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
+				71547AF91D753BF900264B67 /* FeedsViewController.swift in Sources */,
+				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
+				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +408,7 @@
 				71547A941D752A4300264B67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
