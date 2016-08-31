@@ -30,7 +30,7 @@
         <!--Games Storyboard-->
         <scene sceneID="iii-L0-65u">
             <objects>
-                <viewControllerPlaceholder storyboardName="Game" id="tDE-Fg-NJR" userLabel="Games Storyboard" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="User" id="tDE-Fg-NJR" userLabel="Games Storyboard" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Games" image="ic_tabbar_game" id="dZh-ab-i75"/>
                     <navigationItem key="navigationItem" id="7BO-Wo-cpH"/>
                 </viewControllerPlaceholder>
