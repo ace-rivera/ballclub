@@ -25,6 +25,7 @@
 		71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B001D753C2900264B67 /* MessagingViewController.swift */; };
 		71547B031D753C3300264B67 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B021D753C3300264B67 /* UserViewController.swift */; };
 		71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2A1D75949800264B67 /* CreateGameViewController.swift */; };
+		71547B301D76707100264B67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2F1D76707100264B67 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		71547B001D753C2900264B67 /* MessagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
 		71547B021D753C3300264B67 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		71547B2A1D75949800264B67 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
+		71547B2F1D76707100264B67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		71547AEF1D753A9A00264B67 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71547B2C1D766FCB00264B67 /* Main */,
 				71547AF01D753A9A00264B67 /* Feeds */,
 				71547AF11D753A9A00264B67 /* Games */,
 				71547AF21D753A9A00264B67 /* Login */,
@@ -223,6 +226,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		71547B2C1D766FCB00264B67 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				71547B2F1D76707100264B67 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -300,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
+				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
 				71547A831D752A4300264B67 /* ViewController.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
