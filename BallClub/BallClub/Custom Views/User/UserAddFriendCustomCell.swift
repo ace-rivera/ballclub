@@ -10,6 +10,11 @@ import UIKit
 
 class UserAddFriendCustomCell: UITableViewCell {
 
+  @IBOutlet weak var userProfileImage: UIImageView!
+  @IBOutlet weak var userName: UILabel!
+  @IBOutlet weak var acceptInvite: UIButton!
+  @IBOutlet weak var declineInvite: UIButton!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
