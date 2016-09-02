@@ -27,6 +27,19 @@ class UserInviteCustomCell: UITableViewCell {
     // Configure the view for the selected state
   }
   
+  func setFriendUserName (name : String){
+    userName.text = name
+  }
+  
+  func setFriendUserImage (image : String){
+    userProfileImage.image = UIImage(named: image)
+  }
+  
+  func setFriendInviteStatus (status : String) {
+    inviteStatus.text = status
+  }
+  
   @IBAction func viewGameButtonPressed(sender: AnyObject) {
+    
   }
 }

@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="russel westbrook" translatesAutoresizingMaskIntoConstraints="NO" id="2VB-bg-eG9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_westbrook" translatesAutoresizingMaskIntoConstraints="NO" id="2VB-bg-eG9">
                         <rect key="frame" x="8" y="7" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="0s9-O5-fz1"/>
@@ -94,6 +94,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="russel westbrook" width="350" height="254"/>
+        <image name="player_westbrook" width="350" height="254"/>
     </resources>
 </document>

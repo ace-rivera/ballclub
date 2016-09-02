@@ -33,6 +33,7 @@
 		71547B031D753C3300264B67 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B021D753C3300264B67 /* UserViewController.swift */; };
 		71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2A1D75949800264B67 /* CreateGameViewController.swift */; };
 		71547B301D76707100264B67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2F1D76707100264B67 /* MainViewController.swift */; };
+		715EA2601D791BEE002A19F8 /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715EA25F1D791BEE002A19F8 /* TestClass.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		71547B021D753C3300264B67 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		71547B2A1D75949800264B67 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		71547B2F1D76707100264B67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		715EA25F1D791BEE002A19F8 /* TestClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				71547A8C1D752A4300264B67 /* LaunchScreen.storyboard */,
 				71547A8F1D752A4300264B67 /* Info.plist */,
 				71547A871D752A4300264B67 /* BallClub.xcdatamodeld */,
+				715EA25F1D791BEE002A19F8 /* TestClass.swift */,
 			);
 			path = BallClub;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715EA2601D791BEE002A19F8 /* TestClass.swift in Sources */,
 				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,

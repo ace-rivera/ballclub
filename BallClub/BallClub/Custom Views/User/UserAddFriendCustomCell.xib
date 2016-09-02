@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="curry" translatesAutoresizingMaskIntoConstraints="NO" id="r5B-Tk-m0E">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_curry" translatesAutoresizingMaskIntoConstraints="NO" id="r5B-Tk-m0E">
                         <rect key="frame" x="8" y="4" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="0ZF-NK-QtP"/>
@@ -46,6 +46,9 @@
                             <constraint firstAttribute="height" constant="30" id="waS-1R-4YO"/>
                         </constraints>
                         <state key="normal" backgroundImage="ic_check"/>
+                        <connections>
+                            <action selector="acceptFriend:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Hed-p5-hkG"/>
+                        </connections>
                     </button>
                     <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhz-cS-TlD">
                         <rect key="frame" x="283" y="8" width="29" height="30"/>
@@ -54,6 +57,9 @@
                             <constraint firstAttribute="height" constant="30" id="rYw-Om-QPo"/>
                         </constraints>
                         <state key="normal" backgroundImage="ic_exit"/>
+                        <connections>
+                            <action selector="rejectFriend:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9Xq-97-u4e"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -73,15 +79,14 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="acceptInvite" destination="oov-8P-pYM" id="Uc1-cb-Lxx"/>
-                <outlet property="declineInvite" destination="Rhz-cS-TlD" id="Tsh-7E-Y0v"/>
                 <outlet property="userName" destination="F2J-N4-skh" id="YH8-4P-4lY"/>
                 <outlet property="userProfileImage" destination="r5B-Tk-m0E" id="sMQ-NA-y9F"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="curry" width="350" height="254"/>
         <image name="ic_check" width="512" height="512"/>
         <image name="ic_exit" width="512" height="512"/>
+        <image name="player_curry" width="350" height="254"/>
     </resources>
 </document>
