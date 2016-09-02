@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122FEB7C46A0B4F65C15FA00 /* Pods_BallClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */; };
+		713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BFD601D76B3E000A49BC6 /* UserInviteCustomCell.swift */; };
+		713BFD631D76B3E000A49BC6 /* UserInviteCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 713BFD611D76B3E000A49BC6 /* UserInviteCustomCell.xib */; };
+		713BFD661D76B42D00A49BC6 /* UserAddFriendCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BFD641D76B42D00A49BC6 /* UserAddFriendCustomCell.swift */; };
+		713BFD671D76B42D00A49BC6 /* UserAddFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 713BFD651D76B42D00A49BC6 /* UserAddFriendCustomCell.xib */; };
+		713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BFD681D76BB3900A49BC6 /* FriendStatusCustomCell.swift */; };
+		713BFD6B1D76BB3900A49BC6 /* FriendStatusCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */; };
 		71547A811D752A4300264B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A801D752A4300264B67 /* AppDelegate.swift */; };
 		71547A831D752A4300264B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A821D752A4300264B67 /* ViewController.swift */; };
 		71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71547A871D752A4300264B67 /* BallClub.xcdatamodeld */; };
@@ -26,9 +33,18 @@
 		71547B031D753C3300264B67 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B021D753C3300264B67 /* UserViewController.swift */; };
 		71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2A1D75949800264B67 /* CreateGameViewController.swift */; };
 		71547B301D76707100264B67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2F1D76707100264B67 /* MainViewController.swift */; };
+		715EA2601D791BEE002A19F8 /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715EA25F1D791BEE002A19F8 /* TestClass.swift */; };
+		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C631140209D1C6A45139A88 /* Pods-BallClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.debug.xcconfig"; sourceTree = "<group>"; };
+		713BFD601D76B3E000A49BC6 /* UserInviteCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInviteCustomCell.swift; sourceTree = "<group>"; };
+		713BFD611D76B3E000A49BC6 /* UserInviteCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInviteCustomCell.xib; sourceTree = "<group>"; };
+		713BFD641D76B42D00A49BC6 /* UserAddFriendCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddFriendCustomCell.swift; sourceTree = "<group>"; };
+		713BFD651D76B42D00A49BC6 /* UserAddFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserAddFriendCustomCell.xib; sourceTree = "<group>"; };
+		713BFD681D76BB3900A49BC6 /* FriendStatusCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendStatusCustomCell.swift; sourceTree = "<group>"; };
+		713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendStatusCustomCell.xib; sourceTree = "<group>"; };
 		71547A7D1D752A4300264B67 /* BallClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BallClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71547A801D752A4300264B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71547A821D752A4300264B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +66,10 @@
 		71547B021D753C3300264B67 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		71547B2A1D75949800264B67 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		71547B2F1D76707100264B67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		715EA25F1D791BEE002A19F8 /* TestClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
+		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,17 +77,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122FEB7C46A0B4F65C15FA00 /* Pods_BallClub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D07ADDEE5F1323F38688E8C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C631140209D1C6A45139A88 /* Pods-BallClub.debug.xcconfig */,
+				EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		71547A741D752A4300264B67 = {
 			isa = PBXGroup;
 			children = (
 				71547A7F1D752A4300264B67 /* BallClub */,
 				71547A7E1D752A4300264B67 /* Products */,
+				5D07ADDEE5F1323F38688E8C /* Pods */,
+				C440A7AABB070C2B915D4808 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +124,7 @@
 				71547A8C1D752A4300264B67 /* LaunchScreen.storyboard */,
 				71547A8F1D752A4300264B67 /* Info.plist */,
 				71547A871D752A4300264B67 /* BallClub.xcdatamodeld */,
+				715EA25F1D791BEE002A19F8 /* TestClass.swift */,
 			);
 			path = BallClub;
 			sourceTree = "<group>";
@@ -144,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				71547AFC1D753C1200264B67 /* LoginViewController.swift */,
+				BAEF2D171D76799F00660C8E /* SignUpViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -222,6 +256,12 @@
 		71547B081D75604000264B67 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				713BFD601D76B3E000A49BC6 /* UserInviteCustomCell.swift */,
+				713BFD611D76B3E000A49BC6 /* UserInviteCustomCell.xib */,
+				713BFD641D76B42D00A49BC6 /* UserAddFriendCustomCell.swift */,
+				713BFD651D76B42D00A49BC6 /* UserAddFriendCustomCell.xib */,
+				713BFD681D76BB3900A49BC6 /* FriendStatusCustomCell.swift */,
+				713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -234,6 +274,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		C440A7AABB070C2B915D4808 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -241,9 +289,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71547A921D752A4300264B67 /* Build configuration list for PBXNativeTarget "BallClub" */;
 			buildPhases = (
+				DDC5559F04261194D861C049 /* [CP] Check Pods Manifest.lock */,
 				71547A791D752A4300264B67 /* Sources */,
 				71547A7A1D752A4300264B67 /* Frameworks */,
 				71547A7B1D752A4300264B67 /* Resources */,
+				8BD5946D10859DD8D0EAD184 /* [CP] Embed Pods Frameworks */,
+				5E376C26AAD725A2222644AB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,7 +346,10 @@
 				71547AA51D75351100264B67 /* Feeds.storyboard in Resources */,
 				71547A9D1D75346700264B67 /* Game.storyboard in Resources */,
 				71547AA11D7534CD00264B67 /* Maps.storyboard in Resources */,
+				713BFD671D76B42D00A49BC6 /* UserAddFriendCustomCell.xib in Resources */,
 				71547A8E1D752A4300264B67 /* LaunchScreen.storyboard in Resources */,
+				713BFD6B1D76BB3900A49BC6 /* FriendStatusCustomCell.xib in Resources */,
+				713BFD631D76B3E000A49BC6 /* UserInviteCustomCell.xib in Resources */,
 				71547A8B1D752A4300264B67 /* Assets.xcassets in Resources */,
 				71547A9F1D75346700264B67 /* Main.storyboard in Resources */,
 				71547AA31D7534F100264B67 /* User.storyboard in Resources */,
@@ -305,22 +359,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E376C26AAD725A2222644AB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BallClub/Pods-BallClub-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BD5946D10859DD8D0EAD184 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BallClub/Pods-BallClub-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDC5559F04261194D861C049 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		71547A791D752A4300264B67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715EA2601D791BEE002A19F8 /* TestClass.swift in Sources */,
 				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
 				71547A831D752A4300264B67 /* ViewController.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
+				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
+				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
 				71547AF91D753BF900264B67 /* FeedsViewController.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
+				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
+				713BFD661D76B42D00A49BC6 /* UserAddFriendCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +532,7 @@
 		};
 		71547A931D752A4300264B67 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C631140209D1C6A45139A88 /* Pods-BallClub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BallClub/Info.plist;
@@ -436,6 +544,7 @@
 		};
 		71547A941D752A4300264B67 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BallClub/Info.plist;
