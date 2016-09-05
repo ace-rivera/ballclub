@@ -105,12 +105,14 @@ class CreateProfileTableViewController: UITableViewController {
     
     func backButtonPressed(){
         self.navigationController?.popViewControllerAnimated(true)
-        
     }
     
     func registerUser() {
         //register user and push to main screen
+        pushToMainStoryboard()
     }
-    
-    
+  
+    func pushToMainStoryboard(){
+      self.performSegueWithIdentifier("LoginToMainSegue", sender: self)
+    }
 }

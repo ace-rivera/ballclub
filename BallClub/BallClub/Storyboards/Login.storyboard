@@ -332,7 +332,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
                                                             <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_curry" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-Es-rfu">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_michaelJordan" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-Es-rfu">
                                                             <rect key="frame" x="25" y="23" width="110" height="110"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="110" id="7GB-4C-6YN"/>
@@ -728,11 +728,20 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                         <outlet property="sexTextField" destination="pws-bN-3fb" id="KyJ-pV-3Se"/>
                         <outlet property="userProfileImage" destination="OnJ-Es-rfu" id="4x1-Kw-AC0"/>
                         <outlet property="weightTextField" destination="b2D-hy-yv3" id="g2p-s1-4Vf"/>
+                        <segue destination="cvW-yP-qaD" kind="show" identifier="LoginToMainSegue" id="lvM-cg-T7B"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6f-XH-pLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1838" y="899"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="MtJ-Cz-Qvo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="cvW-yP-qaD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUG-wL-yXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2321" y="899"/>
         </scene>
     </scenes>
     <resources>
@@ -740,6 +749,6 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <image name="ic_tabbar_map" width="30" height="30"/>
         <image name="img_bc_background" width="750" height="1334"/>
         <image name="img_logo" width="809" height="288"/>
-        <image name="player_curry" width="350" height="254"/>
+        <image name="player_michaelJordan" width="1024" height="768"/>
     </resources>
 </document>
