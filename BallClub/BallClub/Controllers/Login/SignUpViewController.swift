@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
         
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: nil, action: #selector(SignUpViewController.backButtonPressed))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SignUpViewController.backButtonPressed))
         
         
         createProfileButton.layer.borderColor = UIColor.lightGrayColor().CGColor
