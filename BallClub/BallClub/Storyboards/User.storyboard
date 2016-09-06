@@ -93,20 +93,13 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8b-xd-aE7">
-                                        <rect key="frame" x="85" y="73" width="182" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_settings" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-j7-2SX">
+                                        <rect key="frame" x="24" y="107" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="GhW-Dg-kaD"/>
-                                            <constraint firstAttribute="width" constant="182" id="jre-lT-8GC"/>
+                                            <constraint firstAttribute="width" constant="40" id="WnE-Nq-aWJ"/>
+                                            <constraint firstAttribute="height" constant="40" id="hhx-Py-cMk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="View/Edit your profile">
-                                            <color key="titleColor" red="0.14117647059999999" green="0.1450980392" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="editProfilePressed:" destination="1Qb-0J-YXH" eventType="touchUpInside" id="V8X-j0-gZm"/>
-                                        </connections>
-                                    </button>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Key-sv-hlS">
                                         <rect key="frame" x="85" y="112" width="507" height="30"/>
                                         <constraints>
@@ -136,13 +129,20 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_settings" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-j7-2SX">
-                                        <rect key="frame" x="24" y="107" width="40" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8b-xd-aE7">
+                                        <rect key="frame" x="85" y="74" width="247" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="WnE-Nq-aWJ"/>
-                                            <constraint firstAttribute="height" constant="40" id="hhx-Py-cMk"/>
+                                            <constraint firstAttribute="width" constant="247" id="D0j-0G-UTG"/>
+                                            <constraint firstAttribute="height" constant="30" id="Lki-1a-RL0"/>
                                         </constraints>
-                                    </imageView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="View/Edit your profile">
+                                            <color key="titleColor" red="0.14117647059999999" green="0.1450980392" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editProfilePressed:" destination="1Qb-0J-YXH" eventType="touchUpInside" id="V8X-j0-gZm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -150,19 +150,16 @@
                                     <constraint firstItem="mQw-j7-2SX" firstAttribute="top" secondItem="hhy-aY-vNd" secondAttribute="bottom" constant="30" id="3xG-id-Wbz"/>
                                     <constraint firstAttribute="trailing" secondItem="hhy-aY-vNd" secondAttribute="trailing" constant="8" id="5Yd-gH-Y6a"/>
                                     <constraint firstItem="cJY-c1-yyJ" firstAttribute="leading" secondItem="PPm-sF-pxe" secondAttribute="leading" constant="20" id="668-g8-JQH"/>
-                                    <constraint firstAttribute="trailing" secondItem="v8b-xd-aE7" secondAttribute="trailing" constant="333" id="6TA-VD-pFF"/>
                                     <constraint firstItem="hhy-aY-vNd" firstAttribute="top" secondItem="PPm-sF-pxe" secondAttribute="top" constant="59" id="7gE-Ux-MfZ"/>
-                                    <constraint firstItem="Dxd-n6-1uu" firstAttribute="bottom" secondItem="v8b-xd-aE7" secondAttribute="bottom" constant="-7" id="C9m-29-Ahv"/>
                                     <constraint firstItem="cJY-c1-yyJ" firstAttribute="top" secondItem="PPm-sF-pxe" secondAttribute="top" constant="17" id="IAh-DR-lQR"/>
                                     <constraint firstItem="hhy-aY-vNd" firstAttribute="top" secondItem="cJY-c1-yyJ" secondAttribute="bottom" constant="21" id="PAt-gl-I5b"/>
                                     <constraint firstItem="Key-sv-hlS" firstAttribute="leading" secondItem="PPm-sF-pxe" secondAttribute="leading" constant="85" id="Rwz-qg-zIP"/>
-                                    <constraint firstItem="v8b-xd-aE7" firstAttribute="leading" secondItem="Dxd-n6-1uu" secondAttribute="trailing" constant="21" id="TgV-4L-qvh"/>
+                                    <constraint firstItem="v8b-xd-aE7" firstAttribute="top" secondItem="hhy-aY-vNd" secondAttribute="bottom" constant="-3" id="UBH-eb-k6d"/>
                                     <constraint firstItem="Key-sv-hlS" firstAttribute="leading" secondItem="hhy-aY-vNd" secondAttribute="leading" id="YLG-9F-FJa"/>
+                                    <constraint firstItem="v8b-xd-aE7" firstAttribute="leading" secondItem="hhy-aY-vNd" secondAttribute="leading" id="Yxv-aA-EUH"/>
                                     <constraint firstAttribute="height" constant="164" id="Zei-08-VE1"/>
-                                    <constraint firstItem="v8b-xd-aE7" firstAttribute="top" secondItem="hhy-aY-vNd" secondAttribute="bottom" constant="-4" id="b5j-sU-wWB"/>
-                                    <constraint firstItem="Key-sv-hlS" firstAttribute="top" secondItem="v8b-xd-aE7" secondAttribute="bottom" constant="9" id="bDu-9d-rMv"/>
                                     <constraint firstItem="mQw-j7-2SX" firstAttribute="top" secondItem="Dxd-n6-1uu" secondAttribute="bottom" constant="11" id="cgh-hW-Crf"/>
-                                    <constraint firstItem="Key-sv-hlS" firstAttribute="leading" secondItem="v8b-xd-aE7" secondAttribute="leading" id="ilP-JI-0x2"/>
+                                    <constraint firstItem="Key-sv-hlS" firstAttribute="top" secondItem="v8b-xd-aE7" secondAttribute="bottom" constant="8" id="oJY-0S-WUF"/>
                                     <constraint firstItem="mQw-j7-2SX" firstAttribute="leading" secondItem="Dxd-n6-1uu" secondAttribute="leading" id="s9f-fw-LGm"/>
                                     <constraint firstItem="Dxd-n6-1uu" firstAttribute="top" secondItem="cJY-c1-yyJ" secondAttribute="bottom" constant="18" id="tXL-n0-9xc"/>
                                     <constraint firstItem="Key-sv-hlS" firstAttribute="leading" secondItem="mQw-j7-2SX" secondAttribute="trailing" constant="21" id="v6h-wR-ngT"/>
