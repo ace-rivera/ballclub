@@ -39,6 +39,7 @@
 		71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4927F1D7E90C000E07DDF /* InvitedFriendsViewController.swift */; };
 		71D492821D7E926B00E07DDF /* InvitedFriendsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */; };
 		71D492841D7E927B00E07DDF /* InvitedFriendsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */; };
+		71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492871D7EB26800E07DDF /* PositionCustomButton.swift */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		71D4927F1D7E90C000E07DDF /* InvitedFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitedFriendsViewController.swift; sourceTree = "<group>"; };
 		71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitedFriendsCustomCell.swift; sourceTree = "<group>"; };
 		71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedFriendsCustomCell.xib; sourceTree = "<group>"; };
+		71D492871D7EB26800E07DDF /* PositionCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCustomButton.swift; sourceTree = "<group>"; };
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				71547A991D75346700264B67 /* Storyboards */,
 				71547AF71D753A9A00264B67 /* Models */,
+				71547AEF1D753A9A00264B67 /* Controllers */,
 				71547AF61D753A9A00264B67 /* Custom Views */,
 				71547A801D752A4300264B67 /* AppDelegate.swift */,
 				71547A821D752A4300264B67 /* ViewController.swift */,
@@ -164,8 +167,7 @@
 				71547AF41D753A9A00264B67 /* Messaging */,
 				71547AF51D753A9A00264B67 /* User */,
 			);
-			name = Controllers;
-			path = ../Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		71547AF01D753A9A00264B67 /* Feeds */ = {
@@ -230,7 +232,6 @@
 				71547B061D75604000264B67 /* Login */,
 				71547B071D75604000264B67 /* Maps */,
 				71547B081D75604000264B67 /* User */,
-				71547AEF1D753A9A00264B67 /* Controllers */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -261,6 +262,7 @@
 		71547B061D75604000264B67 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				71D492871D7EB26800E07DDF /* PositionCustomButton.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -451,6 +453,7 @@
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
 				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
+				71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
 				71547AF91D753BF900264B67 /* FeedsViewController.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
