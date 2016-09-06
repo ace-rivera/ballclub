@@ -24,11 +24,15 @@ class CreateGameViewController: UITableViewController {
   
   //MARK: - SetupUI
   func setUpUI(){
-    self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: 0.01))
+    self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
   }
   
   //MARK: - IBAction
   @IBAction func doneButtonPressed(sender: AnyObject) {
+    self.navigationController?.popViewControllerAnimated(true)
+  }
+  
+  @IBAction func backButtonPressed(sender: AnyObject) {
     self.navigationController?.popViewControllerAnimated(true)
   }
   

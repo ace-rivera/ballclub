@@ -92,4 +92,14 @@ class InvitedFriendsViewController: UITableViewController {
     return 40
   }
   
+//  override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    let view = UIView()
+//    view.backgroundColor = UIColor.clearColor()
+//    var label = UILabel()
+//    label.textColor = Constants.CustomColor.tabBarBackgroundColor
+//    view.addSubview(label)
+//    
+//    return view
+//  }
+  
 }

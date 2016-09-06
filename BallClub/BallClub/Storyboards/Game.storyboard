@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eEm-xX-k0N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eEm-xX-k0N">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,7 +11,7 @@
         <!--Games View Controller-->
         <scene sceneID="kcM-n5-Snb">
             <objects>
-                <viewController id="dg0-mL-b3O" customClass="GamesViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dg0-mL-b3O" customClass="GamesViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R9a-wy-2K8"/>
                         <viewControllerLayoutGuide type="bottom" id="oVb-Pr-SXz"/>
@@ -20,23 +20,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03_bc_game_list" translatesAutoresizingMaskIntoConstraints="NO" id="8dM-ge-BP9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mto-qv-Sbm">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44F-xQ-MAU">
-                                <rect key="frame" x="29" y="226" width="167" height="30"/>
-                                <state key="normal" title="TEST SEGUE"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="XZ2-7j-Sd1">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XZ2-7j-Sd1" id="0SX-NC-SYu">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="testButtonPressed:" destination="dg0-mL-b3O" eventType="touchUpInside" id="mAr-YC-fCt"/>
+                                    <outlet property="dataSource" destination="dg0-mL-b3O" id="n1U-dU-9ka"/>
+                                    <outlet property="delegate" destination="dg0-mL-b3O" id="jLa-fK-Oj0"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="8dM-ge-BP9" secondAttribute="trailing" constant="-20" id="Kn8-YP-XJf"/>
-                            <constraint firstItem="8dM-ge-BP9" firstAttribute="leading" secondItem="zv7-LD-WrE" secondAttribute="leadingMargin" constant="-20" id="RFz-gf-iTG"/>
-                            <constraint firstItem="oVb-Pr-SXz" firstAttribute="top" secondItem="8dM-ge-BP9" secondAttribute="bottom" id="nNA-zx-gUR"/>
-                            <constraint firstItem="8dM-ge-BP9" firstAttribute="top" secondItem="R9a-wy-2K8" secondAttribute="bottom" id="pw7-dR-24G"/>
+                            <constraint firstItem="Mto-qv-Sbm" firstAttribute="top" secondItem="R9a-wy-2K8" secondAttribute="bottom" id="6H6-XH-5GR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mto-qv-Sbm" secondAttribute="trailing" constant="-20" id="Rdr-vc-SoT"/>
+                            <constraint firstItem="Mto-qv-Sbm" firstAttribute="leading" secondItem="zv7-LD-WrE" secondAttribute="leadingMargin" constant="-20" id="awz-Q6-PfP"/>
+                            <constraint firstItem="oVb-Pr-SXz" firstAttribute="top" secondItem="Mto-qv-Sbm" secondAttribute="bottom" id="keq-U8-YF7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mo2-qF-KDb">
@@ -66,6 +74,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="gamesTableview" destination="Mto-qv-Sbm" id="SMQ-9O-fOF"/>
                         <segue destination="dua-vV-w24" kind="show" identifier="GameDetailSegue" id="s3l-Mx-KI7"/>
                     </connections>
                 </viewController>
@@ -81,7 +90,6 @@
         <!--Streetball Challenge-->
         <scene sceneID="ipv-83-Edr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Aqn-7f-onk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="dua-vV-w24" customClass="GameDetailViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FB4-8P-zGw"/>
@@ -122,6 +130,7 @@
                         <segue destination="8cT-SB-CUh" kind="show" identifier="DetailToInvitedSegue" id="hQZ-sE-pTE"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aqn-7f-onk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282" y="1232"/>
         </scene>
@@ -129,10 +138,12 @@
         <scene sceneID="7wF-oh-9M3">
             <objects>
                 <tableViewController id="8cT-SB-CUh" customClass="InvitedFriendsViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" id="56t-yg-87m">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="2" id="56t-yg-87m">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexColor" red="0.12941176469999999" green="0.1333333333" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="E5M-3b-CcD">
@@ -644,6 +655,9 @@
                         <barButtonItem key="leftBarButtonItem" image="back" id="bQI-DF-bi2">
                             <inset key="imageInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="pcB-fS-nR3" id="fwK-u5-VC8"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="T78-C8-wK5">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -688,7 +702,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="03_bc_game_list" width="1065" height="1560"/>
         <image name="back" width="22" height="22"/>
         <image name="ic_closed" width="512" height="512"/>
         <image name="ic_game_ios" width="480" height="480"/>
