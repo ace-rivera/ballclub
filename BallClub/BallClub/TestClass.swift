@@ -11,8 +11,10 @@ import UIKit
 class TestClass: NSObject {
   
   struct Common {
-    static let friendNames = ["Dhin","Ace","Josh","Erick","Chard","Rey","Lloyd"]
+    static let friendNames = ["Dhin Forto","Ace Rivera","Josh Relova","Erick Abutal","Chard Cordero","Rey Tugade","Lloyd Urbino"]
     static let friendImages = ["player_westbrook","player_shaq","player_kobe","player_terrence","player_calvin","player_curry","player_lebron"]
+    static let friendLocations = ["Bulacan","Quezon City","Antipolo City","Cavite, too many to mention","Makati City","SM North Edsa","Paranaque City"]
+    static let friendPositions = ["C","G","F","C","F","G","G"]
   }
   
   struct Login {
@@ -20,7 +22,9 @@ class TestClass: NSObject {
   }
   
   struct Game {
-    
+    static let goingFriends = ["Dhin Forto","Ace Rivera","Josh Relova","Erick Abutal","Chard Cordero","Rey Tugade","Lloyd Urbino"]
+    static let tentativeFriends = ["Paula Javier", "Kyle Sy"]
+    static let invitedFriends = ["Jomari Esguerra","Mariag Indrinal", "Miani DeVera"]
   }
   
   struct Maps {
@@ -38,5 +42,5 @@ class TestClass: NSObject {
   struct Others {
     
   }
-
+  
 }

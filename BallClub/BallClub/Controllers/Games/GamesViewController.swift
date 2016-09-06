@@ -22,6 +22,9 @@ class GamesViewController: UIViewController {
     }
     
 
+  @IBAction func testButtonPressed(sender: AnyObject) {
+    self.performSegueWithIdentifier("GameDetailSegue", sender: self)
+  }
     /*
     // MARK: - Navigation
 

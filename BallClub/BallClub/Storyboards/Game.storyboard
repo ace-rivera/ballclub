@@ -22,6 +22,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03_bc_game_list" translatesAutoresizingMaskIntoConstraints="NO" id="8dM-ge-BP9">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44F-xQ-MAU">
+                                <rect key="frame" x="29" y="226" width="167" height="30"/>
+                                <state key="normal" title="TEST SEGUE"/>
+                                <connections>
+                                    <action selector="testButtonPressed:" destination="dg0-mL-b3O" eventType="touchUpInside" id="mAr-YC-fCt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -39,10 +46,74 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="dua-vV-w24" kind="show" identifier="GameDetailSegue" id="s3l-Mx-KI7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAz-ZQ-OGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282" y="350"/>
+        </scene>
+        <!--Game Detail View Controller-->
+        <scene sceneID="ipv-83-Edr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aqn-7f-onk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="dua-vV-w24" customClass="GameDetailViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FB4-8P-zGw"/>
+                        <viewControllerLayoutGuide type="bottom" id="qNb-J2-fqt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TIM-Ic-wef">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1e-16-fNx">
+                                <rect key="frame" x="26" y="94" width="84" height="26"/>
+                                <state key="normal" title="See All"/>
+                                <connections>
+                                    <action selector="seeAllButtonPressed:" destination="dua-vV-w24" eventType="touchUpInside" id="Pzg-d6-yS4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="8cT-SB-CUh" kind="show" identifier="DetailToInvitedSegue" id="hQZ-sE-pTE"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1282" y="1232"/>
+        </scene>
+        <!--Invited Friends View Controller-->
+        <scene sceneID="7wF-oh-9M3">
+            <objects>
+                <tableViewController id="8cT-SB-CUh" customClass="InvitedFriendsViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" id="56t-yg-87m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="E5M-3b-CcD">
+                                <rect key="frame" x="0.0" y="114" width="600" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E5M-3b-CcD" id="PvX-6S-P0K">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8cT-SB-CUh" id="Cen-Lz-QeF"/>
+                            <outlet property="delegate" destination="8cT-SB-CUh" id="Miu-oD-0eG"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="friendsTableView" destination="56t-yg-87m" id="Isp-xV-f9W"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RpN-p1-LSl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953" y="1232"/>
         </scene>
         <!--Create Game-->
         <scene sceneID="diT-kt-apl">
