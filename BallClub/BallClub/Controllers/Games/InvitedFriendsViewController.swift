@@ -16,6 +16,10 @@ class InvitedFriendsViewController: UITableViewController {
     friendsTableView.registerNib(UINib(nibName: "InvitedFriendsCustomCell",bundle: nil), forCellReuseIdentifier: "InvitedFriendsCustomCell")
   }
   
+  @IBAction func backButtonPressed(sender: AnyObject) {
+    self.navigationController?.popViewControllerAnimated(true)
+  }
+  
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 3
   }

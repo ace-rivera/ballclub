@@ -9,6 +9,11 @@
 import UIKit
 
 class GameDetailViewController: UIViewController {
+  
+  @IBAction func backButtonPressed(sender: AnyObject) {
+    self.navigationController?.popViewControllerAnimated(true)
+  }
+  
   @IBAction func seeAllButtonPressed(sender: AnyObject) {
     self.performSegueWithIdentifier("DetailToInvitedSegue", sender: self)
   }

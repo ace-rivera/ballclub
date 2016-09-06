@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Games View Controller-->
@@ -39,22 +40,45 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mo2-qF-KDb">
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="gCc-xL-4JX">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="pcB-fS-nR3" kind="show" id="STe-Bj-yT2"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem enabled="NO" image="ic_navigation_previous" id="OBX-cV-3F4">
+                                <inset key="imageInsets" minX="-10" minY="0.0" maxX="-30" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="THIS WEEK" id="YWQ-wS-b78">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                            <barButtonItem image="ic_navigation_next" id="i3h-GD-qe4">
+                                <inset key="imageInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Create" id="gCc-xL-4JX">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="pcB-fS-nR3" kind="show" id="STe-Bj-yT2"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="ic_navigation_search" id="mnx-ya-XBA">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="dua-vV-w24" kind="show" identifier="GameDetailSegue" id="s3l-Mx-KI7"/>
                     </connections>
                 </viewController>
+                <navigationItem id="eP7-qE-XhY">
+                    <barButtonItem key="rightBarButtonItem" title="Create" id="Fg0-kU-Wtz">
+                        <color key="tintColor" red="0.91764705879999997" green="0.3921568627" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </barButtonItem>
+                </navigationItem>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAz-ZQ-OGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282" y="350"/>
         </scene>
-        <!--Game Detail View Controller-->
+        <!--Streetball Challenge-->
         <scene sceneID="ipv-83-Edr">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aqn-7f-onk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,6 +101,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Streetball Challenge" id="6kK-Ib-DdZ">
+                        <leftBarButtonItems>
+                            <barButtonItem image="back" id="sgw-7J-u6k">
+                                <inset key="imageInsets" minX="-10" minY="0.0" maxX="-35" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="dua-vV-w24" id="LaH-XJ-peb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Back" id="oqv-9O-J7L">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="dua-vV-w24" id="hcR-6c-5a9"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <segue destination="8cT-SB-CUh" kind="show" identifier="DetailToInvitedSegue" id="hQZ-sE-pTE"/>
                     </connections>
@@ -84,14 +125,15 @@
             </objects>
             <point key="canvasLocation" x="1282" y="1232"/>
         </scene>
-        <!--Invited Friends View Controller-->
+        <!--Player List-->
         <scene sceneID="7wF-oh-9M3">
             <objects>
                 <tableViewController id="8cT-SB-CUh" customClass="InvitedFriendsViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" id="56t-yg-87m">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" id="56t-yg-87m">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="E5M-3b-CcD">
                                 <rect key="frame" x="0.0" y="114" width="600" height="55"/>
@@ -107,6 +149,32 @@
                             <outlet property="delegate" destination="8cT-SB-CUh" id="Miu-oD-0eG"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Player List" id="aK9-hX-xcP">
+                        <leftBarButtonItems>
+                            <barButtonItem image="back" id="ils-iI-fbc">
+                                <inset key="imageInsets" minX="-10" minY="0.0" maxX="-35" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="8cT-SB-CUh" id="7jI-Gy-Eru"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Back" id="rzc-sO-SON">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="8cT-SB-CUh" id="QUd-nN-fl0"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" id="SV1-V4-BXM">
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                            <barButtonItem image="ic_navigation_filter" id="KzY-5l-Dsn">
+                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-20" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="friendsTableView" destination="56t-yg-87m" id="Isp-xV-f9W"/>
                     </connections>
@@ -627,6 +695,10 @@
         <image name="ic_info" width="512" height="512"/>
         <image name="ic_invite" width="512" height="512"/>
         <image name="ic_map_filled" width="100" height="100"/>
+        <image name="ic_navigation_filter" width="30" height="30"/>
+        <image name="ic_navigation_next" width="30" height="30"/>
+        <image name="ic_navigation_previous" width="30" height="30"/>
+        <image name="ic_navigation_search" width="30" height="30"/>
         <image name="ic_peso" width="512" height="512"/>
         <image name="ic_private" width="512" height="512"/>
         <image name="ic_public" width="512" height="512"/>

@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UITabBar.appearance().tintColor = UIColor.whiteColor()
     UITabBar.appearance().selectedImageTintColor = Constants.CustomColor.customOrangeColor
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-    
     return true
   }
 
