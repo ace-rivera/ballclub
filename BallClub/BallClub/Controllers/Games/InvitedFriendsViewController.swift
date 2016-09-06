@@ -12,14 +12,25 @@ class InvitedFriendsViewController: UITableViewController {
   
   @IBOutlet var friendsTableView: UITableView!
   
+  //MARK: - Lifecycle
   override func viewDidLoad() {
+    setUpUI()
+  }
+  
+  func setUpUI() {
+    registerNibs()
+  }
+  
+  func registerNibs() {
     friendsTableView.registerNib(UINib(nibName: "InvitedFriendsCustomCell",bundle: nil), forCellReuseIdentifier: "InvitedFriendsCustomCell")
   }
   
+  //MARK: - IBAction
   @IBAction func backButtonPressed(sender: AnyObject) {
     self.navigationController?.popViewControllerAnimated(true)
   }
   
+  //MARK: - Tableview delegates
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 3
   }

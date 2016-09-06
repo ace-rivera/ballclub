@@ -23,10 +23,9 @@ class UserInviteCustomCell: UITableViewCell {
   
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
   }
   
+  //MARK:- Setters Getters
   func setFriendUserName (name : String){
     userName.text = name
   }
@@ -39,6 +38,7 @@ class UserInviteCustomCell: UITableViewCell {
     inviteStatus.text = status
   }
   
+  //MARK:- IBActions
   @IBAction func viewGameButtonPressed(sender: AnyObject) {
     
   }

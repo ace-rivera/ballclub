@@ -16,7 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailAddLabel: UITextField!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var appLogo: UIImageView!
-    
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         

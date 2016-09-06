@@ -12,7 +12,6 @@ class PositionCustomButton: UIButton {
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)!
-//    self.layer.cornerRadius = self.frame.size.height/2
     self.layer.borderColor = UIColor.lightGrayColor().CGColor
     self.backgroundColor = UIColor.clearColor()
     self.titleLabel?.textColor = UIColor.lightGrayColor()

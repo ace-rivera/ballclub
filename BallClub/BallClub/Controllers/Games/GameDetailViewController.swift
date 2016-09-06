@@ -10,6 +10,16 @@ import UIKit
 
 class GameDetailViewController: UIViewController {
   
+  //MARK: - Lifecycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
+  
+  //MARK: - IBAction
   @IBAction func backButtonPressed(sender: AnyObject) {
     self.navigationController?.popViewControllerAnimated(true)
   }

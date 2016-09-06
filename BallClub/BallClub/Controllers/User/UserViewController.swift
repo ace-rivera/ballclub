@@ -8,28 +8,34 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserViewController: UIViewController {
   
   @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var friendsTableView: UITableView!
-  
   private var firstTabSelected = true
   
+  //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.searchTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
-    registerNibs()
+    setUpUI()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  }
+  
+  //MARK: - SetUpUI
+  func setUpUI(){
+    self.searchTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+    registerNibs()
   }
   
   func registerNibs(){
     self.friendsTableView.registerNib(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
     self.friendsTableView.registerNib(UINib(nibName: "UserAddFriendCustomCell",bundle: nil), forCellReuseIdentifier: "UserAddFriendCustomCell")
   }
+  
+  //MARK: - IBAction
   
   @IBAction func editProfilePressed(sender: AnyObject) {
     
@@ -51,8 +57,10 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     friendsTableView.reloadData()
   }
   
+}
+
+extension UserViewController : UITableViewDelegate, UITableViewDataSource {
   
-  //MARK: - TableView Delegate
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if firstTabSelected {
       let cell = tableView.dequeueReusableCellWithIdentifier("UserInviteCustomCell") as! UserInviteCustomCell
