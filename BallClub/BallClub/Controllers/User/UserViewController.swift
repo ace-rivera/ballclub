@@ -10,20 +10,25 @@ import UIKit
 
 class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
+  @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var friendsTableView: UITableView!
   
   private var firstTabSelected = true
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    self.friendsTableView.registerNib(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
-    self.friendsTableView.registerNib(UINib(nibName: "UserAddFriendCustomCell",bundle: nil), forCellReuseIdentifier: "UserAddFriendCustomCell")
+    self.searchTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+    registerNibs()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  func registerNibs(){
+    self.friendsTableView.registerNib(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
+    self.friendsTableView.registerNib(UINib(nibName: "UserAddFriendCustomCell",bundle: nil), forCellReuseIdentifier: "UserAddFriendCustomCell")
   }
   
   @IBAction func editProfilePressed(sender: AnyObject) {

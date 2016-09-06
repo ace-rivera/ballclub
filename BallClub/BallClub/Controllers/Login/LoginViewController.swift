@@ -44,5 +44,8 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func signUpHereButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("LoginToSignUpSegue", sender: self)
+    }
     
 }

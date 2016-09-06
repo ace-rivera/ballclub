@@ -8,8 +8,12 @@
 
 import UIKit
 
-class CustomColor: NSObject {
+class Constants: NSObject {
   
+  //customColor
+  struct CustomColor {
+    static let tabBarBackgroundColor = UIColor(red: 36/255.0, green: 37/255.0, blue: 32/255.0, alpha: 1)
+    static let customOrangeColor = UIColor(red: 230/255.0, green: 99/255.0, blue: 13/255.0, alpha: 1)
+  }
   
-
 }

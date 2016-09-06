@@ -41,9 +41,7 @@ class SignUpViewController: UIViewController {
         
         createProfileButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         createProfileButton.layer.borderWidth = 1
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        
+      
         emailTextField.attributedPlaceholder = NSAttributedString(string:"E-mail",
                                                                   attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
         passwordTextField.attributedPlaceholder = NSAttributedString(string:"Password",

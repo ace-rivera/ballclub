@@ -32,5 +32,8 @@ class CreateGameViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+  @IBAction func doneButtonPressed(sender: AnyObject) {
+    self.navigationController?.popViewControllerAnimated(true)
+  }
 
 }

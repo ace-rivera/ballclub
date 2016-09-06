@@ -18,7 +18,18 @@
                     <view key="view" contentMode="scaleToFill" id="zv7-LD-WrE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03_bc_game_list" translatesAutoresizingMaskIntoConstraints="NO" id="8dM-ge-BP9">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="8dM-ge-BP9" secondAttribute="trailing" constant="-20" id="Kn8-YP-XJf"/>
+                            <constraint firstItem="8dM-ge-BP9" firstAttribute="leading" secondItem="zv7-LD-WrE" secondAttribute="leadingMargin" constant="-20" id="RFz-gf-iTG"/>
+                            <constraint firstItem="oVb-Pr-SXz" firstAttribute="top" secondItem="8dM-ge-BP9" secondAttribute="bottom" id="nNA-zx-gUR"/>
+                            <constraint firstItem="8dM-ge-BP9" firstAttribute="top" secondItem="R9a-wy-2K8" secondAttribute="bottom" id="pw7-dR-24G"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mo2-qF-KDb">
                         <barButtonItem key="rightBarButtonItem" title="Create" id="gCc-xL-4JX">
@@ -497,6 +508,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="T78-C8-wK5">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="pcB-fS-nR3" id="sNx-0C-38s"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -509,11 +523,13 @@
             </objects>
             <point key="canvasLocation" x="1953" y="350"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Games-->
         <scene sceneID="eOv-hy-3Ua">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eEm-xX-k0N" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Games" image="ic_tabbar_game" id="2iD-DC-6FU"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uAk-bX-O2e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -533,6 +549,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="03_bc_game_list" width="1065" height="1560"/>
         <image name="back" width="22" height="22"/>
         <image name="ic_closed" width="512" height="512"/>
         <image name="ic_game_ios" width="480" height="480"/>
@@ -543,6 +560,7 @@
         <image name="ic_private" width="512" height="512"/>
         <image name="ic_public" width="512" height="512"/>
         <image name="ic_schedule" width="512" height="512"/>
+        <image name="ic_tabbar_game" width="30" height="30"/>
         <image name="ic_user_filled" width="100" height="100"/>
     </resources>
 </document>

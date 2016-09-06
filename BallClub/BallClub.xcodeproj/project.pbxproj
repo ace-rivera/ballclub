@@ -34,6 +34,7 @@
 		71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2A1D75949800264B67 /* CreateGameViewController.swift */; };
 		71547B301D76707100264B67 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547B2F1D76707100264B67 /* MainViewController.swift */; };
 		715EA2601D791BEE002A19F8 /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715EA25F1D791BEE002A19F8 /* TestClass.swift */; };
+		71D4927C1D7D67BA00E07DDF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4927B1D7D67BA00E07DDF /* Constants.swift */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		71547B2A1D75949800264B67 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		71547B2F1D76707100264B67 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		715EA25F1D791BEE002A19F8 /* TestClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
+		71D4927B1D7D67BA00E07DDF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		71547AF61D753A9A00264B67 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				71D492761D7D662000E07DDF /* Main */,
 				71547B041D75604000264B67 /* Feeds */,
 				71547B051D75604000264B67 /* Games */,
 				71547B061D75604000264B67 /* Login */,
@@ -273,6 +276,14 @@
 			isa = PBXGroup;
 			children = (
 				71547B2F1D76707100264B67 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		71D492761D7D662000E07DDF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				71D4927B1D7D67BA00E07DDF /* Constants.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -417,6 +428,7 @@
 			files = (
 				715EA2601D791BEE002A19F8 /* TestClass.swift in Sources */,
 				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
+				71D4927C1D7D67BA00E07DDF /* Constants.swift in Sources */,
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
 				71547A831D752A4300264B67 /* ViewController.swift in Sources */,
@@ -539,10 +551,13 @@
 			baseConfigurationReference = 4C631140209D1C6A45139A88 /* Pods-BallClub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BallClub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatalException.BallClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -551,10 +566,12 @@
 			baseConfigurationReference = EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BallClub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatalException.BallClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
