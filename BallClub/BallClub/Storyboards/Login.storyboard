@@ -112,6 +112,9 @@ YmFja2dyb3VuZBBJbWFnZQ
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="zon-A6-b9g" eventType="touchUpInside" id="1ii-Q1-fqT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93B-wo-1wc">
                                 <rect key="frame" x="183" y="404" width="234" height="31"/>
@@ -140,13 +143,14 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                     <action selector="signUpHereButtonPressed:" destination="zon-A6-b9g" eventType="touchUpInside" id="39A-Sq-XwC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmB-mz-GdG">
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmB-mz-GdG">
                                 <rect key="frame" x="61" y="469" width="478" height="40"/>
-                                <color key="backgroundColor" red="0.094117647058823528" green="0.13333333333333333" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.094117647058823528" green="0.22853807471264365" blue="0.46263839587559163" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Zfo-A2-n33"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="200" minY="140" maxX="200" maxY="140"/>
                                 <state key="normal" title="Log in with Facebook ">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -155,6 +159,9 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginWithFacebookButtonPressed:" destination="zon-A6-b9g" eventType="touchUpInside" id="wEg-rf-nzR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -195,6 +202,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                         <outlet property="loginButton" destination="afZ-YI-vNA" id="jSh-fs-gau"/>
                         <outlet property="passwordLabel" destination="28f-Qq-KgB" id="KGP-jw-KMe"/>
                         <segue destination="3W9-Bn-oKF" kind="show" identifier="LoginToSignUpSegue" id="vSt-qg-ZGo"/>
+                        <segue destination="cvW-yP-qaD" kind="show" identifier="LoginToMainSegue" id="Ze6-eW-YUU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbY-9M-rHJ" sceneMemberID="firstResponder"/>
@@ -273,7 +281,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zH9-Uv-g5N" kind="show" id="ea0-cs-dPd"/>
+                                    <action selector="createProfileButtonPressed:" destination="3W9-Bn-oKF" eventType="touchUpInside" id="81n-zf-D0g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -302,11 +310,12 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                         <outlet property="createProfileButton" destination="zbb-Ed-Mix" id="0cn-ep-vZ4"/>
                         <outlet property="emailTextField" destination="eNZ-4c-v6K" id="px8-Xn-Z9V"/>
                         <outlet property="passwordTextField" destination="gNJ-KJ-QS7" id="ahY-ro-OZc"/>
+                        <segue destination="zH9-Uv-g5N" kind="show" identifier="SignUpToCreateProfileSgue" id="uKF-nq-ctC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="29b-vd-799" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1151" y="899"/>
+            <point key="canvasLocation" x="401" y="1668"/>
         </scene>
         <!--Create Profile-->
         <scene sceneID="Uug-PH-9xA">
@@ -733,7 +742,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6f-XH-pLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="899"/>
+            <point key="canvasLocation" x="1141" y="1793"/>
         </scene>
         <!--Main-->
         <scene sceneID="MtJ-Cz-Qvo">
@@ -741,7 +750,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                 <viewControllerPlaceholder storyboardName="Main" id="cvW-yP-qaD" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUG-wL-yXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2321" y="899"/>
+            <point key="canvasLocation" x="1672" y="1793"/>
         </scene>
     </scenes>
     <resources>
@@ -751,4 +760,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <image name="img_logo" width="809" height="288"/>
         <image name="upload_image" width="321" height="321"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ze6-eW-YUU"/>
+    </inferredMetricsTieBreakers>
 </document>
