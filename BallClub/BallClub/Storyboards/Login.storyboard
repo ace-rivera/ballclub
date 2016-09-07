@@ -342,21 +342,6 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
                                                             <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_image" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-Es-rfu">
-                                                            <rect key="frame" x="25" y="23" width="110" height="110"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="110" id="7GB-4C-6YN"/>
-                                                                <constraint firstAttribute="height" constant="110" id="b3h-sd-Vfj"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="55"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                    <integer key="value" value="4"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBh-iD-BhC" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
                                                             <rect key="frame" x="148" y="100" width="46" height="46"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -420,6 +405,25 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                                 <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="o2T-St-zMj"/>
                                                             </connections>
                                                         </button>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_image" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-Es-rfu">
+                                                            <rect key="frame" x="25" y="23" width="110" height="110"/>
+                                                            <gestureRecognizers/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="110" id="7GB-4C-6YN"/>
+                                                                <constraint firstAttribute="height" constant="110" id="b3h-sd-Vfj"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="55"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                    <integer key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="YYc-ar-2v7" appends="YES" id="QKm-h8-wx0"/>
+                                                            </connections>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -741,6 +745,11 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6f-XH-pLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YYc-ar-2v7">
+                    <connections>
+                        <action selector="changeProfileImage:" destination="zH9-Uv-g5N" id="vjD-pe-Xxt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1141" y="1793"/>
         </scene>
@@ -761,6 +770,6 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <image name="upload_image" width="321" height="321"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ze6-eW-YUU"/>
+        <segue reference="lvM-cg-T7B"/>
     </inferredMetricsTieBreakers>
 </document>
