@@ -20,6 +20,7 @@
 		713BFD6B1D76BB3900A49BC6 /* FriendStatusCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */; };
 		714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714777A01D7FF1E300501492 /* FeedsCustomCell.swift */; };
 		714777A31D7FF1E300501492 /* FeedsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714777A11D7FF1E300501492 /* FeedsCustomCell.xib */; };
+		714777A51D8000A700501492 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714777A41D8000A700501492 /* CustomDateFormatter.swift */; };
 		71547A811D752A4300264B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A801D752A4300264B67 /* AppDelegate.swift */; };
 		71547A831D752A4300264B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A821D752A4300264B67 /* ViewController.swift */; };
 		71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71547A871D752A4300264B67 /* BallClub.xcdatamodeld */; };
@@ -65,6 +66,7 @@
 		713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendStatusCustomCell.xib; sourceTree = "<group>"; };
 		714777A01D7FF1E300501492 /* FeedsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsCustomCell.swift; sourceTree = "<group>"; };
 		714777A11D7FF1E300501492 /* FeedsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsCustomCell.xib; sourceTree = "<group>"; };
+		714777A41D8000A700501492 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		71547A7D1D752A4300264B67 /* BallClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BallClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71547A801D752A4300264B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71547A821D752A4300264B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				71D4927B1D7D67BA00E07DDF /* Constants.swift */,
+				714777A41D8000A700501492 /* CustomDateFormatter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				715EA2601D791BEE002A19F8 /* TestClass.swift in Sources */,
 				71D492821D7E926B00E07DDF /* InvitedFriendsCustomCell.swift in Sources */,
 				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
+				714777A51D8000A700501492 /* CustomDateFormatter.swift in Sources */,
 				71D4927C1D7D67BA00E07DDF /* Constants.swift in Sources */,
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,

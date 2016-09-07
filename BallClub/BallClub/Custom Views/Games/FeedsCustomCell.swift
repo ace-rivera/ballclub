@@ -31,7 +31,7 @@ class FeedsCustomCell: UITableViewCell {
   }
   
   func setDateOfGame(date: NSDate){
-    gameDateLabel.text = String(date)//TODO: create formatter
+    gameDateLabel.text = CustomDateFormatter().feedsDateFormat(date)
   }
   
   func setTitleOfGame(title: String){
