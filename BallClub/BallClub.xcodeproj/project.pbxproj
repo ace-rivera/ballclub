@@ -48,6 +48,8 @@
 		71D4928E1D7EBBB600E07DDF /* FeedsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D4928C1D7EBBB600E07DDF /* FeedsCustomCell.xib */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
+		FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */; };
+		FB8B217F1D7EBA9900B462CA /* MapAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B217E1D7EBA9900B462CA /* MapAnnotations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
+		FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
+		FB8B217E1D7EBA9900B462CA /* MapAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				71547AFE1D753C1C00264B67 /* MapsViewController.swift */,
+				FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */,
+				FB8B217E1D7EBA9900B462CA /* MapAnnotations.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -485,6 +491,8 @@
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
+				FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */,
+				FB8B217F1D7EBA9900B462CA /* MapAnnotations.swift in Sources */,
 				71D4927E1D7E908400E07DDF /* GameDetailViewController.swift in Sources */,
 				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
 				713BFD661D76B42D00A49BC6 /* UserAddFriendCustomCell.swift in Sources */,
