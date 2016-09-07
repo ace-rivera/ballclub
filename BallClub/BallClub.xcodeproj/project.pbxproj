@@ -22,7 +22,6 @@
 		714777A31D7FF1E300501492 /* FeedsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714777A11D7FF1E300501492 /* FeedsCustomCell.xib */; };
 		714777A51D8000A700501492 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714777A41D8000A700501492 /* CustomDateFormatter.swift */; };
 		71547A811D752A4300264B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A801D752A4300264B67 /* AppDelegate.swift */; };
-		71547A831D752A4300264B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A821D752A4300264B67 /* ViewController.swift */; };
 		71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71547A871D752A4300264B67 /* BallClub.xcdatamodeld */; };
 		71547A8B1D752A4300264B67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71547A8A1D752A4300264B67 /* Assets.xcassets */; };
 		71547A8E1D752A4300264B67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547A8C1D752A4300264B67 /* LaunchScreen.storyboard */; };
@@ -69,7 +68,6 @@
 		714777A41D8000A700501492 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		71547A7D1D752A4300264B67 /* BallClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BallClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71547A801D752A4300264B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		71547A821D752A4300264B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		71547A881D752A4300264B67 /* BallClub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BallClub.xcdatamodel; sourceTree = "<group>"; };
 		71547A8A1D752A4300264B67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71547A8D1D752A4300264B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				71547AEF1D753A9A00264B67 /* Controllers */,
 				71547AF61D753A9A00264B67 /* Custom Views */,
 				71547A801D752A4300264B67 /* AppDelegate.swift */,
-				71547A821D752A4300264B67 /* ViewController.swift */,
 				71547A8A1D752A4300264B67 /* Assets.xcassets */,
 				71547A8C1D752A4300264B67 /* LaunchScreen.storyboard */,
 				71547A8F1D752A4300264B67 /* Info.plist */,
@@ -461,7 +458,6 @@
 				71D4927C1D7D67BA00E07DDF /* Constants.swift in Sources */,
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
-				71547A831D752A4300264B67 /* ViewController.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
 				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
