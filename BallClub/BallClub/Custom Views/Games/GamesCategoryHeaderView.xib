@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GamesCategoryHeaderView" customModule="BallClub" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLOSED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5v-AO-p8Z">
+                    <rect key="frame" x="50" y="10" width="239" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="I9n-zN-96I"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_closed" translatesAutoresizingMaskIntoConstraints="NO" id="lbu-Sf-vv5">
+                    <rect key="frame" x="17" y="7" width="25" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="RpB-O5-yZp"/>
+                        <constraint firstAttribute="width" constant="25" id="oFV-h8-9L0"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orange" translatesAutoresizingMaskIntoConstraints="NO" id="feQ-va-rCw">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="QP4-mS-xuE"/>
+                        <constraint firstAttribute="height" constant="20" id="kOp-AI-Dan"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="lbu-Sf-vv5" firstAttribute="leading" secondItem="feQ-va-rCw" secondAttribute="trailing" constant="-3" id="2Ks-uv-z7i"/>
+                <constraint firstItem="feQ-va-rCw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5Eb-Bs-lvH"/>
+                <constraint firstItem="lbu-Sf-vv5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="910-QY-xY4"/>
+                <constraint firstAttribute="trailing" secondItem="M5v-AO-p8Z" secondAttribute="trailing" constant="31" id="Eyx-et-rnt"/>
+                <constraint firstItem="feQ-va-rCw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VEu-hO-GWA"/>
+                <constraint firstItem="M5v-AO-p8Z" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aBM-E6-BIR"/>
+                <constraint firstItem="M5v-AO-p8Z" firstAttribute="leading" secondItem="lbu-Sf-vv5" secondAttribute="trailing" constant="8" id="cVM-YH-ucH"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="categoryFlag" destination="feQ-va-rCw" id="Sid-g9-EMZ"/>
+                <outlet property="categoryImage" destination="lbu-Sf-vv5" id="9I7-EH-2YW"/>
+                <outlet property="categoryTitle" destination="M5v-AO-p8Z" id="pMY-CX-NO3"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_closed" width="512" height="512"/>
+        <image name="orange" width="40" height="40"/>
+    </resources>
+</document>
