@@ -32,7 +32,7 @@ class TestClass: NSObject {
   }
   
   struct User {
-    
+    var profileImage : NSString!
   }
   
   struct Feeds {

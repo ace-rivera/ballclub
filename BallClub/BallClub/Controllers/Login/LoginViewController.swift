@@ -37,8 +37,6 @@ class LoginViewController: UIViewController {
                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
     passwordLabel.attributedPlaceholder = NSAttributedString(string:"Password",
                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
-    
-    
   }
   
   override func didReceiveMemoryWarning() {
@@ -52,7 +50,6 @@ class LoginViewController: UIViewController {
   }
   
   @IBAction func loginWithFacebookButtonPressed(sender: AnyObject) {
-
     let login = FBSDKLoginManager()
     login.logInWithReadPermissions(["public_profile","email"], fromViewController: self) { (result, error) in
       if ((error) != nil)  {
@@ -63,14 +60,18 @@ class LoginViewController: UIViewController {
         NSLog("Facebook Cancelled");
       }
       else {
-        if ((FBSDKAccessToken.currentAccessToken()) != nil) {
-          FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender"]).startWithCompletionHandler { (connection, result, error) in
-            if error == nil {
-              print("Facebook Fetched user : \(result)")
-              //TODO: Save user details
-              self.performSegueWithIdentifier("LoginToMainSegue", sender: self)
-            }
-          }
+        self.getFacebookUserInfo()
+      }
+    }
+  }
+  
+  func getFacebookUserInfo(){
+    if ((FBSDKAccessToken.currentAccessToken()) != nil) {
+      FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender, picture.width(300).height(300)"]).startWithCompletionHandler { (connection, result, error) in
+        if error == nil {
+          print("Facebook Fetched user : \(result)")
+          //TODO: Save user details
+          self.performSegueWithIdentifier("LoginToMainSegue", sender: self)
         }
       }
     }
