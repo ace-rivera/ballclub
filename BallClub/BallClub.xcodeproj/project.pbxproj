@@ -18,6 +18,8 @@
 		713BFD671D76B42D00A49BC6 /* UserAddFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 713BFD651D76B42D00A49BC6 /* UserAddFriendCustomCell.xib */; };
 		713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BFD681D76BB3900A49BC6 /* FriendStatusCustomCell.swift */; };
 		713BFD6B1D76BB3900A49BC6 /* FriendStatusCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */; };
+		714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714777A01D7FF1E300501492 /* FeedsCustomCell.swift */; };
+		714777A31D7FF1E300501492 /* FeedsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714777A11D7FF1E300501492 /* FeedsCustomCell.xib */; };
 		71547A811D752A4300264B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A801D752A4300264B67 /* AppDelegate.swift */; };
 		71547A831D752A4300264B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547A821D752A4300264B67 /* ViewController.swift */; };
 		71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71547A871D752A4300264B67 /* BallClub.xcdatamodeld */; };
@@ -28,8 +30,6 @@
 		71547A9F1D75346700264B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547A9C1D75346700264B67 /* Main.storyboard */; };
 		71547AA11D7534CD00264B67 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547AA01D7534CD00264B67 /* Maps.storyboard */; };
 		71547AA31D7534F100264B67 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547AA21D7534F100264B67 /* User.storyboard */; };
-		71547AA51D75351100264B67 /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71547AA41D75351100264B67 /* Feeds.storyboard */; };
-		71547AF91D753BF900264B67 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AF81D753BF900264B67 /* FeedsViewController.swift */; };
 		71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AFA1D753C0600264B67 /* GamesViewController.swift */; };
 		71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AFC1D753C1200264B67 /* LoginViewController.swift */; };
 		71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71547AFE1D753C1C00264B67 /* MapsViewController.swift */; };
@@ -44,8 +44,6 @@
 		71D492821D7E926B00E07DDF /* InvitedFriendsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */; };
 		71D492841D7E927B00E07DDF /* InvitedFriendsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */; };
 		71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492871D7EB26800E07DDF /* PositionCustomButton.swift */; };
-		71D4928D1D7EBBB600E07DDF /* FeedsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4928B1D7EBBB600E07DDF /* FeedsCustomCell.swift */; };
-		71D4928E1D7EBBB600E07DDF /* FeedsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D4928C1D7EBBB600E07DDF /* FeedsCustomCell.xib */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
@@ -65,6 +63,8 @@
 		713BFD651D76B42D00A49BC6 /* UserAddFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserAddFriendCustomCell.xib; sourceTree = "<group>"; };
 		713BFD681D76BB3900A49BC6 /* FriendStatusCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendStatusCustomCell.swift; sourceTree = "<group>"; };
 		713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendStatusCustomCell.xib; sourceTree = "<group>"; };
+		714777A01D7FF1E300501492 /* FeedsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsCustomCell.swift; sourceTree = "<group>"; };
+		714777A11D7FF1E300501492 /* FeedsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsCustomCell.xib; sourceTree = "<group>"; };
 		71547A7D1D752A4300264B67 /* BallClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BallClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71547A801D752A4300264B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71547A821D752A4300264B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,8 +77,6 @@
 		71547A9C1D75346700264B67 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		71547AA01D7534CD00264B67 /* Maps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
 		71547AA21D7534F100264B67 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
-		71547AA41D75351100264B67 /* Feeds.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feeds.storyboard; sourceTree = "<group>"; };
-		71547AF81D753BF900264B67 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		71547AFA1D753C0600264B67 /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		71547AFC1D753C1200264B67 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71547AFE1D753C1C00264B67 /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
@@ -93,8 +91,6 @@
 		71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitedFriendsCustomCell.swift; sourceTree = "<group>"; };
 		71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedFriendsCustomCell.xib; sourceTree = "<group>"; };
 		71D492871D7EB26800E07DDF /* PositionCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCustomButton.swift; sourceTree = "<group>"; };
-		71D4928B1D7EBBB600E07DDF /* FeedsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsCustomCell.swift; sourceTree = "<group>"; };
-		71D4928C1D7EBBB600E07DDF /* FeedsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsCustomCell.xib; sourceTree = "<group>"; };
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -173,7 +169,6 @@
 				71547A9C1D75346700264B67 /* Main.storyboard */,
 				71547AA01D7534CD00264B67 /* Maps.storyboard */,
 				71547AA21D7534F100264B67 /* User.storyboard */,
-				71547AA41D75351100264B67 /* Feeds.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -182,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				71547B2C1D766FCB00264B67 /* Main */,
-				71547AF01D753A9A00264B67 /* Feeds */,
 				71547AF11D753A9A00264B67 /* Games */,
 				71547AF21D753A9A00264B67 /* Login */,
 				71547AF31D753A9A00264B67 /* Maps */,
@@ -190,14 +184,6 @@
 				71547AF51D753A9A00264B67 /* User */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		71547AF01D753A9A00264B67 /* Feeds */ = {
-			isa = PBXGroup;
-			children = (
-				71547AF81D753BF900264B67 /* FeedsViewController.swift */,
-			);
-			path = Feeds;
 			sourceTree = "<group>";
 		};
 		71547AF11D753A9A00264B67 /* Games */ = {
@@ -252,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				71D492761D7D662000E07DDF /* Main */,
-				71547B041D75604000264B67 /* Feeds */,
 				71547B051D75604000264B67 /* Games */,
 				71547B061D75604000264B67 /* Login */,
 				71547B071D75604000264B67 /* Maps */,
@@ -268,18 +253,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		71547B041D75604000264B67 /* Feeds */ = {
-			isa = PBXGroup;
-			children = (
-				71D4928B1D7EBBB600E07DDF /* FeedsCustomCell.swift */,
-				71D4928C1D7EBBB600E07DDF /* FeedsCustomCell.xib */,
-			);
-			path = Feeds;
-			sourceTree = "<group>";
-		};
 		71547B051D75604000264B67 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				714777A01D7FF1E300501492 /* FeedsCustomCell.swift */,
+				714777A11D7FF1E300501492 /* FeedsCustomCell.xib */,
 				71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */,
 				71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */,
 			);
@@ -403,14 +381,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71547AA51D75351100264B67 /* Feeds.storyboard in Resources */,
 				71547A9D1D75346700264B67 /* Game.storyboard in Resources */,
 				71547AA11D7534CD00264B67 /* Maps.storyboard in Resources */,
 				713BFD671D76B42D00A49BC6 /* UserAddFriendCustomCell.xib in Resources */,
 				71547A8E1D752A4300264B67 /* LaunchScreen.storyboard in Resources */,
-				71D4928E1D7EBBB600E07DDF /* FeedsCustomCell.xib in Resources */,
 				713BFD6B1D76BB3900A49BC6 /* FriendStatusCustomCell.xib in Resources */,
 				71D492841D7E927B00E07DDF /* InvitedFriendsCustomCell.xib in Resources */,
+				714777A31D7FF1E300501492 /* FeedsCustomCell.xib in Resources */,
 				713BFD631D76B3E000A49BC6 /* UserInviteCustomCell.xib in Resources */,
 				71547A8B1D752A4300264B67 /* Assets.xcassets in Resources */,
 				71547A9F1D75346700264B67 /* Main.storyboard in Resources */,
@@ -483,18 +460,17 @@
 				71547A831D752A4300264B67 /* ViewController.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
-				71D4928D1D7EBBB600E07DDF /* FeedsCustomCell.swift in Sources */,
 				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
 				BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */,
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
 				71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
-				71547AF91D753BF900264B67 /* FeedsViewController.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
+				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
 				FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */,
 				FB8B217F1D7EBA9900B462CA /* MapAnnotations.swift in Sources */,
 				71D4927E1D7E908400E07DDF /* GameDetailViewController.swift in Sources */,
