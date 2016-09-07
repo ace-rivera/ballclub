@@ -16,17 +16,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_shaq" translatesAutoresizingMaskIntoConstraints="NO" id="aGv-IL-D6b">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_shaq" translatesAutoresizingMaskIntoConstraints="NO" id="aGv-IL-D6b">
                         <rect key="frame" x="18" y="5" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="Kfc-gb-5pg"/>
                             <constraint firstAttribute="width" constant="35" id="lJt-9I-P2n"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="50"/>
+                                <integer key="value" value="17"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Erik Spoelstra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZV-Co-y6k">
@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfl-hB-GNI">
-                        <rect key="frame" x="27" y="35" width="16" height="16"/>
+                        <rect key="frame" x="27" y="33" width="16" height="16"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.38823529410000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="FPf-4G-ys6"/>
@@ -68,7 +68,7 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="Qfl-hB-GNI" secondAttribute="bottom" constant="-5" id="9BJ-zq-9Id"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Qfl-hB-GNI" secondAttribute="bottom" constant="-3" id="9BJ-zq-9Id"/>
                     <constraint firstItem="aGv-IL-D6b" firstAttribute="top" secondItem="PQ2-TK-I6q" secondAttribute="topMargin" constant="-3" id="CY1-yo-Xxc"/>
                     <constraint firstAttribute="bottomMargin" secondItem="nrk-QE-7re" secondAttribute="bottom" constant="-1" id="Ior-yt-Jch"/>
                     <constraint firstAttribute="trailingMargin" secondItem="HZV-Co-y6k" secondAttribute="trailing" constant="8" id="KOc-Ra-4dF"/>
@@ -78,7 +78,7 @@
                     <constraint firstItem="aGv-IL-D6b" firstAttribute="leading" secondItem="PQ2-TK-I6q" secondAttribute="leadingMargin" constant="10" id="Scf-yQ-MIE"/>
                     <constraint firstAttribute="topMargin" secondItem="HZV-Co-y6k" secondAttribute="top" id="W1O-BA-z1v"/>
                     <constraint firstItem="HZV-Co-y6k" firstAttribute="leading" secondItem="aGv-IL-D6b" secondAttribute="trailing" constant="14" id="iyg-Qh-2X0"/>
-                    <constraint firstItem="Qfl-hB-GNI" firstAttribute="top" secondItem="aGv-IL-D6b" secondAttribute="bottom" constant="-5" id="opi-rm-2fg"/>
+                    <constraint firstItem="Qfl-hB-GNI" firstAttribute="top" secondItem="aGv-IL-D6b" secondAttribute="bottom" constant="-7" id="opi-rm-2fg"/>
                     <constraint firstItem="nrk-QE-7re" firstAttribute="leading" secondItem="aGv-IL-D6b" secondAttribute="trailing" constant="14" id="uiO-9h-k2g"/>
                 </constraints>
             </tableViewCellContentView>
