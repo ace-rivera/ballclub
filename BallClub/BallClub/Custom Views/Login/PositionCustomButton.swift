@@ -15,6 +15,7 @@ class PositionCustomButton: UIButton {
     self.layer.borderColor = UIColor.lightGrayColor().CGColor
     self.backgroundColor = UIColor.clearColor()
     self.titleLabel?.textColor = UIColor.lightGrayColor()
+    self.layer.cornerRadius = self.frame.size.height/2.0
   }
   
   override var selected: Bool {

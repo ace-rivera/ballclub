@@ -29,19 +29,19 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Russell Westbrook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hn2-uz-SIR">
-                        <rect key="frame" x="63" y="8" width="162" height="21"/>
+                        <rect key="frame" x="63" y="8" width="142" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ImO-ln-JXY"/>
-                            <constraint firstAttribute="width" constant="162" id="hLU-MV-sKa"/>
+                            <constraint firstAttribute="width" constant="142" id="hLU-MV-sKa"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="accepted your request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PT-bV-Csb">
-                        <rect key="frame" x="63" y="25" width="162" height="21"/>
+                        <rect key="frame" x="63" y="25" width="142" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="162" id="3aS-DL-YYj"/>
+                            <constraint firstAttribute="width" constant="142" id="3aS-DL-YYj"/>
                             <constraint firstAttribute="height" constant="21" id="LCT-Ho-uhP"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -79,7 +79,7 @@
                     <constraint firstItem="6PT-bV-Csb" firstAttribute="leading" secondItem="2VB-bg-eG9" secondAttribute="trailing" constant="13" id="Xnz-RJ-RcC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zU7-c6-Qer" secondAttribute="trailing" constant="3" id="hlJ-9x-iUr"/>
                     <constraint firstItem="2VB-bg-eG9" firstAttribute="centerY" secondItem="zU7-c6-Qer" secondAttribute="centerY" id="jpI-t3-Rmb"/>
-                    <constraint firstItem="zU7-c6-Qer" firstAttribute="leading" secondItem="6PT-bV-Csb" secondAttribute="trailing" constant="-12" id="sgz-e3-MR7"/>
+                    <constraint firstItem="zU7-c6-Qer" firstAttribute="leading" secondItem="6PT-bV-Csb" secondAttribute="trailing" constant="8" id="sgz-e3-MR7"/>
                     <constraint firstItem="6PT-bV-Csb" firstAttribute="leading" secondItem="hn2-uz-SIR" secondAttribute="leading" id="tAu-5a-rIo"/>
                     <constraint firstItem="2VB-bg-eG9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xrT-2m-qFl"/>
                 </constraints>
@@ -90,7 +90,7 @@
                 <outlet property="userProfileImage" destination="2VB-bg-eG9" id="R3L-Jn-AHO"/>
                 <outlet property="viewGameButton" destination="zU7-c6-Qer" id="SId-Ub-5n8"/>
             </connections>
-            <point key="canvasLocation" x="140" y="341.5"/>
+            <point key="canvasLocation" x="140" y="341"/>
         </tableViewCell>
     </objects>
     <resources>

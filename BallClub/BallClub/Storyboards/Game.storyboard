@@ -112,7 +112,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="lY5-WE-HZ9">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
                                                 </imageView>
-                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi0-6J-dUQ">
+                                                <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi0-6J-dUQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21 MAY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swk-1c-0q4">
@@ -374,6 +374,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="l91-cR-NPs" firstAttribute="leading" secondItem="4YZ-1Q-aqp" secondAttribute="leadingMargin" constant="17" id="5nn-xE-bjM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="C5L-Q1-dhi" secondAttribute="trailing" constant="17" id="Ivc-zN-Dhz"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wvS-v2-cqG" secondAttribute="trailing" constant="5" id="MKh-e5-rfA"/>
                                                 <constraint firstItem="y7K-HM-ZxK" firstAttribute="top" secondItem="C5L-Q1-dhi" secondAttribute="bottom" constant="8" id="On9-Pd-14s"/>
                                                 <constraint firstItem="wvS-v2-cqG" firstAttribute="leading" secondItem="l91-cR-NPs" secondAttribute="trailing" constant="18" id="R3K-BM-EOS"/>

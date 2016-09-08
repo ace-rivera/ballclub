@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9sh-KW-dpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9sh-KW-dpr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -339,68 +340,37 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="167"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjs-8y-koW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
                                                             <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBh-iD-BhC" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
-                                                            <rect key="frame" x="148" y="100" width="46" height="46"/>
+                                                        <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-kI-hqU" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
+                                                            <rect key="frame" x="257" y="106" width="40" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="46" id="aaK-QJ-I2h"/>
-                                                                <constraint firstAttribute="width" constant="46" id="hVj-3s-ykz"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" title="G">
-                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="22"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="rko-0k-gK3"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-kI-hqU" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
-                                                            <rect key="frame" x="269" y="100" width="46" height="46"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="46" id="buN-gI-eyT"/>
-                                                                <constraint firstAttribute="width" constant="46" id="elQ-lB-7An"/>
+                                                                <constraint firstAttribute="width" secondItem="dDo-kI-hqU" secondAttribute="height" multiplier="1:1" id="fXh-SP-4I5"/>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="46" id="qXv-hq-uOa"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <state key="normal" title="C">
                                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="22"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="jvD-fp-XhK"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-6H-brt" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
-                                                            <rect key="frame" x="210" y="100" width="46" height="46"/>
+                                                        <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-6H-brt" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
+                                                            <rect key="frame" x="204" y="106" width="40" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="46" id="WUB-B7-2pT"/>
-                                                                <constraint firstAttribute="width" constant="46" id="i0j-Rs-3fG"/>
+                                                                <constraint firstAttribute="width" secondItem="hdr-6H-brt" secondAttribute="height" multiplier="1:1" id="0EK-Fg-3v2"/>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="46" id="HMm-uK-aik"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <state key="normal" title="F">
                                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="22"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="o2T-St-zMj"/>
                                                             </connections>
@@ -424,21 +394,37 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                                 <outletCollection property="gestureRecognizers" destination="YYc-ar-2v7" appends="YES" id="QKm-h8-wx0"/>
                                                             </connections>
                                                         </imageView>
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBh-iD-BhC" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
+                                                            <rect key="frame" x="148" y="106" width="40" height="40"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="qBh-iD-BhC" secondAttribute="height" multiplier="1:1" id="6sI-h5-Ttt"/>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="46" id="vfZ-zB-k5O"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <state key="normal" title="G">
+                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="rko-0k-gK3"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="dDo-kI-hqU" secondAttribute="bottom" constant="21" id="1Yb-82-xoo"/>
+                                                        <constraint firstItem="qBh-iD-BhC" firstAttribute="leading" secondItem="OnJ-Es-rfu" secondAttribute="trailing" constant="13" id="57Y-R3-QuB"/>
                                                         <constraint firstAttribute="trailing" secondItem="Wjs-8y-koW" secondAttribute="trailing" id="BRh-GO-nEB"/>
                                                         <constraint firstItem="OnJ-Es-rfu" firstAttribute="top" secondItem="RUD-2i-mDJ" secondAttribute="top" constant="23" id="IH5-MP-r0N"/>
+                                                        <constraint firstItem="qBh-iD-BhC" firstAttribute="top" secondItem="Wjs-8y-koW" secondAttribute="bottom" constant="15" id="JVG-xh-DFu"/>
                                                         <constraint firstItem="OnJ-Es-rfu" firstAttribute="leading" secondItem="RUD-2i-mDJ" secondAttribute="leading" constant="25" id="KBG-QS-Vex"/>
-                                                        <constraint firstItem="qBh-iD-BhC" firstAttribute="leading" secondItem="OnJ-Es-rfu" secondAttribute="trailing" constant="13" id="S66-ga-Pdh"/>
-                                                        <constraint firstItem="dDo-kI-hqU" firstAttribute="leading" secondItem="hdr-6H-brt" secondAttribute="trailing" constant="13" id="ZYs-vr-bcf"/>
-                                                        <constraint firstItem="dDo-kI-hqU" firstAttribute="baseline" secondItem="qBh-iD-BhC" secondAttribute="baseline" id="ctd-4m-QT9"/>
+                                                        <constraint firstAttribute="bottom" secondItem="qBh-iD-BhC" secondAttribute="bottom" constant="21" id="SEs-yv-IAf"/>
+                                                        <constraint firstItem="hdr-6H-brt" firstAttribute="leading" secondItem="qBh-iD-BhC" secondAttribute="trailing" constant="16" id="X7s-Uz-zz4"/>
                                                         <constraint firstItem="Wjs-8y-koW" firstAttribute="top" secondItem="RUD-2i-mDJ" secondAttribute="top" id="dl2-nu-DKJ"/>
-                                                        <constraint firstItem="dDo-kI-hqU" firstAttribute="baseline" secondItem="hdr-6H-brt" secondAttribute="baseline" id="k8o-7P-2TB"/>
+                                                        <constraint firstItem="dDo-kI-hqU" firstAttribute="leading" secondItem="hdr-6H-brt" secondAttribute="trailing" constant="13" id="gDA-Fp-tyw"/>
+                                                        <constraint firstItem="dDo-kI-hqU" firstAttribute="top" secondItem="Wjs-8y-koW" secondAttribute="bottom" constant="15" id="s0I-0U-2q5"/>
                                                         <constraint firstItem="Wjs-8y-koW" firstAttribute="leading" secondItem="RUD-2i-mDJ" secondAttribute="leading" id="sfY-Vl-VCY"/>
-                                                        <constraint firstItem="dDo-kI-hqU" firstAttribute="leading" secondItem="RUD-2i-mDJ" secondAttribute="leading" constant="269" id="xYb-7W-X2w"/>
-                                                        <constraint firstItem="dDo-kI-hqU" firstAttribute="top" secondItem="Wjs-8y-koW" secondAttribute="bottom" constant="15" id="yCp-je-zfX"/>
+                                                        <constraint firstItem="hdr-6H-brt" firstAttribute="top" secondItem="Wjs-8y-koW" secondAttribute="bottom" constant="15" id="xPS-AB-Stn"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
