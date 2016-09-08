@@ -76,7 +76,7 @@ class FriendsViewController: UIViewController {
     
    
     @IBAction func backButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewControllerAnimated(true)
+      self.performSegueWithIdentifier("unwindToUserStoryboard", sender: self)
     }
     
 }

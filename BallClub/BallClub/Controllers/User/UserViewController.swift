@@ -56,7 +56,10 @@ class UserViewController: UIViewController {
         
         friendsTableView.reloadData()
     }
-    
+  
+  
+  @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+  
 }
 
 extension UserViewController : UITableViewDelegate, UITableViewDataSource {

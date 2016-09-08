@@ -49,7 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU7-c6-Qer">
-                        <rect key="frame" x="216" y="10" width="96" height="30"/>
+                        <rect key="frame" x="213" y="10" width="96" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="7fs-zD-WIG"/>
                             <constraint firstAttribute="width" constant="96" id="KNU-au-OYP"/>
@@ -77,9 +77,9 @@
                     <constraint firstAttribute="leadingMargin" secondItem="2VB-bg-eG9" secondAttribute="leading" constant="-7" id="9Xh-Px-bNm"/>
                     <constraint firstItem="6PT-bV-Csb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="63" id="XOl-MZ-5cx"/>
                     <constraint firstItem="6PT-bV-Csb" firstAttribute="leading" secondItem="2VB-bg-eG9" secondAttribute="trailing" constant="13" id="Xnz-RJ-RcC"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="zU7-c6-Qer" secondAttribute="trailing" id="hlJ-9x-iUr"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zU7-c6-Qer" secondAttribute="trailing" constant="3" id="hlJ-9x-iUr"/>
                     <constraint firstItem="2VB-bg-eG9" firstAttribute="centerY" secondItem="zU7-c6-Qer" secondAttribute="centerY" id="jpI-t3-Rmb"/>
-                    <constraint firstItem="zU7-c6-Qer" firstAttribute="leading" secondItem="6PT-bV-Csb" secondAttribute="trailing" constant="-9" id="sgz-e3-MR7"/>
+                    <constraint firstItem="zU7-c6-Qer" firstAttribute="leading" secondItem="6PT-bV-Csb" secondAttribute="trailing" constant="-12" id="sgz-e3-MR7"/>
                     <constraint firstItem="6PT-bV-Csb" firstAttribute="leading" secondItem="hn2-uz-SIR" secondAttribute="leading" id="tAu-5a-rIo"/>
                     <constraint firstItem="2VB-bg-eG9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xrT-2m-qFl"/>
                 </constraints>
