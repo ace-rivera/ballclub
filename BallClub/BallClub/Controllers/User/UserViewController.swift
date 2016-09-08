@@ -87,3 +87,9 @@ extension UserViewController : UITableViewDelegate, UITableViewDataSource {
         self.performSegueWithIdentifier("FriendsProfileViewControllerSegue", sender: self)
     }
 }
+
+extension UserViewController : UITextFieldDelegate {
+  @IBAction func editingChanged(textfield: UITextField) {
+    //TODO:implement search
+  }
+}
