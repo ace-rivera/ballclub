@@ -13,7 +13,7 @@ class CustomDateFormatter: NSObject {
   var dateFormatter = NSDateFormatter()
   
   func feedsDateFormat(feedDate : NSDate) -> String {
-    dateFormatter.dateFormat = "E M/d"
+    dateFormatter.dateFormat = "E\nM/d"
     return dateFromFormat(feedDate).uppercaseString
   }
   
@@ -30,7 +30,7 @@ class CustomDateFormatter: NSObject {
   }
   
   func friendGameDateFormat(feedDate : NSDate) -> String {
-    dateFormatter.dateFormat = "d MMM"
+    dateFormatter.dateFormat = "d\nMMM"
     return dateFromFormat(feedDate).uppercaseString
   }
   
