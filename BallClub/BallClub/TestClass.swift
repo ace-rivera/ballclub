@@ -12,7 +12,7 @@ class TestClass: NSObject {
   
   struct Common {
     static let friendNames = ["Dhin Forto","Ace Rivera","Josh Relova","Erick Abutal","Chard Cordero","Rey Tugade","Lloyd Urbino"]
-    static let friendImages = ["player_michaelJordan","player_shaq","player_kobe","player_terrence","player_calvin","player_curry","player_lebron"]
+    static let friendImages = ["player_michaelJordan","player_durant","player_curry","player_michaelJordan","player_calvin","player_kobe","player_lebron"]
     static let friendLocations = ["Bulacan","Quezon City","Antipolo City","Cavite, too many to mention","Makati City","SM North Edsa","Paranaque City"]
     static let friendPositions = ["C","G","F","C","F","G","G"]
   }

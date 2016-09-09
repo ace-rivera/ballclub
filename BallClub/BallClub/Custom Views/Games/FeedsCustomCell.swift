@@ -20,7 +20,7 @@ class FeedsCustomCell: UITableViewCell {
   @IBOutlet weak var gameMemberCount: UILabel!
   @IBOutlet weak var gameFriends: UILabel!
   @IBOutlet weak var gameFriendsIcon: UIImageView!
-  @IBOutlet weak var gameFriendsCollection: UICollectionView!
+//  @IBOutlet weak var gameFriendsCollection: UICollectionView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -67,7 +67,7 @@ class FeedsCustomCell: UITableViewCell {
     if friends.count == 0 {
       gameFriends.hidden = true
       gameFriendsIcon.hidden = true
-      gameFriendsCollection.hidden = true
+//      gameFriendsCollection.hidden = true
     }else if friends.count >= 2 {
       gameFriends.text = "\(friends[0]) and \(friends[1]) are going"
     }else{

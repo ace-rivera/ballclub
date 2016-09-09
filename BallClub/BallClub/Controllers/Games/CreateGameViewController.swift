@@ -8,9 +8,17 @@
 
 import UIKit
 
-class CreateGameViewController: UITableViewController {
+class CreateGameViewController: UITableViewController,UICollectionViewDelegate {
   
   @IBOutlet var createGameTableView: UITableView!
+  @IBOutlet weak var gameTitleTextField: UITextField!
+  @IBOutlet weak var friendsCollectionView: UICollectionView!
+  @IBOutlet weak var locationTextField: UITextField!
+  @IBOutlet weak var startTimeButton: UIButton!
+  @IBOutlet weak var endTimeButton: UIButton!
+  @IBOutlet weak var playerCount: UITextField!
+  @IBOutlet weak var feeTextField: UITextField!
+  @IBOutlet weak var infoTextfield: UITextField!
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -24,7 +32,9 @@ class CreateGameViewController: UITableViewController {
   
   //MARK: - SetupUI
   func setUpUI(){
-    self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
+    self.friendsCollectionView.registerNib(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
+    self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width:
+      self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
   }
   
   //MARK: - IBAction
@@ -36,4 +46,31 @@ class CreateGameViewController: UITableViewController {
     self.navigationController?.popViewControllerAnimated(true)
   }
   
+  @IBAction func seeAllButtonPressed(sender: AnyObject) {
+    
+    
+  }
+  
+  @IBAction func setGamePrivacy(sender: AnyObject) {
+    
+  }
+  
+  @IBAction func reservedToggle(sender: AnyObject) {
+    
+  }
+  
+  @IBAction func approvalToggle(sender: AnyObject) {
+  
+  }
+
+  //MARK: - Collection View Delegate
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let collectionCell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendsRoundedCollectionCell", forIndexPath: indexPath) as! FriendsRoundedCollectionCell
+    collectionCell.setImageOfFriend(TestClass.Common.friendImages[indexPath.row])
+    return collectionCell
+  }
+  
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return TestClass.Common.friendImages.count
+  }
 }

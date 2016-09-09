@@ -10,6 +10,10 @@
 		122FEB7C46A0B4F65C15FA00 /* Pods_BallClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */; };
 		45382D631D80566F008FB3BD /* GamesCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45382D621D80566F008FB3BD /* GamesCategoryHeaderView.xib */; };
 		45382D671D805B9F008FB3BD /* GamesCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45382D661D805B9F008FB3BD /* GamesCategoryHeaderView.swift */; };
+		45425F161D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45425F141D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift */; };
+		45425F171D82E2FB00815B43 /* FriendsRoundedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45425F151D82E2FB00815B43 /* FriendsRoundedCollectionCell.xib */; };
+		45425F191D82EE3100815B43 /* FriendsCollectionCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45425F181D82EE3100815B43 /* FriendsCollectionCustomView.swift */; };
+		45425F1B1D82EE9400815B43 /* FriendsCollectionCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45425F1A1D82EE9400815B43 /* FriendsCollectionCustomView.xib */; };
 		4596239F1D7F0841008CDFAB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4596239C1D7F0841008CDFAB /* FBSDKCoreKit.framework */; };
 		459623A01D7F0841008CDFAB /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4596239D1D7F0841008CDFAB /* FBSDKLoginKit.framework */; };
 		459623A11D7F0841008CDFAB /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4596239E1D7F0841008CDFAB /* FBSDKShareKit.framework */; };
@@ -61,6 +65,10 @@
 /* Begin PBXFileReference section */
 		45382D621D80566F008FB3BD /* GamesCategoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamesCategoryHeaderView.xib; sourceTree = "<group>"; };
 		45382D661D805B9F008FB3BD /* GamesCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesCategoryHeaderView.swift; sourceTree = "<group>"; };
+		45425F141D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsRoundedCollectionCell.swift; sourceTree = "<group>"; };
+		45425F151D82E2FB00815B43 /* FriendsRoundedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsRoundedCollectionCell.xib; sourceTree = "<group>"; };
+		45425F181D82EE3100815B43 /* FriendsCollectionCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCollectionCustomView.swift; sourceTree = "<group>"; };
+		45425F1A1D82EE9400815B43 /* FriendsCollectionCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCollectionCustomView.xib; sourceTree = "<group>"; };
 		4596239C1D7F0841008CDFAB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4596239D1D7F0841008CDFAB /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		4596239E1D7F0841008CDFAB /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -130,6 +138,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45425F131D82E2CB00815B43 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				45425F141D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift */,
+				45425F151D82E2FB00815B43 /* FriendsRoundedCollectionCell.xib */,
+				45425F181D82EE3100815B43 /* FriendsCollectionCustomView.swift */,
+				45425F1A1D82EE9400815B43 /* FriendsCollectionCustomView.xib */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
 		5D07ADDEE5F1323F38688E8C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +271,7 @@
 		71547AF61D753A9A00264B67 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				45425F131D82E2CB00815B43 /* Friends */,
 				71D492761D7D662000E07DDF /* Main */,
 				71547B051D75604000264B67 /* Games */,
 				71547B061D75604000264B67 /* Login */,
@@ -261,14 +281,6 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		71547AF71D753A9A00264B67 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-
 		71547B051D75604000264B67 /* Games */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +424,8 @@
 			files = (
 				71547A9D1D75346700264B67 /* Game.storyboard in Resources */,
 				71547AA11D7534CD00264B67 /* Maps.storyboard in Resources */,
+				45425F1B1D82EE9400815B43 /* FriendsCollectionCustomView.xib in Resources */,
+				45425F171D82E2FB00815B43 /* FriendsRoundedCollectionCell.xib in Resources */,
 				713BFD671D76B42D00A49BC6 /* UserAddFriendCustomCell.xib in Resources */,
 				71547A8E1D752A4300264B67 /* LaunchScreen.storyboard in Resources */,
 				713BFD6B1D76BB3900A49BC6 /* FriendStatusCustomCell.xib in Resources */,
@@ -496,6 +510,8 @@
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
 				BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */,
 				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
+				45425F161D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift in Sources */,
+				45425F191D82EE3100815B43 /* FriendsCollectionCustomView.swift in Sources */,
 				BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */,
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
 				71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */,

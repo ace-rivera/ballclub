@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9sh-KW-dpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9sh-KW-dpr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -47,8 +47,9 @@ YmFja2dyb3VuZBBJbWFnZQ
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ned-iE-KUN">
                                 <rect key="frame" x="140" y="77" width="320" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="VXZ-aG-7vh"/>
-                                    <constraint firstAttribute="height" constant="128" id="aJI-75-Kcr"/>
+                                    <constraint firstAttribute="width" secondItem="ned-iE-KUN" secondAttribute="height" multiplier="5:2" id="2OY-qA-5sg"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="VXZ-aG-7vh"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="128" id="aJI-75-Kcr"/>
                                 </constraints>
                             </imageView>
                             <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bof-FI-j4g">
@@ -173,6 +174,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                             <constraint firstItem="ned-iE-KUN" firstAttribute="centerX" secondItem="30Q-6C-CJb" secondAttribute="centerX" id="K8V-SU-TJW"/>
                             <constraint firstItem="afZ-YI-vNA" firstAttribute="leading" secondItem="p3c-ge-V1I" secondAttribute="leadingMargin" constant="15" id="NIw-y8-7qb"/>
                             <constraint firstItem="GFj-Op-utE" firstAttribute="top" secondItem="30Q-6C-CJb" secondAttribute="bottom" id="Wwy-0v-xcy"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ned-iE-KUN" secondAttribute="trailing" constant="15" id="XMa-HQ-6K7"/>
                             <constraint firstItem="30Q-6C-CJb" firstAttribute="leading" secondItem="p3c-ge-V1I" secondAttribute="leadingMargin" constant="-20" id="YI9-P0-6xQ"/>
                             <constraint firstItem="afZ-YI-vNA" firstAttribute="top" secondItem="2at-aJ-1mG" secondAttribute="bottom" constant="15" id="Ykz-hf-CKL"/>
                             <constraint firstItem="J3Y-nP-zt3" firstAttribute="centerY" secondItem="cEl-Vi-m9w" secondAttribute="centerY" id="Zhs-e0-1Bw"/>
@@ -186,6 +188,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                             <constraint firstItem="bof-FI-j4g" firstAttribute="leading" secondItem="p3c-ge-V1I" secondAttribute="leadingMargin" constant="15" id="jJa-tx-bp5"/>
                             <constraint firstItem="bof-FI-j4g" firstAttribute="top" secondItem="ned-iE-KUN" secondAttribute="bottom" constant="54" id="kNT-xi-vhI"/>
                             <constraint firstItem="FmB-mz-GdG" firstAttribute="trailing" secondItem="30Q-6C-CJb" secondAttribute="trailing" constant="-61" id="mKS-gc-qh0"/>
+                            <constraint firstItem="ned-iE-KUN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="p3c-ge-V1I" secondAttribute="leadingMargin" constant="15" id="q8I-mQ-m5N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2at-aJ-1mG" secondAttribute="trailing" constant="15" id="rdT-DS-dpr"/>
                             <constraint firstItem="FmB-mz-GdG" firstAttribute="leading" secondItem="30Q-6C-CJb" secondAttribute="leading" constant="61" id="tz6-Gd-SmA"/>
                             <constraint firstItem="J3Y-nP-zt3" firstAttribute="leading" secondItem="cEl-Vi-m9w" secondAttribute="trailing" id="uzE-HG-DY0"/>
@@ -756,6 +759,6 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <image name="upload_image" width="321" height="321"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lvM-cg-T7B"/>
+        <segue reference="Ze6-eW-YUU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,6 +36,7 @@ class GameDetailViewController: UITableViewController {
   
   //MARK: - SetUpUI
   func setUpUI(){
+    self.playerCollection.registerNib(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
     self.gameDetailTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.gameDetailTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
   }
   
@@ -62,5 +63,16 @@ class GameDetailViewController: UITableViewController {
   
   @IBAction func suggestInviteButtonPressed(sender: AnyObject) {
     
+  }
+  
+  //MARK: - Collection View Delegate
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let collectionCell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendsRoundedCollectionCell", forIndexPath: indexPath) as! FriendsRoundedCollectionCell
+    collectionCell.setImageOfFriend(TestClass.Common.friendImages[indexPath.row])
+    return collectionCell
+  }
+  
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return TestClass.Common.friendImages.count
   }
 }
