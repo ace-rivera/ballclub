@@ -1,5 +1,5 @@
 //
-//  MapAnnotations.swift
+//  Location.swift
 //  BallClub
 //
 //  Created by Ace Rivera on 06/09/2016.
@@ -8,7 +8,7 @@
 
 import MapKit
 
-class LocationAnnotation: NSObject, MKAnnotation {
+class Location: NSObject, MKAnnotation {
     let title: String?
     let locationName: String
     let discipline: String

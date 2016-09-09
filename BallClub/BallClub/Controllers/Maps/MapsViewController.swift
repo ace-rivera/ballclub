@@ -29,7 +29,7 @@ class MapsViewController: UIViewController {
         let initialLocation = CLLocation(latitude: 14.6760, longitude: 121.0437)
         centerMapOnLocation(initialLocation)
         
-        let sampleAnnotation = LocationAnnotation(title: "Quezon City",
+        let sampleAnnotation = Location(title: "Quezon City",
                                                   locationName: "Quezon City",
                                                   discipline: "City",
                                                   coordinate: CLLocationCoordinate2D(latitude: 14.6760, longitude: 121.0437),
@@ -53,7 +53,7 @@ class MapsViewController: UIViewController {
 
 extension MapsViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? LocationAnnotation {
+        if let annotation = annotation as? Location {
             let identifier = "pin"
             var view: MKAnnotationView
             if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) { // 2
