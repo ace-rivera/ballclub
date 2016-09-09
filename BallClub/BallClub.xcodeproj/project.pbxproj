@@ -266,15 +266,9 @@
 			children = (
 			);
 			path = Models;
-		71547B041D75604000264B67 /* Feeds */ = {
-			isa = PBXGroup;
-			children = (
-				71D4928B1D7EBBB600E07DDF /* FeedsCustomCell.swift */,
-				71D4928C1D7EBBB600E07DDF /* FeedsCustomCell.xib */,
-			);
-			path = Feeds;
 			sourceTree = "<group>";
 		};
+
 		71547B051D75604000264B67 /* Games */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,7 +492,6 @@
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
 				FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */,
-				71547A831D752A4300264B67 /* ViewController.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
 				BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */,
