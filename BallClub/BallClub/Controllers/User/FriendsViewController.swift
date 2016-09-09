@@ -39,8 +39,11 @@ class FriendsViewController: UIViewController {
     
     //MARK:- SetupUI
     func setupUI(){
+        userNameLabel.adjustsFontSizeToFitWidth = true
+        userNameLabel.sizeToFit()
         addFriendButton.layer.borderColor = UIColor(red: 174.0/225.0, green: 174.0/225.0, blue:174.0/225.0, alpha:1.0).CGColor
         profileImage.layer.borderColor = UIColor.whiteColor().CGColor
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
 
         
         registerNibs()

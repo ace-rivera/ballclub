@@ -12,10 +12,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9sh-KW-dpr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.89999997615814209" contentMode="scaleToFill" id="Qcd-tN-xbq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qcd-tN-xbq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.094117647060000004" green="0.098039215690000001" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.14117647058823529" green="0.14509803921568626" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -756,6 +756,6 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <image name="upload_image" width="321" height="321"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ze6-eW-YUU"/>
+        <segue reference="lvM-cg-T7B"/>
     </inferredMetricsTieBreakers>
 </document>

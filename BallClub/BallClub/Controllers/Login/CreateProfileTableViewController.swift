@@ -69,14 +69,13 @@ class CreateProfileTableViewController: UITableViewController {
         favoriteTeamTextField.layer.borderColor = UIColor.clearColor().CGColor
         aboutMeTextField.layer.borderColor = UIColor.clearColor().CGColor
         
-        self.navigationController?.navigationBar.hidden = false
         var image = UIImage(named: "back")
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CreateProfileTableViewController.backButtonPressed))
-        
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: UIControlState.Normal)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CreateProfileTableViewController.registerUser))
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: UIControlState.Normal)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:45.0/255.0, green:47.0/255.0, blue:43.0/255.0, alpha:1.0)
     }
     
     //MARK:- IBActions
