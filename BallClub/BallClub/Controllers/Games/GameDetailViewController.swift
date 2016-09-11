@@ -23,6 +23,12 @@ class GameDetailViewController: UITableViewController {
   @IBOutlet weak var playerNames: UILabel!
   @IBOutlet weak var playerCollection: UICollectionView!
   @IBOutlet weak var additionInfo: UILabel!
+  @IBOutlet weak var notGoingIcon: UIButton!
+  @IBOutlet weak var notGoingButton: UIButton!
+  @IBOutlet weak var tentativeIcon: UIButton!
+  @IBOutlet weak var tentativeButton: UIButton!
+  @IBOutlet weak var goingIcon: UIButton!
+  @IBOutlet weak var goingButton: UIButton!
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -52,15 +58,27 @@ class GameDetailViewController: UITableViewController {
     self.performSegueWithIdentifier("DetailToInvitedSegue", sender: self)
   }
   
-  @IBAction func notGoingPressed(sender: AnyObject) {
+  @IBAction func responseStatusButtonPressed(button: UIButton) {
+    notGoingIcon.selected = false
+    notGoingButton.selected = false
+    tentativeIcon.selected = false
+    tentativeButton.selected = false
+    goingIcon.selected = false
+    goingButton.selected = false
     
-  }
-  
-  @IBAction func tentativeButtonPressed(sender: AnyObject) {
-    
-  }
-  
-  @IBAction func goingButtonPressed(sender: AnyObject) {
+    switch button.tag {
+    case 0:
+      notGoingIcon.selected = true
+      notGoingButton.selected = true
+    case 1:
+      tentativeIcon.selected = true
+      tentativeButton.selected = true
+    case 2:
+      goingIcon.selected = true
+      goingButton.selected = true
+    default:
+      break
+    }
     
   }
   

@@ -19,6 +19,12 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate {
   @IBOutlet weak var playerCount: UITextField!
   @IBOutlet weak var feeTextField: UITextField!
   @IBOutlet weak var infoTextfield: UITextField!
+  @IBOutlet weak var publicIcon: UIButton!
+  @IBOutlet weak var publicButton: UIButton!
+  @IBOutlet weak var privateIcon: UIButton!
+  @IBOutlet weak var privateButton: UIButton!
+  @IBOutlet weak var closedIcon: UIButton!
+  @IBOutlet weak var closedButton: UIButton!
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -35,6 +41,8 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate {
     self.friendsCollectionView.registerNib(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
     self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width:
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
+    publicIcon.selected = false
+    publicButton.selected = false
   }
   
   //MARK: - IBAction
@@ -51,7 +59,27 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate {
     
   }
   
-  @IBAction func setGamePrivacy(sender: AnyObject) {
+  @IBAction func setGamePrivacy(button: UIButton) {
+    publicIcon.selected = false
+    publicButton.selected = false
+    privateIcon.selected = false
+    privateButton.selected = false
+    publicIcon.selected = false
+    publicButton.selected = false
+    
+    switch button.tag {
+    case 0:
+      publicIcon.selected = true
+      publicButton.selected = true
+    case 1:
+      privateIcon.selected = true
+      privateIcon.selected = true
+    case 2:
+      closedIcon.selected = true
+      closedButton.selected = true
+    default:
+      break
+    }
     
   }
   
