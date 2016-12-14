@@ -22,20 +22,20 @@ class InvitedFriendsViewController: UITableViewController {
   }
   
   func registerNibs() {
-    friendsTableView.registerNib(UINib(nibName: "InvitedFriendsCustomCell",bundle: nil), forCellReuseIdentifier: "InvitedFriendsCustomCell")
+    friendsTableView.register(UINib(nibName: "InvitedFriendsCustomCell",bundle: nil), forCellReuseIdentifier: "InvitedFriendsCustomCell")
   }
   
   //MARK: - IBAction
   @IBAction func backButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewControllerAnimated(true)
+    self.navigationController?.popViewController(animated: true)
   }
   
   //MARK: - Tableview delegates
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 3
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
       return TestClass.Game.goingFriends.count
@@ -48,26 +48,26 @@ class InvitedFriendsViewController: UITableViewController {
     }
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("InvitedFriendsCustomCell") as! InvitedFriendsCustomCell
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "InvitedFriendsCustomCell") as! InvitedFriendsCustomCell
     switch indexPath.section {
     case 0: //going
-      cell.setImageOfFriend(TestClass.Common.friendImages[indexPath.row])
-      cell.setNameOfFriend(TestClass.Common.friendNames[indexPath.row])
-      cell.setPositionOfFriend(TestClass.Common.friendPositions[indexPath.row])
-      cell.setLoctionOfFriend(TestClass.Common.friendLocations[indexPath.row])
+      cell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
+      cell.setNameOfFriend(name: TestClass.Common.friendNames[indexPath.row])
+      cell.setPositionOfFriend(position: TestClass.Common.friendPositions[indexPath.row])
+      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
       
     case 1: //tentative
-      cell.setImageOfFriend(TestClass.Common.friendImages[indexPath.row])
-      cell.setNameOfFriend(TestClass.Game.tentativeFriends[indexPath.row])
-      cell.setPositionOfFriend(TestClass.Common.friendPositions[indexPath.row])
-      cell.setLoctionOfFriend(TestClass.Common.friendLocations[indexPath.row])
+      cell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
+      cell.setNameOfFriend(name: TestClass.Game.tentativeFriends[indexPath.row])
+      cell.setPositionOfFriend(position: TestClass.Common.friendPositions[indexPath.row])
+      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
       
     case 2: //invited
-      cell.setImageOfFriend(TestClass.Common.friendImages[indexPath.row])
-      cell.setNameOfFriend(TestClass.Game.invitedFriends[indexPath.row])
-      cell.setPositionOfFriend(TestClass.Common.friendPositions[indexPath.row])
-      cell.setLoctionOfFriend(TestClass.Common.friendLocations[indexPath.row])
+      cell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
+      cell.setNameOfFriend(name: TestClass.Game.invitedFriends[indexPath.row])
+      cell.setPositionOfFriend(position: TestClass.Common.friendPositions[indexPath.row])
+      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
     default:
       break
     }
@@ -75,7 +75,7 @@ class InvitedFriendsViewController: UITableViewController {
     return cell
   }
   
-  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 0:
       return "GOING"
@@ -88,7 +88,7 @@ class InvitedFriendsViewController: UITableViewController {
     }
   }
   
-  override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 40
   }
   

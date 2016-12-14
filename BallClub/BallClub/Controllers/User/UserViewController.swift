@@ -12,7 +12,7 @@ class UserViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var friendsTableView: UITableView!
-    private var firstTabSelected = true
+    var firstTabSelected = true
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -26,13 +26,13 @@ class UserViewController: UIViewController {
     
     //MARK: - SetUpUI
     func setUpUI(){
-        self.searchTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.searchTextField.layer.borderColor = UIColor.lightGray.cgColor
         registerNibs()
     }
     
     func registerNibs(){
-        self.friendsTableView.registerNib(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
-        self.friendsTableView.registerNib(UINib(nibName: "UserAddFriendCustomCell",bundle: nil), forCellReuseIdentifier: "UserAddFriendCustomCell")
+        self.friendsTableView.register(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
+        self.friendsTableView.register(UINib(nibName: "UserAddFriendCustomCell",bundle: nil), forCellReuseIdentifier: "UserAddFriendCustomCell")
     }
     
     //MARK: - IBAction
@@ -64,27 +64,27 @@ class UserViewController: UIViewController {
 
 extension UserViewController : UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if firstTabSelected {
-            let cell = tableView.dequeueReusableCellWithIdentifier("UserInviteCustomCell") as! UserInviteCustomCell
-            cell.setFriendUserName(TestClass.Common.friendNames[indexPath.row])
-            cell.setFriendUserImage(TestClass.Common.friendImages[indexPath.row])
-            cell.setFriendInviteStatus("accepted your friend request")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserInviteCustomCell") as! UserInviteCustomCell
+            cell.setFriendUserName(name: TestClass.Common.friendNames[indexPath.row])
+            cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
+            cell.setFriendInviteStatus(status: "accepted your friend request")
             return cell
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("UserAddFriendCustomCell") as! UserAddFriendCustomCell
-            cell.setFriendUserName(TestClass.Common.friendNames[indexPath.row])
-            cell.setFriendUserImage(TestClass.Common.friendImages[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserAddFriendCustomCell") as! UserAddFriendCustomCell
+            cell.setFriendUserName(name: TestClass.Common.friendNames[indexPath.row])
+            cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TestClass.Common.friendNames.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("FriendsProfileViewControllerSegue", sender: self)
+        self.performSegue(withIdentifier: "FriendsProfileViewControllerSegue", sender: self)
     }
 }
 

@@ -19,7 +19,7 @@ class MapsViewController: UIViewController {
         //Ace Rivera : testing segue
         let locationTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.goToLocationDetail))
         locationTapGesture.numberOfTapsRequired = 1
-        mapView.userInteractionEnabled = true
+        mapView.isUserInteractionEnabled = true
         mapView.addGestureRecognizer(locationTapGesture)
         self.setupUI()
     }
@@ -27,7 +27,7 @@ class MapsViewController: UIViewController {
     // MARK: - SetupUI
     func setupUI() {
         let initialLocation = CLLocation(latitude: 14.6760, longitude: 121.0437)
-        centerMapOnLocation(initialLocation)
+        centerMapOnLocation(location: initialLocation)
         
         let sampleAnnotation = Location(title: "Quezon City",
                                                   locationName: "Quezon City",
@@ -47,7 +47,7 @@ class MapsViewController: UIViewController {
     
     // MARK: - Navigation
     func goToLocationDetail() {
-        self.performSegueWithIdentifier("map_detail_segue", sender: self)
+        self.performSegue(withIdentifier: "map_detail_segue", sender: self)
     }
 }
 
@@ -56,7 +56,7 @@ extension MapsViewController: MKMapViewDelegate {
         if let annotation = annotation as? Location {
             let identifier = "pin"
             var view: MKAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) { // 2
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) { // 2
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             } else {
@@ -64,11 +64,11 @@ extension MapsViewController: MKMapViewDelegate {
                 view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
             }
             if let pinImage = UIImage(named: annotation.annotationImageName) {
                 view.image = pinImage
-                view.frame.size = CGSizeMake(45, 45)
+                //view.frame.size = CGSize(45,45) JRELOVA
             }
             return view
         }

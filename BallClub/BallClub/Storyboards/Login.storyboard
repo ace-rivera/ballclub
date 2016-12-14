@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9sh-KW-dpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9sh-KW-dpr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -15,7 +19,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qcd-tN-xbq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.14117647058823529" green="0.14509803921568626" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.14117647058823529" green="0.14509803921568626" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -35,16 +39,16 @@
                         <viewControllerLayoutGuide type="bottom" id="GFj-Op-utE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="p3c-ge-V1I">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bc_background" translatesAutoresizingMaskIntoConstraints="NO" id="30Q-6C-CJb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_bc_background" translatesAutoresizingMaskIntoConstraints="NO" id="30Q-6C-CJb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <string key="userLabel" base64-UTF8="YES">
 YmFja2dyb3VuZBBJbWFnZQ
 </string>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ned-iE-KUN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ned-iE-KUN">
                                 <rect key="frame" x="140" y="77" width="320" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ned-iE-KUN" secondAttribute="height" multiplier="5:2" id="2OY-qA-5sg"/>
@@ -52,17 +56,17 @@ YmFja2dyb3VuZBBJbWFnZQ
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="128" id="aJI-75-Kcr"/>
                                 </constraints>
                             </imageView>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bof-FI-j4g">
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bof-FI-j4g">
                                 <rect key="frame" x="35" y="259" width="530" height="40"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0U4-59-Xea">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0U4-59-Xea">
                                         <rect key="frame" x="15" y="5" width="500" height="30"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="0U4-59-Xea" firstAttribute="leading" secondItem="bof-FI-j4g" secondAttribute="leading" constant="15" id="GYd-Mp-bak"/>
                                     <constraint firstAttribute="trailing" secondItem="0U4-59-Xea" secondAttribute="trailing" constant="15" id="Gxr-pb-Hjy"/>
@@ -76,17 +80,17 @@ YmFja2dyb3VuZBBJbWFnZQ
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2at-aJ-1mG">
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2at-aJ-1mG">
                                 <rect key="frame" x="35" y="307" width="530" height="40"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="28f-Qq-KgB">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="28f-Qq-KgB">
                                         <rect key="frame" x="15" y="5" width="500" height="30"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="28f-Qq-KgB" secondAttribute="bottom" constant="5" id="21R-x3-vRc"/>
                                     <constraint firstAttribute="height" constant="40" id="2s1-6e-hPy"/>
@@ -100,14 +104,14 @@ YmFja2dyb3VuZBBJbWFnZQ
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-YI-vNA">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-YI-vNA">
                                 <rect key="frame" x="35" y="362" width="530" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TfY-pB-eFH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="15"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -118,43 +122,43 @@ YmFja2dyb3VuZBBJbWFnZQ
                                     <action selector="loginButtonPressed:" destination="zon-A6-b9g" eventType="touchUpInside" id="1ii-Q1-fqT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93B-wo-1wc">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93B-wo-1wc">
                                 <rect key="frame" x="183" y="404" width="234" height="31"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Light" family="Kohinoor Devanagari" pointSize="13"/>
                                 <state key="normal">
                                     <string key="title" base64-UTF8="YES">
 EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
 </string>
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEl-Vi-m9w">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEl-Vi-m9w">
                                 <rect key="frame" x="238" y="554" width="65" height="31"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Light" family="Kohinoor Devanagari" pointSize="13"/>
                                 <state key="normal" title="New to us?">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3Y-nP-zt3">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3Y-nP-zt3">
                                 <rect key="frame" x="303" y="554" width="84" height="31"/>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="13"/>
                                 <state key="normal" title=" Sign up here.">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signUpHereButtonPressed:" destination="zon-A6-b9g" eventType="touchUpInside" id="39A-Sq-XwC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmB-mz-GdG">
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmB-mz-GdG">
                                 <rect key="frame" x="61" y="469" width="478" height="40"/>
-                                <color key="backgroundColor" red="0.094117647058823528" green="0.22853807471264365" blue="0.46263839587559163" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.094117647058823528" green="0.22853807471264365" blue="0.46263839587559163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Zfo-A2-n33"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="200" minY="140" maxX="200" maxY="140"/>
                                 <state key="normal" title="Log in with Facebook ">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -166,7 +170,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ned-iE-KUN" firstAttribute="top" secondItem="mcp-a4-iJJ" secondAttribute="bottom" constant="57" id="0Xj-1T-czm"/>
                             <constraint firstItem="cEl-Vi-m9w" firstAttribute="centerX" secondItem="p3c-ge-V1I" secondAttribute="centerX" constant="-30" id="DQW-C3-lfP"/>
@@ -222,12 +226,12 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                         <viewControllerLayoutGuide type="bottom" id="cHd-KP-rDF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Al-8C-dz5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mcd-Jl-vjl" customClass="MKTextField" customModule="MaterialKit">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mcd-Jl-vjl" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="35" y="341" width="530" height="48"/>
-                                <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="HHf-79-rj9"/>
                                 </constraints>
@@ -241,28 +245,28 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="*Password must contain at least 4 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuM-kO-4jj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" misplaced="YES" text="*Password must contain at least 4 characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuM-kO-4jj">
                                 <rect key="frame" x="35" y="300" width="530" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="245" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-4c-v6K" customClass="MKTextField" customModule="MaterialKit">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="245" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-4c-v6K" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="35" y="179" width="530" height="48"/>
-                                <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="4fL-Q2-zN7"/>
                                 </constraints>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gNJ-KJ-QS7" customClass="MKTextField" customModule="MaterialKit">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gNJ-KJ-QS7" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="35" y="244" width="530" height="48"/>
-                                <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Y8U-ci-P3Q"/>
                                 </constraints>
@@ -276,20 +280,20 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbb-Ed-Mix">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbb-Ed-Mix">
                                 <rect key="frame" x="60" y="450" width="481" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="rgh-Hx-vZt"/>
                                 </constraints>
                                 <state key="normal" title="CREATE PROFILE">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="createProfileButtonPressed:" destination="3W9-Bn-oKF" eventType="touchUpInside" id="81n-zf-D0g"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.14117647059999999" green="0.1450980392" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.14117647059999999" green="0.1450980392" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KuM-kO-4jj" firstAttribute="top" secondItem="gNJ-KJ-QS7" secondAttribute="bottom" constant="8" id="A12-Ue-QbT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zbb-Ed-Mix" secondAttribute="trailing" constant="39" id="A5m-zl-rpo"/>
@@ -310,10 +314,10 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="confirmPasswordTextField" destination="mcd-Jl-vjl" id="cWp-co-MgA"/>
+                        <outlet property="confirmPasswordTextField" destination="mcd-Jl-vjl" id="nbO-AU-4fs"/>
                         <outlet property="createProfileButton" destination="zbb-Ed-Mix" id="0cn-ep-vZ4"/>
-                        <outlet property="emailTextField" destination="eNZ-4c-v6K" id="px8-Xn-Z9V"/>
-                        <outlet property="passwordTextField" destination="gNJ-KJ-QS7" id="ahY-ro-OZc"/>
+                        <outlet property="emailTextField" destination="eNZ-4c-v6K" id="QS8-y0-9aI"/>
+                        <outlet property="passwordTextField" destination="gNJ-KJ-QS7" id="Lfi-2T-h4P"/>
                         <segue destination="zH9-Uv-g5N" kind="show" identifier="SignUpToCreateProfileSgue" id="uKF-nq-ctC"/>
                     </connections>
                 </viewController>
@@ -325,15 +329,15 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <scene sceneID="Uug-PH-9xA">
             <objects>
                 <tableViewController title="Create Profile" id="zH9-Uv-g5N" customClass="CreateProfileTableViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="L4V-kG-va1">
+                    <tableView key="view" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="L4V-kG-va1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.12941176470588237" green="0.13333333333333333" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.12941176470588237" green="0.13333333333333333" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="Zae-n2-AxH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="171" id="HlS-iu-78V">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="171"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="171"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HlS-iu-78V" id="tVE-vV-Y5c">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="171"/>
@@ -344,19 +348,19 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjs-8y-koW">
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
-                                                            <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                         <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-kI-hqU" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
                                                             <rect key="frame" x="257" y="106" width="40" height="40"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dDo-kI-hqU" secondAttribute="height" multiplier="1:1" id="fXh-SP-4I5"/>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="46" id="qXv-hq-uOa"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="C">
-                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="jvD-fp-XhK"/>
@@ -364,15 +368,15 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-6H-brt" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
                                                             <rect key="frame" x="204" y="106" width="40" height="40"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="hdr-6H-brt" secondAttribute="height" multiplier="1:1" id="0EK-Fg-3v2"/>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="46" id="HMm-uK-aik"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="F">
-                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="o2T-St-zMj"/>
@@ -399,22 +403,22 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         </imageView>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBh-iD-BhC" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
                                                             <rect key="frame" x="148" y="106" width="40" height="40"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="qBh-iD-BhC" secondAttribute="height" multiplier="1:1" id="6sI-h5-Ttt"/>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="46" id="vfZ-zB-k5O"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="G">
-                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="positionButtonPressed:" destination="zH9-Uv-g5N" eventType="touchUpInside" id="rko-0k-gK3"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="qBh-iD-BhC" firstAttribute="leading" secondItem="OnJ-Es-rfu" secondAttribute="trailing" constant="13" id="57Y-R3-QuB"/>
                                                         <constraint firstAttribute="trailing" secondItem="Wjs-8y-koW" secondAttribute="trailing" id="BRh-GO-nEB"/>
@@ -440,15 +444,15 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="213" id="jp7-8o-brR">
-                                        <rect key="frame" x="0.0" y="235" width="600" height="213"/>
+                                        <rect key="frame" x="0.0" y="171" width="600" height="213"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jp7-8o-brR" id="p8Q-d9-wVp">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="213"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZO-tA-Y9P" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZO-tA-Y9P" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="80" width="563" height="50"/>
-                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="563" id="ISs-l9-6AQ"/>
                                                         <constraint firstAttribute="height" constant="50" id="cp0-0D-Npq"/>
@@ -463,9 +467,9 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Home City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BEf-mz-gN1" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Home City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BEf-mz-gN1" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="138" width="515" height="50"/>
-                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="9zx-YU-9Gr"/>
                                                         <constraint firstAttribute="width" constant="515" id="KfF-m3-bs2"/>
@@ -482,27 +486,20 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_tabbar_map" translatesAutoresizingMaskIntoConstraints="NO" id="f3a-Lm-2cU">
                                                     <rect key="frame" x="552" y="148" width="30" height="30"/>
-                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="VIH-VK-Dr1"/>
                                                         <constraint firstAttribute="height" constant="30" id="m5x-3e-48t"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7L-Le-nBY" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7L-Le-nBY" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="22" width="563" height="50"/>
-                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="deC-LL-EEn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelBottomMargin">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="floatingPlaceholderEnabled" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -523,15 +520,15 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="N3X-vk-o7P">
-                                        <rect key="frame" x="0.0" y="448" width="600" height="151"/>
+                                        <rect key="frame" x="0.0" y="384" width="600" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N3X-vk-o7P" id="rrE-3j-NTh">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="151"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gf3-cx-q7T" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gf3-cx-q7T" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="17" y="20" width="230" height="50"/>
-                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="pdf-fv-c1U"/>
                                                         <constraint firstAttribute="width" constant="230" id="vIP-Bt-7Hu"/>
@@ -546,9 +543,9 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Birth date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vl3-CU-xDq" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Birth date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vl3-CU-xDq" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="17" y="90" width="230" height="50"/>
-                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="0bF-TP-yeE"/>
                                                         <constraint firstAttribute="width" constant="230" id="9Yw-WS-uRo"/>
@@ -563,9 +560,9 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2D-hy-yv3" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2D-hy-yv3" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="341" y="20" width="230" height="50"/>
-                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="230" id="H5m-EQ-xaa"/>
                                                         <constraint firstAttribute="height" constant="50" id="d7W-jE-ns0"/>
@@ -580,9 +577,9 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Sex" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pws-bN-3fb" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Sex" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pws-bN-3fb" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="341" y="90" width="230" height="50"/>
-                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.91764705879999997" green="0.4549019608" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Q2K-rW-X2i"/>
                                                         <constraint firstAttribute="width" constant="230" id="eX7-g6-Ly0"/>
@@ -599,7 +596,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_date" translatesAutoresizingMaskIntoConstraints="NO" id="FDC-DC-XRv">
                                                     <rect key="frame" x="255" y="101" width="30" height="30"/>
-                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="LIF-VK-ZJR"/>
                                                         <constraint firstAttribute="width" constant="30" id="mJg-7I-HbG"/>
@@ -625,15 +622,15 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="201" id="xeN-jg-tWS">
-                                        <rect key="frame" x="0.0" y="599" width="600" height="201"/>
+                                        <rect key="frame" x="0.0" y="535" width="600" height="201"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xeN-jg-tWS" id="Aga-ER-y0W">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="201"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Player" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYC-7F-rcr" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Player" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYC-7F-rcr" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="8" width="563" height="50"/>
-                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="563" id="VBw-I8-E97"/>
                                                         <constraint firstAttribute="height" constant="50" id="XxQ-YN-Zbs"/>
@@ -648,9 +645,9 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="About Me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JWn-jm-fEu" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="About Me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JWn-jm-fEu" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="142" width="563" height="50"/>
-                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="dZo-Yu-Xrh"/>
                                                     </constraints>
@@ -664,9 +661,9 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="bottomBorderEnabled" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Team" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pD7-MH-MYn" customClass="MKTextField" customModule="MaterialKit">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Team" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pD7-MH-MYn" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="75" width="563" height="50"/>
-                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="F7E-Pc-q8t"/>
                                                     </constraints>
@@ -698,7 +695,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="1" id="G1g-sj-bqY">
-                                        <rect key="frame" x="0.0" y="800" width="600" height="1"/>
+                                        <rect key="frame" x="0.0" y="736" width="600" height="1"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1g-sj-bqY" id="Uvc-3x-9hQ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
@@ -716,20 +713,20 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="850"/>
                     <connections>
-                        <outlet property="aboutMeTextField" destination="JWn-jm-fEu" id="sL7-2r-uRD"/>
-                        <outlet property="birthDateTextField" destination="vl3-CU-xDq" id="2vq-uq-KmC"/>
+                        <outlet property="aboutMeTextField" destination="JWn-jm-fEu" id="O1P-KD-Twn"/>
+                        <outlet property="birthDateTextField" destination="vl3-CU-xDq" id="TXl-U1-stF"/>
                         <outlet property="centerButton" destination="dDo-kI-hqU" id="XdM-Ix-ZlN"/>
-                        <outlet property="favoritePlayerTextField" destination="WYC-7F-rcr" id="njb-N5-zDf"/>
-                        <outlet property="favoriteTeamTextField" destination="pD7-MH-MYn" id="z9G-ff-J4x"/>
-                        <outlet property="firstNameTextField" destination="w7L-Le-nBY" id="bCz-oc-EAA"/>
+                        <outlet property="favoritePlayerTextField" destination="WYC-7F-rcr" id="N2k-P4-9gA"/>
+                        <outlet property="favoriteTeamTextField" destination="pD7-MH-MYn" id="2mH-gO-x05"/>
+                        <outlet property="firstNameTextField" destination="w7L-Le-nBY" id="5cV-yg-K46"/>
                         <outlet property="forwardButton" destination="hdr-6H-brt" id="1iP-hd-The"/>
                         <outlet property="guardButton" destination="qBh-iD-BhC" id="P33-Pg-g6u"/>
-                        <outlet property="heightTextField" destination="Gf3-cx-q7T" id="AxT-Oi-zlO"/>
-                        <outlet property="homeCityTextField" destination="BEf-mz-gN1" id="036-B8-uZe"/>
-                        <outlet property="lastNameTextField" destination="TZO-tA-Y9P" id="TOk-3C-2Ao"/>
-                        <outlet property="sexTextField" destination="pws-bN-3fb" id="KyJ-pV-3Se"/>
+                        <outlet property="heightTextField" destination="Gf3-cx-q7T" id="PEm-tl-Zfj"/>
+                        <outlet property="homeCityTextField" destination="BEf-mz-gN1" id="q44-oR-meg"/>
+                        <outlet property="lastNameTextField" destination="TZO-tA-Y9P" id="0a9-D8-P3o"/>
+                        <outlet property="sexTextField" destination="pws-bN-3fb" id="D6M-Jw-vD4"/>
                         <outlet property="userProfileImage" destination="OnJ-Es-rfu" id="4x1-Kw-AC0"/>
-                        <outlet property="weightTextField" destination="b2D-hy-yv3" id="g2p-s1-4Vf"/>
+                        <outlet property="weightTextField" destination="b2D-hy-yv3" id="YwL-71-d1E"/>
                         <segue destination="cvW-yP-qaD" kind="show" identifier="LoginToMainSegue" id="lvM-cg-T7B"/>
                     </connections>
                 </tableViewController>
@@ -740,7 +737,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1141" y="1793"/>
+            <point key="canvasLocation" x="1328" y="1793"/>
         </scene>
         <!--Main-->
         <scene sceneID="MtJ-Cz-Qvo">
@@ -759,6 +756,6 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <image name="upload_image" width="321" height="321"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ze6-eW-YUU"/>
+        <segue reference="lvM-cg-T7B"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,7 +20,7 @@ class FriendsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    private var tabSelected = 0
+    var tabSelected = 0
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class FriendsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
     }
@@ -41,8 +41,8 @@ class FriendsViewController: UIViewController {
     func setupUI(){
         userNameLabel.adjustsFontSizeToFitWidth = true
         userNameLabel.sizeToFit()
-        addFriendButton.layer.borderColor = UIColor(red: 174.0/225.0, green: 174.0/225.0, blue:174.0/225.0, alpha:1.0).CGColor
-        profileImage.layer.borderColor = UIColor.whiteColor().CGColor
+        addFriendButton.layer.borderColor = UIColor(red: 174.0/225.0, green: 174.0/225.0, blue:174.0/225.0, alpha:1.0).cgColor
+        profileImage.layer.borderColor = UIColor.white.cgColor
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
 
         
@@ -50,9 +50,9 @@ class FriendsViewController: UIViewController {
     }
     
     func registerNibs(){
-        self.tableView.registerNib(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
-        self.tableView.registerNib(UINib(nibName: "FriendStatusCustomCell",bundle: nil), forCellReuseIdentifier: "FriendStatusCustomCell")
-        self.tableView.registerNib(UINib(nibName: "FeedsCustomCell",bundle: nil), forCellReuseIdentifier: "FeedsCustomCell")
+        self.tableView.register(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
+        self.tableView.register(UINib(nibName: "FriendStatusCustomCell",bundle: nil), forCellReuseIdentifier: "FriendStatusCustomCell")
+        self.tableView.register(UINib(nibName: "FeedsCustomCell",bundle: nil), forCellReuseIdentifier: "FeedsCustomCell")
     }
     
     func setupProfileData() {
@@ -79,7 +79,7 @@ class FriendsViewController: UIViewController {
     
    
     @IBAction func backButtonPressed(sender: AnyObject) {
-      self.performSegueWithIdentifier("unwindToUserStoryboard", sender: self)
+      self.performSegue(withIdentifier: "unwindToUserStoryboard", sender: self)
     }
     
 }
@@ -87,33 +87,33 @@ class FriendsViewController: UIViewController {
 
 extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tabSelected == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("UserInviteCustomCell") as! UserInviteCustomCell
-            cell.setFriendUserName(TestClass.Common.friendNames[indexPath.row])
-            cell.setFriendUserImage(TestClass.Common.friendImages[indexPath.row])
-            cell.setFriendInviteStatus("accepted your friend request")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserInviteCustomCell") as! UserInviteCustomCell
+            cell.setFriendUserName(name: TestClass.Common.friendNames[indexPath.row])
+            cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
+            cell.setFriendInviteStatus(status: "accepted your friend request")
             return cell
         }else if tabSelected == 1{
-            let cell = tableView.dequeueReusableCellWithIdentifier("FeedsCustomCell") as! FeedsCustomCell
-            cell.setDateOfGame(NSDate())
-            cell.setTitleOfGame(TestClass.Feeds.FeedTitle[indexPath.row])
-            cell.setCreatorOfGame(TestClass.Feeds.FeedCreator[indexPath.row])
-            cell.setLocationOfGame(TestClass.Feeds.FeedLocation[indexPath.row])
-            cell.setTimeOfGame(TestClass.Feeds.FeedStartTime[indexPath.row], endTime: TestClass.Feeds.FeedEndTime[indexPath.row], amPm: TestClass.Feeds.FeedAmPm[indexPath.row])
-            cell.setPriceOfGame(TestClass.Feeds.FeedPrice[indexPath.row])
-            cell.setMemberCountOfGame(TestClass.Feeds.FeedFriends[indexPath.row].count, maxCount: 10)
-            cell.setAttendeesOfGame(TestClass.Feeds.FeedFriends[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as! FeedsCustomCell
+            cell.setDateOfGame(date: NSDate())
+            cell.setTitleOfGame(title: TestClass.Feeds.FeedTitle[indexPath.row])
+            cell.setCreatorOfGame(name: TestClass.Feeds.FeedCreator[indexPath.row])
+            cell.setLocationOfGame(location: TestClass.Feeds.FeedLocation[indexPath.row])
+            cell.setTimeOfGame(startTime: TestClass.Feeds.FeedStartTime[indexPath.row], endTime: TestClass.Feeds.FeedEndTime[indexPath.row], amPm: TestClass.Feeds.FeedAmPm[indexPath.row])
+            cell.setPriceOfGame(price: TestClass.Feeds.FeedPrice[indexPath.row])
+            cell.setMemberCountOfGame(count: TestClass.Feeds.FeedFriends[indexPath.row].count, maxCount: 10)
+            cell.setAttendeesOfGame(friends: TestClass.Feeds.FeedFriends[indexPath.row])
             return cell
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("FriendStatusCustomCell") as! FriendStatusCustomCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell
             //cell.setFriendUserName(TestClass.Common.friendNames[indexPath.row])
             //cell.setFriendUserImage(TestClass.Common.friendImages[indexPath.row])
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     

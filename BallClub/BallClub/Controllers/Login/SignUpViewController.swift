@@ -11,9 +11,9 @@ import UIKit
 class SignUpViewController: UIViewController {
   
   @IBOutlet weak var createProfileButton: UIButton!
-  @IBOutlet weak var passwordTextField: MKTextField!
-  @IBOutlet weak var confirmPasswordTextField: MKTextField!
-  @IBOutlet weak var emailTextField: MKTextField!
+  @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var confirmPasswordTextField: UITextField!
+  @IBOutlet weak var emailTextField: UITextField!
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -41,16 +41,16 @@ class SignUpViewController: UIViewController {
     createProfileButton.layer.borderWidth = 1
     
     emailTextField.attributedPlaceholder = NSAttributedString(string:"E-mail",
-                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
     passwordTextField.attributedPlaceholder = NSAttributedString(string:"Password",
-                                                                 attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+                                                                 attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
     confirmPasswordTextField.attributedPlaceholder = NSAttributedString(string:"Confirm Password",
-                                                                        attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+                                                                        attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
     
     
-    emailTextField.layer.borderColor = UIColor.clearColor().CGColor
-    passwordTextField.layer.borderColor = UIColor.clearColor().CGColor
-    confirmPasswordTextField.layer.borderColor = UIColor.clearColor().CGColor
+    emailTextField.layer.borderColor = UIColor.clear.cgColor
+    passwordTextField.layer.borderColor = UIColor.clear.cgColor
+    confirmPasswordTextField.layer.borderColor = UIColor.clear.cgColor
     
     
     
@@ -61,7 +61,7 @@ class SignUpViewController: UIViewController {
     
   }
   
-  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
   

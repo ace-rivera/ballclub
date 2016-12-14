@@ -34,7 +34,7 @@ class Player: NSObject {
     self.heightFeet = (dict["heightFeet"] ?? 0) as! Int
     self.heightInches = (dict["heightInches"] ?? 0) as! Float
     self.weight = (dict["weight"] ?? 0) as! Float
-    self.birthdate = dict["birthdate"] ?? ""
+    //self.birthdate = dict["birthdate"] ?? ""
     self.gender = dict["gender"] as! Constants.Gender
     self.position = dict["position"]as! Constants.Position
     self.hometown = dict["hometown"] as! Location

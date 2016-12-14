@@ -10,34 +10,34 @@ import UIKit
 
 class CustomDateFormatter: NSObject {
   
-  var dateFormatter = NSDateFormatter()
+  var dateFormatter = DateFormatter()
   
   func feedsDateFormat(feedDate : NSDate) -> String {
     dateFormatter.dateFormat = "E\nM/d"
-    return dateFromFormat(feedDate).uppercaseString
+    return dateFromFormat(feedDate: feedDate).uppercased()
   }
   
   func createGameDateFormat(feedDate : NSDate) -> String {
     dateFormatter.dateFormat = "MMMM dd,yyyy hh:mm a"
-    return dateFromFormat(feedDate)
+    return dateFromFormat(feedDate: feedDate)
   }
   
   func gameDetailsDateFormat(startTime : NSDate, endTime : NSDate) -> String {
     dateFormatter.dateFormat = "EEEE,hh:mm a - "
-    let startTimeString = dateFromFormat(startTime)
+    let startTimeString = dateFromFormat(feedDate: startTime)
     dateFormatter.dateFormat = "hh:mm a"
-    return startTimeString + dateFromFormat(endTime)
+    return startTimeString + dateFromFormat(feedDate: endTime)
   }
   
   func friendGameDateFormat(feedDate : NSDate) -> String {
     dateFormatter.dateFormat = "d\nMMM"
-    return dateFromFormat(feedDate).uppercaseString
+    return dateFromFormat(feedDate: feedDate).uppercased()
   }
   
   
   func dateFromFormat(feedDate : NSDate) -> String {
-    dateFormatter.timeZone = NSTimeZone(name: "UTC")
-    let timeStamp = dateFormatter.stringFromDate(feedDate)
+    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+    let timeStamp = dateFormatter.string(from: feedDate as Date)
     return timeStamp
   }
 }

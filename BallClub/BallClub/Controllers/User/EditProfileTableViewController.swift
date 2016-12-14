@@ -28,7 +28,7 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var userProfileImage: UIImageView!
     
     
-    private var imagePicker :  UIImagePickerController!
+    var imagePicker :  UIImagePickerController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +124,7 @@ class EditProfileTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
@@ -140,26 +140,26 @@ class EditProfileTableViewController: UITableViewController {
 extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func camera()  {
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true, completion: nil)
         
     }
     
     func photoLibrary() {
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
         
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            userProfileImage.contentMode = .ScaleToFill
+            userProfileImage.contentMode = .scaleToFill
             userProfileImage.image = pickedImage
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

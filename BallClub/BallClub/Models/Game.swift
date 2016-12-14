@@ -28,8 +28,8 @@ class Game: NSObject {
     self.gameTitle = (dict["gameTitle"] ?? "") as! String
     self.gameDescription = (dict["gameDescription"] ?? "") as! String
     self.gameLocation = (dict["gameLocation"] ?? 0) as! Location
-    self.startDate = dict["startDate"] ?? ""
-    self.endDate = dict["endDate"] ?? ""
+    //self.startDate = dict["startDate"] ?? ""
+    //self.endDate = dict["endDate"] ?? ""
     self.maxPlayers = (dict["maxPlayers"] ?? 0) as! Int
     self.invitedPlayers = (dict["invitedPlayers"] ?? [:]) as! NSDictionary
     self.fee = (dict["fee"] ?? 0) as! Double

@@ -12,25 +12,25 @@ class PositionCustomButton: UIButton {
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)!
-    self.layer.borderColor = UIColor.lightGrayColor().CGColor
-    self.backgroundColor = UIColor.clearColor()
-    self.titleLabel?.textColor = UIColor.lightGrayColor()
+    self.layer.borderColor = UIColor.lightGray.cgColor
+    self.backgroundColor = UIColor.clear
+    self.titleLabel?.textColor = UIColor.lightGray
     self.layer.cornerRadius = self.frame.size.height/2.0
   }
   
-  override var selected: Bool {
+  override var isSelected: Bool {
     willSet(newValue) {
-      super.selected = newValue;
+      super.isSelected = newValue;
       if newValue == true{
         self.layer.borderWidth = 0
-        self.layer.borderColor = UIColor.whiteColor().CGColor
+        self.layer.borderColor = UIColor.white.cgColor
         self.backgroundColor = Constants.CustomColor.customOrangeColor
-        self.titleLabel?.textColor = UIColor.whiteColor()
+        self.titleLabel?.textColor = UIColor.white
       }else{
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
-        self.backgroundColor = UIColor.clearColor()
-        self.titleLabel?.textColor = UIColor.lightGrayColor()
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.backgroundColor = UIColor.clear
+        self.titleLabel?.textColor = UIColor.lightGray
       }
     }
   }

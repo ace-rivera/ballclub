@@ -10,23 +10,23 @@ import UIKit
 
 class CreateProfileTableViewController: UITableViewController {
     
-    @IBOutlet weak var aboutMeTextField: MKTextField!
-    @IBOutlet weak var favoriteTeamTextField: MKTextField!
-    @IBOutlet weak var favoritePlayerTextField: MKTextField!
-    @IBOutlet weak var sexTextField: MKTextField!
-    @IBOutlet weak var weightTextField: MKTextField!
-    @IBOutlet weak var birthDateTextField: MKTextField!
-    @IBOutlet weak var heightTextField: MKTextField!
-    @IBOutlet weak var homeCityTextField: MKTextField!
-    @IBOutlet weak var lastNameTextField: MKTextField!
-    @IBOutlet weak var firstNameTextField: MKTextField!
+    @IBOutlet weak var aboutMeTextField: UITextField!
+    @IBOutlet weak var favoriteTeamTextField: UITextField!
+    @IBOutlet weak var favoritePlayerTextField: UITextField!
+    @IBOutlet weak var sexTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var birthDateTextField: UITextField!
+    @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var homeCityTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var guardButton: UIButton!
     @IBOutlet weak var userProfileImage: UIImageView!
     
     
-    private var imagePicker :  UIImagePickerController!
+    var imagePicker :  UIImagePickerController!
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -57,16 +57,16 @@ class CreateProfileTableViewController: UITableViewController {
         userProfileImage.layer.borderColor = UIColor.white.cgColor
         userProfileImage.isUserInteractionEnabled = true
         
-        firstNameTextField.layer.borderColor = UIColor.clearColor().CGColor
-        lastNameTextField.layer.borderColor = UIColor.clearColor().CGColor
-        homeCityTextField.layer.borderColor = UIColor.clearColor().CGColor
-        heightTextField.layer.borderColor = UIColor.clearColor().CGColor
-        weightTextField.layer.borderColor = UIColor.clearColor().CGColor
-        birthDateTextField.layer.borderColor = UIColor.clearColor().CGColor
-        sexTextField.layer.borderColor = UIColor.clearColor().CGColor
-        favoritePlayerTextField.layer.borderColor = UIColor.clearColor().CGColor
-        favoriteTeamTextField.layer.borderColor = UIColor.clearColor().CGColor
-        aboutMeTextField.layer.borderColor = UIColor.clearColor().CGColor
+        firstNameTextField.layer.borderColor = UIColor.clear.cgColor
+        lastNameTextField.layer.borderColor = UIColor.clear.cgColor
+        homeCityTextField.layer.borderColor = UIColor.clear.cgColor
+        heightTextField.layer.borderColor = UIColor.clear.cgColor
+        weightTextField.layer.borderColor = UIColor.clear.cgColor
+        birthDateTextField.layer.borderColor = UIColor.clear.cgColor
+        sexTextField.layer.borderColor = UIColor.clear.cgColor
+        favoritePlayerTextField.layer.borderColor = UIColor.clear.cgColor
+        favoriteTeamTextField.layer.borderColor = UIColor.clear.cgColor
+        aboutMeTextField.layer.borderColor = UIColor.clear.cgColor
         
         var image = UIImage(named: "back")
         image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
@@ -130,7 +130,7 @@ class CreateProfileTableViewController: UITableViewController {
         self.present(actionSheet, animated: true, completion: nil)
         
     }
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
@@ -143,16 +143,16 @@ class CreateProfileTableViewController: UITableViewController {
 extension CreateProfileTableViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func camera()  {
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true, completion: nil)
         
     }
     
     func photoLibrary() {
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
         
     }
     

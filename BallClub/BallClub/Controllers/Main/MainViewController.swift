@@ -15,9 +15,9 @@ class MainViewController: UITabBarController {
     super.viewDidLoad()
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.navigationController?.navigationBar.hidden = true
+    self.navigationController?.navigationBar.isHidden = true
   }
   
   override func didReceiveMemoryWarning() {
