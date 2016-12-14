@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MaterialKit
 
 class CreateProfileTableViewController: UITableViewController {
     
@@ -34,7 +33,7 @@ class CreateProfileTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -52,11 +51,11 @@ class CreateProfileTableViewController: UITableViewController {
     
     //MARK:- SetupUI
     func setupUi(){
-        guardButton.selected = true
-        forwardButton.selected = false
-        centerButton.selected = false
-        userProfileImage.layer.borderColor = UIColor.whiteColor().CGColor
-        userProfileImage.userInteractionEnabled = true
+        guardButton.isSelected = true
+        forwardButton.isSelected = false
+        centerButton.isSelected = false
+        userProfileImage.layer.borderColor = UIColor.white.cgColor
+        userProfileImage.isUserInteractionEnabled = true
         
         firstNameTextField.layer.borderColor = UIColor.clearColor().CGColor
         lastNameTextField.layer.borderColor = UIColor.clearColor().CGColor
@@ -70,11 +69,11 @@ class CreateProfileTableViewController: UITableViewController {
         aboutMeTextField.layer.borderColor = UIColor.clearColor().CGColor
         
         var image = UIImage(named: "back")
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CreateProfileTableViewController.backButtonPressed))
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: UIControlState.Normal)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CreateProfileTableViewController.registerUser))
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: UIControlState.Normal)
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(CreateProfileTableViewController.backButtonPressed))
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.normal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(CreateProfileTableViewController.registerUser))
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.normal)
         self.navigationController?.navigationBar.barTintColor = UIColor(red:45.0/255.0, green:47.0/255.0, blue:43.0/255.0, alpha:1.0)
     }
     
@@ -82,17 +81,17 @@ class CreateProfileTableViewController: UITableViewController {
     @IBAction func positionButtonPressed(sender: UIButton) {
         switch sender.tag {
         case 0:
-            guardButton.selected = true
-            forwardButton.selected = false
-            centerButton.selected = false
+            guardButton.isSelected = true
+            forwardButton.isSelected = false
+            centerButton.isSelected = false
         case 1:
-            guardButton.selected = false
-            forwardButton.selected = true
-            centerButton.selected = false
+            guardButton.isSelected = false
+            forwardButton.isSelected = true
+            centerButton.isSelected = false
         case 2:
-            guardButton.selected = false
-            forwardButton.selected = false
-            centerButton.selected = true
+            guardButton.isSelected = false
+            forwardButton.isSelected = false
+            centerButton.isSelected = true
         default:
             break
         }
@@ -103,7 +102,7 @@ class CreateProfileTableViewController: UITableViewController {
     }
     
     func backButtonPressed(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func registerUser() {
@@ -111,31 +110,31 @@ class CreateProfileTableViewController: UITableViewController {
     }
     
     func pushToMainStoryboard(){
-        self.performSegueWithIdentifier("LoginToMainSegue", sender: self)
+        self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
         
     }
     
     func showActionSheet() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
             self.camera()
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
+        actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
             self.photoLibrary()
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
         
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
 }
@@ -160,14 +159,14 @@ extension CreateProfileTableViewController : UIImagePickerControllerDelegate,UIN
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            userProfileImage.contentMode = .ScaleToFill
+            userProfileImage.contentMode = .scaleToFill
             userProfileImage.image = pickedImage
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -17,7 +17,7 @@ class GamesCategoryHeaderView: UITableViewHeaderFooterView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.backgroundColor = UIColor.lightGrayColor()
+    self.backgroundColor = UIColor.lightGray
   }
   
   func updateUI(){

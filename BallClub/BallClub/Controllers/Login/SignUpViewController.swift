@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MaterialKit
 
 class SignUpViewController: UIViewController {
   
@@ -29,16 +28,16 @@ class SignUpViewController: UIViewController {
   
   func setupUI(){
     
-    self.navigationController?.navigationBar.hidden = false
+    self.navigationController?.navigationBar.isHidden = false
     
     var image = UIImage(named: "back")
     
-    image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+    image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
     
-    self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SignUpViewController.backButtonPressed))
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(SignUpViewController.backButtonPressed))
     
     
-    createProfileButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+    createProfileButton.layer.borderColor = UIColor.lightGray.cgColor
     createProfileButton.layer.borderWidth = 1
     
     emailTextField.attributedPlaceholder = NSAttributedString(string:"E-mail",
@@ -58,7 +57,7 @@ class SignUpViewController: UIViewController {
   }
   
   func backButtonPressed(){
-    self.navigationController?.popViewControllerAnimated(true)
+    self.navigationController?.popViewController(animated: true)
     
   }
   
@@ -68,7 +67,7 @@ class SignUpViewController: UIViewController {
   
   //MARK: - IBAction
   @IBAction func createProfileButtonPressed(sender: AnyObject) {
-    self.performSegueWithIdentifier("SignUpToCreateProfileSgue", sender: self)
+    self.performSegue(withIdentifier: "SignUpToCreateProfileSgue", sender: self)
   }
   
 }

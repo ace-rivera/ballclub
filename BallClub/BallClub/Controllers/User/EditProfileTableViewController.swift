@@ -7,22 +7,21 @@
 //
 
 import UIKit
-import MaterialKit
 
 
 
 class EditProfileTableViewController: UITableViewController {
     
-    @IBOutlet weak var aboutMeTextField: MKTextField!
-    @IBOutlet weak var favoriteTeamTextField: MKTextField!
-    @IBOutlet weak var favoritePlayerTextField: MKTextField!
-    @IBOutlet weak var sexTextField: MKTextField!
-    @IBOutlet weak var weightTextField: MKTextField!
-    @IBOutlet weak var birthDateTextField: MKTextField!
-    @IBOutlet weak var heightTextField: MKTextField!
-    @IBOutlet weak var homeCityTextField: MKTextField!
-    @IBOutlet weak var lastNameTextField: MKTextField!
-    @IBOutlet weak var firstNameTextField: MKTextField!
+    @IBOutlet weak var aboutMeTextField: UITextField!
+    @IBOutlet weak var favoriteTeamTextField: UITextField!
+    @IBOutlet weak var favoritePlayerTextField: UITextField!
+    @IBOutlet weak var sexTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var birthDateTextField: UITextField!
+    @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var homeCityTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var guardButton: UIButton!
@@ -39,7 +38,7 @@ class EditProfileTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -48,48 +47,48 @@ class EditProfileTableViewController: UITableViewController {
 
     //MARK:- SetupUI
     func setupUi(){
-        guardButton.selected = true
-        forwardButton.selected = false
-        centerButton.selected = false
-        userProfileImage.layer.borderColor = UIColor.whiteColor().CGColor
-        userProfileImage.userInteractionEnabled = true
+        guardButton.isSelected = true
+        forwardButton.isSelected = false
+        centerButton.isSelected = false
+        userProfileImage.layer.borderColor = UIColor.white.cgColor
+        userProfileImage.isUserInteractionEnabled = true
         
-        firstNameTextField.layer.borderColor = UIColor.clearColor().CGColor
-        lastNameTextField.layer.borderColor = UIColor.clearColor().CGColor
-        homeCityTextField.layer.borderColor = UIColor.clearColor().CGColor
-        heightTextField.layer.borderColor = UIColor.clearColor().CGColor
-        weightTextField.layer.borderColor = UIColor.clearColor().CGColor
-        birthDateTextField.layer.borderColor = UIColor.clearColor().CGColor
-        sexTextField.layer.borderColor = UIColor.clearColor().CGColor
-        favoritePlayerTextField.layer.borderColor = UIColor.clearColor().CGColor
-        favoriteTeamTextField.layer.borderColor = UIColor.clearColor().CGColor
-        aboutMeTextField.layer.borderColor = UIColor.clearColor().CGColor
+        firstNameTextField.layer.borderColor = UIColor.clear.cgColor
+        lastNameTextField.layer.borderColor = UIColor.clear.cgColor
+        homeCityTextField.layer.borderColor = UIColor.clear.cgColor
+        heightTextField.layer.borderColor = UIColor.clear.cgColor
+        weightTextField.layer.borderColor = UIColor.clear.cgColor
+        birthDateTextField.layer.borderColor = UIColor.clear.cgColor
+        sexTextField.layer.borderColor = UIColor.clear.cgColor
+        favoritePlayerTextField.layer.borderColor = UIColor.clear.cgColor
+        favoriteTeamTextField.layer.borderColor = UIColor.clear.cgColor
+        aboutMeTextField.layer.borderColor = UIColor.clear.cgColor
         
-        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBar.isHidden = false
         var image = UIImage(named: "back")
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(EditProfileTableViewController.backButtonPressed))
+        image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditProfileTableViewController.backButtonPressed))
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(EditProfileTableViewController.saveProfileChanges))
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: UIControlState.Normal)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditProfileTableViewController.saveProfileChanges))
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.normal)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
     
     //MARK:- IBActions
     @IBAction func positionButtonPressed(sender: UIButton) {
         switch sender.tag {
         case 0:
-            guardButton.selected = true
-            forwardButton.selected = false
-            centerButton.selected = false
+            guardButton.isSelected = true
+            forwardButton.isSelected = false
+            centerButton.isSelected = false
         case 1:
-            guardButton.selected = false
-            forwardButton.selected = true
-            centerButton.selected = false
+            guardButton.isSelected = false
+            forwardButton.isSelected = true
+            centerButton.isSelected = false
         case 2:
-            guardButton.selected = false
-            forwardButton.selected = false
-            centerButton.selected = true
+            guardButton.isSelected = false
+            forwardButton.isSelected = false
+            centerButton.isSelected = true
         default:
             break
         }
@@ -100,27 +99,27 @@ class EditProfileTableViewController: UITableViewController {
     }
     
     func backButtonPressed(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func saveProfileChanges() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func showActionSheet() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
             self.camera()
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default, handler: { (alert:UIAlertAction!) -> Void in
+        actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
             self.photoLibrary()
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
         
     }
     
@@ -129,7 +128,7 @@ class EditProfileTableViewController: UITableViewController {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
 
@@ -164,7 +163,7 @@ extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINav
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
 }
