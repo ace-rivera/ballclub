@@ -50,6 +50,7 @@
 		71D492821D7E926B00E07DDF /* InvitedFriendsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */; };
 		71D492841D7E927B00E07DDF /* InvitedFriendsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */; };
 		71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492871D7EB26800E07DDF /* PositionCustomButton.swift */; };
+		B873640D1E01984A00C77958 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873640C1E01984A00C77958 /* WebService.swift */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BA4E75841D81452A0062DC17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4E75831D81452A0062DC17 /* Images.xcassets */; };
 		BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7777611D80F2FB003F4465 /* FriendsViewController.swift */; };
@@ -109,6 +110,7 @@
 		71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedFriendsCustomCell.xib; sourceTree = "<group>"; };
 		71D492871D7EB26800E07DDF /* PositionCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCustomButton.swift; sourceTree = "<group>"; };
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B873640C1E01984A00C77958 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BA4E75831D81452A0062DC17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BA7777611D80F2FB003F4465 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		71547A7F1D752A4300264B67 /* BallClub */ = {
 			isa = PBXGroup;
 			children = (
+				B873640B1E01983700C77958 /* API */,
 				71547A991D75346700264B67 /* Storyboards */,
 				FB5E3E271D7FE44500D6D2F4 /* Models */,
 				71547AEF1D753A9A00264B67 /* Controllers */,
@@ -337,6 +340,14 @@
 				714777A41D8000A700501492 /* CustomDateFormatter.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		B873640B1E01983700C77958 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B873640C1E01984A00C77958 /* WebService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		C440A7AABB070C2B915D4808 /* Frameworks */ = {
@@ -524,6 +535,7 @@
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
+				B873640D1E01984A00C77958 /* WebService.swift in Sources */,
 				FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */,
 				71D4927E1D7E908400E07DDF /* GameDetailViewController.swift in Sources */,
 				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
