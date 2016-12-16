@@ -78,7 +78,7 @@ class FriendsViewController: UIViewController {
     }
     
    
-    @IBAction func backButtonPressed(sender: AnyObject) {
+    @IBAction func backButtonPressed(_ sender: AnyObject) {
       self.performSegue(withIdentifier: "unwindToUserStoryboard", sender: self)
     }
     
@@ -117,7 +117,7 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 }

@@ -50,15 +50,15 @@ class GameDetailViewController: UITableViewController {
   }
   
   //MARK: - IBAction
-  @IBAction func backButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewController(animated: true)
+  @IBAction func backButtonPressed(_ sender: AnyObject) {
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func seeAllButtonPressed(sender: AnyObject) {
+  @IBAction func seeAllButtonPressed(_ sender: AnyObject) {
     self.performSegue(withIdentifier: "DetailToInvitedSegue", sender: self)
   }
   
-  @IBAction func responseStatusButtonPressed(button: UIButton) {
+  @IBAction func responseStatusButtonPressed(_ button: UIButton) {
     notGoingIcon.isSelected = false
     notGoingButton.isSelected = false
     tentativeIcon.isSelected = false
@@ -82,7 +82,7 @@ class GameDetailViewController: UITableViewController {
     
   }
   
-  @IBAction func suggestInviteButtonPressed(sender: AnyObject) {
+  @IBAction func suggestInviteButtonPressed(_ sender: AnyObject) {
     
   }
   

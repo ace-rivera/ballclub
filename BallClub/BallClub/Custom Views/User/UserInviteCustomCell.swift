@@ -39,7 +39,7 @@ class UserInviteCustomCell: UITableViewCell {
   }
   
   //MARK:- IBActions
-  @IBAction func viewGameButtonPressed(sender: AnyObject) {
+  @IBAction func viewGameButtonPressed(_ sender: AnyObject) {
     
   }
 }

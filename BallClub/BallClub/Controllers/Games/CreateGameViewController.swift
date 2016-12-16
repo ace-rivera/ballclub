@@ -46,20 +46,20 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate {
   }
   
   //MARK: - IBAction
-  @IBAction func doneButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewController(animated: true)
+  @IBAction func doneButtonPressed(_ sender: AnyObject) {
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func backButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewController(animated: true)
+  @IBAction func backButtonPressed(_ sender: AnyObject) {
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func seeAllButtonPressed(sender: AnyObject) {
+  @IBAction func seeAllButtonPressed(_ sender: AnyObject) {
     
     
   }
   
-  @IBAction func setGamePrivacy(button: UIButton) {
+  @IBAction func setGamePrivacy(_ button: UIButton) {
     publicIcon.isSelected = false
     publicButton.isSelected = false
     privateIcon.isSelected = false
@@ -83,22 +83,22 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate {
     
   }
   
-  @IBAction func reservedToggle(sender: AnyObject) {
+  @IBAction func reservedToggle(_ sender: AnyObject) {
     
   }
   
-  @IBAction func approvalToggle(sender: AnyObject) {
+  @IBAction func approvalToggle(_ sender: AnyObject) {
   
   }
 
   //MARK: - Collection View Delegate
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+  private func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
     collectionCell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
     return collectionCell
   }
   
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  private func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return TestClass.Common.friendImages.count
   }
 }

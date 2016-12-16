@@ -53,7 +53,7 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
     return cell
   }
   
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 3 // closed public private
   }
   
@@ -70,11 +70,11 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
     }
   }
   
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
   }
   
-  func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "GamesCategoryHeaderView") as! GamesCategoryHeaderView
     switch section {
     case 0:
@@ -91,7 +91,7 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
     return header
   }
   
-  func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 40
   }
 }

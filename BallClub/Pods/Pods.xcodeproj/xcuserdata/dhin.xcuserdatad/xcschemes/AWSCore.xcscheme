@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-               BuildableName = "MaterialKit.framework"
-               BlueprintName = "MaterialKit"
+               BlueprintIdentifier = "5ACFCBB5C36270A9DF9A2D2D11708867"
+               BuildableName = "AWSCore.framework"
+               BlueprintName = "AWSCore"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-            BuildableName = "MaterialKit.framework"
-            BlueprintName = "MaterialKit"
+            BlueprintIdentifier = "5ACFCBB5C36270A9DF9A2D2D11708867"
+            BuildableName = "AWSCore.framework"
+            BlueprintName = "AWSCore"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-            BuildableName = "MaterialKit.framework"
-            BlueprintName = "MaterialKit"
+            BlueprintIdentifier = "5ACFCBB5C36270A9DF9A2D2D11708867"
+            BuildableName = "AWSCore.framework"
+            BlueprintName = "AWSCore"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

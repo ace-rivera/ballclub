@@ -37,15 +37,15 @@ class UserViewController: UIViewController {
     
     //MARK: - IBAction
     
-    @IBAction func editProfilePressed(sender: AnyObject) {
+    @IBAction func editProfilePressed(_ sender: AnyObject) {
         
     }
     
-    @IBAction func settingsButtonPressed(sender: AnyObject) {
+    @IBAction func settingsButtonPressed(_sender: AnyObject) {
         
     }
     
-    @IBAction func segmentTabChanged(segmentControl: UISegmentedControl) {
+    @IBAction func segmentTabChanged(_ segmentControl: UISegmentedControl) {
         let selectedSegment = segmentControl.selectedSegmentIndex;
         
         if selectedSegment == 0 {
@@ -58,7 +58,7 @@ class UserViewController: UIViewController {
     }
   
   
-  @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+  @IBAction func unwindToMenu(_segue: UIStoryboardSegue) {}
   
 }
 
@@ -83,13 +83,13 @@ extension UserViewController : UITableViewDelegate, UITableViewDataSource {
         return TestClass.Common.friendNames.count
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "FriendsProfileViewControllerSegue", sender: self)
     }
 }
 
 extension UserViewController : UITextFieldDelegate {
-  @IBAction func editingChanged(textfield: UITextField) {
+  @IBAction func editingChanged(_ textfield: UITextField) {
     //TODO:implement search
   }
 }

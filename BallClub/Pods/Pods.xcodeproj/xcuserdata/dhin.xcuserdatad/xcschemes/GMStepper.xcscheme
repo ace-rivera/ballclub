@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-               BuildableName = "MaterialKit.framework"
-               BlueprintName = "MaterialKit"
+               BlueprintIdentifier = "6DB34ADEAC543008FDA771D13AE6F534"
+               BuildableName = "GMStepper.framework"
+               BlueprintName = "GMStepper"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-            BuildableName = "MaterialKit.framework"
-            BlueprintName = "MaterialKit"
+            BlueprintIdentifier = "6DB34ADEAC543008FDA771D13AE6F534"
+            BuildableName = "GMStepper.framework"
+            BlueprintName = "GMStepper"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-            BuildableName = "MaterialKit.framework"
-            BlueprintName = "MaterialKit"
+            BlueprintIdentifier = "6DB34ADEAC543008FDA771D13AE6F534"
+            BuildableName = "GMStepper.framework"
+            BlueprintName = "GMStepper"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

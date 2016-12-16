@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-               BuildableName = "MaterialKit.framework"
-               BlueprintName = "MaterialKit"
+               BlueprintIdentifier = "F5DD7EE8381446C2C3300FB9087ED7EB"
+               BuildableName = "Popover.framework"
+               BlueprintName = "Popover"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-            BuildableName = "MaterialKit.framework"
-            BlueprintName = "MaterialKit"
+            BlueprintIdentifier = "F5DD7EE8381446C2C3300FB9087ED7EB"
+            BuildableName = "Popover.framework"
+            BlueprintName = "Popover"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73850773DC05DB0F801C716B2A9E95F5"
-            BuildableName = "MaterialKit.framework"
-            BlueprintName = "MaterialKit"
+            BlueprintIdentifier = "F5DD7EE8381446C2C3300FB9087ED7EB"
+            BuildableName = "Popover.framework"
+            BlueprintName = "Popover"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

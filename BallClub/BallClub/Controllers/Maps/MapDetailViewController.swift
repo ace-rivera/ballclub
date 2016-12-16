@@ -25,11 +25,11 @@ class MapDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func closeButtonPressed(sender: AnyObject) {
+    @IBAction func closeButtonPressed(_ sender: AnyObject) {
         
     }
   
-    @IBAction func filterButtonPressed(sender: AnyObject) {
+    @IBAction func filterButtonPressed(_ sender: AnyObject) {
         
     }
 }

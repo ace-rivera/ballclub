@@ -32,12 +32,12 @@ class UserAddFriendCustomCell: UITableViewCell {
     userProfileImage.image = UIImage(named: image)
   }
   
-  @IBAction func acceptFriend(sender: AnyObject) {
+  @IBAction func acceptFriend(_ sender: AnyObject) {
     
   }
   
   //MARK:- IBAction
-  @IBAction func rejectFriend(sender: AnyObject) {
+  @IBAction func rejectFriend(_ sender: AnyObject) {
     
   }
 }

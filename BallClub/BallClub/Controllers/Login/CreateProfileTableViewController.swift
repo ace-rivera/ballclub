@@ -78,7 +78,7 @@ class CreateProfileTableViewController: UITableViewController {
     }
     
     //MARK:- IBActions
-    @IBAction func positionButtonPressed(sender: UIButton) {
+    @IBAction func positionButtonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 0:
             guardButton.isSelected = true
@@ -97,12 +97,12 @@ class CreateProfileTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func changeProfileImage(sender: AnyObject) {
+    @IBAction func changeProfileImage(_ sender: AnyObject) {
         showActionSheet()
     }
     
     func backButtonPressed(){
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func registerUser() {
@@ -156,7 +156,7 @@ extension CreateProfileTableViewController : UIImagePickerControllerDelegate,UIN
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             userProfileImage.contentMode = .scaleToFill
@@ -165,7 +165,7 @@ extension CreateProfileTableViewController : UIImagePickerControllerDelegate,UIN
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     

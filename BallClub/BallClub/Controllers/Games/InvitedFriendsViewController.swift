@@ -26,8 +26,8 @@ class InvitedFriendsViewController: UITableViewController {
   }
   
   //MARK: - IBAction
-  @IBAction func backButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewController(animated: true)
+  @IBAction func backButtonPressed(_ sender: AnyObject) {
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
   //MARK: - Tableview delegates

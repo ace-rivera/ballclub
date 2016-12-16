@@ -27,7 +27,7 @@ class MapsViewController: UIViewController {
     // MARK: - SetupUI
     func setupUI() {
         let initialLocation = CLLocation(latitude: 14.6760, longitude: 121.0437)
-        centerMapOnLocation(location: initialLocation)
+        centerMapOnLocation(initialLocation)
         
         let sampleAnnotation = Location(title: "Quezon City",
                                                   locationName: "Quezon City",
@@ -38,7 +38,7 @@ class MapsViewController: UIViewController {
         mapView.addAnnotation(sampleAnnotation)
     }
     
-    func centerMapOnLocation(location: CLLocation) {
+    func centerMapOnLocation(_ location: CLLocation) {
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                 regionRadius * 2.0, regionRadius * 2.0)
@@ -52,7 +52,7 @@ class MapsViewController: UIViewController {
 }
 
 extension MapsViewController: MKMapViewDelegate {
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? Location {
             let identifier = "pin"
             var view: MKAnnotationView

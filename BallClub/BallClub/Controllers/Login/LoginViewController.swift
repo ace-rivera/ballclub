@@ -44,11 +44,11 @@ class LoginViewController: UIViewController {
   }
   
   //MARK: - IBAction
-  @IBAction func loginButtonPressed(sender: AnyObject) {
+  @IBAction func loginButtonPressed(_ sender: AnyObject) {
     self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
   }
   
-  @IBAction func loginWithFacebookButtonPressed(sender: AnyObject) {
+  @IBAction func loginWithFacebookButtonPressed(_ sender: AnyObject) {
     let login = FBSDKLoginManager()
     login.logIn(withReadPermissions: ["public_profile","email"], from: self) { (result, error) in
       if ((error) != nil)  {
@@ -73,7 +73,7 @@ class LoginViewController: UIViewController {
           //TODO: Save user details
           
           //profile picture
-          var user : AnyObject!
+//          var user : AnyObject!
 //          user = result["id"]
 //          let fbURL = NSURL(string: "http://graph.facebook.com/\(user)/picture?type=large")
 //          if let data = NSData(contentsOfURL: fbURL! as URL) {
@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
     }
   }
   
-  @IBAction func signUpHereButtonPressed(sender: AnyObject) {
+  @IBAction func signUpHereButtonPressed(_ sender: AnyObject) {
     self.performSegue(withIdentifier: "LoginToSignUpSegue", sender: self)
   }
   

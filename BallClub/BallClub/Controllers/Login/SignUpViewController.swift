@@ -57,8 +57,7 @@ class SignUpViewController: UIViewController {
   }
   
   func backButtonPressed(){
-    self.navigationController?.popViewController(animated: true)
-    
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -66,7 +65,7 @@ class SignUpViewController: UIViewController {
   }
   
   //MARK: - IBAction
-  @IBAction func createProfileButtonPressed(sender: AnyObject) {
+  @IBAction func createProfileButtonPressed(_ sender: AnyObject) {
     self.performSegue(withIdentifier: "SignUpToCreateProfileSgue", sender: self)
   }
   
