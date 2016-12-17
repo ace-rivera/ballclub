@@ -24,6 +24,12 @@ class Constants: NSObject {
     case CLOSED
   }
   
+  enum InviteStatus {
+    case PENDING
+    case GOING
+    case NOT_GOING
+  }
+  
   enum Position {
     case C
     case G
@@ -31,7 +37,7 @@ class Constants: NSObject {
   }
   
   enum Gender {
-    case Male
-    case Female
+    case MALE
+    case FEMALE
   }
 }
