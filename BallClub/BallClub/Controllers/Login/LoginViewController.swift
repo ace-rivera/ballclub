@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var appLogo: UIImageView!
   
+  var playerViewModel = PlayerViewModel()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -45,7 +47,17 @@ class LoginViewController: UIViewController {
   
   //MARK: - IBAction
   @IBAction func loginButtonPressed(_ sender: AnyObject) {
-    self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+    if let email = emailAddLabel.text, let password = passwordLabel.text {
+      playerViewModel.playerSign(emailAddress: email, password: password) { (success, message) -> (Void) in
+        if success == true {
+          self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+        } else {
+          if let m = message {
+            self.showAlert(title: "ERROR", message: m, callback: {})
+          }
+        }
+      }
+    }
   }
   
   @IBAction func loginWithFacebookButtonPressed(_ sender: AnyObject) {
