@@ -42,9 +42,11 @@ let APIProvider = MoyaProvider<BallClub>(endpointClosure: endpointClosure, plugi
 
 
 enum BallClub {
-  //Account Related Calls
+  //User API Calls
   case login(String, String)
   case upload(Data)
+  
+  //Game API Calls
 }
 
 private extension String {
