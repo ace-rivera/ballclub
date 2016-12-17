@@ -18,10 +18,10 @@ class UserInviteCustomCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    viewGameButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+    viewGameButton.layer.borderColor = UIColor.lightGray.cgColor
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
@@ -39,7 +39,7 @@ class UserInviteCustomCell: UITableViewCell {
   }
   
   //MARK:- IBActions
-  @IBAction func viewGameButtonPressed(sender: AnyObject) {
+  @IBAction func viewGameButtonPressed(_ sender: AnyObject) {
     
   }
 }

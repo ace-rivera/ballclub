@@ -18,24 +18,26 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var appLogo: UIImageView!
   
+  var playerViewModel = PlayerViewModel()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     setupUI()
   }
   
   func setupUI() {
-    self.navigationController?.navigationBar.hidden = true
-    loginButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.navigationController?.navigationBar.isHidden = true
+    loginButton.layer.borderColor = UIColor.lightGray.cgColor
     loginButton.layer.borderWidth = 1
     
     emailAddLabel.attributedPlaceholder = NSAttributedString(string:"E-mail",
-                                                             attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+                                                             attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
     passwordLabel.attributedPlaceholder = NSAttributedString(string:"Password",
-                                                             attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+                                                             attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
   }
   
   override func didReceiveMemoryWarning() {
@@ -44,17 +46,27 @@ class LoginViewController: UIViewController {
   }
   
   //MARK: - IBAction
-  @IBAction func loginButtonPressed(sender: AnyObject) {
-    self.performSegueWithIdentifier("LoginToMainSegue", sender: self)
+  @IBAction func loginButtonPressed(_ sender: AnyObject) {
+    if let email = emailAddLabel.text, let password = passwordLabel.text {
+      playerViewModel.playerSign(emailAddress: email, password: password) { (success, message) -> (Void) in
+        if success == true {
+          self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+        } else {
+          if let m = message {
+            self.showAlert(title: "ERROR", message: m, callback: {})
+          }
+        }
+      }
+    }
   }
   
-  @IBAction func loginWithFacebookButtonPressed(sender: AnyObject) {
+  @IBAction func loginWithFacebookButtonPressed(_ sender: AnyObject) {
     let login = FBSDKLoginManager()
-    login.logInWithReadPermissions(["public_profile","email"], fromViewController: self) { (result, error) in
+    login.logIn(withReadPermissions: ["public_profile","email"], from: self) { (result, error) in
       if ((error) != nil)  {
-        NSLog("Facebook Process error: %@", error);
+      //  NSLog("Facebook Process error: %@", error);
       }
-      else if (result.isCancelled)
+      else if (result?.isCancelled)!
       {
         NSLog("Facebook Cancelled");
       }
@@ -65,32 +77,32 @@ class LoginViewController: UIViewController {
   }
   
   func getFacebookUserInfo(){
-    if ((FBSDKAccessToken.currentAccessToken()) != nil) {
-      FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender, picture.width(300).height(300)"]).startWithCompletionHandler { (connection, result, error) in
+    if ((FBSDKAccessToken.current()) != nil) {
+      FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, gender, picture.width(300).height(300)"]).start { (connection, result, error) in
         if error == nil {
           //print("Facebook Fetched user : \(result)")
           
           //TODO: Save user details
           
           //profile picture
-          var user : AnyObject!
-          user = result["id"]
-          let fbURL = NSURL(string: "http://graph.facebook.com/\(user)/picture?type=large")
-          if let data = NSData(contentsOfURL: fbURL!) {
-            let userProfilePic = UIImage(data: data)
-          }
-          print("First Name : \(result["first_name"])") //remove optional
-          print("Last Name : \(result["last_name"])")
-          print("Gender : \(result["gender"])")
+//          var user : AnyObject!
+//          user = result["id"]
+//          let fbURL = NSURL(string: "http://graph.facebook.com/\(user)/picture?type=large")
+//          if let data = NSData(contentsOfURL: fbURL! as URL) {
+//            let userProfilePic = UIImage(data: data)
+//          }
+//          print("First Name : \(result["first_name"])") //remove optional
+//          print("Last Name : \(result["last_name"])")
+//          print("Gender : \(result["gender"])")
           
-        self.performSegueWithIdentifier("LoginToMainSegue", sender: self)
+        self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
         }
       }
     }
   }
   
-  @IBAction func signUpHereButtonPressed(sender: AnyObject) {
-    self.performSegueWithIdentifier("LoginToSignUpSegue", sender: self)
+  @IBAction func signUpHereButtonPressed(_ sender: AnyObject) {
+    self.performSegue(withIdentifier: "LoginToSignUpSegue", sender: self)
   }
   
 }

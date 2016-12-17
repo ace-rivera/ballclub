@@ -42,7 +42,7 @@ class GameDetailViewController: UITableViewController {
   
   //MARK: - SetUpUI
   func setUpUI(){
-    self.playerCollection.registerNib(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
+    self.playerCollection.register(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
     self.gameDetailTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.gameDetailTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
     self.gameDetailTableView.estimatedRowHeight = 200
     self.gameDetailTableView.rowHeight = UITableViewAutomaticDimension
@@ -50,46 +50,46 @@ class GameDetailViewController: UITableViewController {
   }
   
   //MARK: - IBAction
-  @IBAction func backButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewControllerAnimated(true)
+  @IBAction func backButtonPressed(_ sender: AnyObject) {
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func seeAllButtonPressed(sender: AnyObject) {
-    self.performSegueWithIdentifier("DetailToInvitedSegue", sender: self)
+  @IBAction func seeAllButtonPressed(_ sender: AnyObject) {
+    self.performSegue(withIdentifier: "DetailToInvitedSegue", sender: self)
   }
   
-  @IBAction func responseStatusButtonPressed(button: UIButton) {
-    notGoingIcon.selected = false
-    notGoingButton.selected = false
-    tentativeIcon.selected = false
-    tentativeButton.selected = false
-    goingIcon.selected = false
-    goingButton.selected = false
+  @IBAction func responseStatusButtonPressed(_ button: UIButton) {
+    notGoingIcon.isSelected = false
+    notGoingButton.isSelected = false
+    tentativeIcon.isSelected = false
+    tentativeButton.isSelected = false
+    goingIcon.isSelected = false
+    goingButton.isSelected = false
     
     switch button.tag {
     case 0:
-      notGoingIcon.selected = true
-      notGoingButton.selected = true
+      notGoingIcon.isSelected = true
+      notGoingButton.isSelected = true
     case 1:
-      tentativeIcon.selected = true
-      tentativeButton.selected = true
+      tentativeIcon.isSelected = true
+      tentativeButton.isSelected = true
     case 2:
-      goingIcon.selected = true
-      goingButton.selected = true
+      goingIcon.isSelected = true
+      goingButton.isSelected = true
     default:
       break
     }
     
   }
   
-  @IBAction func suggestInviteButtonPressed(sender: AnyObject) {
+  @IBAction func suggestInviteButtonPressed(_ sender: AnyObject) {
     
   }
   
   //MARK: - Collection View Delegate
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let collectionCell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendsRoundedCollectionCell", forIndexPath: indexPath) as! FriendsRoundedCollectionCell
-    collectionCell.setImageOfFriend(TestClass.Common.friendImages[indexPath.row])
+    let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
+    collectionCell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
     return collectionCell
   }
   

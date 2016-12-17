@@ -26,12 +26,12 @@ class FeedsCustomCell: UITableViewCell {
     super.awakeFromNib()
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
   func setDateOfGame(date: NSDate){
-    gameDateLabel.text = CustomDateFormatter().feedsDateFormat(date)
+    gameDateLabel.text = CustomDateFormatter().feedsDateFormat(feedDate: date)
   }
   
   func setTitleOfGame(title: String){
@@ -52,8 +52,8 @@ class FeedsCustomCell: UITableViewCell {
   
   func setPriceOfGame(price: String){
     if price == "none"{
-      gamePrice.hidden = true
-      gamePriceIcon.hidden = true
+      gamePrice.isHidden = true
+      gamePriceIcon.isHidden = true
     }else{
       gamePrice.text = price
     }
@@ -65,8 +65,8 @@ class FeedsCustomCell: UITableViewCell {
   
   func setAttendeesOfGame(friends : [String]){ //TODO: change datatype to User - Friend
     if friends.count == 0 {
-      gameFriends.hidden = true
-      gameFriendsIcon.hidden = true
+      gameFriends.isHidden = true
+      gameFriendsIcon.isHidden = true
 //      gameFriendsCollection.hidden = true
     }else if friends.count >= 2 {
       gameFriends.text = "\(friends[0]) and \(friends[1]) are going"

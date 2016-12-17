@@ -38,67 +38,67 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate {
   
   //MARK: - SetupUI
   func setUpUI(){
-    self.friendsCollectionView.registerNib(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
+    self.friendsCollectionView.register(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
     self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width:
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
-    publicIcon.selected = false
-    publicButton.selected = false
+    publicIcon.isSelected = false
+    publicButton.isSelected = false
   }
   
   //MARK: - IBAction
-  @IBAction func doneButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewControllerAnimated(true)
+  @IBAction func doneButtonPressed(_ sender: AnyObject) {
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func backButtonPressed(sender: AnyObject) {
-    self.navigationController?.popViewControllerAnimated(true)
+  @IBAction func backButtonPressed(_ sender: AnyObject) {
+    _ = self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func seeAllButtonPressed(sender: AnyObject) {
+  @IBAction func seeAllButtonPressed(_ sender: AnyObject) {
     
     
   }
   
-  @IBAction func setGamePrivacy(button: UIButton) {
-    publicIcon.selected = false
-    publicButton.selected = false
-    privateIcon.selected = false
-    privateButton.selected = false
-    publicIcon.selected = false
-    publicButton.selected = false
+  @IBAction func setGamePrivacy(_ button: UIButton) {
+    publicIcon.isSelected = false
+    publicButton.isSelected = false
+    privateIcon.isSelected = false
+    privateButton.isSelected = false
+    publicIcon.isSelected = false
+    publicButton.isSelected = false
     
     switch button.tag {
     case 0:
-      publicIcon.selected = true
-      publicButton.selected = true
+      publicIcon.isSelected = true
+      publicButton.isSelected = true
     case 1:
-      privateIcon.selected = true
-      privateIcon.selected = true
+      privateIcon.isSelected = true
+      privateIcon.isSelected = true
     case 2:
-      closedIcon.selected = true
-      closedButton.selected = true
+      closedIcon.isSelected = true
+      closedButton.isSelected = true
     default:
       break
     }
     
   }
   
-  @IBAction func reservedToggle(sender: AnyObject) {
+  @IBAction func reservedToggle(_ sender: AnyObject) {
     
   }
   
-  @IBAction func approvalToggle(sender: AnyObject) {
+  @IBAction func approvalToggle(_ sender: AnyObject) {
   
   }
 
   //MARK: - Collection View Delegate
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let collectionCell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendsRoundedCollectionCell", forIndexPath: indexPath) as! FriendsRoundedCollectionCell
-    collectionCell.setImageOfFriend(TestClass.Common.friendImages[indexPath.row])
+  private func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+    let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
+    collectionCell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
     return collectionCell
   }
   
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  private func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return TestClass.Common.friendImages.count
   }
 }

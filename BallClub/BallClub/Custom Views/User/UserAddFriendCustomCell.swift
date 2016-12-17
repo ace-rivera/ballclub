@@ -19,7 +19,7 @@ class UserAddFriendCustomCell: UITableViewCell {
     super.awakeFromNib()
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
@@ -32,12 +32,12 @@ class UserAddFriendCustomCell: UITableViewCell {
     userProfileImage.image = UIImage(named: image)
   }
   
-  @IBAction func acceptFriend(sender: AnyObject) {
+  @IBAction func acceptFriend(_ sender: AnyObject) {
     
   }
   
   //MARK:- IBAction
-  @IBAction func rejectFriend(sender: AnyObject) {
+  @IBAction func rejectFriend(_ sender: AnyObject) {
     
   }
 }

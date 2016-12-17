@@ -18,7 +18,7 @@ class InvitedFriendsCustomCell: UITableViewCell {
     super.awakeFromNib()
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
@@ -28,7 +28,7 @@ class InvitedFriendsCustomCell: UITableViewCell {
   }
   
   func setPositionOfFriend(position : String) {
-    friendPosition.setTitle(position, forState: .Normal)
+    friendPosition.setTitle(position, for: .normal)
   }
   
   func setNameOfFriend(name : String) {

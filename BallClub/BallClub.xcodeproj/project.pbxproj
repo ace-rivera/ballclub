@@ -50,6 +50,11 @@
 		71D492821D7E926B00E07DDF /* InvitedFriendsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */; };
 		71D492841D7E927B00E07DDF /* InvitedFriendsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */; };
 		71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492871D7EB26800E07DDF /* PositionCustomButton.swift */; };
+		B81155F21E057FC80076B17B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F11E057FC80076B17B /* UIViewController.swift */; };
+		B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */; };
+		B81155F91E0581500076B17B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F81E0581500076B17B /* Utilities.swift */; };
+		B873640D1E01984A00C77958 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873640C1E01984A00C77958 /* WebService.swift */; };
+		B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BA4E75841D81452A0062DC17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4E75831D81452A0062DC17 /* Images.xcassets */; };
 		BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7777611D80F2FB003F4465 /* FriendsViewController.swift */; };
@@ -109,6 +114,11 @@
 		71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedFriendsCustomCell.xib; sourceTree = "<group>"; };
 		71D492871D7EB26800E07DDF /* PositionCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCustomButton.swift; sourceTree = "<group>"; };
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B81155F11E057FC80076B17B /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
+		B81155F81E0581500076B17B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B873640C1E01984A00C77958 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BA4E75831D81452A0062DC17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BA7777611D80F2FB003F4465 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +189,11 @@
 		71547A7F1D752A4300264B67 /* BallClub */ = {
 			isa = PBXGroup;
 			children = (
+				B81155F61E05812B0076B17B /* Utilities */,
+				B81155F31E0580080076B17B /* Protocols */,
+				B81155F01E057F9E0076B17B /* Extensions */,
+				B8F387D51E055CD800FD8336 /* ViewModels */,
+				B873640B1E01983700C77958 /* API */,
 				71547A991D75346700264B67 /* Storyboards */,
 				FB5E3E271D7FE44500D6D2F4 /* Models */,
 				71547AEF1D753A9A00264B67 /* Controllers */,
@@ -339,6 +354,46 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		B81155F01E057F9E0076B17B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B81155F11E057FC80076B17B /* UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B81155F31E0580080076B17B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B81155F61E05812B0076B17B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B81155F81E0581500076B17B /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B873640B1E01983700C77958 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B873640C1E01984A00C77958 /* WebService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		B8F387D51E055CD800FD8336 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		C440A7AABB070C2B915D4808 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,11 +446,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Geraldine Forto";
 				TargetAttributes = {
 					71547A7C1D752A4300264B67 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -487,7 +543,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -503,13 +559,16 @@
 				45382D671D805B9F008FB3BD /* GamesCategoryHeaderView.swift in Sources */,
 				714777A51D8000A700501492 /* CustomDateFormatter.swift in Sources */,
 				71D4927C1D7D67BA00E07DDF /* Constants.swift in Sources */,
+				B81155F91E0581500076B17B /* Utilities.swift in Sources */,
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
+				B81155F21E057FC80076B17B /* UIViewController.swift in Sources */,
 				FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
 				BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */,
 				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
+				B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */,
 				45425F161D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift in Sources */,
 				45425F191D82EE3100815B43 /* FriendsCollectionCustomView.swift in Sources */,
 				BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */,
@@ -518,11 +577,13 @@
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
 				FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */,
+				B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */,
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
+				B873640D1E01984A00C77958 /* WebService.swift in Sources */,
 				FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */,
 				71D4927E1D7E908400E07DDF /* GameDetailViewController.swift in Sources */,
 				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
@@ -559,10 +620,13 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -582,7 +646,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -605,10 +669,13 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -622,9 +689,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -634,18 +702,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C631140209D1C6A45139A88 /* Pods-BallClub.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BallClub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(PROJECT_DIR)/BallClub/BallClub/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatalException.BallClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -653,18 +726,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/BallClub/BallClub/",
 				);
 				INFOPLIST_FILE = BallClub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(PROJECT_DIR)/BallClub/BallClub/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatalException.BallClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
