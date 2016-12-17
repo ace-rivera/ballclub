@@ -43,7 +43,7 @@ let APIProvider = MoyaProvider<BallClub>(endpointClosure: endpointClosure, plugi
 
 enum BallClub {
   //User API Calls
-  case login(String, String)
+  case userSignIn(String, String)
   case upload(Data)
   
   //Game API Calls
@@ -61,7 +61,7 @@ extension BallClub: TargetType {
   var path: String {
     switch self {
     //Account Related Calls
-    case .login:
+    case .userSignIn(_, _):
       return "/auth/sign_in"
     case .upload(_):
       return "/users/me/image"
@@ -70,7 +70,7 @@ extension BallClub: TargetType {
   
   var method: Moya.Method {
     switch self {
-    case .login:
+    case .userSignIn:
       return .POST
 //    case :
 //      return .PUT
@@ -82,7 +82,7 @@ extension BallClub: TargetType {
   var parameters: [String: Any]? {
     switch self {
     //Account Related Calls
-    case .login(let emailAddress, let password) :
+    case .userSignIn(let emailAddress, let password) :
       return ["email" : emailAddress,
               "password" : password]
     case .upload(_):
@@ -101,7 +101,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .login: // for post api calls
+    case .userSignIn: // for post api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default
@@ -118,7 +118,7 @@ extension BallClub: TargetType {
   
   var sampleData: Data {
     switch self {
-    case .login:
+    case .userSignIn:
       return stubbedResponse("login")
 //    case .register:
 //      return stubbedResponse("register")

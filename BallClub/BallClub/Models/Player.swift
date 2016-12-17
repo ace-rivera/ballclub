@@ -6,41 +6,42 @@
 //  Copyright © 2016 Geraldine Forto. All rights reserved.
 //
 
-import Foundation
+import Gloss
 
-class Player: NSObject {
+struct Player : Decodable {
   
-  var playerId: String!
-  var firstName: String!
-  var lastName: String!
-  var avatarImage: String!
-  var heightFeet: Int!
-  var heightInches: Float!
-  var weight: Float!
-  var birthdate: AnyObject!
-  var gender: Constants.Gender!
-  var position: Constants.Position!
-  var hometown: Location!
-  var favoritePlayer: String!
-  var favoriteTeam: String!
-  var playerInformation: String!
+  var playerId: Int
+  var playerName: String?
+  var emailAddress: String
+  var provider: String?
+  var uid: String?
+  var nickName: String?
+  var profileImage: String?
+  var contactNumber: String?
+  var city: String?
+  var height: String?
+  var weight: String?
+  var birthday: String?
+  var gender: String?
   
-  init(dict: NSDictionary) {
-    super.init()
-    self.playerId = (dict["playerId"] ?? "") as! String
-    self.firstName = (dict["firstName"] ?? "") as! String
-    self.lastName = (dict["lastName"] ?? "") as! String
-    self.avatarImage = (dict["avatarImage"] ?? "") as! String
-    self.heightFeet = (dict["heightFeet"] ?? 0) as! Int
-    self.heightInches = (dict["heightInches"] ?? 0) as! Float
-    self.weight = (dict["weight"] ?? 0) as! Float
-    //self.birthdate = dict["birthdate"] ?? ""
-    self.gender = dict["gender"] as! Constants.Gender
-    self.position = dict["position"]as! Constants.Position
-    self.hometown = dict["hometown"] as! Location
-    self.favoritePlayer = (dict["favoritePlayer"] ?? "") as! String
-    self.favoriteTeam = (dict["favoriteTeam"] ?? "") as! String
-    self.playerInformation = (dict["playerInformation"] ?? "") as! String
+  // MARK: - Deserialization
+  init?(json: JSON) {
+    guard let userId: Int = "id" <~~ json,
+      let email: String = "email" <~~ json else { return nil }
     
+    self.playerId = userId
+    self.playerName = "name" <~~ json
+    self.emailAddress = email
+    self.provider = "provider" <~~ json
+    self.uid = "uid" <~~ json
+    self.nickName = "nickname" <~~ json
+    self.profileImage = "image" <~~ json
+    self.contactNumber = "contact_number" <~~ json
+    self.city = "city" <~~ json
+    self.height = "height" <~~ json
+    self.weight = "weight" <~~ json
+    self.birthday = "birthday" <~~ json
+    self.gender = "gender" <~~ json
+
   }
 }
