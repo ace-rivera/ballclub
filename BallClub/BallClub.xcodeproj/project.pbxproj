@@ -69,6 +69,7 @@
 		FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E291D7FE45800D6D2F4 /* Location.swift */; };
 		FB5E3E2D1D7FE45800D6D2F4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */; };
 		FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */; };
+		FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD27A7B1E212BE700ADE930 /* SessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +139,7 @@
 		FB5E3E291D7FE45800D6D2F4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
 		FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
+		FBD27A7B1E212BE700ADE930 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				B81155F81E0581500076B17B /* Utilities.swift */,
+				FBD27A7B1E212BE700ADE930 /* SessionManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
+				FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
 				B873640D1E01984A00C77958 /* WebService.swift in Sources */,
