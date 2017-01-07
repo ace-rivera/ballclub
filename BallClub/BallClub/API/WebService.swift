@@ -45,6 +45,8 @@ enum BallClub {
   //User API Calls
   case userSignIn(String, String)
   case upload(Data)
+  case getCurrentUser(Int)
+  case getAllUsers()
   
   //Game API Calls
 }
@@ -65,6 +67,10 @@ extension BallClub: TargetType {
       return "/auth/sign_in"
     case .upload(_):
       return "/users/me/image"
+    case .getCurrentUser(let userId):
+      return "/api/users/\(userId)"
+    case .getAllUsers(_):
+      return "/api/users"
     }
   }
   
@@ -87,6 +93,8 @@ extension BallClub: TargetType {
               "password" : password]
     case .upload(_):
       return nil
+    default:
+      return nil  
     }
   }
   
@@ -120,8 +128,8 @@ extension BallClub: TargetType {
     switch self {
     case .userSignIn:
       return stubbedResponse("login")
-//    case .register:
-//      return stubbedResponse("register")
+    case .register:
+      return stubbedResponse("register")
     default:
       return NSData() as Data
     }

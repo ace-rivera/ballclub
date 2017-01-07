@@ -11,37 +11,41 @@ import Gloss
 struct Player : Decodable {
   
   var playerId: Int
-  var playerName: String?
+  var uid: String
   var emailAddress: String
-  var provider: String?
-  var uid: String?
-  var nickName: String?
-  var profileImage: String?
+  var playerName: String
+  var nickName: String
   var contactNumber: String?
-  var city: String?
-  var height: String?
-  var weight: String?
+  var city: String
+  var height: Double?
+  var weight: Double?
   var birthday: String?
-  var gender: String?
+  var gender: Int
+  // TO-DO Get data when objects are finalized
+  //var games: [Game]
+  //var friendRequests: [Requests]
   
   // MARK: - Deserialization
   init?(json: JSON) {
     guard let userId: Int = "id" <~~ json,
-      let email: String = "email" <~~ json else { return nil }
+      let uid: String = "uid" <~~ json,
+      let email: String = "email" <~~ json,
+      let name: String = "name" <~~ json,
+      let nickName: String = "nickname" <~~ json,
+      let city: String = "city" <~~ json,
+      let gender: Int = "gender" <~~ json else { return nil }
     
     self.playerId = userId
-    self.playerName = "name" <~~ json
+    self.uid = uid
     self.emailAddress = email
-    self.provider = "provider" <~~ json
-    self.uid = "uid" <~~ json
-    self.nickName = "nickname" <~~ json
-    self.profileImage = "image" <~~ json
+    self.playerName = name
+    self.nickName = nickName
     self.contactNumber = "contact_number" <~~ json
-    self.city = "city" <~~ json
+    self.city = city
     self.height = "height" <~~ json
     self.weight = "weight" <~~ json
     self.birthday = "birthday" <~~ json
-    self.gender = "gender" <~~ json
+    self.gender = gender
 
   }
 }
