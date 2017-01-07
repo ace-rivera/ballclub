@@ -53,7 +53,11 @@ enum BallClub {
   
   
   //Game API Calls
-  
+  case getUserGames(Int)
+  case getGameDetails(Int, Int)
+  case createGame([String : Any])
+  case updateGame([String : Any])
+  case deleteGame(Int, Int)
   
   //Friends API Calls
   
@@ -82,15 +86,35 @@ extension BallClub: TargetType {
       return "/api/users/\(userId)"
     case .getAllUsers(_):
       return "/api/users"
+      
+    //Game Related Calls
+    case .getUserGames(let userId):
+      return "/api/users/\(userId)/games"
+    case .getGameDetails(let userId, let gameId):
+      return "/api/users/\(userId)/games/\(gameId)"
+    case .createGame(let gameDict):
+      if let userId = gameDict["userId"] {
+        return "/api/users/\(userId)/games"
+      }
+      return ""
+    case .updateGame(let gameDict):
+      if let userId = gameDict["userId"], let gameId = gameDict["gameId"] {
+        return "/api/users/\(userId)/games/\(gameId)"
+      }
+      return ""
+    case .deleteGame(let userId, let gameId):
+      return "/api/users/\(userId)/games/\(gameId)"
     }
   }
   
   var method: Moya.Method {
     switch self {
-    case .userSignIn:
+    case .userSignIn, .createGame:
       return .POST
-//    case :
-//      return .PUT
+    case .updateGame:
+      return .PATCH
+    case .deleteGame:
+      return .DELETE
     default:
       return .GET
     }
@@ -104,8 +128,23 @@ extension BallClub: TargetType {
               "password" : password]
     case .upload(_):
       return nil
+    
+    //Game Releted Calls
+    case .createGame(let gameDict):
+      guard let _ = gameDict["title"],
+        let _ = gameDict["start_time"],
+        let _ = gameDict["end_time"],
+        let _ = gameDict["reserved"],
+        let _ = gameDict["minCapacity"],
+        let _ = gameDict["maxCapacity"],
+        let _ = gameDict["fee"],
+        let _ = gameDict["additionalInfo"],
+        let _ = gameDict["locationId"] else { return nil }
+      return ["game" : gameDict]
+    case .updateGame(let gameDict):
+      return ["game" : gameDict]
     default:
-      return nil  
+      return nil
     }
   }
   
@@ -120,7 +159,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn: // for post api calls
+    case .userSignIn, .createGame, .updateGame: // for POST and PATCH api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default
@@ -144,8 +183,6 @@ extension BallClub: TargetType {
     switch self {
     case .userSignIn:
       return stubbedResponse("login")
-    case .register:
-      return stubbedResponse("register")
     default:
       return NSData() as Data
     }
