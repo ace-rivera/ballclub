@@ -52,6 +52,8 @@ enum BallClub {
   //User API Calls
   case getCurrentUser(Int)
   case getAllUsers()
+  case updateUser(Int, [String:Any])
+  case destroyUser(Int)
   
   
   //Game API Calls
@@ -94,6 +96,10 @@ extension BallClub: TargetType {
       return "/api/users/\(userId)"
     case .getAllUsers(_):
       return "/api/users"
+    case .updateUser(let userId, _):
+      return "/api/users/\(userId)"
+    case .destroyUser(let userId):
+      return "/api/user/\(userId)"
 
     //Game Related Calls
     case .getUserGames(let userId):
@@ -119,9 +125,9 @@ extension BallClub: TargetType {
     switch self {
     case .userSignIn, .createGame, .register:
       return .POST
-    case .updateGame:
+    case .updateGame, .updateUser:
       return .PATCH
-    case .deleteGame:
+    case .deleteGame, .destroyUser:
       return .DELETE
     default:
       return .GET
@@ -138,6 +144,10 @@ extension BallClub: TargetType {
       return nil
     case .register(let user):
       return ["user" :user]
+      
+    //User Related Calls
+    case .updateUser(_, let user):
+      return ["user" : user]
 
     //Game Releted Calls
     case .createGame(let gameDict):
@@ -169,7 +179,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn, .createGame, .updateGame, .register: // for POST and PATCH api calls
+    case .userSignIn, .createGame, .updateGame, .register, .updateUser: // for POST and PATCH api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default
@@ -180,11 +190,11 @@ extension BallClub: TargetType {
     return [
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Authorization": "Bearer f95c59ac84a847d54733eef6be822e184715aaf049cf42e5936df873f201f408", //+ (SessionManager.sharedInstance.getSessionToken() ?? "")!],
-      "access-token": "amATeBwdV7urv6IgXDUNTg",
-      "client": "Pj-6mQQO9IybnhXYfLxTSw",
+      "Authorization": "Bearer 5a5555337d1587c852b97d3b884a22282bcb425f47fd55485c165c0b1ed841ea", //+ (SessionManager.sharedInstance.getSessionToken() ?? "")!],
+      "access-token": "MQlszVM5Hcj8NgiF6_GGqw",
+      "client": "_mSXc-tDgBkJ_E1h7C9Uyw",
       "expiry": "1485002437",
-      "uid": "testa@gmail.com",
+      "uid": "k.paras@gmail.com",
       "token-type": "Bearer"
     ]
   }

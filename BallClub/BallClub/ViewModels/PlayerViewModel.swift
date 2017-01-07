@@ -12,45 +12,11 @@ import Gloss
 
 class PlayerViewModel: NSObject {
   
-  public typealias UserSignInResponseClosure = (Bool, String?) -> (Void)
+  public typealias UpdateUserResponseClosure = (Bool, String?) -> (Void)
   public typealias GetAllUserResponseClosure = (Bool, String, [Player]?) -> (Void)
   public typealias GetCurrentUserResponseClosure = (Bool, String, Player?) -> (Void)
   var allUsersArray = [Player]()
-  var currentUser: Player?
-  
-  func playerSign(emailAddress: String, password: String, completionBlock: (UserSignInResponseClosure)? = nil) {
-    APIProvider.request(.userSignIn(emailAddress, password)) { (result) in
-      switch result {
-      case .success(let response):
-        do {
-          let data = try response.mapJSON()
-          debugPrint("data ", data)
-          
-          if let datadict = data as? NSDictionary {
-            if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(false, error[0] as? String)
-            } else {
-              let userDetail = datadict.object(forKey: "data") as? [String:Any]
-              
-              if let playerDictionary = userDetail, let p = Player(json: playerDictionary) {
-                self.currentUser = p
-                completionBlock!(true,"Success")
-              } else {
-                completionBlock!(false, "Error")
-              }
-            }
-            
-          }
-          
-        } catch {
-          completionBlock!(false, "Error")
-        }
-      case .failure(let error):
-        completionBlock!(false, error.localizedDescription)
-      }
-    }
-  }
-  
+
   func getAllUsers(completionBlock: (GetAllUserResponseClosure)? = nil) {
     APIProvider.request(.getAllUsers()) { (result) in
       switch result {
@@ -118,5 +84,53 @@ class PlayerViewModel: NSObject {
     }
   }
   
+  func updateUser(userId: Int, userCredentials: [String:Any], completionBlock: (UpdateUserResponseClosure)? = nil) {
+    APIProvider.request(.updateUser(userId, userCredentials)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let datadict = data as? NSDictionary {
+            if let error = datadict.object(forKey: "errors") as? NSArray {
+              completionBlock!(false, error[0] as? String)
+            } else {
+              completionBlock!(true,"Success")
+            }
+          }
+        } catch {
+          completionBlock!(false, "Error")
+        }
+      case .failure(let error):
+        completionBlock!(false, error.localizedDescription)
+      }
+    }
+  }
+  
+  func deleteUser(userId: Int, completionBlock: (UpdateUserResponseClosure)? = nil) {
+    APIProvider.request(.destroyUser(userId)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let datadict = data as? NSDictionary {
+            if let error = datadict.object(forKey: "errors") as? NSArray {
+              completionBlock!(false, error[0] as? String)
+            } else {
+              completionBlock!(true,"Success")
+            }
+          }
+        } catch {
+          completionBlock!(false, "Error")
+        }
+      case .failure(let error):
+        completionBlock!(false, error.localizedDescription)
+      }
+    }
+  }
+
   
 }
