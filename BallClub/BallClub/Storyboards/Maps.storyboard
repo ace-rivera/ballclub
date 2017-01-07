@@ -176,6 +176,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="7y1-YG-6ko" secondAttribute="trailing" constant="-20" id="wkN-51-xhX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="iAz-Ac-JXl">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="lZX-d4-OdB">
+                            <inset key="imageInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="gKm-3E-dYg" id="c6k-Lo-PoI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="locationGames" destination="Yb1-im-nK3" id="haK-Ub-AH0"/>
                         <outlet property="locationName" destination="wwW-kk-vrP" id="xrt-zn-mXM"/>
@@ -213,6 +222,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back" width="22" height="22"/>
         <image name="ic__navigation_def_location" width="30" height="30"/>
         <image name="ic_exit_white" width="512" height="512"/>
         <image name="ic_filter_white" width="512" height="512"/>
