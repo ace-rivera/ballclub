@@ -54,6 +54,10 @@
 		B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */; };
 		B81155F91E0581500076B17B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F81E0581500076B17B /* Utilities.swift */; };
 		B873640D1E01984A00C77958 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873640C1E01984A00C77958 /* WebService.swift */; };
+		B88A15191E2128780043DBBD /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A15181E2128780043DBBD /* RegistrationViewModel.swift */; };
+		B88A151B1E2128A10043DBBD /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A151A1E2128A10043DBBD /* GamesViewModel.swift */; };
+		B88A151D1E2128B50043DBBD /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A151C1E2128B50043DBBD /* FriendsViewModel.swift */; };
+		B88A151F1E2128CB0043DBBD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A151E1E2128CB0043DBBD /* LocationViewModel.swift */; };
 		B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BA4E75841D81452A0062DC17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4E75831D81452A0062DC17 /* Images.xcassets */; };
@@ -118,6 +122,10 @@
 		B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		B81155F81E0581500076B17B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B873640C1E01984A00C77958 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		B88A15181E2128780043DBBD /* RegistrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		B88A151A1E2128A10043DBBD /* GamesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
+		B88A151C1E2128B50043DBBD /* FriendsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
+		B88A151E1E2128CB0043DBBD /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BA4E75831D81452A0062DC17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -390,6 +398,10 @@
 			isa = PBXGroup;
 			children = (
 				B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */,
+				B88A15181E2128780043DBBD /* RegistrationViewModel.swift */,
+				B88A151A1E2128A10043DBBD /* GamesViewModel.swift */,
+				B88A151C1E2128B50043DBBD /* FriendsViewModel.swift */,
+				B88A151E1E2128CB0043DBBD /* LocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -564,6 +576,7 @@
 				71547B031D753C3300264B67 /* UserViewController.swift in Sources */,
 				B81155F21E057FC80076B17B /* UIViewController.swift in Sources */,
 				FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */,
+				B88A151D1E2128B50043DBBD /* FriendsViewModel.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
 				BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */,
@@ -575,15 +588,18 @@
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
 				71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
+				B88A151F1E2128CB0043DBBD /* LocationViewModel.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
 				FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */,
 				B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */,
+				B88A15191E2128780043DBBD /* RegistrationViewModel.swift in Sources */,
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
 				B873640D1E01984A00C77958 /* WebService.swift in Sources */,
+				B88A151B1E2128A10043DBBD /* GamesViewModel.swift in Sources */,
 				FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */,
 				71D4927E1D7E908400E07DDF /* GameDetailViewController.swift in Sources */,
 				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
