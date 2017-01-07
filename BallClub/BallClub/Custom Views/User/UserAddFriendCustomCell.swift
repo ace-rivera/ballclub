@@ -9,23 +9,21 @@
 import UIKit
 
 class UserAddFriendCustomCell: UITableViewCell {
-
+  
   @IBOutlet weak var userProfileImage: UIImageView!
   @IBOutlet weak var userName: UILabel!
   @IBOutlet weak var acceptInvite: UIButton!
   @IBOutlet weak var declineInvite: UIButton!
   
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
   
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
+  
+  //MARK:- Setters Getters
   func setFriendUserName (name : String){
     userName.text = name
   }
@@ -34,11 +32,12 @@ class UserAddFriendCustomCell: UITableViewCell {
     userProfileImage.image = UIImage(named: image)
   }
   
-  @IBAction func acceptFriend(sender: AnyObject) {
+  @IBAction func acceptFriend(_ sender: AnyObject) {
     
   }
   
-  @IBAction func rejectFriend(sender: AnyObject) {
+  //MARK:- IBAction
+  @IBAction func rejectFriend(_ sender: AnyObject) {
     
   }
 }

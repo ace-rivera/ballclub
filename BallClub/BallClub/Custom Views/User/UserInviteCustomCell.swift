@@ -18,15 +18,14 @@ class UserInviteCustomCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    viewGameButton.layer.borderColor = UIColor.lightGray.cgColor
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
   }
   
+  //MARK:- Setters Getters
   func setFriendUserName (name : String){
     userName.text = name
   }
@@ -39,7 +38,8 @@ class UserInviteCustomCell: UITableViewCell {
     inviteStatus.text = status
   }
   
-  @IBAction func viewGameButtonPressed(sender: AnyObject) {
+  //MARK:- IBActions
+  @IBAction func viewGameButtonPressed(_ sender: AnyObject) {
     
   }
 }
