@@ -14,7 +14,7 @@ struct Player : Decodable {
   var uid: String
   var emailAddress: String
   var playerName: String
-  var nickName: String
+  var nickName: String?
   var contactNumber: String?
   var city: String
   var height: Double?
@@ -31,7 +31,6 @@ struct Player : Decodable {
       let uid: String = "uid" <~~ json,
       let email: String = "email" <~~ json,
       let name: String = "name" <~~ json,
-      let nickName: String = "nickname" <~~ json,
       let city: String = "city" <~~ json,
       let gender: Int = "gender" <~~ json else { return nil }
     
@@ -39,7 +38,7 @@ struct Player : Decodable {
     self.uid = uid
     self.emailAddress = email
     self.playerName = name
-    self.nickName = nickName
+    self.nickName = "nickname" <~~ json
     self.contactNumber = "contact_number" <~~ json
     self.city = city
     self.height = "height" <~~ json

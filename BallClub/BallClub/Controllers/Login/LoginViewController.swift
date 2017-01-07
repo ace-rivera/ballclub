@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var appLogo: UIImageView!
   
-  var playerViewModel = PlayerViewModel()
+  var registrationViewModel = RegistrationViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
   //MARK: - IBAction
   @IBAction func loginButtonPressed(_ sender: AnyObject) {
     if let email = emailAddLabel.text, let password = passwordLabel.text {
-      playerViewModel.playerSign(emailAddress: email, password: password) { (success, message) -> (Void) in
+      registrationViewModel.playerSign(emailAddress: email, password: password) { (success, message) -> (Void) in
         if success == true {
           self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
         } else {

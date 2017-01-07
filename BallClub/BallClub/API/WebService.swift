@@ -45,6 +45,8 @@ enum BallClub {
   //Registration API Calls
   case userSignIn(String, String)
   case upload(Data)
+  case register([String:Any])
+  case getToken()
   
   
   //User API Calls
@@ -69,7 +71,7 @@ private extension String {
 }
 
 extension BallClub: TargetType {
-  var baseURL: URL { return URL(string: "https://ballclub.herokuapp.com")! }
+  var baseURL: URL { return URL(string: "http://192.241.180.14:4000")! }
   
   var path: String {
     switch self {
@@ -82,15 +84,21 @@ extension BallClub: TargetType {
       return "/api/users/\(userId)"
     case .getAllUsers(_):
       return "/api/users"
+    case .getToken():
+      return "/api/oauth/token"
+    case .register(_):
+      return "/api/users"
+    default:
+      return ""
     }
   }
   
   var method: Moya.Method {
     switch self {
-    case .userSignIn:
+    case .userSignIn, .register:
       return .POST
-//    case :
-//      return .PUT
+      //    case :
+    //      return .PUT
     default:
       return .GET
     }
@@ -104,8 +112,10 @@ extension BallClub: TargetType {
               "password" : password]
     case .upload(_):
       return nil
+    case .register(let user):
+      return ["user" :user]
     default:
-      return nil  
+      return nil
     }
   }
   
@@ -120,7 +130,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn: // for post api calls
+    case .userSignIn, .register: // for post api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default
@@ -131,12 +141,12 @@ extension BallClub: TargetType {
     return [
       "Content-Type": "application/json",
       "Accept": "application/json",
-      //"Authorization": "Bearer " + (SessionManager.sharedInstance.getSessionToken() ?? "")!],
-      //"access-token": String
-      //"client": String
-      //"expiry": Date ata ndi ko sure pre
-      //"uid": string
-      //"token-type": Bearer
+      "Authorization": "Bearer f95c59ac84a847d54733eef6be822e184715aaf049cf42e5936df873f201f408", //+ (SessionManager.sharedInstance.getSessionToken() ?? "")!],
+      "access-token": "amATeBwdV7urv6IgXDUNTg",
+      "client": "Pj-6mQQO9IybnhXYfLxTSw",
+      "expiry": "1485002437",
+      "uid": "testa@gmail.com",
+      "token-type": "Bearer"
     ]
   }
   

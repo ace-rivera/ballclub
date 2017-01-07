@@ -27,6 +27,7 @@ class CreateProfileTableViewController: UITableViewController {
     
     
     var imagePicker :  UIImagePickerController!
+    let registrationViewModel = RegistrationViewModel()
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -106,7 +107,27 @@ class CreateProfileTableViewController: UITableViewController {
     }
     
     func registerUser() {
-        pushToMainStoryboard()
+      //TO-DO Implement registration api, call already working
+      let userDictionary = ["email": "j.relova@gmail.com",
+                            "password": "password",
+                            "password_confirmation": "password",
+                            "name": "Joshua",
+                            "nickname": "Josh",
+                            "image": "test",
+                            "contact_number": "test",
+                            "city": "Antipolo",
+                            "height": 1.23,
+                            "weight": 1.25,
+                            "birthday": "2012-10-24",
+                            "gender": 0] as [String : Any]
+      
+      registrationViewModel.registerUser(userCredentials: userDictionary) { (success, message) -> (Void) in
+        
+        if success ==  true {
+          debugPrint("User successfully registered")
+        }
+      }
+      //pushToMainStoryboard()
     }
     
     func pushToMainStoryboard(){
