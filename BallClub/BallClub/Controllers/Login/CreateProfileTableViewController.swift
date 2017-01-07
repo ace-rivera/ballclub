@@ -27,6 +27,8 @@ class CreateProfileTableViewController: UITableViewController {
     
     
     var imagePicker :  UIImagePickerController!
+    let registrationViewModel = RegistrationViewModel()
+    let playerViewModel = PlayerViewModel()
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -106,7 +108,26 @@ class CreateProfileTableViewController: UITableViewController {
     }
     
     func registerUser() {
-        pushToMainStoryboard()
+      //TO-DO Implement registration api, call already working
+      let userDictionary = [//"email": "k.paras@gmail.com",
+                            //"password": "password",
+                            //"password_confirmation": "password",
+                            "name": "Lebron",
+                            "nickname": "Josh",
+                            //"image": "test",
+                            //"contact_number": "test",
+                            //"city": "Antipolo",
+                            //"height": 1.23,
+                            //"weight": 1.25,
+                            //"birthday": "2012-10-24",
+                            "gender": 0] as [String : Any]
+      playerViewModel.deleteUser(userId: 12) { (success, message) -> (Void) in
+        if success == true {
+          debugPrint("SUCCESS")
+        }
+      }
+    
+      //pushToMainStoryboard()
     }
     
     func pushToMainStoryboard(){
