@@ -6,35 +6,46 @@
 //  Copyright © 2016 Geraldine Forto. All rights reserved.
 //
 
-import Foundation
+import Gloss
 
-class Game: NSObject {
+struct Game : Decodable {
+
+  var gameId: Int
+  var title: String
+  var startTime: String
+  var endTime: String
+  var reserved: Bool
+  var minCapacity: Int
+  var maxCapacity: Int
+  var fee: Double?
+  var additionalInfo: String?
+//  var gameCreator: User
+//  var location: Location
+
+  // MARK: - Deserialization
+  init?(json: JSON) {
+    guard let gameId: Int = "id" <~~ json,
+      let title: String = "title" <~~ json,
+      let startTime: String = "start_time" <~~ json,
+      let endTime: String = "end_time" <~~ json,
+      let reserved: Bool = "reserved" <~~ json,
+      let minCapacity: Int = "min_capacity" <~~ json,
+      let maxCapacity: Int = "max_capacity" <~~ json,
+      let fee: Double = "fee" <~~ json else { return nil }
+//      let gameCreator: Int = "user" <~~ json,
+//      let location: Int = "location" <~~ json else { return nil }
     
-  var gameId: String!
-  var gameTitle: String!
-  var gameDescription: String!
-  var gameLocation: Location!
-  var startDate: AnyObject!
-  var endDate: AnyObject!
-  var maxPlayers: Int!
-  var invitedPlayers: NSDictionary!
-  var fee: Double!
-  var isReserverd: Bool!
-  var isApprovalRequired: Bool!
-  
-  init(dict: NSDictionary) {
-    super.init()
-    self.gameId = (dict["gameId"] ?? "") as! String
-    self.gameTitle = (dict["gameTitle"] ?? "") as! String
-    self.gameDescription = (dict["gameDescription"] ?? "") as! String
-    self.gameLocation = (dict["gameLocation"] ?? 0) as! Location
-    //self.startDate = dict["startDate"] ?? ""
-    //self.endDate = dict["endDate"] ?? ""
-    self.maxPlayers = (dict["maxPlayers"] ?? 0) as! Int
-    self.invitedPlayers = (dict["invitedPlayers"] ?? [:]) as! NSDictionary
-    self.fee = (dict["fee"] ?? 0) as! Double
-    self.isReserverd = (dict["isReserverd"] ?? false) as! Bool
-    self.isApprovalRequired = (dict["isApprovalRequired"] ?? false) as! Bool
+    self.gameId = gameId
+    self.title = title
+    self.startTime = startTime
+    self.endTime = endTime
+    self.reserved = reserved
+    self.minCapacity = minCapacity
+    self.maxCapacity = maxCapacity
+    self.fee = fee
+//    self.gameCreator = gameCreator
+//    self.location = location
+    self.additionalInfo = "additional_info" <~~ json
     
   }
 }
