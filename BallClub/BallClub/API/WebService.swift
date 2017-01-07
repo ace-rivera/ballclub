@@ -42,13 +42,24 @@ let APIProvider = MoyaProvider<BallClub>(endpointClosure: endpointClosure, plugi
 
 
 enum BallClub {
-  //User API Calls
+  //Registration API Calls
   case userSignIn(String, String)
   case upload(Data)
+  
+  
+  //User API Calls
   case getCurrentUser(Int)
   case getAllUsers()
   
+  
   //Game API Calls
+  
+  
+  //Friends API Calls
+  
+  
+  //Location API Calls
+  
 }
 
 private extension String {
@@ -119,8 +130,13 @@ extension BallClub: TargetType {
   var headers: [String: String] {
     return [
       "Content-Type": "application/json",
-      "Accept": "application/json"
-      //"Authorization": "Bearer " + (SessionManager.sharedInstance.getSessionToken() ?? "")!]
+      "Accept": "application/json",
+      //"Authorization": "Bearer " + (SessionManager.sharedInstance.getSessionToken() ?? "")!],
+      //"access-token": String
+      //"client": String
+      //"expiry": Date ata ndi ko sure pre
+      //"uid": string
+      //"token-type": Bearer
     ]
   }
   
