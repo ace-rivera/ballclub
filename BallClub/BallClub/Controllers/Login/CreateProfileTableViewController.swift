@@ -121,12 +121,7 @@ class CreateProfileTableViewController: UITableViewController {
                             //"weight": 1.25,
                             //"birthday": "2012-10-24",
                             "gender": 0] as [String : Any]
-      playerViewModel.deleteUser(userId: 12) { (success, message) -> (Void) in
-        if success == true {
-          debugPrint("SUCCESS")
-        }
-      }
-    
+     
       //pushToMainStoryboard()
     }
     

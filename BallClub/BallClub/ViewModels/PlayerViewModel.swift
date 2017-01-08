@@ -12,9 +12,9 @@ import Gloss
 
 class PlayerViewModel: NSObject {
   
-  public typealias UpdateUserResponseClosure = (Bool, String?) -> (Void)
-  public typealias GetAllUserResponseClosure = (Bool, String, [Player]?) -> (Void)
-  public typealias GetCurrentUserResponseClosure = (Bool, String, Player?) -> (Void)
+  public typealias UpdateUserResponseClosure = (Int, String?) -> (Void)
+  public typealias GetAllUserResponseClosure = (Int, String, [Player]?) -> (Void)
+  public typealias GetCurrentUserResponseClosure = (Int, String, Player?) -> (Void)
   var allUsersArray = [Player]()
 
   func getAllUsers(completionBlock: (GetAllUserResponseClosure)? = nil) {
@@ -37,19 +37,22 @@ class PlayerViewModel: NSObject {
               }
               
               if self.allUsersArray.count > 0 {
-                completionBlock!(true,"Success",self.allUsersArray)
+                completionBlock!(response.statusCode,"Success",self.allUsersArray)
               } else {
-                completionBlock!(false, "Error", nil)
+                completionBlock!(response.statusCode, "Error", nil)
               }
            // }
             
           }
           
         } catch {
-          completionBlock!(false, "Error", nil)
+          completionBlock!(response.statusCode, "Error", nil)
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription, nil)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription, nil)
+        }
       }
     }
   }
@@ -64,22 +67,25 @@ class PlayerViewModel: NSObject {
           
           if let playerDictionary = data as? [String: Any] {
             if let error = playerDictionary["errors"] as? NSArray, let errorMessage = error[0] as? String {
-              completionBlock!(false, errorMessage, nil)
+              completionBlock!(response.statusCode, errorMessage, nil)
             } else {
               if let p = Player(json: playerDictionary){
-                completionBlock!(true, "User retrieved successfully", p)
+                completionBlock!(response.statusCode, "User retrieved successfully", p)
               } else {
-                completionBlock!(false, "Cannot convert to Player object", nil)
+                completionBlock!(response.statusCode, "Cannot convert to Player object", nil)
               }
             }
             
           }
           
         } catch {
-          completionBlock!(false, "Error", nil)
+          completionBlock!(response.statusCode, "Error", nil)
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription, nil)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription, nil)
+        }
       }
     }
   }
@@ -94,16 +100,19 @@ class PlayerViewModel: NSObject {
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(false, error[0] as? String)
+              completionBlock!(response.statusCode, error[0] as? String)
             } else {
-              completionBlock!(true,"Success")
+              completionBlock!(response.statusCode,"Success")
             }
           }
         } catch {
-          completionBlock!(false, "Error")
+          completionBlock!(response.statusCode, "Error")
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription)
+        }
       }
     }
   }
@@ -118,16 +127,19 @@ class PlayerViewModel: NSObject {
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(false, error[0] as? String)
+              completionBlock!(response.statusCode, error[0] as? String)
             } else {
-              completionBlock!(true,"Success")
+              completionBlock!(response.statusCode,"Success")
             }
           }
         } catch {
-          completionBlock!(false, "Error")
+          completionBlock!(response.statusCode, "Error")
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription)
+        }
       }
     }
   }
