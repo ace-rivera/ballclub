@@ -12,7 +12,7 @@ import Gloss
 
 class RegistrationViewModel: NSObject {
   
-  public typealias UserSignInResponseClosure = (Bool, String?) -> (Void)
+  public typealias UserSignInResponseClosure = (Int, String?) -> (Void)
   var currentUser: Player?
   
   func playerSign(emailAddress: String, password: String, completionBlock: (UserSignInResponseClosure)? = nil) {
@@ -25,26 +25,29 @@ class RegistrationViewModel: NSObject {
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(false, error[0] as? String)
+              completionBlock!(response.statusCode, error[0] as? String)
             } else {
               let userDetail = datadict.object(forKey: "data") as? [String:Any]
               
               if let playerDictionary = userDetail{
                 //UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
-                completionBlock!(true,"Success")
+                completionBlock!(response.statusCode,"Success")
               } else {
                 
-                completionBlock!(false, "Error")
+                completionBlock!(response.statusCode, "Error")
               }
             }
             
           }
           
         } catch {
-          completionBlock!(false, "Error")
+          completionBlock!(response.statusCode, "Error")
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription)
+        }
       }
     }
   }
@@ -63,16 +66,19 @@ class RegistrationViewModel: NSObject {
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(false, error[0] as? String)
+              completionBlock!(response.statusCode, error[0] as? String)
             } else {
-              completionBlock!(true,"Success")
+              completionBlock!(response.statusCode,"Success")
             }
           }
         } catch {
-          completionBlock!(false, "Error")
+          completionBlock!(response.statusCode, "Error")
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription)
+        }
       }
     }
   }

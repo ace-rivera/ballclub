@@ -59,6 +59,12 @@ enum BallClub {
   case getPendingRequests()
   case createFreindRequest(Int)
   case deleteRequest(Int)
+  case getFriendsList()
+  case deleteFriend(Int)
+  case createInvite([String:Any])
+  case getAcceptedInvites()
+  case getDeclinedInvites()
+  case getPendingInvites()
   
   //Game API Calls
   case getUserGames(Int)
@@ -112,7 +118,19 @@ extension BallClub: TargetType {
       return "/api/friend_requests"
     case .deleteRequest(let requestId):
       return "/api/friend_requests/\(requestId)"
-
+    case .getFriendsList():
+      return "/api/friends"
+    case .deleteFriend(let friendId):
+      return "/api/friends/\(friendId)"
+    case .createInvite(_):
+      return "/api/invites"
+    case .getAcceptedInvites():
+      return "/api/invites/accepted"
+    case .getDeclinedInvites():
+      return "/api/invites/declined"
+    case .getPendingInvites():
+      return "/api/invites/pending"
+      
     //Game Related Calls
     case .getUserGames(let userId):
       return "/api/users/\(userId)/games"
@@ -135,11 +153,11 @@ extension BallClub: TargetType {
   
   var method: Moya.Method {
     switch self {
-    case .userSignIn, .createGame, .register, .createFreindRequest:
+    case .userSignIn, .createGame, .register, .createFreindRequest, .createInvite:
       return .POST
     case .updateGame, .updateUser:
       return .PATCH
-    case .deleteGame, .destroyUser, .deleteRequest:
+    case .deleteGame, .destroyUser, .deleteRequest, .deleteFriend:
       return .DELETE
     default:
       return .GET
@@ -164,6 +182,8 @@ extension BallClub: TargetType {
    //Friends Related Calls
     case .createFreindRequest(let friendId):
       return ["friend_id": friendId]
+    case .createInvite(let invite):
+      return ["invite": invite]
 
     //Game Releted Calls
     case .createGame(let gameDict):
@@ -195,7 +215,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn, .createGame, .updateGame, .register, .updateUser, .createFreindRequest: // for POST and PATCH api calls
+    case .userSignIn, .createGame, .updateGame, .register, .updateUser, .createFreindRequest, .createInvite: // for POST and PATCH api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default
