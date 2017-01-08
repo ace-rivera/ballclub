@@ -48,13 +48,13 @@ class LoginViewController: UIViewController {
   //MARK: - IBAction
   @IBAction func loginButtonPressed(_ sender: AnyObject) {
     if let email = emailAddLabel.text, let password = passwordLabel.text {
-      registrationViewModel.playerSign(emailAddress: email, password: password) { (success, message) -> (Void) in
-        if success == true {
-          self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
-        } else {
+      registrationViewModel.playerSign(emailAddress: email, password: password) { (responseCode, message) -> (Void) in
+        if responseCode == 400 || responseCode == 401 {
           if let m = message {
             self.showAlert(title: "ERROR", message: m, callback: {})
           }
+        } else {
+          self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
         }
       }
     }
