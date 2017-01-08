@@ -100,8 +100,9 @@ class PlayerViewModel: NSObject {
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(response.statusCode, error[0] as? String)
+              completionBlock!(1, error[0] as? String)
             } else {
+              //TO-DO save new curren user dictionaru to userDefaults
               completionBlock!(response.statusCode,"Success")
             }
           }

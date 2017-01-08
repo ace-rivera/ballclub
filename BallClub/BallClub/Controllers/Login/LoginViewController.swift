@@ -47,14 +47,27 @@ class LoginViewController: UIViewController {
   
   //MARK: - IBAction
   @IBAction func loginButtonPressed(_ sender: AnyObject) {
+    Utilities.showProgressHud(withTitle: "Logging In", inView: self.view)
     if let email = emailAddLabel.text, let password = passwordLabel.text {
       registrationViewModel.playerSign(emailAddress: email, password: password) { (responseCode, message) -> (Void) in
         if responseCode == 400 || responseCode == 401 {
+          Utilities.hideProgressHud()
           if let m = message {
             self.showAlert(title: "ERROR", message: m, callback: {})
           }
         } else {
-          self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+          self.registrationViewModel.getToken(clientId: Constants.clientId, clientSecret: Constants.clientSecret, grantType: Constants.grantType, completionBlock: { (responseCode, message, token) -> (Void) in
+            Utilities.hideProgressHud()
+            if (responseCode == 200 || responseCode == 201), let t = token {
+              SessionManager.sharedInstance.saveSession(username: email, token: t)
+              self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+            } else {
+              if let m = message {
+                self.showAlert(title: "Error", message: m, callback: {})
+              }
+            }
+          })
+          
         }
       }
     }

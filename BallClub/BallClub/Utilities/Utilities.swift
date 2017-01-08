@@ -34,4 +34,11 @@ struct Utilities {
   static func hideProgressHud() {
     self.loadingHud.hide(animated: true)
   }
+  
+  static func isValidEmail(email: String) -> Bool {
+    let emailTest = NSPredicate(format:"SELF MATCHES %@", Constants.kLessSimpleEmailRegex)
+    return emailTest.evaluate(with: email)
+  }
+  
+  
 }
