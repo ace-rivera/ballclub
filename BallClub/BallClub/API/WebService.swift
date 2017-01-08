@@ -55,6 +55,10 @@ enum BallClub {
   case updateUser(Int, [String:Any])
   case destroyUser(Int)
   
+  //Friends API Calls
+  case getPendingRequests()
+  case createFreindRequest(Int)
+  case deleteRequest(Int)
   
   //Game API Calls
   case getUserGames(Int)
@@ -100,6 +104,14 @@ extension BallClub: TargetType {
       return "/api/users/\(userId)"
     case .destroyUser(let userId):
       return "/api/user/\(userId)"
+      
+  //Friends Related Calls
+    case .getPendingRequests():
+      return "/api/friend_requests"
+    case.createFreindRequest(_):
+      return "/api/friend_requests"
+    case .deleteRequest(let requestId):
+      return "/api/friend_requests/\(requestId)"
 
     //Game Related Calls
     case .getUserGames(let userId):
@@ -123,11 +135,11 @@ extension BallClub: TargetType {
   
   var method: Moya.Method {
     switch self {
-    case .userSignIn, .createGame, .register:
+    case .userSignIn, .createGame, .register, .createFreindRequest:
       return .POST
     case .updateGame, .updateUser:
       return .PATCH
-    case .deleteGame, .destroyUser:
+    case .deleteGame, .destroyUser, .deleteRequest:
       return .DELETE
     default:
       return .GET
@@ -148,6 +160,10 @@ extension BallClub: TargetType {
     //User Related Calls
     case .updateUser(_, let user):
       return ["user" : user]
+      
+   //Friends Related Calls
+    case .createFreindRequest(let friendId):
+      return ["friend_id": friendId]
 
     //Game Releted Calls
     case .createGame(let gameDict):
@@ -179,7 +195,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn, .createGame, .updateGame, .register, .updateUser: // for POST and PATCH api calls
+    case .userSignIn, .createGame, .updateGame, .register, .updateUser, .createFreindRequest: // for POST and PATCH api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default
@@ -190,11 +206,11 @@ extension BallClub: TargetType {
     return [
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Authorization": "Bearer 5a5555337d1587c852b97d3b884a22282bcb425f47fd55485c165c0b1ed841ea", //+ (SessionManager.sharedInstance.getSessionToken() ?? "")!],
-      "access-token": "MQlszVM5Hcj8NgiF6_GGqw",
-      "client": "_mSXc-tDgBkJ_E1h7C9Uyw",
-      "expiry": "1485002437",
-      "uid": "k.paras@gmail.com",
+      "Authorization": "Bearer 38b62ce781103cf3f8e10e48735844b2981279008327419d5ba31e1ba31e8025", //+ (SessionManager.sharedInstance.getSessionToken() ?? "")!],
+      "access-token": "NMq1DC93tH99ad7JMgrQtQ",
+      "client": "ed4DbEJTW5a9B0jHsdZQiQ",
+      "expiry": "1485067178",
+      "uid": "testd@gmail.com",
       "token-type": "Bearer"
     ]
   }
