@@ -15,7 +15,7 @@ class FriendsViewModel: NSObject {
   public typealias CreateRequestResponseClosure = (Int, String?) -> (Void)
   public typealias GetAllUserResponseClosure = (Int, String, [Player]?) -> (Void)
   public typealias GetPendingRequestsResponseClosure = (Int, String, [Request]?, [Request]?) -> (Void)
-  public typealias GetFriendsListResponseClosure = (Int, String, [Player]?) -> (Void)
+  public typealias GetFriendsListResponseClosure = (Int, String?, [Player]?) -> (Void)
   public typealias GetInvitesResponseClosure = (Int, String, [Invite]?) -> (Void)
   public typealias CreateInviteResponseClosure = (Int, String, Invite?) -> (Void)
   

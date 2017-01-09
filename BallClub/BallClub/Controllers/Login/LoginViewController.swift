@@ -1,4 +1,4 @@
-//
+	//
 //  LoginViewController.swift
 //  BallClub
 //
@@ -59,7 +59,9 @@ class LoginViewController: UIViewController {
           self.registrationViewModel.getToken(clientId: Constants.clientId, clientSecret: Constants.clientSecret, grantType: Constants.grantType, completionBlock: { (responseCode, message, token) -> (Void) in
             Utilities.hideProgressHud()
             if (responseCode == 200 || responseCode == 201), let t = token {
+              UserDefaults.standard.set(t, forKey: "Token")
               SessionManager.sharedInstance.saveSession(username: email, token: t)
+              UserDefaults.standard.set(email, forKey: "UserEmailAddress")
               self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
             } else {
               if let m = message {

@@ -123,6 +123,7 @@
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80009AF1E2210460015C6BF /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		B80009B11E22248D0015C6BF /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		B80009B31E23D4990015C6BF /* BallClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BallClub.entitlements; sourceTree = "<group>"; };
 		B81155F11E057FC80076B17B /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		B81155F81E0581500076B17B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 		71547A7F1D752A4300264B67 /* BallClub */ = {
 			isa = PBXGroup;
 			children = (
+				B80009B31E23D4990015C6BF /* BallClub.entitlements */,
 				B81155F61E05812B0076B17B /* Utilities */,
 				B81155F31E0580080076B17B /* Protocols */,
 				B81155F01E057F9E0076B17B /* Extensions */,
@@ -472,7 +474,14 @@
 				TargetAttributes = {
 					71547A7C1D752A4300264B67 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4X7744TJZ2;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -733,8 +742,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BallClub/BallClub.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4X7744TJZ2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -757,8 +768,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BallClub/BallClub.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4X7744TJZ2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

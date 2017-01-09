@@ -231,10 +231,10 @@ extension BallClub: TargetType {
       "Content-Type": "application/json",
       "Accept": "application/json",
       "Authorization": "Bearer " + (SessionManager.sharedInstance.getSessionToken() ?? "")!,
-      "access-token": "NMq1DC93tH99ad7JMgrQtQ",
-      "client": "ed4DbEJTW5a9B0jHsdZQiQ",
-      "expiry": "1485067178",
-      "uid": "testd@gmail.com",
+      "access-token": "B6ce6bRjmMNs3dzRReV5bA",
+      "client": "e_Mi3_iXW4kQwJgqpWx8ng",
+      "expiry": "1485084034",
+      "uid": (SessionManager.sharedInstance.getUsername() ?? "")!,
       "token-type": "Bearer"
     ]
   }
