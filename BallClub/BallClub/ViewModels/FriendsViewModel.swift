@@ -77,6 +77,8 @@ class FriendsViewModel: NSObject {
           let data = try response.mapJSON()
           debugPrint("data ", data)
           
+          
+          
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
               completionBlock!(response.statusCode, error[0] as? String)
@@ -290,7 +292,7 @@ class FriendsViewModel: NSObject {
         do {
           let data = try response.mapJSON()
           debugPrint("data ", data)
-          
+        
           if let dataDict = data as? NSArray {
             //            if let error = datadict.object(forKey: "errors") as? NSArray {
             //              completionBlock!(false, error[0] as? String)
