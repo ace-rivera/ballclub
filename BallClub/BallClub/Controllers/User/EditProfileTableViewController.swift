@@ -119,7 +119,7 @@ class EditProfileTableViewController: UITableViewController {
                             "gender": 0] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
       //TO-DO pass current user id in api call
-      playerViewModel.updateUser(userId: 23, userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
+      playerViewModel.updateUser(userId: 4, userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
         if responseCode == 200 || responseCode == 201 {
           self.showAlert(title: "SUCCESS", message: "User Profile has ben successfully updated", callback: {self.navigationController?.popViewController(animated: true)})
         } else if responseCode ==  1 {

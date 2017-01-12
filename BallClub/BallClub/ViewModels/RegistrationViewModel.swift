@@ -12,7 +12,8 @@ import Gloss
 
 class RegistrationViewModel: NSObject {
   
-  public typealias UserSignInResponseClosure = (Int, String?) -> (Void)
+  public typealias UserSignInResponseClosure = (Int, String?, String?, String?) -> (Void)
+  public typealias UserRegistrationResponseClosure = (Int, String?) -> (Void)
   public typealias GetTokenResponseClosure = (Int, String?, String?) -> (Void)
   var currentUser: Player?
   
@@ -26,28 +27,30 @@ class RegistrationViewModel: NSObject {
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(response.statusCode, error[0] as? String)
+              completionBlock!(response.statusCode, error[0] as? String, nil, nil)
             } else {
               let userDetail = datadict.object(forKey: "data") as? [String:Any]
               
-              if let playerDictionary = userDetail{
+              if let playerDictionary = userDetail, let httpResponse = response.response as? HTTPURLResponse, let accessToken = httpResponse.allHeaderFields["access-token"] as? String,
+                let client = httpResponse.allHeaderFields["client"] as? String, let expiry = httpResponse.allHeaderFields["expiry"] as? String {
                 //UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
-                completionBlock!(response.statusCode,"Success")
+                UserDefaults.standard.set(expiry, forKey: "expiry")
+                completionBlock!(response.statusCode,"Success", accessToken, client)
               } else {
                 
-                completionBlock!(response.statusCode, "Error")
+                completionBlock!(response.statusCode, "Error", nil, nil)
               }
             }
             
           }
           
         } catch {
-          completionBlock!(response.statusCode, "Error")
+          completionBlock!(response.statusCode, "Error", nil, nil)
         }
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription)
+        compBlock(response.statusCode, error.localizedDescription, nil, nil)
         }
       }
     }
@@ -82,7 +85,7 @@ class RegistrationViewModel: NSObject {
 
   }
   
-  func registerUser(userCredentials: [String:Any], completionBlock: (UserSignInResponseClosure)? = nil) {
+  func registerUser(userCredentials: [String:Any], completionBlock: (UserRegistrationResponseClosure)? = nil) {
     APIProvider.request(.register(userCredentials)) { (result) in
       switch result {
       case .success(let response):

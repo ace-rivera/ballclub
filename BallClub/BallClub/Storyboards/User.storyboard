@@ -47,7 +47,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-yW-Wvj">
-                                        <rect key="frame" x="347" y="20.5" width="25" height="25"/>
+                                        <rect key="frame" x="347" y="21" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="1nW-Vz-mUG"/>
                                             <constraint firstAttribute="width" constant="25" id="7xX-yJ-sNj"/>
@@ -190,7 +190,7 @@
                                     <action selector="segmentTabChanged:" destination="1Qb-0J-YXH" eventType="valueChanged" id="j1b-Ks-2PD"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="boT-a7-I9B">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="boT-a7-I9B">
                                 <rect key="frame" x="-4" y="328" width="383" height="290"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -229,11 +229,21 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="friendsTableView" destination="boT-a7-I9B" id="NTa-4B-qDk"/>
+                        <outlet property="searchDisplayController" destination="yQS-1P-QA8" id="7Fy-wj-95s"/>
                         <outlet property="searchTextField" destination="YE4-Qp-X6L" id="iQb-r3-N31"/>
+                        <outlet property="searchView" destination="7rU-Oc-N74" id="BdW-xf-edk"/>
                         <segue destination="cyQ-xu-w2l" kind="show" identifier="FriendsProfileViewControllerSegue" id="abP-np-lwi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uS-SA-01D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="yQS-1P-QA8">
+                    <connections>
+                        <outlet property="delegate" destination="1Qb-0J-YXH" id="v4Y-e9-Fuf"/>
+                        <outlet property="searchContentsController" destination="1Qb-0J-YXH" id="uRZ-bT-iGQ"/>
+                        <outlet property="searchResultsDataSource" destination="1Qb-0J-YXH" id="idj-gk-Md6"/>
+                        <outlet property="searchResultsDelegate" destination="1Qb-0J-YXH" id="QQa-vP-NOu"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="913" y="350"/>
         </scene>
@@ -244,6 +254,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mu8-h3-Ag9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="913" y="790"/>
+        </scene>
+        <!--User Search Result Table View Controller-->
+        <scene sceneID="axl-fK-LnI">
+            <objects>
+                <tableViewController storyboardIdentifier="userSearchResult" id="zwb-AT-BcH" customClass="UserSearchResultTableViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7db-CX-XY4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GUu-bs-wsa">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GUu-bs-wsa" id="DPC-Bj-DmR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zwb-AT-BcH" id="IOb-wl-bBc"/>
+                            <outlet property="delegate" destination="zwb-AT-BcH" id="D2Z-vx-GOP"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EYK-7s-MCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940" y="1221"/>
         </scene>
         <!--Create Profile-->
         <scene sceneID="Mfi-CP-qSB">

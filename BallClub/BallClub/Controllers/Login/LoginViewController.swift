@@ -1,4 +1,4 @@
-//
+	//
 //  LoginViewController.swift
 //  BallClub
 //
@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
   @IBAction func loginButtonPressed(_ sender: AnyObject) {
     Utilities.showProgressHud(withTitle: "Logging In", inView: self.view)
     if let email = emailAddLabel.text, let password = passwordLabel.text {
-      registrationViewModel.playerSign(emailAddress: email, password: password) { (responseCode, message) -> (Void) in
+      registrationViewModel.playerSign(emailAddress: email, password: password) { (responseCode, message, accessToken, client) -> (Void) in
         if responseCode == 400 || responseCode == 401 {
           Utilities.hideProgressHud()
           if let m = message {
@@ -58,8 +58,10 @@ class LoginViewController: UIViewController {
         } else {
           self.registrationViewModel.getToken(clientId: Constants.clientId, clientSecret: Constants.clientSecret, grantType: Constants.grantType, completionBlock: { (responseCode, message, token) -> (Void) in
             Utilities.hideProgressHud()
-            if (responseCode == 200 || responseCode == 201), let t = token {
-              SessionManager.sharedInstance.saveSession(username: email, token: t)
+            if (responseCode == 200 || responseCode == 201), let t = token, let accessToken = accessToken, let client = client {
+              UserDefaults.standard.set(t, forKey: "Token")
+              SessionManager.sharedInstance.saveSession(username: email, token: t, accessToken: accessToken, client: client)
+              UserDefaults.standard.set(email, forKey: "UserEmailAddress")
               self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
             } else {
               if let m = message {

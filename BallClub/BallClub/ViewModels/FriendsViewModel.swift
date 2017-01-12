@@ -15,7 +15,7 @@ class FriendsViewModel: NSObject {
   public typealias CreateRequestResponseClosure = (Int, String?) -> (Void)
   public typealias GetAllUserResponseClosure = (Int, String, [Player]?) -> (Void)
   public typealias GetPendingRequestsResponseClosure = (Int, String, [Request]?, [Request]?) -> (Void)
-  public typealias GetFriendsListResponseClosure = (Int, String, [Player]?) -> (Void)
+  public typealias GetFriendsListResponseClosure = (Int, String?, [Player]?) -> (Void)
   public typealias GetInvitesResponseClosure = (Int, String, [Invite]?) -> (Void)
   public typealias CreateInviteResponseClosure = (Int, String, Invite?) -> (Void)
   
@@ -76,6 +76,8 @@ class FriendsViewModel: NSObject {
         do {
           let data = try response.mapJSON()
           debugPrint("data ", data)
+          
+          
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
@@ -290,7 +292,7 @@ class FriendsViewModel: NSObject {
         do {
           let data = try response.mapJSON()
           debugPrint("data ", data)
-          
+        
           if let dataDict = data as? NSArray {
             //            if let error = datadict.object(forKey: "errors") as? NSArray {
             //              completionBlock!(false, error[0] as? String)
