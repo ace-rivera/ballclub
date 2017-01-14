@@ -67,6 +67,7 @@ enum BallClub {
   case getPendingInvites()
   
   //Game API Calls
+  case getAllGames()
   case getUserGames(Int)
   case getGameDetails(Int, Int)
   case createGame([String : Any])
@@ -77,7 +78,10 @@ enum BallClub {
   
   
   //Location API Calls
-  
+  case getAllLocations()
+  case createLocation([String : Any])
+  case updateLocation(Int, [String : Any])
+  case deleteLocation(Int)
 }
 
 private extension String {
@@ -132,6 +136,8 @@ extension BallClub: TargetType {
       return "/api/invites/pending"
       
     //Game Related Calls
+    case .getAllGames():
+      return "/api/games/all"
     case .getUserGames(let userId):
       return "/api/users/\(userId)/games"
     case .getGameDetails(let userId, let gameId):
@@ -148,16 +154,27 @@ extension BallClub: TargetType {
       return ""
     case .deleteGame(let userId, let gameId):
       return "/api/users/\(userId)/games/\(gameId)"
+    
+    
+    //Location Related Calls
+    case .getAllLocations:
+      return "/api/locations"
+    case .createLocation(_):
+      return "/api/locations"
+    case .updateLocation(let locationId, _):
+      return "/api/locations/\(locationId)"
+    case .deleteLocation(let locationId):
+      return "/api/locations/\(locationId)"
     }
   }
   
   var method: Moya.Method {
     switch self {
-    case .userSignIn, .createGame, .register, .createFreindRequest, .createInvite:
+    case .userSignIn, .createGame, .createLocation, .register, .createFreindRequest, .createInvite:
       return .POST
-    case .updateGame, .updateUser:
+    case .updateGame, .updateLocation, .updateUser:
       return .PATCH
-    case .deleteGame, .destroyUser, .deleteRequest, .deleteFriend:
+    case .deleteGame, .deleteLocation, .destroyUser, .deleteRequest, .deleteFriend:
       return .DELETE
     default:
       return .GET
@@ -199,6 +216,15 @@ extension BallClub: TargetType {
       return ["game" : gameDict]
     case .updateGame(let gameDict):
       return ["game" : gameDict]
+      
+    //Location Related Calls
+    case .createLocation(let locationDict):
+      guard let _ = locationDict["name"],
+        let _ = locationDict["longitude"],
+        let _ = locationDict["latitude"] else { return nil }
+      return ["location" : locationDict]
+    case .updateLocation(_, let locationDict):
+      return ["location" : locationDict]
     default:
       return nil
     }
@@ -215,7 +241,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn, .createGame, .updateGame, .register, .updateUser, .createFreindRequest, .createInvite: // for POST and PATCH api calls
+    case .userSignIn, .createGame, .createLocation, .updateLocation, .updateGame, .register, .updateUser, .createFreindRequest, .createInvite: // for POST and PATCH api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default

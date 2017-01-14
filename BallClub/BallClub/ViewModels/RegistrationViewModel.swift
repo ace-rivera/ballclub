@@ -29,8 +29,8 @@ class RegistrationViewModel: NSObject {
             } else {
               let userDetail = datadict.object(forKey: "data") as? [String:Any]
               
-              if let playerDictionary = userDetail{
-                //UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
+              if let playerDictionary = userDetail {
+                UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
                 completionBlock!(response.statusCode,"Success")
               } else {
                 

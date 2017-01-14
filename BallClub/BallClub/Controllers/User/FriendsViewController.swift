@@ -96,14 +96,7 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
         }else if tabSelected == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as! FeedsCustomCell
-            cell.setDateOfGame(date: NSDate())
-            cell.setTitleOfGame(title: TestClass.Feeds.FeedTitle[indexPath.row])
-            cell.setCreatorOfGame(name: TestClass.Feeds.FeedCreator[indexPath.row])
-            cell.setLocationOfGame(location: TestClass.Feeds.FeedLocation[indexPath.row])
-            cell.setTimeOfGame(startTime: TestClass.Feeds.FeedStartTime[indexPath.row], endTime: TestClass.Feeds.FeedEndTime[indexPath.row], amPm: TestClass.Feeds.FeedAmPm[indexPath.row])
-            cell.setPriceOfGame(price: TestClass.Feeds.FeedPrice[indexPath.row])
-            cell.setMemberCountOfGame(count: TestClass.Feeds.FeedFriends[indexPath.row].count, maxCount: 10)
-            cell.setAttendeesOfGame(friends: TestClass.Feeds.FeedFriends[indexPath.row])
+            //Ace Rivera : TODO - fetch game
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell

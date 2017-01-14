@@ -22,56 +22,70 @@ class FeedsCustomCell: UITableViewCell {
   @IBOutlet weak var gameFriendsIcon: UIImageView!
 //  @IBOutlet weak var gameFriendsCollection: UICollectionView!
   
+  var game: Game? {
+    didSet {
+      if let g = game {
+        self.setupCellData(game: g)
+      }
+    }
+  }
+  
   override func awakeFromNib() {
     super.awakeFromNib()
+  }
+  
+  //MARK: - UI Handling
+  override func prepareForReuse() {
+    self.gameDateLabel.text = ""
+    self.gameTitle.text = ""
+    self.gameCreator.text = ""
+    self.gameLocation.text = ""
+    self.gameTime.text = ""
+    self.gamePrice.text = ""
+    self.gameMemberCount.text = ""
+    self.gameFriends.text = ""
+    self.setNeedsLayout()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
-  func setDateOfGame(date: NSDate){
-    gameDateLabel.text = CustomDateFormatter().feedsDateFormat(feedDate: date)
-  }
-  
-  func setTitleOfGame(title: String){
-    gameTitle.text = title
-  }
-  
-  func setCreatorOfGame(name: String){
-    gameCreator.text = name
-  }
-  
-  func setLocationOfGame(location: String){ //TODO: change to Location datatype
-    gameLocation.text = location
-  }
-  
-  func setTimeOfGame(startTime : String, endTime : String, amPm : String){
-    gameTime.text = "\(startTime) - \(endTime) \(amPm)"
-  }
-  
-  func setPriceOfGame(price: String){
-    if price == "none"{
-      gamePrice.isHidden = true
-      gamePriceIcon.isHidden = true
-    }else{
-      gamePrice.text = price
+  func setupCellData(game: Game) {
+    let dateFormatter = DateFormatter()
+    if let start = dateFormatter.date(from: game.startTime),
+      let end = dateFormatter.date(from: game.endTime) {
+      self.gameDateLabel.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
+      self.gameTime.text = CustomDateFormatter().gameDetailsDateFormat(startTime: start, endTime: end)
+    }
+    
+    self.gameTitle.text = game.title
+    self.gameCreator.text = game.gameCreator.playerName
+    
+    if game.fee > 0.0 {
+      self.gamePrice.text = "\(game.fee)"
+    } else {
+      self.gamePrice.isHidden = true
+      self.gamePriceIcon.isHidden = true
     }
   }
   
-  func setMemberCountOfGame(count: Int , maxCount : Int){
-    gameMemberCount.text = "\(count)/\(maxCount)"
-  }
-  
-  func setAttendeesOfGame(friends : [String]){ //TODO: change datatype to User - Friend
-    if friends.count == 0 {
-      gameFriends.isHidden = true
-      gameFriendsIcon.isHidden = true
-//      gameFriendsCollection.hidden = true
-    }else if friends.count >= 2 {
-      gameFriends.text = "\(friends[0]) and \(friends[1]) are going"
-    }else{
-      gameFriends.text = "\(friends[0]) is going"
-    }
-  }
+//  func setLocationOfGame(location: String){ //TODO: change to Location datatype
+//    gameLocation.text = location
+//  }
+//  
+//  func setMemberCountOfGame(count: Int , maxCount : Int){
+//    gameMemberCount.text = "\(count)/\(maxCount)"
+//  }
+//  
+//  func setAttendeesOfGame(friends : [String]){ //TODO: change datatype to User - Friend
+//    if friends.count == 0 {
+//      gameFriends.isHidden = true
+//      gameFriendsIcon.isHidden = true
+//    }else if friends.count >= 2 {
+//      gameFriends.text = "\(friends[0]) and \(friends[1]) are going"
+//    }else{
+//      gameFriends.text = "\(friends[0]) is going"
+//    }
+//  }
 }

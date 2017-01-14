@@ -12,6 +12,8 @@ class GamesViewController: UIViewController {
   
   @IBOutlet weak var gamesTableview: UITableView!
   
+  var gameList = [Game]()
+  
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,11 +22,21 @@ class GamesViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.gamesTableview.reloadData()
+    self.getGames()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
+  }
+  
+  func getGames() {
+    let gameViewModel = GamesViewModel()
+    gameViewModel.getCurrentUserGames { (statusCode, message, games) -> (Void) in
+      if statusCode == 200, let games = games {
+        self.gameList = games
+        self.gamesTableview.reloadData()
+      }
+    }
   }
   
   //MARK: - SetUpUI
@@ -41,16 +53,11 @@ class GamesViewController: UIViewController {
 
 extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as! FeedsCustomCell
-    cell.setDateOfGame(date: NSDate())
-    cell.setTitleOfGame(title: TestClass.Feeds.FeedTitle[indexPath.row])
-    cell.setCreatorOfGame(name: TestClass.Feeds.FeedCreator[indexPath.row])
-    cell.setLocationOfGame(location: TestClass.Feeds.FeedLocation[indexPath.row])
-    cell.setTimeOfGame(startTime: TestClass.Feeds.FeedStartTime[indexPath.row], endTime: TestClass.Feeds.FeedEndTime[indexPath.row], amPm: TestClass.Feeds.FeedAmPm[indexPath.row])
-    cell.setPriceOfGame(price: TestClass.Feeds.FeedPrice[indexPath.row])
-    cell.setMemberCountOfGame(count: TestClass.Feeds.FeedFriends[indexPath.row].count, maxCount: 10)
-    cell.setAttendeesOfGame(friends: TestClass.Feeds.FeedFriends[indexPath.row])
-    return cell
+    if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as? FeedsCustomCell {
+      cell.game = self.gameList[indexPath.row]
+      return cell
+    }
+    return UITableViewCell()
   }
   
   private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -60,11 +67,12 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
-      return 3
+      //Ace Rivera : temp - use section 0 first
+      return self.gameList.count
     case 1:
-      return 1
+      return 0
     case 2:
-      return 2
+      return 0
     default:
       return 0
     }
