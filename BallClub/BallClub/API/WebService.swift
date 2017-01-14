@@ -46,7 +46,7 @@ enum BallClub {
   case userSignIn(String, String)
   case upload(Data)
   case register([String:Any])
-  case getToken()
+  case getToken(String, String, String)
   
   
   //User API Calls
@@ -98,8 +98,8 @@ extension BallClub: TargetType {
     //Registration Related Calls
     case .userSignIn(_, _):
       return "/auth/sign_in"
-    case .getToken():
-      return "/api/oauth/token"
+    case .getToken(_,_,_):
+      return "/oauth/token"
     case .register(_):
       return "/api/users"
       
@@ -170,7 +170,7 @@ extension BallClub: TargetType {
   
   var method: Moya.Method {
     switch self {
-    case .userSignIn, .createGame, .createLocation, .register, .createFreindRequest, .createInvite:
+    case .userSignIn, .createGame, .createLocation, .register, .createFreindRequest, .createInvite, .getToken:
       return .POST
     case .updateGame, .updateLocation, .updateUser:
       return .PATCH
@@ -191,6 +191,10 @@ extension BallClub: TargetType {
       return nil
     case .register(let user):
       return ["user" :user]
+    case .getToken(let clientId, let clientSecret, let clientCredentials):
+      return ["client_id": clientId,
+      "client_secret": clientSecret,
+      "grant_type": clientCredentials]
       
     //User Related Calls
     case .updateUser(_, let user):
@@ -241,7 +245,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn, .createGame, .createLocation, .updateLocation, .updateGame, .register, .updateUser, .createFreindRequest, .createInvite: // for POST and PATCH api calls
+    case .userSignIn, .createGame, .createLocation, .updateLocation, .updateGame, .register, .updateUser, .createFreindRequest, .createInvite, .getToken: // for POST and PATCH api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default
@@ -252,11 +256,11 @@ extension BallClub: TargetType {
     return [
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Authorization": "Bearer 38b62ce781103cf3f8e10e48735844b2981279008327419d5ba31e1ba31e8025", //+ (SessionManager.sharedInstance.getSessionToken() ?? "")!],
-      "access-token": "NMq1DC93tH99ad7JMgrQtQ",
-      "client": "ed4DbEJTW5a9B0jHsdZQiQ",
-      "expiry": "1485067178",
-      "uid": "testd@gmail.com",
+      "Authorization": "Bearer " + (SessionManager.sharedInstance.getSessionToken() ?? "")!,
+      "access-token": (SessionManager.sharedInstance.getAccessToken() ?? "")!,
+      "client": (SessionManager.sharedInstance.getClient() ?? "")!,
+      "expiry": UserDefaults.standard.object(forKey: "expiry") as? String ?? "",
+      "uid": (SessionManager.sharedInstance.getUsername() ?? "")!,
       "token-type": "Bearer"
     ]
   }

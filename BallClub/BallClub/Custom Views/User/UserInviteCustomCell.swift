@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserInviteCustomCellDelegate {
+  func didTapOnInvitee(tag: Int)
+}
+
 class UserInviteCustomCell: UITableViewCell {
   
   @IBOutlet weak var userProfileImage: UIImageView!
@@ -15,10 +19,15 @@ class UserInviteCustomCell: UITableViewCell {
   @IBOutlet weak var inviteStatus: UILabel!
   @IBOutlet weak var viewGameButton: UIButton!
   
+  var delegate: UserInviteCustomCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
     viewGameButton.layer.borderColor = UIColor.lightGray.cgColor
+    //TapGesture recognizers
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapOnPlayerAssets))
+    self.userProfileImage.addGestureRecognizer(tapGesture)
+    self.userName.addGestureRecognizer(tapGesture)
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,6 +46,13 @@ class UserInviteCustomCell: UITableViewCell {
   func setFriendInviteStatus (status : String) {
     inviteStatus.text = status
   }
+  
+  func didTapOnPlayerAssets() {
+    if let d = delegate {
+      d.didTapOnInvitee(tag: self.tag)
+    }
+  }
+
   
   //MARK:- IBActions
   @IBAction func viewGameButtonPressed(_ sender: AnyObject) {
