@@ -58,6 +58,7 @@ enum BallClub {
   //Friends API Calls
   case getPendingRequests()
   case createFreindRequest(Int)
+  case acceptFriendRequests(Int)
   case deleteRequest(Int)
   case getFriendsList()
   case deleteFriend(Int)
@@ -65,6 +66,8 @@ enum BallClub {
   case getAcceptedInvites()
   case getDeclinedInvites()
   case getPendingInvites()
+  case updateInvite(Int, [String:Any])
+  case deleteInvite(Int)
   
   //Game API Calls
   case getUserGames(Int)
@@ -87,7 +90,7 @@ private extension String {
 }
 
 extension BallClub: TargetType {
-  var baseURL: URL { return URL(string: "http://192.241.180.14:4000")! }
+  var baseURL: URL { return URL(string: "http://54.238.155.220")! }
   
   var path: String {
     switch self {
@@ -114,8 +117,10 @@ extension BallClub: TargetType {
   //Friends Related Calls
     case .getPendingRequests():
       return "/api/friend_requests"
-    case.createFreindRequest(_):
+    case .createFreindRequest(_):
       return "/api/friend_requests"
+    case .acceptFriendRequests(let requestId):
+      return "/api/friend_requests/\(requestId)"
     case .deleteRequest(let requestId):
       return "/api/friend_requests/\(requestId)"
     case .getFriendsList():
@@ -130,6 +135,10 @@ extension BallClub: TargetType {
       return "/api/invites/declined"
     case .getPendingInvites():
       return "/api/invites/pending"
+    case .updateInvite(let inviteId, _):
+      return "/api/invites/\(inviteId)"
+    case .deleteInvite(let inviteId):
+      return "/api/invites/\(inviteId)"
       
     //Game Related Calls
     case .getUserGames(let userId):
@@ -155,9 +164,9 @@ extension BallClub: TargetType {
     switch self {
     case .userSignIn, .createGame, .register, .createFreindRequest, .createInvite, .getToken:
       return .POST
-    case .updateGame, .updateUser:
+    case .updateGame, .updateUser, .updateInvite, .acceptFriendRequests:
       return .PATCH
-    case .deleteGame, .destroyUser, .deleteRequest, .deleteFriend:
+    case .deleteGame, .destroyUser, .deleteRequest, .deleteFriend, .deleteInvite:
       return .DELETE
     default:
       return .GET
@@ -187,6 +196,8 @@ extension BallClub: TargetType {
     case .createFreindRequest(let friendId):
       return ["friend_id": friendId]
     case .createInvite(let invite):
+      return ["invite": invite]
+    case .updateInvite(_, let invite):
       return ["invite": invite]
 
     //Game Releted Calls
@@ -219,7 +230,7 @@ extension BallClub: TargetType {
   
   var parameterEncoding: ParameterEncoding {
     switch self {
-    case .userSignIn, .createGame, .updateGame, .register, .updateUser, .createFreindRequest, .createInvite, .getToken: // for POST and PATCH api calls
+    case .userSignIn, .createGame, .updateGame, .register, .updateUser, .createFreindRequest, .createInvite, .getToken, .updateInvite: // for POST and PATCH api calls
       return Alamofire.JSONEncoding.prettyPrinted
     default:
       return Alamofire.URLEncoding.default

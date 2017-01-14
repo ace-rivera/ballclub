@@ -26,6 +26,7 @@ class UserViewController: UIViewController {
   var allPlayersArray = [Player]()
   var gameIvitesArray = [Invite]()
   var selectedUser: Player?
+  var selectedRequest: Request!
   var resultSearchController: UISearchController? = nil
   
   
@@ -33,17 +34,25 @@ class UserViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    getFriendRequests()
-    getPendingInvites()
+    
+    
     getAllUsers()
   }
+  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    Utilities.showProgressHud(withTitle: "Loading User Data", inView: self.view)
     setUpUI()
+    getPendingInvites()
+    getFriendRequests()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    Utilities.hideProgressHud()
   }
   
   //MARK: - SetUpUI
@@ -63,7 +72,7 @@ class UserViewController: UIViewController {
     
     if let searchBarController = self.resultSearchController {
       let searchBar = searchBarController.searchBar
-      let searchBarFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40.0)
+      let searchBarFrame = CGRect(x: 0, y: 15.0, width: UIScreen.main.bounds.width, height: 40.0)
       
       searchBar.sizeToFit()
       searchBar.placeholder = "Type Location"
@@ -88,7 +97,7 @@ class UserViewController: UIViewController {
   
   // User pending friend requests
   func getFriendRequests() {
-    Utilities.showProgressHud(withTitle: "Loading", inView: self.view)
+    incomingRequestsArray.removeAll()
     friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests) -> (Void) in
       
       if responseCode == 200 || responseCode == 201 {
@@ -105,11 +114,18 @@ class UserViewController: UIViewController {
   
   
   func getInvitee() {
+    pendingFriendsList.removeAll()
     for i in 0..<incomingRequestsArray.count {
-      playerViewModel.getUser(userId: incomingRequestsArray[i].friendId) { (responseCode, message, player) -> (Void) in
+      playerViewModel.getUser(userId: incomingRequestsArray[i].userId) { (responseCode, message, player) -> (Void) in
         if responseCode == 200 || responseCode == 201 {
           if let p = player {
+            debugPrint("this is i", i)
             self.pendingFriendsList.append(p)
+            
+            if i == self.incomingRequestsArray.count - 1 {
+              Utilities.hideProgressHud()
+              self.friendsTableView.reloadData()
+            }
           }
         } else {
           Utilities.hideProgressHud()
@@ -118,7 +134,10 @@ class UserViewController: UIViewController {
       }
     }
     
-    self.friendsTableView.reloadData()
+    if self.incomingRequestsArray.count == 0 {
+      Utilities.hideProgressHud()
+      self.friendsTableView.reloadData()
+    }
   }
   
   //User invited games
@@ -140,14 +159,23 @@ class UserViewController: UIViewController {
         if responseCode == 200 || responseCode == 201 {
           if let p = player {
             self.pendingUserInvitesList.append(p)
+            
+            if i == self.gameIvitesArray.count - 1 {
+              Utilities.hideProgressHud()
+              self.friendsTableView.reloadData()
+            }
+            
           }
         } else {
           self.showAlert(title: "ERROR", message: message, callback: {})
         }
       }
     }
-    Utilities.hideProgressHud()
-    self.friendsTableView.reloadData()
+    
+    if self.gameIvitesArray.count == 0 {
+      Utilities.hideProgressHud()
+      self.friendsTableView.reloadData()
+    }
   }
   
   func getAllUsers() {
@@ -186,6 +214,16 @@ class UserViewController: UIViewController {
   
   
   @IBAction func unwindToMenu(_segue: UIStoryboardSegue) {}
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "FriendsProfileViewControllerSegue" {
+      if let friendsVC: FriendsViewController = segue.destination as? FriendsViewController {       
+        if let user =  selectedUser {
+          friendsVC.player = user
+        }
+      }
+    }
+  }
   
 }
 
@@ -227,13 +265,41 @@ extension UserViewController : UserAddFriendCustomCellDelegate {
   func didTapOnUser(tag: Int) {
     //push profile view controller
     self.selectedUser = pendingFriendsList[tag]
+    let storyBoard = UIStoryboard.init(name: "Friends", bundle: nil)
+    if let friendsVC = storyBoard.instantiateViewController(withIdentifier: "FriendsProfileVC") as? FriendsViewController {
+      self.navigationController?.pushViewController(friendsVC, animated: true)
+    }
+    
   }
+  
+  func didTapOnAcceptFriend (tag: Int) {
+    self.selectedRequest = incomingRequestsArray[tag]
+    
+    friendsViewModel.acceptFriendRequest(requestId: self.selectedRequest.requestId) { (statusCode, message) -> (Void) in
+      if statusCode == 200 || statusCode == 201 || statusCode == 204 {
+        self.showAlert(title: "SUCCESS", message: "", callback: {})
+        self.getFriendRequests()
+      } else {
+        if let m = message {
+          self.showAlert(title: "ERROR", message: m, callback: {})
+        }
+      }
+    }
+  }  
 }
 
 extension UserViewController : UserInviteCustomCellDelegate {
   func didTapOnInvitee(tag: Int) {
-    //push profile view controller
     self.selectedUser = pendingUserInvitesList[tag]
+    self.performSegue(withIdentifier: "FriendsProfileViewControllerSegue", sender: self)
+  }
+  
+  func didTapOnViewGame(tag: Int) {
+    let storyBoard = UIStoryboard.init(name: "Game", bundle: nil)
+    if let gameDetailsVC = storyBoard.instantiateViewController(withIdentifier: "gameDetailsVC") as? GameDetailViewController {
+      gameDetailsVC.inviteId = gameIvitesArray[tag].inviteId
+      self.navigationController?.pushViewController(gameDetailsVC, animated: true)
+    }
   }
 }
 
