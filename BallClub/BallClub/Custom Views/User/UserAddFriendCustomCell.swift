@@ -10,6 +10,7 @@ import UIKit
 
 protocol UserAddFriendCustomCellDelegate {
   func didTapOnUser(tag: Int)
+  func didTapOnAcceptFriend(tag: Int)
 }
 
 class UserAddFriendCustomCell: UITableViewCell {
@@ -50,7 +51,9 @@ class UserAddFriendCustomCell: UITableViewCell {
   }
   
   @IBAction func acceptFriend(_ sender: AnyObject) {
-    
+    if let d = delegate {
+      d.didTapOnAcceptFriend(tag: self.tag)
+    }
   }
   
   //MARK:- IBAction

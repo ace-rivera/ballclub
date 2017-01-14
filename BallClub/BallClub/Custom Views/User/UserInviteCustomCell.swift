@@ -10,6 +10,7 @@ import UIKit
 
 protocol UserInviteCustomCellDelegate {
   func didTapOnInvitee(tag: Int)
+  func didTapOnViewGame(tag: Int)
 }
 
 class UserInviteCustomCell: UITableViewCell {
@@ -56,6 +57,8 @@ class UserInviteCustomCell: UITableViewCell {
   
   //MARK:- IBActions
   @IBAction func viewGameButtonPressed(_ sender: AnyObject) {
-    
+    if let d = delegate {
+      d.didTapOnViewGame(tag: self.tag)
+    }
   }
 }
