@@ -217,7 +217,8 @@ class UserViewController: UIViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "FriendsProfileViewControllerSegue" {
-      if let friendsVC: FriendsViewController = segue.destination as? FriendsViewController {       
+      let destinationNavigationController = segue.destination as! UINavigationController
+      if let friendsVC: FriendsViewController = destinationNavigationController.topViewController as? FriendsViewController {
         if let user =  selectedUser {
           friendsVC.player = user
         }
