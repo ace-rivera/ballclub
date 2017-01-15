@@ -6,8 +6,6 @@
 //  Copyright © 2016 Geraldine Forto. All rights reserved.
 //
 
-import MapKit
-
 import Gloss
 
 struct Location : Decodable {

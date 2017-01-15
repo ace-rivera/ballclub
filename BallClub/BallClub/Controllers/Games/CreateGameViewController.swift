@@ -57,19 +57,16 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       let location = self.selectedLocation, //needs improvement, should be from get location
       let startTime = self.startTimeButton.titleLabel?.text,
       let endTime = self.endTimeButton.titleLabel?.text,
-      let maxCapacity = Int(self.playerCount.text!),
       let fee = self.feeTextField.text else { return false }
 
     //create dictionary here
     self.gameDetailsDict["title"] = title
     self.gameDetailsDict["start_time"] = startTime
     self.gameDetailsDict["end_time"] = endTime
-    self.gameDetailsDict["max_capacity"] = maxCapacity
+    self.gameDetailsDict["max_capacity"] = Int(self.playerCount.text ?? "")
     self.gameDetailsDict["fee"] = fee
     self.gameDetailsDict["additionalInfo"] = self.infoTextfield.text ?? ""
     self.gameDetailsDict["location_id"] = location.locationId
-    
-    self.gameDetailsDict["min_capcity"] = maxCapacity/2
 
     return true
   }
