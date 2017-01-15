@@ -29,6 +29,8 @@ class GamesViewController: UIViewController {
     super.didReceiveMemoryWarning()
   }
   
+  
+  
   func getGames() {
     let gameViewModel = GamesViewModel()
     gameViewModel.getCurrentUserGames { (statusCode, message, games) -> (Void) in

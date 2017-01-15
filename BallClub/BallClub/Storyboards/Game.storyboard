@@ -665,7 +665,7 @@
             <objects>
                 <tableViewController id="9FS-0q-87m" customClass="InvitedFriendsViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="2" id="vDm-Ey-WT5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1122,8 +1122,8 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="xVY-nh-ebn" id="3pz-mo-zTu"/>
-                                                        <outlet property="delegate" destination="xVY-nh-ebn" id="Czo-pl-7Lg"/>
+                                                        <outlet property="dataSource" destination="xVY-nh-ebn" id="LYc-bW-gWa"/>
+                                                        <outlet property="delegate" destination="xVY-nh-ebn" id="4VH-tZ-Hrd"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
@@ -1247,7 +1247,7 @@
                         <outlet property="createGameTableView" destination="eAZ-4H-SSQ" id="YqR-zg-EYN"/>
                         <outlet property="endTimeButton" destination="QtR-qN-58G" id="RkE-IF-bab"/>
                         <outlet property="feeTextField" destination="xsc-9a-cdj" id="kBh-DH-qeC"/>
-                        <outlet property="friendsCollectionView" destination="KPq-x1-W2U" id="sia-lq-Q4U"/>
+                        <outlet property="friendsCollectionView" destination="KPq-x1-W2U" id="my0-Db-c6t"/>
                         <outlet property="gameTitleTextField" destination="UM3-5t-bSJ" id="3cF-ea-zSj"/>
                         <outlet property="infoTextfield" destination="UxI-8d-gM7" id="dwW-KS-RhT"/>
                         <outlet property="locationTextField" destination="1cE-SQ-04r" id="3Dx-rI-bj2"/>
@@ -1256,6 +1256,8 @@
                         <outlet property="privateIcon" destination="NIz-mN-nbk" id="LY2-PT-Rrv"/>
                         <outlet property="publicButton" destination="Uaq-PI-d7m" id="dNh-Pn-ssq"/>
                         <outlet property="publicIcon" destination="8x9-3t-umT" id="GFh-zg-mN6"/>
+                        <outlet property="requireApprovalSwitch" destination="Evb-lb-qRv" id="eYN-uM-Ksa"/>
+                        <outlet property="reservedSwitch" destination="PaJ-aR-0X4" id="hE4-Mw-X4w"/>
                         <outlet property="startTimeButton" destination="Ra6-on-wHh" id="bis-hI-NQ3"/>
                     </connections>
                 </tableViewController>
@@ -1313,6 +1315,6 @@
         <image name="player_durant" width="200" height="125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="74J-Dm-tV0"/>
+        <segue reference="w2v-na-vYe"/>
     </inferredMetricsTieBreakers>
 </document>

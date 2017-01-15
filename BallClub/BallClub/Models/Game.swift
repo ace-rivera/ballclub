@@ -20,7 +20,7 @@ struct Game : Decodable {
   var fee: Double
   var additionalInfo: String?
   var gameCreator: Player
-//  var location: Location
+  var location: Location
 
   // MARK: - Deserialization
   init?(json: JSON) {
@@ -32,8 +32,8 @@ struct Game : Decodable {
       let minCapacity: Int = "min_capacity" <~~ json,
       let maxCapacity: Int = "max_capacity" <~~ json,
       let fee: Double = "fee" <~~ json,
-      let gameCreator: Player = "user" <~~ json else { return nil }
-//      let location: Int = "location" <~~ json else { return nil }
+      let gameCreator: Player = "user" <~~ json,
+      let location: Location = "location" <~~ json else { return nil }
     
     self.gameId = gameId
     self.title = title
@@ -44,7 +44,7 @@ struct Game : Decodable {
     self.maxCapacity = maxCapacity
     self.fee = fee
     self.gameCreator = gameCreator
-//    self.location = location
+    self.location = location
     self.additionalInfo = "additional_info" <~~ json
     
   }
