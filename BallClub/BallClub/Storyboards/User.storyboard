@@ -229,6 +229,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="friendsTableView" destination="boT-a7-I9B" id="NTa-4B-qDk"/>
+                        <outlet property="playerName" destination="hhy-aY-vNd" id="11Y-df-89v"/>
                         <outlet property="searchDisplayController" destination="yQS-1P-QA8" id="7Fy-wj-95s"/>
                         <outlet property="searchTextField" destination="YE4-Qp-X6L" id="iQb-r3-N31"/>
                         <outlet property="searchView" destination="7rU-Oc-N74" id="BdW-xf-edk"/>

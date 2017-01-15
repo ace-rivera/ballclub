@@ -30,6 +30,10 @@ class GameDetailViewController: UITableViewController {
   @IBOutlet weak var goingIcon: UIButton!
   @IBOutlet weak var goingButton: UIButton!
   
+  
+  var inviteId: Int!
+  let friendsViewModel = FriendsViewModel()
+  
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -68,12 +72,15 @@ class GameDetailViewController: UITableViewController {
     
     switch button.tag {
     case 0:
+      self.updateGameStatus(status: button.tag)
       notGoingIcon.isSelected = true
       notGoingButton.isSelected = true
     case 1:
+      self.updateGameStatus(status: button.tag)
       tentativeIcon.isSelected = true
       tentativeButton.isSelected = true
     case 2:
+      self.updateGameStatus(status: button.tag)
       goingIcon.isSelected = true
       goingButton.isSelected = true
     default:
@@ -95,5 +102,21 @@ class GameDetailViewController: UITableViewController {
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return TestClass.Common.friendImages.count
+  }
+  
+  func updateGameStatus(status: Int) {
+    var invite = ["status": status,
+                  "membership": 1,
+                  "user_id": 2] // get from current user Userdefaults
+    friendsViewModel.updateInvite(inviteId: inviteId, invite: invite) { (statusCode, message) -> (Void) in
+      if statusCode ==  200 || statusCode == 201 {
+        
+      } else {
+        if let m = message {
+          self.showAlert(title: "ERROR", message: m, callback: {})
+        }
+        
+      }
+    }
   }
 }

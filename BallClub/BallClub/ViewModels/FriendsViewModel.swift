@@ -12,7 +12,7 @@ import Gloss
 
 class FriendsViewModel: NSObject {
   
-  public typealias CreateRequestResponseClosure = (Int, String?) -> (Void)
+  public typealias DefaultRequestResponseClosure = (Int, String?) -> (Void)
   public typealias GetAllUserResponseClosure = (Int, String, [Player]?) -> (Void)
   public typealias GetPendingRequestsResponseClosure = (Int, String, [Request]?, [Request]?) -> (Void)
   public typealias GetFriendsListResponseClosure = (Int, String?, [Player]?) -> (Void)
@@ -25,6 +25,8 @@ class FriendsViewModel: NSObject {
   var myInvites = [Invite]()
   
   func getPendingRequests(completionBlock: (GetPendingRequestsResponseClosure)? = nil ) {
+    incomingRequestArray = [Request]()
+    outgoingRequestArray = [Request]()
     APIProvider.request(.getPendingRequests()) { (result) in
       switch result {
       case .success(let response):
@@ -63,13 +65,13 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription, nil, nil)
+          compBlock(response.statusCode, error.localizedDescription, nil, nil)
         }
       }
     }
   }
   
-  func createFriendRequest(friendId: Int, completionBlock: (CreateRequestResponseClosure)? = nil) {
+  func createFriendRequest(friendId: Int, completionBlock: (DefaultRequestResponseClosure)? = nil) {
     APIProvider.request(.createFreindRequest(friendId)) { (result) in
       switch result {
       case .success(let response):
@@ -92,13 +94,41 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription)
+          compBlock(response.statusCode, error.localizedDescription)
         }
       }
     }
   }
   
-  func deleteFriendRequest(requestId: Int, completionBlock: (CreateRequestResponseClosure)? = nil) {
+  
+  func acceptFriendRequest(requestId: Int, completionBlock: (DefaultRequestResponseClosure)? = nil) {
+    APIProvider.request(.acceptFriendRequests(requestId)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let datadict = data as? NSDictionary {
+            if let error = datadict.object(forKey: "errors") as? NSArray {
+              completionBlock!(response.statusCode, error[0] as? String)
+            } else {
+              completionBlock!(response.statusCode,"Success")
+            }
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error")
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+          compBlock(response.statusCode, error.localizedDescription)
+        }
+      }
+    }
+  }
+  
+  func deleteFriendRequest(requestId: Int, completionBlock: (DefaultRequestResponseClosure)? = nil) {
     APIProvider.request(.deleteRequest(requestId)) { (result) in
       switch result {
       case .success(let response):
@@ -119,7 +149,7 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription)
+          compBlock(response.statusCode, error.localizedDescription)
         }
       }
     }
@@ -152,13 +182,13 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription, nil)
+          compBlock(response.statusCode, error.localizedDescription, nil)
         }
       }
     }
   }
   
-  func deleteFriend(friendId: Int, completionBlock: (CreateRequestResponseClosure)? = nil) {
+  func deleteFriend(friendId: Int, completionBlock: (DefaultRequestResponseClosure)? = nil) {
     APIProvider.request(.deleteFriend(friendId)) { (result) in
       switch result {
       case .success(let response):
@@ -179,7 +209,7 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription)
+          compBlock(response.statusCode, error.localizedDescription)
         }
       }
     }
@@ -210,7 +240,7 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription, nil)
+          compBlock(response.statusCode, error.localizedDescription, nil)
         }
       }
     }
@@ -244,7 +274,7 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription, nil)
+          compBlock(response.statusCode, error.localizedDescription, nil)
         }
       }
     }
@@ -278,7 +308,7 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription, nil)
+          compBlock(response.statusCode, error.localizedDescription, nil)
         }
       }
     }
@@ -292,7 +322,7 @@ class FriendsViewModel: NSObject {
         do {
           let data = try response.mapJSON()
           debugPrint("data ", data)
-        
+          
           if let dataDict = data as? NSArray {
             //            if let error = datadict.object(forKey: "errors") as? NSArray {
             //              completionBlock!(false, error[0] as? String)
@@ -312,9 +342,69 @@ class FriendsViewModel: NSObject {
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription, nil)
+          compBlock(response.statusCode, error.localizedDescription, nil)
         }
       }
     }
   }
+  
+  func updateInvite(inviteId: Int, invite: [String: Any], completionBlock: (DefaultRequestResponseClosure)? = nil) {
+    myInvites = [Invite]()
+    APIProvider.request(.updateInvite(inviteId, invite)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let dataDict = data as? NSDictionary {
+            if let error = dataDict.object(forKey: "errors") as? NSArray {
+              completionBlock!(response.statusCode, error[0] as? String)
+            } else {
+              completionBlock!(response.statusCode, "Success")
+            }
+            
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error")
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+          compBlock(response.statusCode, error.localizedDescription)
+        }
+      }
+    }
+  }
+  
+  func deleteInvite(inviteId: Int, completionBlock: (DefaultRequestResponseClosure)? = nil) {
+    myInvites = [Invite]()
+    APIProvider.request(.deleteInvite(inviteId)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let dataDict = data as? NSDictionary {
+            if let error = dataDict.object(forKey: "errors") as? NSArray {
+              completionBlock!(response.statusCode, error[0] as? String)
+            } else {
+              completionBlock!(response.statusCode, "Success")
+            }
+            
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error")
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+          compBlock(response.statusCode, error.localizedDescription)
+        }
+      }
+    }
+  }
+  
+  
 }
