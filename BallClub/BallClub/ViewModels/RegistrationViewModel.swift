@@ -33,7 +33,7 @@ class RegistrationViewModel: NSObject {
               
               if let playerDictionary = userDetail, let httpResponse = response.response as? HTTPURLResponse, let accessToken = httpResponse.allHeaderFields["access-token"] as? String,
                 let client = httpResponse.allHeaderFields["client"] as? String, let expiry = httpResponse.allHeaderFields["expiry"] as? String {
-                //UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
+                UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
                 UserDefaults.standard.set(expiry, forKey: "expiry")
                 completionBlock!(response.statusCode,"Success", accessToken, client)
               } else {

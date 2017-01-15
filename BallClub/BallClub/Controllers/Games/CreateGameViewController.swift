@@ -26,10 +26,11 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   @IBOutlet weak var closedButton: UIButton!
   @IBOutlet weak var friendsCollectionView: UICollectionView!
   @IBOutlet weak var reservedSwitch: UISwitch!
-  @IBOutlet weak var requireApprovalSwitch: NSLayoutConstraint!
+  @IBOutlet weak var approvalSwitch: UISwitch!
   
   var gameDetailsDict = [String : Any]()
   var selectedLocation: Location?
+  var pickerView = UIView()
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -63,7 +64,6 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     self.gameDetailsDict["title"] = title
     self.gameDetailsDict["start_time"] = startTime
     self.gameDetailsDict["end_time"] = endTime
-    self.gameDetailsDict["reserved"] = reservedSwitch.isOn
     self.gameDetailsDict["max_capacity"] = maxCapacity
     self.gameDetailsDict["fee"] = fee
     self.gameDetailsDict["additionalInfo"] = self.infoTextfield.text ?? ""
@@ -74,15 +74,39 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     return true
   }
   
+  func datePickerValueChanged(sender:UIDatePicker) {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
+    
+    if sender.tag == 1000 {
+      self.startTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+    } else {
+      self.endTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+    }
+  }
+  
+  func dismissDatePicker() {
+    self.pickerView.removeFromSuperview()
+  }
+  
   //MARK: - IBAction
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
     if isFormValid() {
       let gameViewModel = GamesViewModel()
       gameViewModel.createGame(gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-        self.showAlert(title: "Success", message: "Game created successfully", callback: { 
-          _ = self.navigationController?.popViewController(animated: true)
-        })
+        if statusCode == Constants.ResponseCodes.STATUS_OK {
+          self.showAlert(title: "Success", message: "Game created successfully", callback: {
+            _ = self.navigationController?.popViewController(animated: true)
+          })
+        } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
+          self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+        } else {
+          self.showAlert(title: "Error", message: "There was an error while creating the game", callback: {})
+        }
       })
+    } else {
+      self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
     }
   }
   
@@ -94,14 +118,46 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     
     
   }
+  @IBAction func setTimePressed(_ sender: AnyObject) {
+    let viewFrame = CGRect(x: 8, y: UIScreen.main.bounds.height/4,
+                          width: UIScreen.main.bounds.width-16,
+                          height: (UIScreen.main.bounds.height/3) + 50)
+    self.pickerView = UIView(frame: viewFrame)
+    self.pickerView.backgroundColor = UIColor.lightGray
+
+    let datePicker = UIDatePicker()
+    datePicker.datePickerMode = .dateAndTime
+    datePicker.tag = sender.tag
+
+    let datePickerFrame = CGRect(x: 0, y: 0,
+                       width: self.pickerView.frame.width,
+                       height: self.pickerView.frame.height-40)
+    datePicker.frame = datePickerFrame
+    
+    datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: .valueChanged)
+
+    let doneButtonFrame = CGRect(x: 8, y: self.pickerView.frame.height-42,
+                                 width: self.pickerView.frame.width-16,
+                                 height: 34)
+    let doneButton = UIButton(frame: doneButtonFrame)
+    doneButton.layer.cornerRadius = 10
+    doneButton.backgroundColor = UIColor.orange
+    doneButton.setTitle("DONE", for: .normal)
+    doneButton.addTarget(self, action: #selector(self.dismissDatePicker), for: .touchUpInside)
+    
+    self.pickerView.addSubview(datePicker)
+    self.pickerView.addSubview(doneButton)
+    
+    self.view.addSubview(self.pickerView)
+  }
   
   @IBAction func setGamePrivacy(_ button: UIButton) {
     publicIcon.isSelected = false
     publicButton.isSelected = false
     privateIcon.isSelected = false
     privateButton.isSelected = false
-    publicIcon.isSelected = false
-    publicButton.isSelected = false
+    closedIcon.isSelected = false
+    closedButton.isSelected = false
     
     switch button.tag {
     case 0:
@@ -109,7 +165,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       publicButton.isSelected = true
     case 1:
       privateIcon.isSelected = true
-      privateIcon.isSelected = true
+      privateButton.isSelected = true
     case 2:
       closedIcon.isSelected = true
       closedButton.isSelected = true
@@ -120,11 +176,11 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   }
   
   @IBAction func reservedToggle(_ sender: AnyObject) {
-    
+    self.gameDetailsDict["reserved"] = reservedSwitch.isOn
   }
   
   @IBAction func approvalToggle(_ sender: AnyObject) {
-  
+    self.gameDetailsDict["approval"] = approvalSwitch.isOn
   }
 
   //MARK: - Collection View Delegate

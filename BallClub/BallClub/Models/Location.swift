@@ -13,6 +13,7 @@ import Gloss
 struct Location : Decodable {
   
   var locationId: Int
+  var locationName: String
   var latitude: Double
   var longitude: Double
   
@@ -20,10 +21,12 @@ struct Location : Decodable {
   // MARK: - Deserialization
   init?(json: JSON) {
     guard let locationId: Int = "id" <~~ json,
+      let locationName: String = "name" <~~ json,
       let latitude: Double = "latitude" <~~ json,
       let longitude: Double = "longitude" <~~ json else { return nil }
     
     self.locationId = locationId
+    self.locationName = locationName
     self.latitude = latitude
     self.longitude = longitude
   }
