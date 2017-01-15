@@ -21,6 +21,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   @IBOutlet weak var gameDetails: UILabel!
   @IBOutlet weak var playerCount: UILabel!
   @IBOutlet weak var playerNames: UILabel!
+  @IBOutlet weak var gameOwner: UILabel!
   @IBOutlet weak var playerCollection: UICollectionView!
   @IBOutlet weak var additionInfo: UILabel!
   @IBOutlet weak var notGoingIcon: UIButton!
@@ -69,6 +70,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       self.gamePrice.text = String(format: "%.2f", game.fee)
       self.gameDetails.text = game.additionalInfo ?? ""
       self.playerCount.text = "\(game.maxCapacity)"
+      self.gameOwner.text = "\(game.gameCreator.playerName) invited you"
 //      self.playerNames.text =
 //      self.additionInfo.text = //Ace: For what?
     }

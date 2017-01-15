@@ -13,6 +13,7 @@ class GamesViewController: UIViewController {
   @IBOutlet weak var gamesTableview: UITableView!
   
   var gameList = [Game]()
+  var selectedGameId: Int?
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -29,8 +30,18 @@ class GamesViewController: UIViewController {
     super.didReceiveMemoryWarning()
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "GameDetailSegue" {
+      if let gameDetailViewController: GameDetailViewController = segue.destination as? GameDetailViewController {
+        if let id = self.selectedGameId {
+          gameDetailViewController.gameId = id
+        }
+      }
+    }
+  }
   
   
+  //MARK: - Helper Methods
   func getGames() {
     let gameViewModel = GamesViewModel()
     gameViewModel.getCurrentUserGames { (statusCode, message, games) -> (Void) in
@@ -81,6 +92,7 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.selectedGameId = self.gameList[indexPath.row].gameId
     self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
   }
   
