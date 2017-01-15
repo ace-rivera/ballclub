@@ -48,6 +48,7 @@ class UserViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     Utilities.showProgressHud(withTitle: "Loading User Data", inView: self.view)
+    currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
     setUpUI()
     getPendingInvites()
     getFriendRequests()

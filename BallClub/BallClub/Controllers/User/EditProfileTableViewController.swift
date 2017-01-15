@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import DropDown
 
 
 
-class EditProfileTableViewController: UITableViewController {
+class EditProfileTableViewController: UITableViewController, UITextFieldDelegate {
   
   @IBOutlet weak var aboutMeTextField: UITextField!
   @IBOutlet weak var favoriteTeamTextField: UITextField!
@@ -26,11 +27,12 @@ class EditProfileTableViewController: UITableViewController {
   @IBOutlet weak var forwardButton: UIButton!
   @IBOutlet weak var guardButton: UIButton!
   @IBOutlet weak var userProfileImage: UIImageView!
-  
-  
+  @IBOutlet weak var genderButton: UIButton!
+ 
   var imagePicker :  UIImagePickerController!
   var playerViewModel = PlayerViewModel()
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
+  let dropDown = DropDown()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -66,19 +68,32 @@ class EditProfileTableViewController: UITableViewController {
     favoriteTeamTextField.layer.borderColor = UIColor.clear.cgColor
     aboutMeTextField.layer.borderColor = UIColor.clear.cgColor
     
-    self.navigationController?.navigationBar.isHidden = false
     var image = UIImage(named: "back")
     image = image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+    self.navigationController?.navigationBar.isHidden = false
     self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditProfileTableViewController.backButtonPressed))
-    
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditProfileTableViewController.saveProfileChanges))
     self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.normal)
     self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     
-    if let player = currentUser, let name = player["name"] as? String, let city = player["city"] as? String {
-      firstNameTextField.text = name
-      homeCityTextField.text = city
+    
+    dropDown.anchorView = self.genderButton
+    dropDown.dataSource = ["Male", "Female"]
+    dropDown.direction = .bottom
+    dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+    dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+      print("Selected item: \(item) at index: \(index)")
+      self.sexTextField.text = item
+      self.dropDown.hide()
     }
+    
+    let datePicker = UIDatePicker.init()
+    datePicker.datePickerMode = UIDatePickerMode.date
+    datePicker.setDate(NSDate.init() as Date, animated: true)
+    datePicker.addTarget(self, action: #selector(updateTextField), for: .valueChanged)
+    self.birthDateTextField.inputView = datePicker
+    
+   populateUserData()
   }
   
   //MARK:- IBActions
@@ -103,6 +118,11 @@ class EditProfileTableViewController: UITableViewController {
   
   @IBAction func changeProfileImage(_ sender: AnyObject) {
     showActionSheet()
+  }
+  
+  @IBAction func didTapOnGenderField(_ sender: Any) {
+    view.endEditing(true)
+    dropDown.show()
   }
   
   func backButtonPressed(){
@@ -174,6 +194,26 @@ class EditProfileTableViewController: UITableViewController {
     
   }
   
+  func updateTextField() {
+    let picker = self.birthDateTextField.inputView as? UIDatePicker
+    self.birthDateTextField.text = self.dateFormatter(date: (picker?.date)!)
+  }
+  
+  func dateFormatter(date: Date) -> String {
+    let dateFormatter = DateFormatter.init()
+    dateFormatter.dateStyle = DateFormatter.Style.short
+    let formattedString = dateFormatter.string(from: date)
+    
+    return formattedString
+  }
+  
+  func populateUserData() {
+    if let player = currentUser, let name = player["name"] as? String, let city = player["city"] as? String {
+      firstNameTextField.text = name
+      homeCityTextField.text = city
+    }
+  }
+  
   // MARK: - Table view data source
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -182,10 +222,7 @@ class EditProfileTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
   }
-  
-  
-  
-  
+
 }
 
 extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
