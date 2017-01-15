@@ -9,13 +9,31 @@
 import UIKit
 
 class FriendStatusCustomCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+  
+  @IBOutlet weak var userImageView: UIImageView!
+  @IBOutlet weak var userStatus: UIImageView!
+  @IBOutlet weak var userPositionImageView: UIButton!
+  @IBOutlet weak var userName: UILabel!
+  @IBOutlet weak var userCity: UILabel!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
+  
+  func setFriendUserName (name : String){
+    userName.text = name
+  }
+  
+  func setFriendUserImage (image : String){
+    userImageView.image = UIImage(named: image)
+  }
+  
+  func setuserCity (city : String) {
+    userCity.text = city
+  }
+  
 }

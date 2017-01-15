@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var appLogo: UIImageView!
   
   var registrationViewModel = RegistrationViewModel()
+  var playerViewModel = PlayerViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,7 +50,7 @@ class LoginViewController: UIViewController {
   @IBAction func loginButtonPressed(_ sender: AnyObject) {
     Utilities.showProgressHud(withTitle: "Logging In", inView: self.view)
     if let email = emailAddLabel.text, let password = passwordLabel.text {
-      registrationViewModel.playerSign(emailAddress: email, password: password) { (responseCode, message, accessToken, client) -> (Void) in
+      registrationViewModel.playerSign(emailAddress: email, password: password) { (responseCode, message, accessToken, client, userId) -> (Void) in
         if responseCode == 400 || responseCode == 401 {
           Utilities.hideProgressHud()
           if let m = message {
@@ -58,11 +59,11 @@ class LoginViewController: UIViewController {
         } else {
           self.registrationViewModel.getToken(clientId: Constants.clientId, clientSecret: Constants.clientSecret, grantType: Constants.grantType, completionBlock: { (responseCode, message, token) -> (Void) in
             Utilities.hideProgressHud()
-            if (responseCode == 200 || responseCode == 201), let t = token, let accessToken = accessToken, let client = client {
+            if (responseCode == 200 || responseCode == 201), let t = token, let accessToken = accessToken, let client = client, let id = userId {
               UserDefaults.standard.set(t, forKey: "Token")
               SessionManager.sharedInstance.saveSession(username: email, token: t, accessToken: accessToken, client: client)
               UserDefaults.standard.set(email, forKey: "UserEmailAddress")
-              self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+              self.getCurrentUser(userId: id)
             } else {
               if let m = message {
                 self.showAlert(title: "Error", message: m, callback: {})
@@ -89,6 +90,18 @@ class LoginViewController: UIViewController {
         self.getFacebookUserInfo()
       }
     }
+  }
+  
+  func getCurrentUser(userId: Int) {
+    self.playerViewModel.getUser(userId: userId, completionBlock: { (statusCode, message, player) -> (Void) in
+      if (statusCode == 200 || statusCode == 201), let p = player {
+        var test = Player.toDictionary(user: p)
+        UserDefaults.standard.set(Player.toDictionary(user: p), forKey: "currentUser")
+        self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+      } else {
+        self.showAlert(title: "ERROT", message: message, callback: {})
+      }
+    })
   }
   
   func getFacebookUserInfo(){

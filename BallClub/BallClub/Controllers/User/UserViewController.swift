@@ -14,6 +14,7 @@ class UserViewController: UIViewController {
   @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var friendsTableView: UITableView!
   @IBOutlet weak var searchView: UIView!
+  @IBOutlet weak var playerName: UILabel!
 
   
   let friendsViewModel = FriendsViewModel()
@@ -28,6 +29,7 @@ class UserViewController: UIViewController {
   var selectedUser: Player?
   var selectedRequest: Request!
   var resultSearchController: UISearchController? = nil
+  var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
   
   //MARK: - Lifecycle
@@ -85,7 +87,7 @@ class UserViewController: UIViewController {
       definesPresentationContext = true
     }
     
-    
+    getUserData()
     registerNibs()
   }
   
@@ -93,6 +95,12 @@ class UserViewController: UIViewController {
     self.friendsTableView.register(UINib(nibName: "UserInviteCustomCell",bundle: nil), forCellReuseIdentifier: "UserInviteCustomCell")
     self.friendsTableView.register(UINib(nibName: "UserAddFriendCustomCell",bundle: nil), forCellReuseIdentifier: "UserAddFriendCustomCell")
     self.friendsTableView.register(UINib(nibName: "UserSearchFriendsCustomCell",bundle: nil), forCellReuseIdentifier: "UserSearchFriendsCustomCell")
+  }
+  
+  func getUserData() {
+    if let player = currentUser, let name = player["name"] as? String {
+      self.playerName.text = name
+    }
   }
   
   // User pending friend requests
@@ -142,6 +150,7 @@ class UserViewController: UIViewController {
   
   //User invited games
   func getPendingInvites() {
+    gameIvitesArray.removeAll()
     friendsViewModel.getPendingIvites { (responseCode, message, inviteArray) -> (Void) in
       if (responseCode == 200 || responseCode == 201), let gameInvite = inviteArray {
         self.gameIvitesArray = gameInvite
@@ -154,6 +163,7 @@ class UserViewController: UIViewController {
   }
   
   func getGameInviteUsers() {
+    pendingUserInvitesList.removeAll()
     for i in 0..<gameIvitesArray.count {
       playerViewModel.getUser(userId: gameIvitesArray[i].inviterId) { (responseCode, message, player) -> (Void) in
         if responseCode == 200 || responseCode == 201 {
