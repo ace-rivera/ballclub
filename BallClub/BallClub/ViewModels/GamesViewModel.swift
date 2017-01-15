@@ -14,10 +14,42 @@ class GamesViewModel: NSObject {
   public typealias GamesResponseClosure = (Int, String?, [Game]?) -> (Void)
   public typealias GameDetailClosure = (Int, String?, Game?) -> (Void)
   
+  func getAllGames(completionBlock: GamesResponseClosure? = nil) {
+    var gameList = [Game]()
+    APIProvider.request(.getAllGames()) { (result) in
+      
+      switch result {
+      case.success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          if let dataArray = data as? [[String : Any]] {
+            for gameData in dataArray {
+              //use gameData to create game
+              if let g = Game(json: gameData) {
+                gameList.append(g)
+              }
+            }
+            completionBlock!(response.statusCode, "Games Retrieved Successfully", gameList)
+          } else {
+            completionBlock!(response.statusCode, "Error", nil)
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error", nil)
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+          compBlock(response.statusCode, error.localizedDescription, nil)
+        }
+      }
+    }
+  }
+  
   func getCurrentUserGames(completionBlock: GamesResponseClosure? = nil) {
     var gameList = [Game]()
     if let currentUser = UserDefaults.standard.value(forKey: "currentUser") as? [String : Any],
-      let userId = currentUser["userId"] as? Int {
+      let userId = currentUser["id"] as? Int {
       APIProvider.request(.getUserGames(userId)) { (result) in
         
         switch result {
@@ -51,7 +83,7 @@ class GamesViewModel: NSObject {
   
   func getGameDetails(gameId: Int, completionBlock: GameDetailClosure? = nil) {
     if let currentUser = UserDefaults.standard.value(forKey: "currentUser") as? [String : Any],
-      let userId = currentUser["userId"] as? Int {
+      let userId = currentUser["id"] as? Int {
       APIProvider.request(.getGameDetails(userId, gameId)) { (result) in
         
         switch result {
@@ -130,7 +162,7 @@ class GamesViewModel: NSObject {
   
   func deleteGame(gameId: Int, completionBlock: ((Int, String?) -> (Void))? = nil) {
     if let currentUser = UserDefaults.standard.value(forKey: "currentUser") as? [String : Any],
-      let userId = currentUser["userId"] as? Int {
+      let userId = currentUser["id"] as? Int {
       APIProvider.request(.deleteGame(userId, gameId)) { (result) in
         
         switch result {
