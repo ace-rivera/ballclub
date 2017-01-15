@@ -618,6 +618,16 @@
                                                         <constraint firstAttribute="height" constant="30" id="iCf-Ed-DDf"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAk-Te-F8e">
+                                                    <rect key="frame" x="341" y="90" width="230" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="230" id="O2W-Fz-aX1"/>
+                                                        <constraint firstAttribute="height" constant="50" id="hQX-Df-gRa"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="didTapOnGenderField:" destination="NpR-vH-Scr" eventType="touchUpInside" id="b9e-0u-ZBj"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="xZo-Eg-q51" secondAttribute="trailing" constant="21" id="290-8Y-Upo"/>
@@ -627,12 +637,15 @@
                                                 <constraint firstItem="xZo-Eg-q51" firstAttribute="width" secondItem="iSJ-7j-Wdg" secondAttribute="width" id="L6Z-uL-vSD"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="xUU-Hd-Lan" secondAttribute="trailing" constant="21" id="QMD-1I-ws9"/>
                                                 <constraint firstItem="ayf-fK-j6o" firstAttribute="leading" secondItem="4qw-he-chz" secondAttribute="leadingMargin" constant="9" id="QxJ-3v-BiX"/>
+                                                <constraint firstItem="sAk-Te-F8e" firstAttribute="top" secondItem="xUU-Hd-Lan" secondAttribute="bottom" constant="20" id="S5f-eG-v8t"/>
                                                 <constraint firstItem="xUU-Hd-Lan" firstAttribute="leading" secondItem="ayf-fK-j6o" secondAttribute="trailing" constant="94" id="Vit-z9-uJs"/>
                                                 <constraint firstItem="xUU-Hd-Lan" firstAttribute="width" secondItem="ayf-fK-j6o" secondAttribute="width" id="WE2-Vi-Vlc"/>
                                                 <constraint firstItem="DpO-3b-47K" firstAttribute="leading" secondItem="iSJ-7j-Wdg" secondAttribute="trailing" constant="8" id="evg-jY-796"/>
                                                 <constraint firstItem="iSJ-7j-Wdg" firstAttribute="leading" secondItem="4qw-he-chz" secondAttribute="leadingMargin" constant="9" id="fFl-ld-oeE"/>
                                                 <constraint firstItem="iSJ-7j-Wdg" firstAttribute="top" secondItem="ayf-fK-j6o" secondAttribute="bottom" constant="20" id="jbR-iH-w1u"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="DpO-3b-47K" secondAttribute="bottom" constant="12" id="om2-rd-YaK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="sAk-Te-F8e" secondAttribute="trailing" constant="21" id="ovN-CH-0wQ"/>
+                                                <constraint firstItem="sAk-Te-F8e" firstAttribute="leading" secondItem="DpO-3b-47K" secondAttribute="trailing" constant="56" id="vd9-qp-lqJ"/>
                                                 <constraint firstItem="xUU-Hd-Lan" firstAttribute="top" secondItem="4qw-he-chz" secondAttribute="topMargin" constant="12" id="wq8-Lo-bTI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -744,6 +757,7 @@
                         <outlet property="favoriteTeamTextField" destination="yBU-yr-BZw" id="u4Y-fH-vJa"/>
                         <outlet property="firstNameTextField" destination="CrV-FP-zST" id="Woa-D2-mCa"/>
                         <outlet property="forwardButton" destination="Q6O-zU-LDF" id="SB2-aq-Dtz"/>
+                        <outlet property="genderButton" destination="sAk-Te-F8e" id="ewM-HN-IWQ"/>
                         <outlet property="guardButton" destination="QLk-1A-D8d" id="WYv-VM-XNu"/>
                         <outlet property="heightTextField" destination="ayf-fK-j6o" id="gNK-fU-59j"/>
                         <outlet property="homeCityTextField" destination="fwI-si-0sO" id="LB8-C9-bHh"/>
@@ -760,7 +774,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1939" y="349"/>
+            <point key="canvasLocation" x="1937.5999999999999" y="348.12593703148428"/>
         </scene>
     </scenes>
     <resources>

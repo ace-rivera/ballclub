@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 class CreateProfileTableViewController: UITableViewController {
   
@@ -24,13 +25,14 @@ class CreateProfileTableViewController: UITableViewController {
   @IBOutlet weak var forwardButton: UIButton!
   @IBOutlet weak var guardButton: UIButton!
   @IBOutlet weak var userProfileImage: UIImageView!
-  
+  @IBOutlet weak var genderButton: UIButton!
   
   var imagePicker :  UIImagePickerController!
   var emailAddress = ""
   var password = ""
   let registrationViewModel = RegistrationViewModel()
   let playerViewModel = PlayerViewModel()
+  let dropDown = DropDown()
   
   //MARK:- Lifecycle
   override func viewDidLoad() {
@@ -79,6 +81,24 @@ class CreateProfileTableViewController: UITableViewController {
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(CreateProfileTableViewController.registerUser))
     self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.normal)
     self.navigationController?.navigationBar.barTintColor = UIColor(red:45.0/255.0, green:47.0/255.0, blue:43.0/255.0, alpha:1.0)
+    
+    //set up date picker
+    let datePicker = UIDatePicker.init()
+    datePicker.datePickerMode = UIDatePickerMode.date
+    datePicker.setDate(NSDate.init() as Date, animated: true)
+    datePicker.addTarget(self, action: #selector(updateTextField), for: .valueChanged)
+    self.birthDateTextField.inputView = datePicker
+    
+    //setup gender Dropdown
+    dropDown.anchorView = self.genderButton
+    dropDown.dataSource = ["Male", "Female"]
+    dropDown.direction = .bottom
+    dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+    dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+      print("Selected item: \(item) at index: \(index)")
+      self.sexTextField.text = item
+      self.dropDown.hide()
+    }
   }
   
   //MARK:- IBActions
@@ -103,6 +123,11 @@ class CreateProfileTableViewController: UITableViewController {
   
   @IBAction func changeProfileImage(_ sender: AnyObject) {
     showActionSheet()
+  }
+  
+  @IBAction func showGenderDropDown(_ sender: Any) {
+    view.endEditing(true)
+    dropDown.show()
   }
   
   func backButtonPressed(){
@@ -184,8 +209,21 @@ class CreateProfileTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
   }
+  
+  func updateTextField() {
+    let picker = self.birthDateTextField.inputView as? UIDatePicker
+    self.birthDateTextField.text = self.dateFormatter(date: (picker?.date)!)
+  }
+  
+  func dateFormatter(date: Date) -> String {
+    let dateFormatter = DateFormatter.init()
+    dateFormatter.dateStyle = DateFormatter.Style.short
+    let formattedString = dateFormatter.string(from: date)
+    
+    return formattedString
+  }
+  
 }
-
 
 extension CreateProfileTableViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
   func camera()  {
