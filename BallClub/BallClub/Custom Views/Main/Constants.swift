@@ -24,6 +24,11 @@ class Constants: NSObject {
     static let customGreenColor = UIColor(red: 94/255.0, green: 219/255.0, blue: 32/255.0, alpha: 1)
     static let customBlueColor = UIColor(red: 14/255.0, green: 99/255.0, blue: 236/255.0, alpha: 1)
   }
+  
+  struct ResponseCodes {
+    static let STATUS_OK = 200
+    static let STATUS_MISSING_PARAMETERS = 422
+  }
     
   enum Category {
     case PUBLIC
