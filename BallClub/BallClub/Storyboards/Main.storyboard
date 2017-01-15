@@ -12,7 +12,7 @@
         <!--Main View Controller-->
         <scene sceneID="g0D-hV-mQ3">
             <objects>
-                <tabBarController id="Ghl-Os-aEh" customClass="MainViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" id="Ghl-Os-aEh" customClass="MainViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="2Vx-cT-1Ed">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -28,6 +28,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   @IBOutlet weak var reservedSwitch: UISwitch!
   @IBOutlet weak var approvalSwitch: UISwitch!
   
+  
   var gameDetailsDict = [String : Any]()
   var selectedLocation: Location?
   var pickerView = UIView()

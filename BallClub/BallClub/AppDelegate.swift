@@ -16,12 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  
-  private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
     // Override point for customization after application launch.
-    
-    //Facebook
-    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
     //UI
     UITabBar.appearance().barTintColor = Constants.CustomColor.tabBarBackgroundColor
@@ -29,7 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UITabBar.appearance().tintColor = Constants.CustomColor.customOrangeColor
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     DropDown.startListeningToKeyboard()
-    return true
+    
+    self.window!.rootViewController = ContainerViewController()
+    
+    return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
   }
   
   func applicationWillResignActive(_ application: UIApplication) {
