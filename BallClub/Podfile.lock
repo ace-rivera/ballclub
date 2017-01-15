@@ -5,6 +5,7 @@ PODS:
     - AWSCore (= 2.4.15)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
+  - DropDown (2)
   - DZNEmptyDataSet (1.8.1)
   - Fabric (1.6.11)
   - Gloss (1.1.1)
@@ -37,6 +38,7 @@ PODS:
 DEPENDENCIES:
   - AWSS3
   - Crashlytics
+  - DropDown
   - DZNEmptyDataSet
   - Fabric
   - GMStepper
@@ -66,6 +68,7 @@ SPEC CHECKSUMS:
   AWSCore: 9d61f61c38be72306f2a6a175202b673b4c8ba23
   AWSS3: 4e1c2dcce685f9e70e874e314de8a1e28d75fb72
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Gloss: 4a892694cba7387efa4102a51f86110651366b18
@@ -84,6 +87,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
 
-PODFILE CHECKSUM: 6e25c96610995cab881f051003d9f4fb3e878c61
+PODFILE CHECKSUM: a9f709d80d2e1cdbe4f8e636900b9bc98b3b7231
 
 COCOAPODS: 1.1.1

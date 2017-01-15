@@ -6,6 +6,7 @@
 //  Copyright © 2016 Geraldine Forto. All rights reserved.
 //
 
+
 import Gloss
 
 struct Player : Decodable {
