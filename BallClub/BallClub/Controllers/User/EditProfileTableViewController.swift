@@ -30,6 +30,7 @@ class EditProfileTableViewController: UITableViewController {
   
   var imagePicker :  UIImagePickerController!
   var playerViewModel = PlayerViewModel()
+  var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -73,6 +74,11 @@ class EditProfileTableViewController: UITableViewController {
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditProfileTableViewController.saveProfileChanges))
     self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.normal)
     self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+    
+    if let player = currentUser, let name = player["name"] as? String, let city = player["city"] as? String {
+      firstNameTextField.text = name
+      homeCityTextField.text = city
+    }
   }
   
   //MARK:- IBActions
@@ -107,7 +113,7 @@ class EditProfileTableViewController: UITableViewController {
     
     if firstNameTextField.text != "" && lastNameTextField.text != "" &&
       homeCityTextField.text != "" && birthDateTextField.text != "" &&
-      sexTextField.text != "", let firstName = firstNameTextField.text, let lastName = lastNameTextField.text {
+      sexTextField.text != "", let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let player = currentUser, let id = player["id"] as? Int {
       let userDictionary = ["name": (firstName + " " + lastName) ?? "",
                             "nickname": "Test",
                             "image": "test",
@@ -119,9 +125,10 @@ class EditProfileTableViewController: UITableViewController {
                             "gender": 0] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
       //TO-DO pass current user id in api call
-      playerViewModel.updateUser(userId: 4, userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
+      playerViewModel.updateUser(userId: id, userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
+        Utilities.hideProgressHud()
         if responseCode == 200 || responseCode == 201 {
-          self.showAlert(title: "SUCCESS", message: "User Profile has ben successfully updated", callback: {self.navigationController?.popViewController(animated: true)})
+          self.showAlert(title: "SUCCESS", message: "User Profile has ben successfully updated", callback: {self.getCurrentUser(userId: id)})
         } else if responseCode ==  1 {
           if let m = message {
             self.showAlert(title: "ERROR", message: m, callback: {})
@@ -134,70 +141,80 @@ class EditProfileTableViewController: UITableViewController {
       })
     }
     
-      
-      
-      
-      _ = self.navigationController?.popViewController(animated: true)
-    }
+  }
+  
+  func getCurrentUser(userId: Int) {
+    Utilities.showProgressHud(withTitle: "updateing user Profile", inView: self.view)
+    self.playerViewModel.getUser(userId: userId, completionBlock: { (statusCode, message, player) -> (Void) in
+      Utilities.hideProgressHud()
+      if (statusCode == 200 || statusCode == 201), let p = player {
+        UserDefaults.standard.set(Player.toDictionary(user: p), forKey: "currentUser")
+        self.navigationController?.popViewController(animated: true)
+      } else {
+        self.showAlert(title: "ERROT", message: message, callback: {})
+      }
+    })
+  }
+  
+  
+  func showActionSheet() {
+    let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
     
-    func showActionSheet() {
-      let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-      
-      actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
-        self.camera()
-      }))
-      
-      actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
-        self.photoLibrary()
-      }))
-      
-      actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-      
-      self.present(actionSheet, animated: true, completion: nil)
-      
-    }
+    actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
+      self.camera()
+    }))
     
-    // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-      return 1
-    }
+    actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
+      self.photoLibrary()
+    }))
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 4
-    }
+    actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
     
-    
-    
+    self.present(actionSheet, animated: true, completion: nil)
     
   }
   
-  extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    func camera()  {
-      imagePicker.delegate = self
-      imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-      
-      self.present(imagePicker, animated: true, completion: nil)
-      
-    }
+  // MARK: - Table view data source
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 4
+  }
+  
+  
+  
+  
+}
+
+extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+  func camera()  {
+    imagePicker.delegate = self
+    imagePicker.sourceType = UIImagePickerControllerSourceType.camera
     
-    func photoLibrary() {
-      imagePicker.delegate = self
-      imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-      self.present(imagePicker, animated: true, completion: nil)
-      
-    }
+    self.present(imagePicker, animated: true, completion: nil)
     
-    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-      
-      if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-        userProfileImage.contentMode = .scaleToFill
-        userProfileImage.image = pickedImage
-      }
-      dismiss(animated: true, completion: nil)
-    }
+  }
+  
+  func photoLibrary() {
+    imagePicker.delegate = self
+    imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+    self.present(imagePicker, animated: true, completion: nil)
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-      picker.dismiss(animated: true, completion: nil)
-    }
+  }
+  
+  private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     
+    if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+      userProfileImage.contentMode = .scaleToFill
+      userProfileImage.image = pickedImage
+    }
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
 }

@@ -12,7 +12,7 @@ import Gloss
 
 class RegistrationViewModel: NSObject {
   
-  public typealias UserSignInResponseClosure = (Int, String?, String?, String?) -> (Void)
+  public typealias UserSignInResponseClosure = (Int, String?, String?, String?, Int?) -> (Void)
   public typealias UserRegistrationResponseClosure = (Int, String?) -> (Void)
   public typealias GetTokenResponseClosure = (Int, String?, String?) -> (Void)
   var currentUser: Player?
@@ -27,30 +27,32 @@ class RegistrationViewModel: NSObject {
           
           if let datadict = data as? NSDictionary {
             if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(response.statusCode, error[0] as? String, nil, nil)
+              completionBlock!(response.statusCode, error[0] as? String, nil, nil, nil)
             } else {
               let userDetail = datadict.object(forKey: "data") as? [String:Any]
               
               if let playerDictionary = userDetail, let httpResponse = response.response as? HTTPURLResponse, let accessToken = httpResponse.allHeaderFields["access-token"] as? String,
-                let client = httpResponse.allHeaderFields["client"] as? String, let expiry = httpResponse.allHeaderFields["expiry"] as? String {
+                let client = httpResponse.allHeaderFields["client"] as? String, let expiry = httpResponse.allHeaderFields["expiry"] as? String, let userId = playerDictionary["id"] as? Int {
                 //UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
                 UserDefaults.standard.set(expiry, forKey: "expiry")
-                completionBlock!(response.statusCode,"Success", accessToken, client)
+                
+                
+                completionBlock!(response.statusCode,"Success", accessToken, client, userId)
               } else {
                 
-                completionBlock!(response.statusCode, "Error", nil, nil)
+                completionBlock!(response.statusCode, "Error", nil, nil, nil)
               }
             }
             
           }
           
         } catch {
-          completionBlock!(response.statusCode, "Error", nil, nil)
+          completionBlock!(response.statusCode, "Error", nil, nil, nil)
         }
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-        compBlock(response.statusCode, error.localizedDescription, nil, nil)
+        compBlock(response.statusCode, error.localizedDescription, nil, nil, nil)
         }
       }
     }

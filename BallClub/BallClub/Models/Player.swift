@@ -47,4 +47,22 @@ struct Player : Decodable {
     self.gender = gender
 
   }
+  
+  static func toDictionary(user: Player) -> [String: Any] {
+    var userDetails = [String:Any]()
+    userDetails["id"] = user.playerId
+    userDetails["uid"] = user.uid
+    userDetails["email"] = user.emailAddress
+    userDetails["name"] = user.playerName
+    userDetails["city"] = user.city
+    userDetails["nickname"] = user.nickName
+    userDetails["contact_number"] = user.contactNumber
+    userDetails["height"] = user.height
+    userDetails["weight"] = user.weight
+    userDetails["birthday"] = user.birthday
+    userDetails["gender"] = user.gender
+    
+    return userDetails
+  }
+  
 }

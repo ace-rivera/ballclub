@@ -22,6 +22,8 @@ class FriendsViewController: UIViewController {
   
   var tabSelected = 0
   var player: Player!
+  var friendsArray = [Player]()
+  let friendsViewModel = FriendsViewModel()
   
   //MARK:- Lifecycle
   override func viewDidLoad() {
@@ -37,6 +39,7 @@ class FriendsViewController: UIViewController {
     super.viewWillAppear(animated)
     segmentControl.addTarget(self, action: #selector(segmentTabChanged), for: .valueChanged)
     setupUI()
+    self.getFriendsList()
   }
   
   //MARK:- SetupUI
@@ -62,6 +65,22 @@ class FriendsViewController: UIViewController {
     
   }
   
+  func getFriendsList() {
+    friendsViewModel.getFriendsList { (statusCode, message, players) -> (Void) in
+      if statusCode == 200 || statusCode == 201 {
+        if let p = players {
+          self.friendsArray = p
+          self.tableView.reloadData()
+        }
+      } else {
+        if let m =  message {
+          self.showAlert(title: "ERROR", message: m, callback: {})
+        }
+        
+      }
+    }
+  }
+  
   
   
   
@@ -84,7 +103,12 @@ class FriendsViewController: UIViewController {
   }
   
   @IBAction func backButtonPressed(_ sender: AnyObject) {
-    self.navigationController?.popViewController(animated: true)
+    
+    if (self.navigationController?.viewControllers.count)! >= 2 {
+      debugPrint("HELLLO")
+    }
+    self.dismiss(animated: true, completion: {})
+   // _ = self.navigationController?.popViewController(animated: true)
   }
   
 }
@@ -112,14 +136,21 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
       return cell
     }else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell
-      //cell.setFriendUserName(TestClass.Common.friendNames[indexPath.row])
+      cell.setFriendUserName(name: self.friendsArray[indexPath.row].playerName)
+      cell.setuserCity(city: self.friendsArray[indexPath.row].city)
       //cell.setFriendUserImage(TestClass.Common.friendImages[indexPath.row])
       return cell
     }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    if tabSelected == 0 {
+      return 3
+    } else if tabSelected == 1 {
+      return 3
+    } else {
+      return self.friendsArray.count
+    }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
