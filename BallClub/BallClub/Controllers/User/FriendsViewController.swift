@@ -111,6 +111,22 @@ class FriendsViewController: UIViewController {
    // _ = self.navigationController?.popViewController(animated: true)
   }
   
+  
+  @IBAction func didTapOnAddFriendButton(_ sender: Any) {
+    Utilities.showProgressHud(withTitle: "Sending Friend REquest", inView: self.view)
+    friendsViewModel.createFriendRequest(friendId: 6) { (responseCode, message) -> (Void) in
+      Utilities.hideProgressHud()
+      if responseCode == 200 || responseCode == 201 {
+        self.showAlert(title: "SUCCESS", message: "Friend Request Sent!", callback: {})
+      } else {
+        if let m =  message {
+          self.showAlert(title: "ERROR", message: m, callback: {})
+        }
+      }
+    }
+    
+  }
+  
 }
 
 

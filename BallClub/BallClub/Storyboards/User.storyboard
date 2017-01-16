@@ -114,9 +114,6 @@
                                         <state key="normal" title="Settings">
                                             <color key="titleColor" red="0.14117647059999999" green="0.1450980392" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="settingsButtonPressed:" destination="1Qb-0J-YXH" eventType="touchUpInside" id="YPk-uu-kU5"/>
-                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_calvin" translatesAutoresizingMaskIntoConstraints="NO" id="Dxd-n6-1uu">
                                         <rect key="frame" x="24" y="56" width="40" height="40"/>
@@ -309,7 +306,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="97"/>
                                                             <color key="backgroundColor" red="0.1764705882" green="0.1843137255" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
-                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLk-1A-D8d" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
+                                                        <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLk-1A-D8d" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
                                                             <rect key="frame" x="148" y="112" width="40" height="40"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -325,7 +322,7 @@
                                                                 <action selector="positionButtonPressed:" destination="NpR-vH-Scr" eventType="touchUpInside" id="Zjm-B4-shf"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6O-zU-LDF" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
+                                                        <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6O-zU-LDF" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
                                                             <rect key="frame" x="209" y="112" width="40" height="40"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -360,7 +357,7 @@
                                                                 <outletCollection property="gestureRecognizers" destination="MJQ-Ue-OpR" appends="YES" id="S2e-AP-VjE"/>
                                                             </connections>
                                                         </imageView>
-                                                        <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-eM-q7M" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
+                                                        <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-eM-q7M" customClass="PositionCustomButton" customModule="BallClub" customModuleProvider="target">
                                                             <rect key="frame" x="268" y="112" width="40" height="40"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -522,7 +519,7 @@
                                                         <constraint firstAttribute="width" constant="230" id="tBu-8R-tfY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                             <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -570,7 +567,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="YW5-49-zVR"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                             <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -628,9 +625,23 @@
                                                         <action selector="didTapOnGenderField:" destination="NpR-vH-Scr" eventType="touchUpInside" id="b9e-0u-ZBj"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kg-kM-ZfV">
+                                                    <rect key="frame" x="548" y="45" width="22.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b88-XV-rO1">
+                                                    <rect key="frame" x="223" y="45" width="24" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="xZo-Eg-q51" secondAttribute="trailing" constant="21" id="290-8Y-Upo"/>
+                                                <constraint firstItem="2Kg-kM-ZfV" firstAttribute="leading" secondItem="xUU-Hd-Lan" secondAttribute="trailing" constant="-23" id="2ZK-Ub-Yjl"/>
+                                                <constraint firstItem="2Kg-kM-ZfV" firstAttribute="bottom" secondItem="xUU-Hd-Lan" secondAttribute="bottom" constant="-4" id="38e-Ty-565"/>
                                                 <constraint firstItem="ayf-fK-j6o" firstAttribute="top" secondItem="4qw-he-chz" secondAttribute="topMargin" constant="12" id="8ba-84-RBy"/>
                                                 <constraint firstItem="xZo-Eg-q51" firstAttribute="leading" secondItem="DpO-3b-47K" secondAttribute="trailing" constant="56" id="CUX-it-SN3"/>
                                                 <constraint firstItem="xZo-Eg-q51" firstAttribute="top" secondItem="xUU-Hd-Lan" secondAttribute="bottom" constant="20" id="Fav-RG-bcb"/>
@@ -642,11 +653,13 @@
                                                 <constraint firstItem="xUU-Hd-Lan" firstAttribute="width" secondItem="ayf-fK-j6o" secondAttribute="width" id="WE2-Vi-Vlc"/>
                                                 <constraint firstItem="DpO-3b-47K" firstAttribute="leading" secondItem="iSJ-7j-Wdg" secondAttribute="trailing" constant="8" id="evg-jY-796"/>
                                                 <constraint firstItem="iSJ-7j-Wdg" firstAttribute="leading" secondItem="4qw-he-chz" secondAttribute="leadingMargin" constant="9" id="fFl-ld-oeE"/>
+                                                <constraint firstItem="b88-XV-rO1" firstAttribute="leading" secondItem="ayf-fK-j6o" secondAttribute="trailing" constant="-24" id="iO5-bC-1ao"/>
                                                 <constraint firstItem="iSJ-7j-Wdg" firstAttribute="top" secondItem="ayf-fK-j6o" secondAttribute="bottom" constant="20" id="jbR-iH-w1u"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="DpO-3b-47K" secondAttribute="bottom" constant="12" id="om2-rd-YaK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="sAk-Te-F8e" secondAttribute="trailing" constant="21" id="ovN-CH-0wQ"/>
                                                 <constraint firstItem="sAk-Te-F8e" firstAttribute="leading" secondItem="DpO-3b-47K" secondAttribute="trailing" constant="56" id="vd9-qp-lqJ"/>
                                                 <constraint firstItem="xUU-Hd-Lan" firstAttribute="top" secondItem="4qw-he-chz" secondAttribute="topMargin" constant="12" id="wq8-Lo-bTI"/>
+                                                <constraint firstItem="b88-XV-rO1" firstAttribute="bottom" secondItem="ayf-fK-j6o" secondAttribute="bottom" constant="-4" id="zMZ-7B-dyb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -657,7 +670,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="201"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Player" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCD-7h-CKA" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Player" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCD-7h-CKA" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="8" width="563" height="50"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -681,7 +694,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="About Me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-uf-Ehe" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="About Me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-uf-Ehe" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="142" width="563" height="50"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -704,7 +717,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Team" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yBU-yr-BZw" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Favorite Team" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yBU-yr-BZw" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="19" y="75" width="563" height="50"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>

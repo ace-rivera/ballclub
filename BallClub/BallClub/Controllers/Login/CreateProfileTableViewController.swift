@@ -30,6 +30,7 @@ class CreateProfileTableViewController: UITableViewController {
   var imagePicker :  UIImagePickerController!
   var emailAddress = ""
   var password = ""
+  var gender = 0
   let registrationViewModel = RegistrationViewModel()
   let playerViewModel = PlayerViewModel()
   let dropDown = DropDown()
@@ -95,8 +96,8 @@ class CreateProfileTableViewController: UITableViewController {
     dropDown.direction = .bottom
     dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
     dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-      print("Selected item: \(item) at index: \(index)")
       self.sexTextField.text = item
+      self.gender = index
       self.dropDown.hide()
     }
   }
@@ -139,19 +140,21 @@ class CreateProfileTableViewController: UITableViewController {
     
     if firstNameTextField.text != "" && lastNameTextField.text != "" &&
        homeCityTextField.text != "" && birthDateTextField.text != "" &&
-       sexTextField.text != "", let firstName = firstNameTextField.text, let lastName = lastNameTextField.text {
+       sexTextField.text != "" && heightTextField.text != "" && weightTextField.text != "",
+      let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
+      let height = heightTextField.text, let weight = weightTextField.text, let date = birthDateTextField.text, let city = homeCityTextField.text {
       let userDictionary = ["email": emailAddress,
                             "password": password,
                             "password_confirmation": password,
-                            "name": (firstName + " " + lastName) ?? "",
+                            "name": (firstName + " " + lastName),
                             "nickname": "Test",
                             "image": "test",
                             "contact_number": "test",
-                            "city": homeCityTextField.text ?? "",
-                            "height": 1.23,
-                            "weight": 1.25,
-                            "birthday": "2012-10-24",
-                            "gender": 0] as [String : Any]
+                            "city": city,
+                            "height": Double(height),
+                            "weight": Double(weight),
+                            "birthday": date,
+                            "gender": gender] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
       registrationViewModel.registerUser(userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
         Utilities.hideProgressHud()
