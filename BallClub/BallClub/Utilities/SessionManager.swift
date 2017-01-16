@@ -81,6 +81,23 @@ class SessionManager: NSObject {
     }
   }
   
+  func isTokenExpired() -> Bool {
+    if let expiry = UserDefaults.standard.value(forKey: "expiry") as? String,
+      let loginTime = UserDefaults.standard.value(forKey: "loginTime") as? Date {
+      
+      let calendar = Calendar.current
+      let minutes = Int(expiry) ?? 0
+      let dateAfterAddingTTL = calendar.date(byAdding: .second, value: minutes, to: loginTime) ?? Date()
+      
+      let timeNow = Date()
+      
+      if timeNow > dateAfterAddingTTL {
+        return true
+      }
+    }
+    return false
+  }
+  
   func endCurrentSession() {
     do {
       try keychain.remove("username")
