@@ -97,7 +97,11 @@ class LoginViewController: UIViewController {
       if (statusCode == 200 || statusCode == 201), let p = player {
         var test = Player.toDictionary(user: p)
         UserDefaults.standard.set(Player.toDictionary(user: p), forKey: "currentUser")
-        self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
+        self.emailAddLabel.text = ""
+        self.passwordLabel.text = ""
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notifications.didLoginNotification), object: nil)
+//        self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
       } else {
         self.showAlert(title: "ERROT", message: message, callback: {})
       }

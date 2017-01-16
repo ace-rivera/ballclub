@@ -29,7 +29,12 @@ class Constants: NSObject {
     static let STATUS_OK = 200
     static let STATUS_MISSING_PARAMETERS = 422
   }
-    
+  
+  enum Notifications {
+    static let didLoginNotification           = "DidLoginNotification"
+    static let didLogoutNotification          = "DidLogoutNotification"
+  }
+
   enum Category {
     case PUBLIC
     case PRIVATE

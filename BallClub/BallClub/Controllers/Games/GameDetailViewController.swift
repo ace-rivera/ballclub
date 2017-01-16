@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameDetailViewController: UITableViewController {
+class GameDetailViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
   @IBOutlet var gameDetailTableView: UITableView!
   
@@ -21,6 +21,7 @@ class GameDetailViewController: UITableViewController {
   @IBOutlet weak var gameDetails: UILabel!
   @IBOutlet weak var playerCount: UILabel!
   @IBOutlet weak var playerNames: UILabel!
+  @IBOutlet weak var gameOwner: UILabel!
   @IBOutlet weak var playerCollection: UICollectionView!
   @IBOutlet weak var additionInfo: UILabel!
   @IBOutlet weak var notGoingIcon: UIButton!
@@ -30,7 +31,14 @@ class GameDetailViewController: UITableViewController {
   @IBOutlet weak var goingIcon: UIButton!
   @IBOutlet weak var goingButton: UIButton!
   
-  
+  var gameId: Int? {
+    didSet {
+      if let gameId = self.gameId {
+        self.getGameDetails(gameId: gameId)
+      }
+    }
+  }
+  var game: Game?
   var inviteId: Int!
   let friendsViewModel = FriendsViewModel()
   
@@ -51,6 +59,35 @@ class GameDetailViewController: UITableViewController {
     self.gameDetailTableView.estimatedRowHeight = 200
     self.gameDetailTableView.rowHeight = UITableViewAutomaticDimension
     additionInfo.sizeToFit()
+  }
+  
+  func setGameDetails() {
+    if let game = self.game {
+//      self.gameDate = CustomDateFormatter().feedsDateFormat(feedDate: start) // use Date object
+//      self.gameTime
+//      self.gameLocation
+      self.gameTitle.text = game.title
+      self.gamePrice.text = String(format: "%.2f", game.fee)
+      self.gameDetails.text = game.additionalInfo ?? ""
+      self.playerCount.text = "\(game.maxCapacity)"
+      self.gameOwner.text = "\(game.gameCreator.playerName) invited you"
+//      self.playerNames.text =
+//      self.additionInfo.text = //Ace: For what?
+    }
+  }
+  
+  //MARK: - Helper Methods
+  func getGameDetails(gameId: Int) {
+    let gameViewModel = GamesViewModel()
+    gameViewModel.getGameDetails(gameId: gameId) { (status, message, game) -> (Void) in
+      if status == Constants.ResponseCodes.STATUS_OK {
+        self.game = game
+        self.setGameDetails()
+        self.tableView.reloadData()
+      } else {
+        self.showAlert(title: "Error", message: "Unable to fetch game details", callback: {})
+      }
+    }
   }
   
   //MARK: - IBAction
@@ -94,13 +131,13 @@ class GameDetailViewController: UITableViewController {
   }
   
   //MARK: - Collection View Delegate
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
     collectionCell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
     return collectionCell
   }
   
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return TestClass.Common.friendImages.count
   }
   

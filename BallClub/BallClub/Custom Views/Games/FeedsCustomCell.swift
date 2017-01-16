@@ -53,7 +53,9 @@ class FeedsCustomCell: UITableViewCell {
   
   func setupCellData(game: Game) {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+    dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ssZZZZ"
     if let start = dateFormatter.date(from: game.startTime),
       let end = dateFormatter.date(from: game.endTime) {
       self.gameDateLabel.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
