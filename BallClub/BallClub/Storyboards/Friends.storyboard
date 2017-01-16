@@ -81,6 +81,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapOnAddFriendButton:" destination="GwD-Yj-HCh" eventType="touchUpInside" id="Akv-iM-xfy"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="online" translatesAutoresizingMaskIntoConstraints="NO" id="A3c-fE-kO1">
                                         <rect key="frame" x="340" y="158" width="15" height="15"/>

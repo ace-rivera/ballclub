@@ -55,6 +55,10 @@
 		B80009B61E2696A40015C6BF /* UserSearchFriendsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009B41E2696A40015C6BF /* UserSearchFriendsCustomCell.swift */; };
 		B80009B71E2696A40015C6BF /* UserSearchFriendsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80009B51E2696A40015C6BF /* UserSearchFriendsCustomCell.xib */; };
 		B80009B91E27D1150015C6BF /* UserSearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009B81E27D1150015C6BF /* UserSearchResultTableViewController.swift */; };
+		B80009BB1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */; };
+		B80009BE1E2D1E300015C6BF /* FriendsListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009BC1E2D1E300015C6BF /* FriendsListCustomCell.swift */; };
+		B80009BF1E2D1E300015C6BF /* FriendsListCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80009BD1E2D1E300015C6BF /* FriendsListCustomCell.xib */; };
+		B80009C11E2D27000015C6BF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009C01E2D27000015C6BF /* SettingsTableViewController.swift */; };
 		B81155F21E057FC80076B17B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F11E057FC80076B17B /* UIViewController.swift */; };
 		B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */; };
 		B81155F91E0581500076B17B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F81E0581500076B17B /* Utilities.swift */; };
@@ -133,6 +137,10 @@
 		B80009B41E2696A40015C6BF /* UserSearchFriendsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchFriendsCustomCell.swift; sourceTree = "<group>"; };
 		B80009B51E2696A40015C6BF /* UserSearchFriendsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchFriendsCustomCell.xib; sourceTree = "<group>"; };
 		B80009B81E27D1150015C6BF /* UserSearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewController.swift; sourceTree = "<group>"; };
+		B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsTableViewController.swift; sourceTree = "<group>"; };
+		B80009BC1E2D1E300015C6BF /* FriendsListCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListCustomCell.swift; sourceTree = "<group>"; };
+		B80009BD1E2D1E300015C6BF /* FriendsListCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsListCustomCell.xib; sourceTree = "<group>"; };
+		B80009C01E2D27000015C6BF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B81155F11E057FC80076B17B /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		B81155F81E0581500076B17B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -270,6 +278,7 @@
 				71547B2A1D75949800264B67 /* CreateGameViewController.swift */,
 				71D4927D1D7E908400E07DDF /* GameDetailViewController.swift */,
 				71D4927F1D7E90C000E07DDF /* InvitedFriendsViewController.swift */,
+				B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -310,6 +319,7 @@
 				BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */,
 				BA7777611D80F2FB003F4465 /* FriendsViewController.swift */,
 				B80009B81E27D1150015C6BF /* UserSearchResultTableViewController.swift */,
+				B80009C01E2D27000015C6BF /* SettingsTableViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -336,6 +346,8 @@
 				71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */,
 				45382D661D805B9F008FB3BD /* GamesCategoryHeaderView.swift */,
 				45382D621D80566F008FB3BD /* GamesCategoryHeaderView.xib */,
+				B80009BC1E2D1E300015C6BF /* FriendsListCustomCell.swift */,
+				B80009BD1E2D1E300015C6BF /* FriendsListCustomCell.xib */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -540,6 +552,7 @@
 				B80009B71E2696A40015C6BF /* UserSearchFriendsCustomCell.xib in Resources */,
 				BA7777641D80F7AF003F4465 /* Friends.storyboard in Resources */,
 				45382D631D80566F008FB3BD /* GamesCategoryHeaderView.xib in Resources */,
+				B80009BF1E2D1E300015C6BF /* FriendsListCustomCell.xib in Resources */,
 				71547A8B1D752A4300264B67 /* Assets.xcassets in Resources */,
 				71547A9F1D75346700264B67 /* Main.storyboard in Resources */,
 				71547AA31D7534F100264B67 /* User.storyboard in Resources */,
@@ -620,6 +633,7 @@
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
 				B80009B91E27D1150015C6BF /* UserSearchResultTableViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
+				B80009BB1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift in Sources */,
 				BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */,
 				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
 				B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */,
@@ -629,6 +643,7 @@
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
 				71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
+				B80009BE1E2D1E300015C6BF /* FriendsListCustomCell.swift in Sources */,
 				B88A151F1E2128CB0043DBBD /* LocationViewModel.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
 				B80009B01E2210460015C6BF /* Request.swift in Sources */,
@@ -636,6 +651,7 @@
 				B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */,
 				FBF2D37D1E2BE4B60032EFFE /* LoginNavigationViewController.swift in Sources */,
 				B88A15191E2128780043DBBD /* RegistrationViewModel.swift in Sources */,
+				B80009C11E2D27000015C6BF /* SettingsTableViewController.swift in Sources */,
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,

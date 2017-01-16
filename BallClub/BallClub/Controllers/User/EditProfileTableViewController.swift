@@ -32,6 +32,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   var imagePicker :  UIImagePickerController!
   var playerViewModel = PlayerViewModel()
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
+  var gender = 0
   let dropDown = DropDown()
   
   override func viewDidLoad() {
@@ -43,6 +44,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
     super.viewWillAppear(animated)
     imagePicker = UIImagePickerController()
     imagePicker.delegate = self
@@ -82,7 +84,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     dropDown.direction = .bottom
     dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
     dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-      print("Selected item: \(item) at index: \(index)")
+      self.gender = index
       self.sexTextField.text = item
       self.dropDown.hide()
     }
@@ -131,18 +133,20 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   
   func saveProfileChanges() {
     
-    if firstNameTextField.text != "" && lastNameTextField.text != "" &&
-      homeCityTextField.text != "" && birthDateTextField.text != "" &&
-      sexTextField.text != "", let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let player = currentUser, let id = player["id"] as? Int {
-      let userDictionary = ["name": (firstName + " " + lastName) ?? "",
+      if firstNameTextField.text != "" && lastNameTextField.text != "" &&
+        homeCityTextField.text != "" && birthDateTextField.text != "" &&
+        sexTextField.text != "" && heightTextField.text != "" && weightTextField.text != "",
+        let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
+        let height = heightTextField.text, let weight = weightTextField.text, let date = birthDateTextField.text, let city = homeCityTextField.text, let player = currentUser, let id = player["id"] as? Int {
+      let userDictionary = ["name": (firstName + " " + lastName),
                             "nickname": "Test",
                             "image": "test",
                             "contact_number": "test",
-                            "city": homeCityTextField.text ?? "",
-                            "height": 1.23,
-                            "weight": 1.25,
-                            "birthday": "2012-10-24",
-                            "gender": 0] as [String : Any]
+                            "city": city,
+                            "height": Double(height),
+                            "weight": Double(weight),
+                            "birthday": date,
+                            "gender": gender] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
       //TO-DO pass current user id in api call
       playerViewModel.updateUser(userId: id, userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
@@ -208,9 +212,16 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   }
   
   func populateUserData() {
-    if let player = currentUser, let name = player["name"] as? String, let city = player["city"] as? String {
+    if let player = currentUser, let name = player["name"] as? String, let city = player["city"] as? String,
+       let date = player["birthday"] as? String, let gender = player["gender"] as? Int {
       firstNameTextField.text = name
       homeCityTextField.text = city
+      birthDateTextField.text = date
+      if gender == 0 {
+        sexTextField.text = "Male"
+      } else {
+        sexTextField.text = "Female"
+      }
     }
   }
   

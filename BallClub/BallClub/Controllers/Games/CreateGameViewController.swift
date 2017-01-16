@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateGameViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource {
+class CreateGameViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate {
   
   @IBOutlet var createGameTableView: UITableView!
   @IBOutlet weak var gameTitleTextField: UITextField!
@@ -32,6 +32,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   var gameDetailsDict = [String : Any]()
   var selectedLocation: Location?
   var pickerView = UIView()
+  var friendsToInviteArray = [Player]()
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -87,6 +88,19 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   func dismissDatePicker() {
     self.pickerView.removeFromSuperview()
   }
+  
+  func showInviteFriendsVC() {
+    let storyboard = UIStoryboard.init(name: "Game", bundle: nil)
+    if  let inviteFriendsTVC = storyboard.instantiateViewController(withIdentifier: "InviteFriendsTVC") as? InviteFriendsTableViewController {
+      inviteFriendsTVC.delegate = self
+      self.navigationController?.pushViewController(inviteFriendsTVC, animated: true)
+    }
+  }
+  
+  func getInviteFriendsArray(playerArray: [Player]) {
+    friendsToInviteArray = playerArray
+  }
+  
   
   //MARK: - IBAction
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
@@ -181,6 +195,9 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     self.gameDetailsDict["approval"] = approvalSwitch.isOn
   }
 
+  @IBAction func didTapOnInviteFriends(_ sender: Any) {
+    self.showInviteFriendsVC()
+  }
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
