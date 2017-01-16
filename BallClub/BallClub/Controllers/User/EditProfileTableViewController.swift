@@ -163,6 +163,8 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
           }
         }
       })
+      } else {
+        self.showAlert(title: "ERROR", message: "All fields are required", callback: {})
     }
     
   }
