@@ -48,6 +48,8 @@ class GamesViewController: UIViewController {
       if statusCode == 200, let games = games {
         self.gameList = games
         self.gamesTableview.reloadData()
+      } else {
+        self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
       }
     }
   }

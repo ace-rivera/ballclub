@@ -70,6 +70,7 @@
 		BA7777641D80F7AF003F4465 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7777631D80F7AF003F4465 /* Friends.storyboard */; };
 		BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
+		FB0D41711E2D0EFE0073CE44 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */; };
 		FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E281D7FE45800D6D2F4 /* Game.swift */; };
 		FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E291D7FE45800D6D2F4 /* Location.swift */; };
 		FB5E3E2D1D7FE45800D6D2F4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */; };
@@ -148,6 +149,7 @@
 		BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
+		FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		FB5E3E281D7FE45800D6D2F4 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Models/Game.swift; sourceTree = "<group>"; };
 		FB5E3E291D7FE45800D6D2F4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		71547AF31D753A9A00264B67 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */,
 				71547AFE1D753C1C00264B67 /* MapsViewController.swift */,
 				FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */,
 			);
@@ -645,6 +648,7 @@
 				71D4927E1D7E908400E07DDF /* GameDetailViewController.swift in Sources */,
 				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
 				FB5E3E2D1D7FE45800D6D2F4 /* Player.swift in Sources */,
+				FB0D41711E2D0EFE0073CE44 /* LocationListViewController.swift in Sources */,
 				713BFD661D76B42D00A49BC6 /* UserAddFriendCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

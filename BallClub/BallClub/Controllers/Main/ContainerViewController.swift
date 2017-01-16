@@ -27,7 +27,8 @@ class ContainerViewController: UIViewController {
     self.initLoginViewController()
     
     // checking the session
-    if SessionManager.sharedInstance.getSessionToken() != nil {
+    let isTokenExpired = SessionManager.sharedInstance.isTokenExpired()
+    if SessionManager.sharedInstance.getSessionToken() != nil && !isTokenExpired {
       self.addChildViewController(self.mainViewController!)
       self.view.addSubview((self.mainViewController?.view)!)
     } else {
@@ -60,6 +61,7 @@ class ContainerViewController: UIViewController {
   }
   
   func didLogin(notification:Notification) {
+    UserDefaults.standard.set(Date(), forKey: "loginTime")
     self.transition(fromViewController: self.loginViewController!, toViewController: self.mainViewController!)
   }
   
