@@ -27,6 +27,8 @@ class Constants: NSObject {
   
   struct ResponseCodes {
     static let STATUS_OK = 200
+    static let STATUS_CREATED = 201
+    static let STATUS_NO_CONTENT = 204
     static let STATUS_MISSING_PARAMETERS = 422
   }
   

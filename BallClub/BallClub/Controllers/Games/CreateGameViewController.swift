@@ -107,7 +107,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     if isFormValid() {
       let gameViewModel = GamesViewModel()
       gameViewModel.createGame(gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-        if statusCode == Constants.ResponseCodes.STATUS_OK {
+        if statusCode == Constants.ResponseCodes.STATUS_CREATED {
           self.showAlert(title: "Success", message: "Game created successfully", callback: {
             _ = self.navigationController?.popViewController(animated: true)
           })
