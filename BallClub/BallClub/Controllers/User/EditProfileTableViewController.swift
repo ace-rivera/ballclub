@@ -44,6 +44,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
     super.viewWillAppear(animated)
     imagePicker = UIImagePickerController()
     imagePicker.delegate = self

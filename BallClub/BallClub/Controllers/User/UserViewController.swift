@@ -48,6 +48,7 @@ class UserViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     Utilities.showProgressHud(withTitle: "Loading User Data", inView: self.view)
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
     currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
     setUpUI()
     getPendingInvites()
@@ -206,11 +207,12 @@ class UserViewController: UIViewController {
   @IBAction func editProfilePressed(_ sender: AnyObject) {
     
   }
-  
-  @IBAction func settingsButtonPressed(_sender: AnyObject) {
+ 
+  @IBAction func settingsButtonPressed(_ sender: Any) {
+    self.performSegue(withIdentifier: "pushSettingsVC", sender: self)
     
   }
-  
+
   @IBAction func segmentTabChanged(_ segmentControl: UISegmentedControl) {
     let selectedSegment = segmentControl.selectedSegmentIndex;
     
