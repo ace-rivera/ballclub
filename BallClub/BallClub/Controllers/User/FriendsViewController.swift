@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class FriendsViewController: UIViewController {
   
@@ -50,8 +51,8 @@ class FriendsViewController: UIViewController {
     profileImage.layer.borderColor = UIColor.white.cgColor
     profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
     
-    userNameLabel.text = player.firstName
-    homeCityLabel.text = player.city
+    
+    setupProfileData()
     registerNibs()
   }
   
@@ -62,7 +63,14 @@ class FriendsViewController: UIViewController {
   }
   
   func setupProfileData() {
+    userNameLabel.text = player.firstName + " " + player.lastName
+    homeCityLabel.text = player.city
+    heightTextField.text = String(format: "%.2f", player.height ?? "180") + " " + "cm"
+    weightTextField.text = String(format: "%.2f", player.weight ?? "180") + " " + "lbs"
     
+    if let url = URL(string: player.avatar ?? "") {
+      Nuke.loadImage(with: url, into: self.profileImage)
+    }
   }
   
   func getFriendsList() {

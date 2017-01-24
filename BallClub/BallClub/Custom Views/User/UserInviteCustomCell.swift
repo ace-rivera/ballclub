@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 protocol UserInviteCustomCellDelegate {
   func didTapOnInvitee(tag: Int)
@@ -41,7 +42,9 @@ class UserInviteCustomCell: UITableViewCell {
   }
   
   func setFriendUserImage (image : String){
-    userProfileImage.image = UIImage(named: image)
+    if let url = URL(string: image) {
+      Nuke.loadImage(with: url, into: self.userProfileImage)
+    }
   }
   
   func setFriendInviteStatus (status : String) {

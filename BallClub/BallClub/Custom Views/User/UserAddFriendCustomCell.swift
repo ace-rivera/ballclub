@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 protocol UserAddFriendCustomCellDelegate {
   func didTapOnUser(tag: Int)
@@ -41,7 +42,9 @@ class UserAddFriendCustomCell: UITableViewCell {
   }
   
   func setFriendUserImage (image : String){
-    userProfileImage.image = UIImage(named: image)
+    if let url = URL(string: image) {
+      Nuke.loadImage(with: url, into: self.userProfileImage)
+    } 
   }
   
   func didTapOnPlayerAssets() {

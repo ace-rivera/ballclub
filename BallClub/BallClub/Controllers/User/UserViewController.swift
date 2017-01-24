@@ -102,14 +102,14 @@ class UserViewController: UIViewController {
   }
   
   func getUserData() {
-    if let player = currentUser, let name = player["first_name"] as? String {
-      self.playerName.text = name
+    if let player = currentUser, let firstName = player["first_name"] as? String, let lastName = player["last_name"] as? String {
+      self.playerName.text = firstName + " " + lastName
       
       if let urlString = player["avatar"] as? String,
         let url = URL(string: urlString) {
         Nuke.loadImage(with: url, into: self.userProfileImage)
       } else {
-        self.userProfileImage.image = UIImage(named: "sample_watch")
+        self.userProfileImage.image = UIImage(named: "sample_profile")
       }
     }
   }
@@ -235,8 +235,6 @@ class UserViewController: UIViewController {
   }
   
   
-  @IBAction func unwindToMenu(_segue: UIStoryboardSegue) {}
-  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "FriendsProfileViewControllerSegue" {
       let destinationNavigationController = segue.destination as! UINavigationController
@@ -255,16 +253,20 @@ extension UserViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if firstTabSelected {
       let cell = tableView.dequeueReusableCell(withIdentifier: "UserInviteCustomCell") as! UserInviteCustomCell
-      cell.setFriendUserName(name: pendingUserInvitesList[indexPath.row].firstName)
-      cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
+      cell.setFriendUserName(name: pendingUserInvitesList[indexPath.row].firstName + " " + pendingUserInvitesList[indexPath.row].lastName)
+      if let imageString = pendingUserInvitesList[indexPath.row].avatar {
+        cell.setFriendUserImage(image: imageString);
+      }
       cell.setFriendInviteStatus(status: "accepted your friend request")
       cell.tag = indexPath.row
       cell.delegate = self
       return cell
     }else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "UserAddFriendCustomCell") as! UserAddFriendCustomCell
-      cell.setFriendUserName(name: pendingFriendsList[indexPath.row].firstName)
-      cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
+      cell.setFriendUserName(name: pendingFriendsList[indexPath.row].firstName + " " + pendingFriendsList[indexPath.row].lastName)
+      if let imageString = pendingFriendsList[indexPath.row].avatar {
+        cell.setFriendUserImage(image: imageString);
+      }
       cell.tag = indexPath.row
       cell.delegate = self
       return cell

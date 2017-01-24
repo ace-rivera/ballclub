@@ -31,6 +31,7 @@ class CreateProfileTableViewController: UITableViewController {
   var emailAddress = ""
   var password = ""
   var gender = 0
+  var data = ""
   let registrationViewModel = RegistrationViewModel()
   let playerViewModel = PlayerViewModel()
   let dropDown = DropDown()
@@ -136,8 +137,7 @@ class CreateProfileTableViewController: UITableViewController {
   }
   
   func registerUser() {
-    //TO-DO Implement registration api, call already working
-    
+
     if firstNameTextField.text != "" && lastNameTextField.text != "" &&
        homeCityTextField.text != "" && birthDateTextField.text != "" &&
        sexTextField.text != "" && heightTextField.text != "" && weightTextField.text != "",
@@ -146,13 +146,14 @@ class CreateProfileTableViewController: UITableViewController {
       let userDictionary = ["email": emailAddress,
                             "password": password,
                             "password_confirmation": password,
-                            "name": (firstName + " " + lastName),
+                            "first_name": firstName,
+                            "last_name" : lastName,
                             "nickname": "Test",
-                            "avatar": "/images/original/missing.png",
+                            "avatar": data,
                             "contact_number": "test",
                             "city": city,
-                            "height": Double(height),
-                            "weight": Double(weight),
+                            "height": Float(height) ?? 180,
+                            "weight": Float(weight) ?? 180,
                             "birthday": date,
                             "gender": gender] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
@@ -244,11 +245,16 @@ extension CreateProfileTableViewController : UIImagePickerControllerDelegate,UIN
     
   }
   
-  private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
       userProfileImage.contentMode = .scaleToFill
       userProfileImage.image = pickedImage
+      
+      if let imageData = UIImageJPEGRepresentation(pickedImage, 0.6) {
+        let base64String = imageData.base64EncodedString(options: [])
+        data = "data:image/jpeg;base64,"+base64String
+      }
     }
     dismiss(animated: true, completion: nil)
   }

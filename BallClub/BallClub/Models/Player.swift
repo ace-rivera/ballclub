@@ -19,8 +19,8 @@ struct Player : Decodable {
   var nickName: String?
   var contactNumber: String?
   var city: String
-  var height: Double?
-  var weight: Double?
+  var height: Float?
+  var weight: Float?
   var birthday: String?
   var gender: Int
   var avatar: String?

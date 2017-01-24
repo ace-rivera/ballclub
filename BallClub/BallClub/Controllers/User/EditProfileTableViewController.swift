@@ -234,7 +234,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         let url = URL(string: urlString) {
         Nuke.loadImage(with: url, into: self.userProfileImage)
       } else {
-        self.userProfileImage.image = UIImage(named: "sample_watch")
+        self.userProfileImage.image = UIImage(named: "sample_profile")
       }
     }
   }

@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_westbrook" translatesAutoresizingMaskIntoConstraints="NO" id="NGe-4a-2XE">
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="NGe-4a-2XE">
                         <rect key="frame" x="15" y="7" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="h2U-Up-7A2"/>
@@ -30,6 +30,9 @@
                                 <integer key="value" value="17"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Russell Westbrook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikz-Rr-0ez">
@@ -97,6 +100,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="player_westbrook" width="350" height="254"/>
+        <image name="sample_profile" width="400" height="400"/>
     </resources>
 </document>

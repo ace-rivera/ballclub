@@ -101,7 +101,6 @@ class LoginViewController: UIViewController {
         self.passwordLabel.text = ""
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notifications.didLoginNotification), object: nil)
-//        self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
       } else {
         self.showAlert(title: "ERROT", message: message, callback: {})
       }
