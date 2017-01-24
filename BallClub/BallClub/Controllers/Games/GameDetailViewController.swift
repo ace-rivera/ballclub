@@ -70,7 +70,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       self.gamePrice.text = String(format: "%.2f", game.fee)
       self.gameDetails.text = game.additionalInfo ?? ""
       self.playerCount.text = "\(game.maxCapacity)"
-      self.gameOwner.text = "\(game.gameCreator.playerName) invited you"
+      self.gameOwner.text = "\(game.gameCreator.firstName) invited you"
 //      self.playerNames.text =
 //      self.additionInfo.text = //Ace: For what?
     }

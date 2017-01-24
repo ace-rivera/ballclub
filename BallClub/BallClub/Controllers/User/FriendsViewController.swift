@@ -50,7 +50,7 @@ class FriendsViewController: UIViewController {
     profileImage.layer.borderColor = UIColor.white.cgColor
     profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
     
-    userNameLabel.text = player.playerName
+    userNameLabel.text = player.firstName
     homeCityLabel.text = player.city
     registerNibs()
   }
@@ -152,7 +152,7 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
       return cell
     }else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell
-      cell.setFriendUserName(name: self.friendsArray[indexPath.row].playerName)
+      cell.setFriendUserName(name: self.friendsArray[indexPath.row].firstName)
       cell.setuserCity(city: self.friendsArray[indexPath.row].city)
       //cell.setFriendUserImage(TestClass.Common.friendImages[indexPath.row])
       return cell

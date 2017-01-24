@@ -8,8 +8,7 @@
 
 import UIKit
 import DropDown
-
-
+import Nuke
 
 class EditProfileTableViewController: UITableViewController, UITextFieldDelegate {
   
@@ -33,7 +32,9 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   var playerViewModel = PlayerViewModel()
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var gender = 0
+  var data = ""
   let dropDown = DropDown()
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -138,13 +139,14 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         sexTextField.text != "" && heightTextField.text != "" && weightTextField.text != "",
         let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
         let height = heightTextField.text, let weight = weightTextField.text, let date = birthDateTextField.text, let city = homeCityTextField.text, let player = currentUser, let id = player["id"] as? Int {
+        debugPrint("avatar", data)
       let userDictionary = ["name": (firstName + " " + lastName),
                             "nickname": "Test",
-                            "image": "test",
+                            "avatar": data,
                             "contact_number": "test",
                             "city": city,
-                            "height": Double(height),
-                            "weight": Double(weight),
+                            "height": Float(height) ?? 0,
+                            "weight": Float(weight) ?? 0,
                             "birthday": date,
                             "gender": gender] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
@@ -214,15 +216,25 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   }
   
   func populateUserData() {
-    if let player = currentUser, let name = player["name"] as? String, let city = player["city"] as? String,
-       let date = player["birthday"] as? String, let gender = player["gender"] as? Int {
-      firstNameTextField.text = name
+    if let player = currentUser, let firstName = player["first_name"] as? String, let lastName = player["last_name"] as? String, let city = player["city"] as? String, let date = player["birthday"] as? String, let gender = player["gender"] as? Int, let weight = player["weight"] as? Float, let height = player["height"] as? Float {
+      firstNameTextField.text = firstName
+      lastNameTextField.text = lastName
       homeCityTextField.text = city
       birthDateTextField.text = date
+      weightTextField.text = String(format: "%.2f", weight)
+      heightTextField.text = String(format: "%.2f", height)
+
       if gender == 0 {
         sexTextField.text = "Male"
       } else {
         sexTextField.text = "Female"
+      }
+      
+      if let urlString = player["avatar"] as? String,
+        let url = URL(string: urlString) {
+        Nuke.loadImage(with: url, into: self.userProfileImage)
+      } else {
+        self.userProfileImage.image = UIImage(named: "sample_watch")
       }
     }
   }
@@ -254,11 +266,17 @@ extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINav
     
   }
   
-  private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
       userProfileImage.contentMode = .scaleToFill
       userProfileImage.image = pickedImage
+      
+      
+      if let imageData = UIImageJPEGRepresentation(pickedImage, 0.6) {
+        let base64String = imageData.base64EncodedString(options: [])
+        data = "data:image/jpeg;base64,"+base64String
+      }
     }
     dismiss(animated: true, completion: nil)
   }

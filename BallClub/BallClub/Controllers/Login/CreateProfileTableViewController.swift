@@ -148,7 +148,7 @@ class CreateProfileTableViewController: UITableViewController {
                             "password_confirmation": password,
                             "name": (firstName + " " + lastName),
                             "nickname": "Test",
-                            "image": "test",
+                            "avatar": "/images/original/missing.png",
                             "contact_number": "test",
                             "city": city,
                             "height": Double(height),

@@ -63,7 +63,7 @@ class FeedsCustomCell: UITableViewCell {
     }
     
     self.gameTitle.text = game.title
-    self.gameCreator.text = game.gameCreator.playerName
+    self.gameCreator.text = game.gameCreator.firstName
     
     if game.fee > 0.0 {
       self.gamePrice.text = "\(game.fee)"

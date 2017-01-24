@@ -29,9 +29,7 @@ class RegistrationViewModel: NSObject {
             if let error = datadict.object(forKey: "errors") as? NSArray {
               completionBlock!(response.statusCode, error[0] as? String, nil, nil, nil)
             } else {
-              let userDetail = datadict.object(forKey: "data") as? [String:Any]
-              
-              if let playerDictionary = userDetail, let httpResponse = response.response as? HTTPURLResponse, let accessToken = httpResponse.allHeaderFields["access-token"] as? String,
+              if let playerDictionary = datadict as? [String:Any], let httpResponse = response.response as? HTTPURLResponse, let accessToken = httpResponse.allHeaderFields["access-token"] as? String,
                 let client = httpResponse.allHeaderFields["client"] as? String, let expiry = httpResponse.allHeaderFields["expiry"] as? String, let userId = playerDictionary["id"] as? Int {
                 //UserDefaults.standard.setValue(playerDictionary, forKey: "currentUser")
                 UserDefaults.standard.set(expiry, forKey: "expiry")

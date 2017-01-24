@@ -83,7 +83,7 @@ class InviteFriendsTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsListCustomCell") as? FriendsListCustomCell {
-      cell.playerName.text = friendsArray[indexPath.row].playerName
+      cell.playerName.text = friendsArray[indexPath.row].firstName
       cell.playerCity.text = friendsArray[indexPath.row].city
       
       cell.tag = indexPath.row

@@ -8,6 +8,7 @@
 
 import UIKit
 import Popover
+import Nuke
 
 class UserViewController: UIViewController {
   
@@ -15,6 +16,7 @@ class UserViewController: UIViewController {
   @IBOutlet weak var friendsTableView: UITableView!
   @IBOutlet weak var searchView: UIView!
   @IBOutlet weak var playerName: UILabel!
+  @IBOutlet weak var userProfileImage: UIImageView!
 
   
   let friendsViewModel = FriendsViewModel()
@@ -100,8 +102,15 @@ class UserViewController: UIViewController {
   }
   
   func getUserData() {
-    if let player = currentUser, let name = player["name"] as? String {
+    if let player = currentUser, let name = player["first_name"] as? String {
       self.playerName.text = name
+      
+      if let urlString = player["avatar"] as? String,
+        let url = URL(string: urlString) {
+        Nuke.loadImage(with: url, into: self.userProfileImage)
+      } else {
+        self.userProfileImage.image = UIImage(named: "sample_watch")
+      }
     }
   }
   
@@ -246,7 +255,7 @@ extension UserViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if firstTabSelected {
       let cell = tableView.dequeueReusableCell(withIdentifier: "UserInviteCustomCell") as! UserInviteCustomCell
-      cell.setFriendUserName(name: pendingUserInvitesList[indexPath.row].playerName)
+      cell.setFriendUserName(name: pendingUserInvitesList[indexPath.row].firstName)
       cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
       cell.setFriendInviteStatus(status: "accepted your friend request")
       cell.tag = indexPath.row
@@ -254,7 +263,7 @@ extension UserViewController : UITableViewDelegate, UITableViewDataSource {
       return cell
     }else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "UserAddFriendCustomCell") as! UserAddFriendCustomCell
-      cell.setFriendUserName(name: pendingFriendsList[indexPath.row].playerName)
+      cell.setFriendUserName(name: pendingFriendsList[indexPath.row].firstName)
       cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
       cell.tag = indexPath.row
       cell.delegate = self
@@ -368,7 +377,7 @@ class CustomPopover: Popover, UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSearchFriendsCustomCell", for: indexPath) as? UserSearchFriendsCustomCell {
-      cell.setFriendUserName(name: playersArray[indexPath.row].playerName)
+      cell.setFriendUserName(name: playersArray[indexPath.row].firstName)
       cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
       cell.tag = indexPath.row
       return cell

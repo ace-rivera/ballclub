@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NLi-jW-F2q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NLi-jW-F2q">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G6k-Fg-BeV" id="uZq-Pl-vV3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_signout" translatesAutoresizingMaskIntoConstraints="NO" id="cnn-Ib-yyi">
@@ -288,6 +288,7 @@
                         <outlet property="searchDisplayController" destination="yQS-1P-QA8" id="7Fy-wj-95s"/>
                         <outlet property="searchTextField" destination="YE4-Qp-X6L" id="iQb-r3-N31"/>
                         <outlet property="searchView" destination="7rU-Oc-N74" id="BdW-xf-edk"/>
+                        <outlet property="userProfileImage" destination="Dxd-n6-1uu" id="rvV-NR-43X"/>
                         <segue destination="cyQ-xu-w2l" kind="show" identifier="FriendsProfileViewControllerSegue" id="abP-np-lwi"/>
                         <segue destination="lLD-n6-1fq" kind="show" identifier="pushSettingsVC" id="FvQ-eE-NcD"/>
                     </connections>
@@ -325,7 +326,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GUu-bs-wsa" id="DPC-Bj-DmR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -397,7 +398,7 @@
                                                                 <action selector="positionButtonPressed:" destination="NpR-vH-Scr" eventType="touchUpInside" id="pwg-jw-GiK"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_image" translatesAutoresizingMaskIntoConstraints="NO" id="Rzi-gG-emm">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_image" translatesAutoresizingMaskIntoConstraints="NO" id="Rzi-gG-emm">
                                                             <rect key="frame" x="25" y="23" width="110" height="110"/>
                                                             <gestureRecognizers/>
                                                             <constraints>
@@ -855,7 +856,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NLi-jW-F2q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="User" image="ic_tabbar_user" id="qFO-xe-kE6"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tgr-fH-AD6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tgr-fH-AD6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.13333333333333333" green="0.13725490196078433" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>

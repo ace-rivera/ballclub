@@ -14,7 +14,8 @@ struct Player : Decodable {
   var playerId: Int
   var uid: String
   var emailAddress: String
-  var playerName: String
+  var firstName: String
+  var lastName: String
   var nickName: String?
   var contactNumber: String?
   var city: String
@@ -22,6 +23,7 @@ struct Player : Decodable {
   var weight: Double?
   var birthday: String?
   var gender: Int
+  var avatar: String?
   // TO-DO Get data when objects are finalized
   //var games: [Game]
   //var friendRequests: [Requests]
@@ -31,20 +33,23 @@ struct Player : Decodable {
     guard let userId: Int = "id" <~~ json,
       let uid: String = "uid" <~~ json,
       let email: String = "email" <~~ json,
-      let name: String = "name" <~~ json,
+      let firstName: String = "first_name" <~~ json,
+      let lastName: String = "last_name" <~~ json,
       let city: String = "city" <~~ json,
       let gender: Int = "gender" <~~ json else { return nil }
     
     self.playerId = userId
     self.uid = uid
     self.emailAddress = email
-    self.playerName = name
+    self.firstName = firstName
+    self.lastName = lastName
     self.nickName = "nickname" <~~ json
     self.contactNumber = "contact_number" <~~ json
     self.city = city
     self.height = "height" <~~ json
     self.weight = "weight" <~~ json
     self.birthday = "birthday" <~~ json
+    self.avatar = "avatar" <~~ json
     self.gender = gender
 
   }
@@ -54,7 +59,8 @@ struct Player : Decodable {
     userDetails["id"] = user.playerId
     userDetails["uid"] = user.uid
     userDetails["email"] = user.emailAddress
-    userDetails["name"] = user.playerName
+    userDetails["first_name"] = user.firstName
+    userDetails["last_name"] = user.lastName
     userDetails["city"] = user.city
     userDetails["nickname"] = user.nickName
     userDetails["contact_number"] = user.contactNumber
@@ -62,6 +68,7 @@ struct Player : Decodable {
     userDetails["weight"] = user.weight
     userDetails["birthday"] = user.birthday
     userDetails["gender"] = user.gender
+    userDetails["avatar"] = user.avatar
     
     return userDetails
   }
