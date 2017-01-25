@@ -21,7 +21,8 @@ struct Game : Decodable {
   var privacy: Int
   var additionalInfo: String?
   var gameCreator: Player
-//  var location: Location
+  var location: Location
+  var invites: [Invite]
 
   // MARK: - Deserialization
   init?(json: JSON) {
@@ -31,8 +32,9 @@ struct Game : Decodable {
       let endTime: String = "end_time" <~~ json,
       let fee: Double = "fee" <~~ json,
       let privacy: Int = "privacy" <~~ json,
-      let gameCreator: Player = "user" <~~ json  else { return nil }
-//      let location: Location = "location" <~~ json else { return nil }
+      let gameCreator: Player = "user" <~~ json,
+      let location: Location = "location" <~~ json,
+      let invites: [Invite] = "invites" <~~ json else { return nil }
     
     self.gameId = gameId
     self.title = title
@@ -43,7 +45,8 @@ struct Game : Decodable {
     self.fee = fee
     self.privacy = privacy
     self.gameCreator = gameCreator
-//    self.location = location
+    self.location = location
+    self.invites = invites
     self.reserved = "reserved" <~~ json
     self.additionalInfo = "additional_info" <~~ json
     

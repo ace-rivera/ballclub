@@ -23,7 +23,7 @@ class CustomDateFormatter: NSObject {
   }
   
   func gameDetailsDateFormat(startTime : Date, endTime : Date) -> String {
-    dateFormatter.dateFormat = "EEEE,hh:mm a - "
+    dateFormatter.dateFormat = "E,hh:mm a - "
     let startTimeString = dateFromFormat(feedDate: startTime)
     dateFormatter.dateFormat = "hh:mm a"
     return startTimeString + dateFromFormat(feedDate: endTime)

@@ -55,7 +55,7 @@ class FeedsCustomCell: UITableViewCell {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-    dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ssZZZZ"
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     if let start = dateFormatter.date(from: game.startTime),
       let end = dateFormatter.date(from: game.endTime) {
       self.gameDateLabel.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
@@ -71,16 +71,24 @@ class FeedsCustomCell: UITableViewCell {
       self.gamePrice.isHidden = true
       self.gamePriceIcon.isHidden = true
     }
+    
+    self.gameLocation.text = game.location.locationName
+    
+    self.setMemberCountOfGame(invitesArray: game.invites)
   }
   
-//  func setLocationOfGame(location: String){ //TODO: change to Location datatype
-//    gameLocation.text = location
-//  }
-//  
-//  func setMemberCountOfGame(count: Int , maxCount : Int){
-//    gameMemberCount.text = "\(count)/\(maxCount)"
-//  }
-//  
+ 
+  func setMemberCountOfGame(invitesArray: [Invite]) {
+    var acceptedInvites = 0
+    
+    for invite in invitesArray {
+      if invite.status == 2 {
+        acceptedInvites += 1
+      }
+    }
+    gameMemberCount.text = "\(acceptedInvites)/\(invitesArray.count)"
+  }
+
 //  func setAttendeesOfGame(friends : [String]){ //TODO: change datatype to User - Friend
 //    if friends.count == 0 {
 //      gameFriends.isHidden = true
