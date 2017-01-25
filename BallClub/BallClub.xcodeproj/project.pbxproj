@@ -78,6 +78,8 @@
 		FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E281D7FE45800D6D2F4 /* Game.swift */; };
 		FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E291D7FE45800D6D2F4 /* Location.swift */; };
 		FB5E3E2D1D7FE45800D6D2F4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */; };
+		FB741E6F1E38556E00B233EE /* CreateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741E6E1E38556E00B233EE /* CreateLocationViewController.swift */; };
+		FB741E711E38587E00B233EE /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741E701E38587E00B233EE /* LocationSearchTable.swift */; };
 		FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */; };
 		FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD27A7B1E212BE700ADE930 /* SessionManager.swift */; };
 		FBF2D37B1E2BE4500032EFFE /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2D37A1E2BE4500032EFFE /* ContainerViewController.swift */; };
@@ -161,6 +163,8 @@
 		FB5E3E281D7FE45800D6D2F4 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Models/Game.swift; sourceTree = "<group>"; };
 		FB5E3E291D7FE45800D6D2F4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
+		FB741E6E1E38556E00B233EE /* CreateLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLocationViewController.swift; sourceTree = "<group>"; };
+		FB741E701E38587E00B233EE /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		FBD27A7B1E212BE700ADE930 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		FBF2D37A1E2BE4500032EFFE /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */,
 				71547AFE1D753C1C00264B67 /* MapsViewController.swift */,
 				FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */,
+				FB741E6E1E38556E00B233EE /* CreateLocationViewController.swift */,
+				FB741E701E38587E00B233EE /* LocationSearchTable.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -641,6 +647,7 @@
 				45425F191D82EE3100815B43 /* FriendsCollectionCustomView.swift in Sources */,
 				BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */,
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
+				FB741E711E38587E00B233EE /* LocationSearchTable.swift in Sources */,
 				71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
 				B80009BE1E2D1E300015C6BF /* FriendsListCustomCell.swift in Sources */,
@@ -656,6 +663,7 @@
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */,
+				FB741E6F1E38556E00B233EE /* CreateLocationViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
 				B873640D1E01984A00C77958 /* WebService.swift in Sources */,

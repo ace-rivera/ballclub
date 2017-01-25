@@ -49,6 +49,8 @@ class MapsViewController: UIViewController {
     func goToLocationDetail() {
         self.performSegue(withIdentifier: "map_detail_segue", sender: self)
     }
+  
+  
 }
 
 extension MapsViewController: MKMapViewDelegate {

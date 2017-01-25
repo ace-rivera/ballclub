@@ -1,17 +1,131 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z7a-Ud-xbZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z7a-Ud-xbZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Create Location-->
+        <scene sceneID="eSY-U9-9iO">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="98X-Wr-Om2" customClass="CreateLocationViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7CC-Pv-MvP"/>
+                        <viewControllerLayoutGuide type="bottom" id="HEr-8L-xBk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8rY-ef-kmw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJu-mV-A0W">
+                                <rect key="frame" x="-8" y="64" width="390" height="512"/>
+                                <connections>
+                                    <outlet property="delegate" destination="98X-Wr-Om2" id="aT7-2i-H7e"/>
+                                </connections>
+                            </mapView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="65u-cM-UOf">
+                                <rect key="frame" x="89" y="579" width="270" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iR-Ta-Iut">
+                                <rect key="frame" x="16" y="584" width="65" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="AZb-87-ir7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="1iR-Ta-Iut" secondAttribute="leading" id="1Ei-T2-72p"/>
+                            <constraint firstItem="nJu-mV-A0W" firstAttribute="leading" secondItem="8rY-ef-kmw" secondAttribute="leadingMargin" constant="-24" id="MG5-k0-DVF"/>
+                            <constraint firstItem="HEr-8L-xBk" firstAttribute="top" secondItem="1iR-Ta-Iut" secondAttribute="bottom" constant="13" id="YnP-n6-EQF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="65u-cM-UOf" secondAttribute="trailing" id="dzm-PY-PTw"/>
+                            <constraint firstItem="nJu-mV-A0W" firstAttribute="top" secondItem="7CC-Pv-MvP" secondAttribute="bottom" id="igL-1x-rw7"/>
+                            <constraint firstItem="65u-cM-UOf" firstAttribute="top" secondItem="nJu-mV-A0W" secondAttribute="bottom" constant="3" id="jZf-jn-lhm"/>
+                            <constraint firstItem="65u-cM-UOf" firstAttribute="leading" secondItem="1iR-Ta-Iut" secondAttribute="trailing" constant="8" id="ppI-Oo-ZQ7"/>
+                            <constraint firstItem="HEr-8L-xBk" firstAttribute="top" secondItem="65u-cM-UOf" secondAttribute="bottom" constant="9" id="rOu-cV-gJs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nJu-mV-A0W" secondAttribute="trailing" constant="-23" id="v89-J9-1cv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Location" id="ELc-QA-js5">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="SAu-7a-q06">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapOnCancel:" destination="98X-Wr-Om2" id="QpP-Ql-EFg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="L14-X5-r4i">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTapOnDone:" destination="98X-Wr-Om2" id="eGs-6G-oBA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="locationNameTextField" destination="65u-cM-UOf" id="gpQ-7c-pcR"/>
+                        <outlet property="mapView" destination="nJu-mV-A0W" id="Y3s-u3-BoA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yiY-Kf-LHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1280.8" y="-336.88155922038982"/>
+        </scene>
+        <!--Location Search Table-->
+        <scene sceneID="c1a-v4-y4T">
+            <objects>
+                <tableViewController storyboardIdentifier="LocationSearchTable" extendedLayoutIncludesOpaqueBars="YES" id="AOw-3X-XXh" customClass="LocationSearchTable" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZSD-vc-WPD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="3t2-dd-mgX" detailTextLabel="0NN-vl-LJa" style="IBUITableViewCellStyleSubtitle" id="z9c-XQ-3eP">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z9c-XQ-3eP" id="ses-fa-wLl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3t2-dd-mgX">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0NN-vl-LJa">
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AOw-3X-XXh" id="MnT-9v-VSh"/>
+                            <outlet property="delegate" destination="AOw-3X-XXh" id="RMT-39-DQb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="djE-yz-9fU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="-337"/>
+        </scene>
         <!--Maps View Controller-->
         <scene sceneID="yJC-Jo-ylU">
             <objects>
@@ -56,6 +170,9 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Create" id="ajr-AD-DnO">
                                 <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="98X-Wr-Om2" kind="show" id="dam-yG-yZp"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem image="ic_navigation_search" id="XRi-G5-dp2">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
