@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UITabBar.appearance().tintColor = UIColor.white
     UITabBar.appearance().tintColor = Constants.CustomColor.customOrangeColor
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+    UINavigationBar.appearance().barTintColor = Constants.CustomColor.customOrangeColor
     DropDown.startListeningToKeyboard()
     
     self.window!.rootViewController = ContainerViewController()

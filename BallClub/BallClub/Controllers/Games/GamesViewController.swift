@@ -44,12 +44,14 @@ class GamesViewController: UIViewController {
   //MARK: - Helper Methods
   func getGames() {
     let gameViewModel = GamesViewModel()
-    gameViewModel.getCurrentUserGames { (statusCode, message, games) -> (Void) in
-      if statusCode == 200, let games = games {
-        self.gameList = games
-        self.gamesTableview.reloadData()
-      } else {
-        self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
+    if let currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any], let userId = currentUser["id"] as? Int {
+      gameViewModel.getCurrentUserGames(userId: userId) { (statusCode, message, games) -> (Void) in
+        if statusCode == 200, let games = games {
+          self.gameList = games
+          self.gamesTableview.reloadData()
+        } else {
+          self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
+        }
       }
     }
   }

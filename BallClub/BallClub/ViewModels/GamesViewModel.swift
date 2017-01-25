@@ -46,12 +46,9 @@ class GamesViewModel: NSObject {
     }
   }
   
-  func getCurrentUserGames(completionBlock: GamesResponseClosure? = nil) {
+  func getCurrentUserGames(userId: Int, completionBlock: GamesResponseClosure? = nil) {
     var gameList = [Game]()
-    if let currentUser = UserDefaults.standard.value(forKey: "currentUser") as? [String : Any],
-      let userId = currentUser["id"] as? Int {
       APIProvider.request(.getUserGames(userId)) { (result) in
-        
         switch result {
         case.success(let response):
           do {
@@ -78,7 +75,6 @@ class GamesViewModel: NSObject {
           }
         }
       }
-    }
   }
   
   func getGameDetails(gameId: Int, completionBlock: GameDetailClosure? = nil) {

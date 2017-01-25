@@ -24,8 +24,11 @@ class FriendsViewController: UIViewController {
   var tabSelected = 0
   var player: Player!
   var selectedUser : Player!
+  var selectedGameId: Int?
   var friendsArray = [Player]()
+  var gamesArray = [Game]()
   let friendsViewModel = FriendsViewModel()
+  let gamesViewModel = GamesViewModel()
   
   //MARK:- Lifecycle
   override func viewDidLoad() {
@@ -39,12 +42,12 @@ class FriendsViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    Utilities.showProgressHud(withTitle: "Fetching User Data", inView: self.view)
     segmentControl.addTarget(self, action: #selector(segmentTabChanged), for: .valueChanged)
     setupUI()
-    self.getFriendsList()
   }
   
-  //MARK:- SetupUI
+  //MARK:- Initial Setup
   func setupUI(){
     userNameLabel.adjustsFontSizeToFitWidth = true
     userNameLabel.sizeToFit()
@@ -72,17 +75,22 @@ class FriendsViewController: UIViewController {
     if let url = URL(string: player.avatar ?? "") {
       Nuke.loadImage(with: url, into: self.profileImage)
     }
+    
+    self.getFriendsList()
+    self.getGamesList()
   }
   
+  //MARK: API Calls
   func getFriendsList() {
     friendsViewModel.getFriendsList { (statusCode, message, players) -> (Void) in
       if statusCode == 200 || statusCode == 201 {
         if let p = players {
           self.friendsArray = p
-          self.tableView.reloadData()
+          //self.tableView.reloadData()
         }
       } else {
         if let m =  message {
+          Utilities.hideProgressHud()
           self.showAlert(title: "ERROR", message: m, callback: {})
         }
         
@@ -90,8 +98,19 @@ class FriendsViewController: UIViewController {
     }
   }
   
-  
-  
+  func getGamesList() {
+    gamesViewModel.getCurrentUserGames(userId: player.playerId) { (statusCode, message, games) -> (Void) in
+      Utilities.hideProgressHud()
+      if (statusCode == 200 || statusCode == 201), let g = games {
+        self.gamesArray = g
+        // self.tableView.reloadData()
+      } else {
+        if let m = message {
+          self.showAlert(title: "ERROR", message: m, callback: {})
+        }
+      }
+    }
+  }
   
   //MARK:- IBActions
   func segmentTabChanged(segmentControl: UISegmentedControl) {
@@ -136,10 +155,11 @@ class FriendsViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "FriendsProfileViewControllerSegue" {
-      let destinationNavigationController = segue.destination as! UINavigationController
-      if let friendsVC: FriendsViewController = destinationNavigationController.topViewController as? FriendsViewController {
-          friendsVC.player = selectedUser
+    if segue.identifier == "GameDetailSegue" {
+      if let gameDetailViewController: GameDetailViewController = segue.destination as? GameDetailViewController {
+        if let id = self.selectedGameId {
+          gameDetailViewController.gameId = id
+        }
       }
     }
   }
@@ -155,17 +175,12 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
       cell.setFriendUserName(name: TestClass.Common.friendNames[indexPath.row])
       cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
       cell.setFriendInviteStatus(status: "accepted your friend request")
+      cell.selectionStyle = .none
       return cell
     }else if tabSelected == 1{
       let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as! FeedsCustomCell
-//      cell.setDateOfGame(date: NSDate())
-//      cell.setTitleOfGame(title: TestClass.Feeds.FeedTitle[indexPath.row])
-//      cell.setCreatorOfGame(name: TestClass.Feeds.FeedCreator[indexPath.row])
-//      cell.setLocationOfGame(location: TestClass.Feeds.FeedLocation[indexPath.row])
-//      cell.setTimeOfGame(startTime: TestClass.Feeds.FeedStartTime[indexPath.row], endTime: TestClass.Feeds.FeedEndTime[indexPath.row], amPm: TestClass.Feeds.FeedAmPm[indexPath.row])
-//      cell.setPriceOfGame(price: TestClass.Feeds.FeedPrice[indexPath.row])
-//      cell.setMemberCountOfGame(count: TestClass.Feeds.FeedFriends[indexPath.row].count, maxCount: 10)
-//      cell.setAttendeesOfGame(friends: TestClass.Feeds.FeedFriends[indexPath.row])
+      cell.selectionStyle = .none
+      cell.game = self.gamesArray[indexPath.row]
       return cell
     }else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell
@@ -174,6 +189,7 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
       if let imageString = self.friendsArray[indexPath.row].avatar {
         cell.setFriendUserImage(image: imageString)
       }
+      cell.selectionStyle = .none
       cell.delegate = self
       cell.tag = indexPath.row
       return cell
@@ -184,14 +200,24 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
     if tabSelected == 0 {
       return 3
     } else if tabSelected == 1 {
-      return 3
+      return self.gamesArray.count
     } else {
       return self.friendsArray.count
     }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+    if tabSelected ==  1 {
+      self.selectedGameId = self.gamesArray[indexPath.row].gameId
+      let storyboard = UIStoryboard.init(name: "Game", bundle: nil)
+      if  let gamesVC = storyboard.instantiateViewController(withIdentifier: "gameDetailsVC") as? GameDetailViewController {
+        if let id = self.selectedGameId {
+          gamesVC.gameId = id
+          self.navigationController?.pushViewController(gamesVC, animated: true)
+        }
+        
+      }
+    }
   }
 }
 

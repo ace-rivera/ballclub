@@ -46,6 +46,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpUI()
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
   }
   
   override func didReceiveMemoryWarning() {
