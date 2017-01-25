@@ -40,4 +40,11 @@ class CustomDateFormatter: NSObject {
     let timeStamp = dateFormatter.string(from: feedDate as Date)
     return timeStamp
   }
+  
+  func gameDetailsTimeFormat(startTime : Date) -> String {
+    dateFormatter.dateFormat = "hh:mm a"
+    let startTimeString = dateFromFormat(feedDate: startTime)
+
+    return startTimeString
+  }
 }
