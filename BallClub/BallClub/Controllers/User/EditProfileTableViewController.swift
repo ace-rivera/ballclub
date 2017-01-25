@@ -27,11 +27,12 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   @IBOutlet weak var guardButton: UIButton!
   @IBOutlet weak var userProfileImage: UIImageView!
   @IBOutlet weak var genderButton: UIButton!
- 
+  
   var imagePicker :  UIImagePickerController!
   var playerViewModel = PlayerViewModel()
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var gender = 0
+  var position = "G"
   var data = ""
   let dropDown = DropDown()
   
@@ -54,9 +55,19 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   
   //MARK:- SetupUI
   func setupUi(){
-    guardButton.isSelected = true
-    forwardButton.isSelected = false
-    centerButton.isSelected = false
+    if let pos = currentUser?["position"] as? String, pos == "G" {
+      guardButton.isSelected = true
+      forwardButton.isSelected = false
+      centerButton.isSelected = false
+    } else if let pos = currentUser?["position"] as? String, pos == "F"  {
+      guardButton.isSelected = false
+      forwardButton.isSelected = true
+      centerButton.isSelected = false
+    } else {
+      guardButton.isSelected = false
+      forwardButton.isSelected = false
+      centerButton.isSelected = true
+    }
     userProfileImage.layer.borderColor = UIColor.white.cgColor
     userProfileImage.isUserInteractionEnabled = true
     
@@ -96,21 +107,24 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     datePicker.addTarget(self, action: #selector(updateTextField), for: .valueChanged)
     self.birthDateTextField.inputView = datePicker
     
-   populateUserData()
+    populateUserData()
   }
   
   //MARK:- IBActions
   @IBAction func positionButtonPressed(_ sender: UIButton) {
     switch sender.tag {
     case 0:
+      position = "G"
       guardButton.isSelected = true
       forwardButton.isSelected = false
       centerButton.isSelected = false
     case 1:
+      position = "F"
       guardButton.isSelected = false
       forwardButton.isSelected = true
       centerButton.isSelected = false
     case 2:
+      position = "C"
       guardButton.isSelected = false
       forwardButton.isSelected = false
       centerButton.isSelected = true
@@ -134,23 +148,26 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   
   func saveProfileChanges() {
     
-      if firstNameTextField.text != "" && lastNameTextField.text != "" &&
-        homeCityTextField.text != "" && birthDateTextField.text != "" &&
-        sexTextField.text != "" && heightTextField.text != "" && weightTextField.text != "",
-        let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
-        let height = heightTextField.text, let weight = weightTextField.text, let date = birthDateTextField.text, let city = homeCityTextField.text, let player = currentUser, let id = player["id"] as? Int {
-        debugPrint("avatar", data)
-      let userDictionary = ["name": (firstName + " " + lastName),
+    if firstNameTextField.text != "" && lastNameTextField.text != "" &&
+      homeCityTextField.text != "" && birthDateTextField.text != "" &&
+      sexTextField.text != "" && heightTextField.text != "" && weightTextField.text != "",
+      let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
+      let height = heightTextField.text, let weight = weightTextField.text, let date = birthDateTextField.text, let city = homeCityTextField.text, let player = currentUser, let id = player["id"] as? Int {
+      debugPrint("avatar", data)
+      let userDictionary = ["first_name": firstName,
+                            "last_name" : lastName,
                             "nickname": "Test",
                             "avatar": data,
                             "contact_number": "test",
                             "city": city,
-                            "height": Float(height) ?? 0,
-                            "weight": Float(weight) ?? 0,
+                            "height": Float(height) ?? 180,
+                            "weight": Float(weight) ?? 180,
                             "birthday": date,
-                            "gender": gender] as [String : Any]
+                            "gender": gender,
+                            "position": position,
+                            "favorite_team": self.favoriteTeamTextField.text ?? "",
+                            "favorite_player": self.favoritePlayerTextField.text ?? ""] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
-      //TO-DO pass current user id in api call
       playerViewModel.updateUser(userId: id, userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
         Utilities.hideProgressHud()
         if responseCode == 200 || responseCode == 201 {
@@ -165,21 +182,21 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
           }
         }
       })
-      } else {
-        self.showAlert(title: "ERROR", message: "All fields are required", callback: {})
+    } else {
+      self.showAlert(title: "ERROR", message: "All fields are required", callback: {})
     }
     
   }
   
   func getCurrentUser(userId: Int) {
-    Utilities.showProgressHud(withTitle: "updateing user Profile", inView: self.view)
+    Utilities.showProgressHud(withTitle: "updating user Profile", inView: self.view)
     self.playerViewModel.getUser(userId: userId, completionBlock: { (statusCode, message, player) -> (Void) in
       Utilities.hideProgressHud()
       if (statusCode == 200 || statusCode == 201), let p = player {
         UserDefaults.standard.set(Player.toDictionary(user: p), forKey: "currentUser")
         self.navigationController?.popViewController(animated: true)
       } else {
-        self.showAlert(title: "ERROT", message: message, callback: {})
+        self.showAlert(title: "ERROR", message: message, callback: {})
       }
     })
   }
@@ -216,14 +233,16 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   }
   
   func populateUserData() {
-    if let player = currentUser, let firstName = player["first_name"] as? String, let lastName = player["last_name"] as? String, let city = player["city"] as? String, let date = player["birthday"] as? String, let gender = player["gender"] as? Int, let weight = player["weight"] as? Float, let height = player["height"] as? Float {
+    if let player = currentUser, let firstName = player["first_name"] as? String, let lastName = player["last_name"] as? String, let city = player["city"] as? String, let date = player["birthday"] as? String, let gender = player["gender"] as? Int, let weight = player["weight"] as? Float, let height = player["height"] as? Float, let favoritePlayer = player["favorite_player"] as? String, let favoriteTeam = ["favorite_team"] as? String {
       firstNameTextField.text = firstName
       lastNameTextField.text = lastName
       homeCityTextField.text = city
       birthDateTextField.text = date
-      weightTextField.text = String(format: "%.2f", weight)
-      heightTextField.text = String(format: "%.2f", height)
-
+      weightTextField.text = String(format: "%.1f", weight)
+      heightTextField.text = String(format: "%.1f", height)
+      favoritePlayerTextField.text = favoritePlayer
+      favoriteTeamTextField.text = favoriteTeam
+      
       if gender == 0 {
         sexTextField.text = "Male"
       } else {
@@ -247,7 +266,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
   }
-
+  
 }
 
 extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{

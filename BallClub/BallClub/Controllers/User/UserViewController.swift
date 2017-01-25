@@ -198,6 +198,7 @@ class UserViewController: UIViewController {
         self.allPlayersArray =  players
         self.setUpUI()
       } else {
+        Utilities.hideProgressHud()
         self.showAlert(title: "Error", message: message, callback: {})
       }
     }

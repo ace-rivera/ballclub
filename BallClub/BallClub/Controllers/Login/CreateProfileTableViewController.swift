@@ -30,8 +30,9 @@ class CreateProfileTableViewController: UITableViewController {
   var imagePicker :  UIImagePickerController!
   var emailAddress = ""
   var password = ""
-  var gender = 0
   var data = ""
+  var position = "G"
+  var gender = 0
   let registrationViewModel = RegistrationViewModel()
   let playerViewModel = PlayerViewModel()
   let dropDown = DropDown()
@@ -107,14 +108,17 @@ class CreateProfileTableViewController: UITableViewController {
   @IBAction func positionButtonPressed(_ sender: UIButton) {
     switch sender.tag {
     case 0:
+      position = "G"
       guardButton.isSelected = true
       forwardButton.isSelected = false
       centerButton.isSelected = false
     case 1:
+      position = "F"
       guardButton.isSelected = false
       forwardButton.isSelected = true
       centerButton.isSelected = false
     case 2:
+      position = "C"
       guardButton.isSelected = false
       forwardButton.isSelected = false
       centerButton.isSelected = true
@@ -155,7 +159,10 @@ class CreateProfileTableViewController: UITableViewController {
                             "height": Float(height) ?? 180,
                             "weight": Float(weight) ?? 180,
                             "birthday": date,
-                            "gender": gender] as [String : Any]
+                            "gender": gender,
+                            "position": position,
+                            "favorite_team": self.favoriteTeamTextField.text ?? "",
+                            "favorite_player": self.favoritePlayerTextField.text ?? ""] as [String : Any]
       Utilities.showProgressHud(withTitle: "Registering User", inView: self.view)
       registrationViewModel.registerUser(userCredentials: userDictionary, completionBlock: { (responseCode, message) -> (Void) in
         Utilities.hideProgressHud()
@@ -175,20 +182,11 @@ class CreateProfileTableViewController: UITableViewController {
     } else {
       self.showAlert(title: "Error", message: "Please complete all fields", callback: {})
     }
-    
-    
-    //pushToMainStoryboard()
   }
   
   func pushToMainStoryboard(){
     self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
-    
   }
-  
-  func userDataToDictionary() {
-    
-  }
-  
   
   func showActionSheet() {
     let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)

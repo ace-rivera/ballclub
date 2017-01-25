@@ -24,9 +24,11 @@ struct Player : Decodable {
   var birthday: String?
   var gender: Int
   var avatar: String?
-  // TO-DO Get data when objects are finalized
-  //var games: [Game]
-  //var friendRequests: [Requests]
+  var favoriteTeam: String?
+  var favoritePlayer: String?
+  var position: String?
+  var games: [Game]?
+  var friendRequests: [Request]?
   
   // MARK: - Deserialization
   init?(json: JSON) {
@@ -51,6 +53,11 @@ struct Player : Decodable {
     self.birthday = "birthday" <~~ json
     self.avatar = "avatar" <~~ json
     self.gender = gender
+    self.favoriteTeam = "favorite_team" <~~ json
+    self.favoritePlayer = "favorite_player" <~~ json
+    self.position = "position" <~~ json
+    self.games = "games" <~~ json
+    self.friendRequests = "friend_requests" <~~ json
 
   }
   
@@ -69,6 +76,9 @@ struct Player : Decodable {
     userDetails["birthday"] = user.birthday
     userDetails["gender"] = user.gender
     userDetails["avatar"] = user.avatar
+    userDetails["favorite_team"] = user.favoriteTeam
+    userDetails["favorite_player"] = user.favoritePlayer
+    userDetails["position"] = user.position
     
     return userDetails
   }
