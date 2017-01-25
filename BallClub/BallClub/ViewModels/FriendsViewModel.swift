@@ -156,6 +156,7 @@ class FriendsViewModel: NSObject {
   }
   
   func getFriendsList(completionBlock: (GetFriendsListResponseClosure)? = nil) {
+    self.myFriendsArray = [Player]()
     APIProvider.request(.getFriendsList()) { (result) in
       switch result {
       case .success(let response):

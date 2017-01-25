@@ -23,6 +23,7 @@ class FriendsViewController: UIViewController {
   
   var tabSelected = 0
   var player: Player!
+  var selectedUser : Player!
   var friendsArray = [Player]()
   let friendsViewModel = FriendsViewModel()
   
@@ -113,10 +114,10 @@ class FriendsViewController: UIViewController {
   @IBAction func backButtonPressed(_ sender: AnyObject) {
     
     if (self.navigationController?.viewControllers.count)! >= 2 {
-      debugPrint("HELLLO")
+      _ = self.navigationController?.popViewController(animated: true)
+    } else {
+      self.dismiss(animated: true, completion: {})
     }
-    self.dismiss(animated: true, completion: {})
-   // _ = self.navigationController?.popViewController(animated: true)
   }
   
   
@@ -132,7 +133,15 @@ class FriendsViewController: UIViewController {
         }
       }
     }
-    
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "FriendsProfileViewControllerSegue" {
+      let destinationNavigationController = segue.destination as! UINavigationController
+      if let friendsVC: FriendsViewController = destinationNavigationController.topViewController as? FriendsViewController {
+          friendsVC.player = selectedUser
+      }
+    }
   }
   
 }
@@ -162,7 +171,11 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell
       cell.setFriendUserName(name: self.friendsArray[indexPath.row].firstName)
       cell.setuserCity(city: self.friendsArray[indexPath.row].city)
-      //cell.setFriendUserImage(TestClass.Common.friendImages[indexPath.row])
+      if let imageString = self.friendsArray[indexPath.row].avatar {
+        cell.setFriendUserImage(image: imageString)
+      }
+      cell.delegate = self
+      cell.tag = indexPath.row
       return cell
     }
   }
@@ -179,5 +192,17 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
+  }
+}
+
+
+extension FriendsViewController : FriendStatusCustomCellDelegate {
+  func didTapOnUser(tag: Int){
+    self.selectedUser = self.friendsArray[tag]
+    let storyboard = UIStoryboard.init(name: "Friends", bundle: nil)
+    if  let friendsVC = storyboard.instantiateViewController(withIdentifier: "FriendsProfileVC") as? FriendsViewController {
+      friendsVC.player = selectedUser
+      self.navigationController?.pushViewController(friendsVC, animated: true)
+    }
   }
 }
