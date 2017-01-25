@@ -233,7 +233,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
   }
   
   func populateUserData() {
-    if let player = currentUser, let firstName = player["first_name"] as? String, let lastName = player["last_name"] as? String, let city = player["city"] as? String, let date = player["birthday"] as? String, let gender = player["gender"] as? Int, let weight = player["weight"] as? Float, let height = player["height"] as? Float, let favoritePlayer = player["favorite_player"] as? String, let favoriteTeam = ["favorite_team"] as? String {
+    if let player = currentUser, let firstName = player["first_name"] as? String, let lastName = player["last_name"] as? String, let city = player["city"] as? String, let date = player["birthday"] as? String, let gender = player["gender"] as? Int, let weight = player["weight"] as? Float, let height = player["height"] as? Float, let favoritePlayer = player["favorite_player"] as? String, let favoriteTeam = player["favorite_team"] as? String {
       firstNameTextField.text = firstName
       lastNameTextField.text = lastName
       homeCityTextField.text = city
