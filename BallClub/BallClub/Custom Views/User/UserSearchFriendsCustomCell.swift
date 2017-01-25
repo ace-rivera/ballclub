@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class UserSearchFriendsCustomCell: UITableViewCell {
   
@@ -30,8 +31,14 @@ class UserSearchFriendsCustomCell: UITableViewCell {
     playerName.text = name
   }
   
+  func setFriendCity (city : String){
+    homeCity.text = city
+  }
+  
   func setFriendUserImage (image : String){
-    playerImageView.image = UIImage(named: image)
+    if let url = URL(string: image) {
+      Nuke.loadImage(with: url, into: self.playerImageView)
+    }
   }
   
 }

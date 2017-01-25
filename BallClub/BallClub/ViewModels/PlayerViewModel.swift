@@ -18,6 +18,7 @@ class PlayerViewModel: NSObject {
   var allUsersArray = [Player]()
 
   func getAllUsers(completionBlock: (GetAllUserResponseClosure)? = nil) {
+    allUsersArray = [Player]()
     APIProvider.request(.getAllUsers()) { (result) in
       switch result {
       case .success(let response):

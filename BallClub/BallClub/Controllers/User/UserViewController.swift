@@ -12,7 +12,6 @@ import Nuke
 
 class UserViewController: UIViewController {
   
-  @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var friendsTableView: UITableView!
   @IBOutlet weak var searchView: UIView!
   @IBOutlet weak var playerName: UILabel!
@@ -37,10 +36,6 @@ class UserViewController: UIViewController {
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
-    
-    getAllUsers()
   }
   
   
@@ -52,9 +47,7 @@ class UserViewController: UIViewController {
     Utilities.showProgressHud(withTitle: "Loading User Data", inView: self.view)
     self.navigationController?.setNavigationBarHidden(true, animated: true)
     currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
-    setUpUI()
-    getPendingInvites()
-    getFriendRequests()
+    getAllUsers()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -63,15 +56,13 @@ class UserViewController: UIViewController {
   
   //MARK: - SetUpUI
   func setUpUI(){
-    self.searchTextField.layer.borderColor = UIColor.lightGray.cgColor
-    
-    
     if let searchTable = self.storyboard?
       .instantiateViewController(withIdentifier: "userSearchResult") as? UserSearchResultTableViewController {
       resultSearchController = UISearchController(searchResultsController: searchTable)
       resultSearchController?.searchResultsUpdater = searchTable
       
-      //searchTable.mapView = mapView
+      searchTable.playersArray = allPlayersArray
+      searchTable.tempArray = allPlayersArray
       searchTable.delegate = self
     }
     
@@ -81,7 +72,7 @@ class UserViewController: UIViewController {
       let searchBarFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40.0)
       
       searchBar.sizeToFit()
-      searchBar.placeholder = "Type Location"
+      searchBar.placeholder = "Search User"
       searchBar.frame = searchBarFrame
       
       self.searchView.addSubview(searchBar)
@@ -112,6 +103,8 @@ class UserViewController: UIViewController {
         self.userProfileImage.image = UIImage(named: "sample_profile")
       }
     }
+    getPendingInvites()
+    getFriendRequests()
   }
   
   // User pending friend requests
@@ -203,6 +196,7 @@ class UserViewController: UIViewController {
     playerViewModel.getAllUsers { (responseCode, message, playersArray) -> (Void) in
       if (responseCode == 200 || responseCode == 201), let players = playersArray {
         self.allPlayersArray =  players
+        self.setUpUI()
       } else {
         self.showAlert(title: "Error", message: message, callback: {})
       }
@@ -325,72 +319,5 @@ extension UserViewController : UserInviteCustomCellDelegate {
       gameDetailsVC.inviteId = gameIvitesArray[tag].inviteId
       self.navigationController?.pushViewController(gameDetailsVC, animated: true)
     }
-  }
-}
-
-extension UserViewController : UITextFieldDelegate {
-  func textFieldDidBeginEditing(_ textField: UITextField) {
-    self.showPopOverFromView(view: textField)
-  }
-  
-  func showPopOverFromView(view: UIView) {
-    let tableView = UITableView(frame: CGRect(x: 0, y: 0,
-                                              width: self.searchTextField.frame.size.width,
-                                              height: 200))
-    
-    let options = [
-      .type(.down),
-      .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
-      ] as [PopoverOption]
-    let popover = CustomPopover(options: options, showHandler: nil, dismissHandler: nil)
-    
-    popover.delegate = self
-    tableView.delegate = popover
-    tableView.dataSource = popover
-    tableView.backgroundColor = .white
-    tableView.isScrollEnabled = true
-    
-    popover.show(tableView, fromView: view)
-  }
-}
-
-class CustomPopover: Popover, UITableViewDelegate, UITableViewDataSource {
-  // MARK: - Table view data source
-  var delegate: UserViewController?
-  var playersArray = [Player]()
-  
-  
-  
-  
-  func numberOfSections(in tableView: UITableView) -> Int {
-     tableView.register(UINib(nibName: "UserSearchFriendsCustomCell",bundle: nil), forCellReuseIdentifier: "UserSearchFriendsCustomCell")
-    return 1
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if let d = delegate {
-      playersArray = d.allPlayersArray
-      return d.allPlayersArray.count
-    } else {
-      return 2
-    }
-  }
-  
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSearchFriendsCustomCell", for: indexPath) as? UserSearchFriendsCustomCell {
-      cell.setFriendUserName(name: playersArray[indexPath.row].firstName)
-      cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
-      cell.tag = indexPath.row
-      return cell
-    }
-    return UITableViewCell()
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  }
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 50
   }
 }
