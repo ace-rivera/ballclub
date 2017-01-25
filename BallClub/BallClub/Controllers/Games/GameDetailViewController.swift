@@ -63,9 +63,16 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   func setGameDetails() {
     if let game = self.game {
-//      self.gameDate = CustomDateFormatter().feedsDateFormat(feedDate: start) // use Date object
-//      self.gameTime
-//      self.gameLocation
+      let dateFormatter = DateFormatter()
+      dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+      dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+      if let start = dateFormatter.date(from: game.startTime) {
+        self.gameDate.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
+        self.gameTime.text = CustomDateFormatter().gameDetailsTimeFormat(startTime: start)
+      }
+
+      self.gameLocation.text = game.location.locationName
       self.gameTitle.text = game.title
       self.gamePrice.text = String(format: "%.2f", game.fee)
       self.gameDetails.text = game.additionalInfo ?? ""

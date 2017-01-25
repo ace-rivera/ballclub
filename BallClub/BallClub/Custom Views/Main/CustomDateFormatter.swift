@@ -23,7 +23,7 @@ class CustomDateFormatter: NSObject {
   }
   
   func gameDetailsDateFormat(startTime : Date, endTime : Date) -> String {
-    dateFormatter.dateFormat = "EEEE,hh:mm a - "
+    dateFormatter.dateFormat = "E,hh:mm a - "
     let startTimeString = dateFromFormat(feedDate: startTime)
     dateFormatter.dateFormat = "hh:mm a"
     return startTimeString + dateFromFormat(feedDate: endTime)
@@ -39,5 +39,12 @@ class CustomDateFormatter: NSObject {
     dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
     let timeStamp = dateFormatter.string(from: feedDate as Date)
     return timeStamp
+  }
+  
+  func gameDetailsTimeFormat(startTime : Date) -> String {
+    dateFormatter.dateFormat = "hh:mm a"
+    let startTimeString = dateFromFormat(feedDate: startTime)
+
+    return startTimeString
   }
 }

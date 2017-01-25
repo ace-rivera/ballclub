@@ -76,7 +76,7 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 3 // closed public private
+    return 2 // my games, public games
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,8 +85,6 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
       //Ace Rivera : temp - use section 0 first
       return self.gameList.count
     case 1:
-      return 0
-    case 2:
       return 0
     default:
       return 0
@@ -102,11 +100,9 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
     let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "GamesCategoryHeaderView") as! GamesCategoryHeaderView
     switch section {
     case 0:
-      header.category = "CLOSED"
+      header.category = "MY GAMES"
     case 1:
-      header.category = "PUBLIC"
-    case 2:
-      header.category = "PRIVATE"
+      header.category = "PUBLIC GAMES"
     default:
       break
     }

@@ -78,7 +78,7 @@ class UserViewController: UIViewController {
     
     if let searchBarController = self.resultSearchController {
       let searchBar = searchBarController.searchBar
-      let searchBarFrame = CGRect(x: 0, y: 15.0, width: UIScreen.main.bounds.width, height: 40.0)
+      let searchBarFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40.0)
       
       searchBar.sizeToFit()
       searchBar.placeholder = "Type Location"
@@ -86,7 +86,7 @@ class UserViewController: UIViewController {
       
       self.searchView.addSubview(searchBar)
       
-      searchBarController.hidesNavigationBarDuringPresentation = true
+      searchBarController.hidesNavigationBarDuringPresentation = false
       searchBarController.dimsBackgroundDuringPresentation = true
       definesPresentationContext = true
     }

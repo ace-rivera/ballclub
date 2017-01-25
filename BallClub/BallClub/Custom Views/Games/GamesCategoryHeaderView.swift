@@ -21,13 +21,10 @@ class GamesCategoryHeaderView: UITableViewHeaderFooterView {
   }
   
   func updateUI(){
-    if category == "CLOSED" {
-      categoryImage.image = UIImage(named: "ic_closed")
-      categoryFlag.image = UIImage(named: "green")
-    }else if category == "PRIVATE"{
+    if category == "MY GAMES" {
       categoryImage.image = UIImage(named: "ic_private")
       categoryFlag.image = UIImage(named: "blue")
-    }else{
+    } else {
       categoryImage.image = UIImage(named: "ic_public")
       categoryFlag.image = UIImage(named: "orange")
     }
