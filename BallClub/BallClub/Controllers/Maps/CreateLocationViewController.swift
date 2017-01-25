@@ -15,6 +15,7 @@ protocol CreateLocationViewControllerDelegate {
 
 class CreateLocationViewController: UIViewController {
   
+  @IBOutlet weak var searchView: UIView!
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var locationNameTextField: UITextField!
 
@@ -44,15 +45,14 @@ class CreateLocationViewController: UIViewController {
     
     if let searchBarController = self.resultSearchController {
       let searchBar = searchBarController.searchBar
-      let searchBarFrame = CGRect(x: 0, y: 65, width: UIScreen.main.bounds.width, height: 40.0)
+      let searchBarFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40.0)
       
       searchBar.sizeToFit()
       searchBar.placeholder = "Type Location"
       searchBar.frame = searchBarFrame
       
-      self.view.addSubview(searchBar)
-      
-      searchBarController.hidesNavigationBarDuringPresentation = false
+      self.searchView.addSubview(searchBar)
+      searchBarController.hidesNavigationBarDuringPresentation = true
       searchBarController.dimsBackgroundDuringPresentation = true
       definesPresentationContext = false
     }

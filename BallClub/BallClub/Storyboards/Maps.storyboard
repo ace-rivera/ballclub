@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z7a-Ud-xbZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z7a-Ud-xbZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJu-mV-A0W">
-                                <rect key="frame" x="-8" y="64" width="390" height="512"/>
+                                <rect key="frame" x="-8" y="104" width="390" height="472"/>
                                 <connections>
                                     <outlet property="delegate" destination="98X-Wr-Om2" id="aT7-2i-H7e"/>
                                 </connections>
@@ -45,18 +45,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-89-YnQ">
+                                <rect key="frame" x="-8" y="64" width="390" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZWR-ev-CA7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="1iR-Ta-Iut" secondAttribute="leading" id="1Ei-T2-72p"/>
                             <constraint firstItem="nJu-mV-A0W" firstAttribute="leading" secondItem="8rY-ef-kmw" secondAttribute="leadingMargin" constant="-24" id="MG5-k0-DVF"/>
+                            <constraint firstItem="TIE-89-YnQ" firstAttribute="top" secondItem="7CC-Pv-MvP" secondAttribute="bottom" id="Tsq-Hv-QD4"/>
+                            <constraint firstItem="TIE-89-YnQ" firstAttribute="leading" secondItem="8rY-ef-kmw" secondAttribute="leadingMargin" constant="-24" id="Ymt-vj-Cwd"/>
                             <constraint firstItem="HEr-8L-xBk" firstAttribute="top" secondItem="1iR-Ta-Iut" secondAttribute="bottom" constant="13" id="YnP-n6-EQF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="65u-cM-UOf" secondAttribute="trailing" id="dzm-PY-PTw"/>
-                            <constraint firstItem="nJu-mV-A0W" firstAttribute="top" secondItem="7CC-Pv-MvP" secondAttribute="bottom" id="igL-1x-rw7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TIE-89-YnQ" secondAttribute="trailing" constant="-23" id="fac-EL-HMl"/>
                             <constraint firstItem="65u-cM-UOf" firstAttribute="top" secondItem="nJu-mV-A0W" secondAttribute="bottom" constant="3" id="jZf-jn-lhm"/>
                             <constraint firstItem="65u-cM-UOf" firstAttribute="leading" secondItem="1iR-Ta-Iut" secondAttribute="trailing" constant="8" id="ppI-Oo-ZQ7"/>
                             <constraint firstItem="HEr-8L-xBk" firstAttribute="top" secondItem="65u-cM-UOf" secondAttribute="bottom" constant="9" id="rOu-cV-gJs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nJu-mV-A0W" secondAttribute="trailing" constant="-23" id="v89-J9-1cv"/>
+                            <constraint firstItem="nJu-mV-A0W" firstAttribute="top" secondItem="TIE-89-YnQ" secondAttribute="bottom" id="xRm-D3-rwj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Location" id="ELc-QA-js5">
@@ -76,6 +86,7 @@
                     <connections>
                         <outlet property="locationNameTextField" destination="65u-cM-UOf" id="gpQ-7c-pcR"/>
                         <outlet property="mapView" destination="nJu-mV-A0W" id="Y3s-u3-BoA"/>
+                        <outlet property="searchView" destination="TIE-89-YnQ" id="Zsx-Gv-sk2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiY-Kf-LHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
