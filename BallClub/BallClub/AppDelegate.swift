@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import FBSDKCoreKit
 import DropDown
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     UINavigationBar.appearance().barTintColor = Constants.CustomColor.customOrangeColor
     DropDown.startListeningToKeyboard()
+    
+    IQKeyboardManager.sharedManager().enable = true
+    IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
     
     self.window!.rootViewController = ContainerViewController()
     
