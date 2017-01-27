@@ -510,7 +510,7 @@
 				TargetAttributes = {
 					71547A7C1D752A4300264B67 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4X7744TJZ2;
+						DevelopmentTeam = 7QCAJCEL67;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -793,7 +793,7 @@
 				CODE_SIGN_ENTITLEMENTS = BallClub/BallClub.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4X7744TJZ2;
+				DEVELOPMENT_TEAM = 7QCAJCEL67;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -819,7 +819,7 @@
 				CODE_SIGN_ENTITLEMENTS = BallClub/BallClub.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4X7744TJZ2;
+				DEVELOPMENT_TEAM = 7QCAJCEL67;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
