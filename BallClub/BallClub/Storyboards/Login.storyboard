@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9sh-KW-dpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9sh-KW-dpr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -209,6 +209,7 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
                         <outlet property="appLogo" destination="ned-iE-KUN" id="Uk4-DQ-7HA"/>
                         <outlet property="backgroundImage" destination="30Q-6C-CJb" id="UoJ-P0-tqY"/>
                         <outlet property="emailAddLabel" destination="0U4-59-Xea" id="WAy-l2-05i"/>
+                        <outlet property="fbLoginButton" destination="FmB-mz-GdG" id="FQY-77-X7l"/>
                         <outlet property="forgotDetailsButton" destination="93B-wo-1wc" id="mgJ-dY-PLy"/>
                         <outlet property="loginButton" destination="afZ-YI-vNA" id="jSh-fs-gau"/>
                         <outlet property="passwordLabel" destination="28f-Qq-KgB" id="KGP-jw-KMe"/>
@@ -903,6 +904,6 @@ EEZvcmdvdCB5b3VyIGxvZ2luIGRldGFpbHMQEBA/IEdldCBoZWxwIGhlcmUuA
         <image name="upload_image" width="321" height="321"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lvM-cg-T7B"/>
+        <segue reference="Ze6-eW-YUU"/>
     </inferredMetricsTieBreakers>
 </document>

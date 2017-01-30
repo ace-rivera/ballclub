@@ -300,23 +300,7 @@ extension EditProfileTableViewController : UIImagePickerControllerDelegate,UINav
         }
     dismiss(animated: true, completion: nil)
   }
-  
-  
-//  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//    
-//    if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//      userProfileImage.contentMode = .scaleAspectFill
-//      userProfileImage.image = pickedImage
-//      
-//      
-//      if let imageData = UIImageJPEGRepresentation(pickedImage, 0.6) {
-//        let base64String = imageData.base64EncodedString(options: [])
-//        data = "data:image/jpeg;base64,"+base64String
-//      }
-//    }
-//    dismiss(animated: true, completion: nil)
-//  }
-  
+    
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
   }

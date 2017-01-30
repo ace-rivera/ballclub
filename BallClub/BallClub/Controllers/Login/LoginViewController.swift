@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var emailAddLabel: UITextField!
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var appLogo: UIImageView!
+  @IBOutlet weak var fbLoginButton: UIButton!
+  
   
   var registrationViewModel = RegistrationViewModel()
   var playerViewModel = PlayerViewModel()
@@ -39,6 +41,8 @@ class LoginViewController: UIViewController {
                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
     passwordLabel.attributedPlaceholder = NSAttributedString(string:"Password",
                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+    
+    fbLoginButton.isHidden = true
   }
   
   override func didReceiveMemoryWarning() {
