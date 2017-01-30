@@ -67,6 +67,37 @@ class CreateLocationViewController: UIViewController {
   }
   
   @IBAction func didTapOnDone(_ sender: Any) {
+    guard let locationName = self.locationNameTextField.text,
+    locationName.characters.count > 0 else {
+      self.showAlert(title: "Error", message: "Please enter location name.", callback: {})
+      return
+    }
+    
+    guard let selectedLocation = self.selectedPin else {
+      self.showAlert(title: "Error", message: "Please select location.", callback: {})
+      return
+    }
+    
+    var locationDict = [String : Any]()
+    locationDict["name"]      = locationName
+    locationDict["longitude"] = selectedLocation.coordinate.longitude
+    locationDict["latitude"]  = selectedLocation.coordinate.latitude
+    
+    let locationViewModel = LocationViewModel()
+    
+    locationViewModel.createLocation(locationDict: locationDict) { (statusCode, message, location) -> (Void) in
+      if statusCode == Constants.ResponseCodes.STATUS_CREATED
+        || statusCode == Constants.ResponseCodes.STATUS_OK {
+        self.showAlert(title: "Success", message: "Location created successfully", callback: {
+          self.navigationController?.popViewController(animated: true)
+        })
+      } else {
+        self.showAlert(title: "Error", message: "Please check your internet connection and try again.", callback: { 
+          return
+        })
+      }
+    }
+    
   }
 }
 
