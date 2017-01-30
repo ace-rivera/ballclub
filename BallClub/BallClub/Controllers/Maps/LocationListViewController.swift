@@ -8,13 +8,18 @@
 
 import UIKit
 
+protocol LocationListViewControllerDelegate {
+  func showSelectedLocation(location: Location)
+}
+
 class LocationListViewController : UIViewController {
   
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var tableView: UITableView!
   
   var locationList = [Location]()
-
+  var delegate : LocationListViewControllerDelegate?
+  
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -77,6 +82,13 @@ extension LocationListViewController: UITableViewDelegate, UITableViewDataSource
       return cell
     } else {
       return UITableViewCell()
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let d = delegate {
+      d.showSelectedLocation(location: locationList[indexPath.row])
+      self.navigationController?.popViewController(animated: true)
     }
   }
 }

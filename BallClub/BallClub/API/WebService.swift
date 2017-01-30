@@ -73,7 +73,7 @@ enum BallClub {
   case getAllGames()
   case getUserGames(Int)
   case getGameDetails(Int, Int)
-  case createGame([String : Any])
+  case createGame(Int, [String : Any])
   case updateGame([String : Any])
   case deleteGame(Int, Int)
   
@@ -151,11 +151,8 @@ extension BallClub: TargetType {
       return "/api/users/\(userId)/games"
     case .getGameDetails(let userId, let gameId):
       return "/api/users/\(userId)/games/\(gameId)"
-    case .createGame(let gameDict):
-      if let userId = gameDict["userId"] {
+    case .createGame(let userId, _):
         return "/api/users/\(userId)/games"
-      }
-      return ""
     case .updateGame(let gameDict):
       if let userId = gameDict["userId"], let gameId = gameDict["gameId"] {
         return "/api/users/\(userId)/games/\(gameId)"
@@ -218,16 +215,16 @@ extension BallClub: TargetType {
       return ["invite": invite]
 
     //Game Releted Calls
-    case .createGame(let gameDict):
+    case .createGame(_, let gameDict):
       guard let _ = gameDict["title"],
         let _ = gameDict["start_time"],
         let _ = gameDict["end_time"],
         let _ = gameDict["reserved"],
-        let _ = gameDict["minCapacity"],
-        let _ = gameDict["maxCapacity"],
+        let _ = gameDict["min_capacity"],
+        let _ = gameDict["max_capacity"],
         let _ = gameDict["fee"],
-        let _ = gameDict["additionalInfo"],
-        let _ = gameDict["locationId"] else { return nil }
+        let _ = gameDict["additional_info"],
+        let _ = gameDict["location_id"] else { return nil }
       return ["game" : gameDict]
     case .updateGame(let gameDict):
       return ["game" : gameDict]

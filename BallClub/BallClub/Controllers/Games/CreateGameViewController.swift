@@ -33,6 +33,8 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   var selectedLocation: Location?
   var pickerView = UIView()
   var friendsToInviteArray = [Player]()
+  var resultSearchController: UISearchController? = nil
+  var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -66,12 +68,17 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     self.gameDetailsDict["start_time"] = startTime
     self.gameDetailsDict["end_time"] = endTime
     self.gameDetailsDict["max_capacity"] = Int(self.playerCount.text ?? "")
+    self.gameDetailsDict["min_capacity"] = Int(self.playerCount.text ?? "")
     self.gameDetailsDict["fee"] = fee
-    self.gameDetailsDict["additionalInfo"] = self.infoTextfield.text ?? ""
+    self.gameDetailsDict["additional_info"] = self.infoTextfield.text ?? ""
     self.gameDetailsDict["location_id"] = location.locationId
+    self.gameDetailsDict["reserved"] = reservedSwitch.isOn
+    
+    
 
     return true
   }
+  
   
   func datePickerValueChanged(sender:UIDatePicker) {
     
@@ -101,25 +108,37 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     friendsToInviteArray = playerArray
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showLocationListVC" {
+      if let locationListVC: LocationListViewController = segue.destination as? LocationListViewController {
+          locationListVC.delegate = self
+      }
+    }
+  }
+  
+  
   
   //MARK: - IBAction
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
     if isFormValid() {
       let gameViewModel = GamesViewModel()
-      gameViewModel.createGame(gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-        if statusCode == Constants.ResponseCodes.STATUS_CREATED {
-          self.showAlert(title: "Success", message: "Game created successfully", callback: {
-            _ = self.navigationController?.popViewController(animated: true)
-          })
-        } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
-          self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-        } else {
-          self.showAlert(title: "Error", message: "There was an error while creating the game", callback: {})
-        }
-      })
-    } else {
-      self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-    }
+      
+      if let userId = currentUser?["id"] as? Int {
+        gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
+          if statusCode == Constants.ResponseCodes.STATUS_CREATED {
+            self.showAlert(title: "Success", message: "Game created successfully", callback: {
+              _ = self.navigationController?.popViewController(animated: true)
+            })
+          } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
+            self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+          } else {
+            self.showAlert(title: "Error", message: "There was an error while creating the game", callback: {})
+          }
+        })
+      } else {
+        self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+      }
+      }
   }
   
   @IBAction func backButtonPressed(_ sender: AnyObject) {
@@ -198,6 +217,12 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   @IBAction func didTapOnInviteFriends(_ sender: Any) {
     self.showInviteFriendsVC()
   }
+  
+  @IBAction func didTapOnLocationTextField(_ sender: Any) {
+    self.performSegue(withIdentifier: "showLocationListVC", sender: self)
+  }
+  
+  
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
@@ -207,5 +232,12 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return TestClass.Common.friendImages.count
+  }
+}
+
+extension CreateGameViewController: LocationListViewControllerDelegate {
+  func showSelectedLocation(location: Location) {
+    self.locationTextField.text = location.locationName
+    selectedLocation = location
   }
 }
