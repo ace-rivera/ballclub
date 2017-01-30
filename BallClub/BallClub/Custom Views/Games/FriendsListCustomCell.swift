@@ -17,6 +17,7 @@ class FriendsListCustomCell: UITableViewCell {
   @IBOutlet weak var playerImage: UIImageView!
   @IBOutlet weak var playerName: UILabel!
   @IBOutlet weak var playerCity: UILabel!
+  @IBOutlet weak var inviteButton: UIButton!
   
   var delegate : FriendsListCustomCellDelegate?
   override func awakeFromNib() {

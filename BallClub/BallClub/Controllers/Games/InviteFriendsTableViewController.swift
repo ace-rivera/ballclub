@@ -17,9 +17,10 @@ class InviteFriendsTableViewController: UITableViewController {
   var friendsViewModel = FriendsViewModel()
   var friendsArray = [Player]()
   var inviteFriendsArray = [Player]()
-  var gameId =  0
+  var gameId: Int?
   var selectedUser: Player?
   var delegate : InviteFriendsTableViewControllerDelegate?
+  let inviteViewModel = FriendsViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,6 +36,7 @@ class InviteFriendsTableViewController: UITableViewController {
         }
       }
     }
+    self.friendsArray = [Player]()
     self.setupUI()
     self.registerNibs()
   }
@@ -46,11 +48,6 @@ class InviteFriendsTableViewController: UITableViewController {
   
   
   // MARK: - Table view data source
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    SessionManager.sharedInstance.logout()
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notifications.didLogoutNotification), object: nil)
-  }
-  
   func backButtonPressed(){
     if let d = delegate {
       d.getInviteFriendsArray(playerArray: inviteFriendsArray)
@@ -99,6 +96,10 @@ class InviteFriendsTableViewController: UITableViewController {
 
 extension InviteFriendsTableViewController : FriendsListCustomCellDelegate {
   func didTapOnInviteFriend(tag: Int) {
+    print("CELL #\(tag)")
     inviteFriendsArray.append(friendsArray[tag])
+    if let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as? FriendsListCustomCell {
+      cell.inviteButton.isEnabled = false
+    }
   }
 }

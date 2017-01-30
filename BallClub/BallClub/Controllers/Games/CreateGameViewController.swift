@@ -106,6 +106,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   
   func getInviteFriendsArray(playerArray: [Player]) {
     friendsToInviteArray = playerArray
+    self.friendsCollectionView.reloadData()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,10 +123,16 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
     if isFormValid() {
       let gameViewModel = GamesViewModel()
-      
       if let userId = currentUser?["id"] as? Int {
         gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-          if statusCode == Constants.ResponseCodes.STATUS_CREATED {
+          if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
+            let inviteViewModel = FriendsViewModel()
+            for player in self.friendsToInviteArray {
+              var inviteDict = [String:Any]()
+              inviteDict["user_id"] = player.playerId
+              inviteDict["game_id"] = game.gameId
+              inviteViewModel.createInvite(invite: inviteDict)
+            }
             self.showAlert(title: "Success", message: "Game created successfully", callback: {
               _ = self.navigationController?.popViewController(animated: true)
             })
@@ -138,7 +145,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       } else {
         self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
       }
-      }
+    }
   }
   
   @IBAction func backButtonPressed(_ sender: AnyObject) {
@@ -226,12 +233,12 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
-        collectionCell.setImageOfFriend(imageUrlString: TestClass.Common.friendImages[indexPath.row])
+        collectionCell.setImageOfFriend(imageUrlString: self.friendsToInviteArray[indexPath.row].avatar ?? "")
         return collectionCell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return TestClass.Common.friendImages.count
+    return self.friendsToInviteArray.count
   }
 }
 
