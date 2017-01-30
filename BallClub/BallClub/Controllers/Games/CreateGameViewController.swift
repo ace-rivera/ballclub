@@ -131,7 +131,9 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
               var inviteDict = [String:Any]()
               inviteDict["user_id"] = player.playerId
               inviteDict["game_id"] = game.gameId
-              inviteViewModel.createInvite(invite: inviteDict)
+              inviteViewModel.createInvite(invite: inviteDict,
+                                           completionBlock: { (statusCode, message, invite) -> (Void) in
+              })
             }
             self.showAlert(title: "Success", message: "Game created successfully", callback: {
               _ = self.navigationController?.popViewController(animated: true)
