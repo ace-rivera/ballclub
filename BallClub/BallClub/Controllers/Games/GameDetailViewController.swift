@@ -63,6 +63,15 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     super.didReceiveMemoryWarning()
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "DetailToInvitedSegue" {
+      if let invitedFriendsVC: InvitedFriendsViewController = segue.destination as? InvitedFriendsViewController,
+          let game = self.game {
+        invitedFriendsVC.invitedPlayers = game.invites
+      }
+    }
+  }
+  
   //MARK: - SetUpUI
   func setUpUI(){
     self.playerCollection.register(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
