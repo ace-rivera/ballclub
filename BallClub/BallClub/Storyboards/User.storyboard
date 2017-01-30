@@ -309,10 +309,10 @@
             </objects>
             <point key="canvasLocation" x="852" y="1048"/>
         </scene>
-        <!--Create Profile-->
+        <!--Edit Profile-->
         <scene sceneID="Mfi-CP-qSB">
             <objects>
-                <tableViewController title="Create Profile" id="NpR-vH-Scr" customClass="EditProfileTableViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Edit Profile" id="NpR-vH-Scr" customClass="EditProfileTableViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SED-c2-r30">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="801"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -366,7 +366,7 @@
                                                                 <action selector="positionButtonPressed:" destination="NpR-vH-Scr" eventType="touchUpInside" id="pwg-jw-GiK"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="Rzi-gG-emm">
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="Rzi-gG-emm">
                                                             <rect key="frame" x="25" y="23" width="110" height="110"/>
                                                             <gestureRecognizers/>
                                                             <constraints>

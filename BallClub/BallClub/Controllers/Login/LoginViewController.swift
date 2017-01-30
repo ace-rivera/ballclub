@@ -64,7 +64,6 @@ class LoginViewController: UIViewController {
               SessionManager.sharedInstance.saveSession(username: email, token: t, accessToken: accessToken, client: client)
               UserDefaults.standard.set(email, forKey: "UserEmailAddress")
               self.getCurrentUser(userId: id)
-              NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notifications.didLoginNotification), object: nil)
             } else {
               if let m = message {
                 self.showAlert(title: "Error", message: m, callback: {})
@@ -100,7 +99,6 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.set(Player.toDictionary(user: p), forKey: "currentUser")
         self.emailAddLabel.text = ""
         self.passwordLabel.text = ""
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notifications.didLoginNotification), object: nil)
       } else {
         self.showAlert(title: "ERROT", message: message, callback: {})
