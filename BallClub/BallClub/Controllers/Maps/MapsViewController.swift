@@ -14,6 +14,7 @@ class MapsViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   
   var locationList = [Location]()
+  var locationUpdated = false
   let locationManager = CLLocationManager()
   
   override func viewDidLoad() {
@@ -37,6 +38,7 @@ class MapsViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.getAllLocations()
+    var locationUpdated = false
   }
   
   override func didReceiveMemoryWarning() {
@@ -110,7 +112,10 @@ extension MapsViewController: CLLocationManagerDelegate {
     if let l = manager.location {
       let locValue: CLLocationCoordinate2D = l.coordinate
       let initialLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-      centerMapOnLocation(initialLocation)
+      if !locationUpdated {
+        centerMapOnLocation(initialLocation)
+        locationUpdated = true
+      }
     }
   }
 }
