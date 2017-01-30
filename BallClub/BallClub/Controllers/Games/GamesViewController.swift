@@ -12,7 +12,8 @@ class GamesViewController: UIViewController {
   
   @IBOutlet weak var gamesTableview: UITableView!
   
-  var gameList = [Game]()
+  var userGamesList = [Game]()
+  var publicGamesList = [Game]()
   var selectedGameId: Int?
   
   //MARK: - Lifecycle
@@ -47,8 +48,22 @@ class GamesViewController: UIViewController {
     if let currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any], let userId = currentUser["id"] as? Int {
       gameViewModel.getCurrentUserGames(userId: userId) { (statusCode, message, games) -> (Void) in
         if statusCode == 200, let games = games {
-          self.gameList = games
+          self.userGamesList = games
           self.gamesTableview.reloadData()
+          //start
+          gameViewModel.getAllGames { (statusCode2, mssage2, games2) -> (Void) in
+            if statusCode2 == 200, let games2 = games2 {
+              let publicGames = games2.filter {
+                $0.gameCreator.playerId != userId &&
+                $0.privacy == 0
+              }
+              self.publicGamesList = publicGames
+              self.gamesTableview.reloadData()
+            } else {
+              self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
+            }
+          }
+          //end
         } else {
           self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
         }
@@ -71,30 +86,34 @@ class GamesViewController: UIViewController {
 extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as? FeedsCustomCell {
-      cell.game = self.gameList[indexPath.row]
+      if indexPath.section == 0 {
+        cell.game = self.userGamesList[indexPath.row]
+      } else {
+        cell.game = self.publicGamesList[indexPath.row]
+      }
       return cell
     }
     return UITableViewCell()
   }
   
-  private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 2 // my games, public games
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2 //my games, public games
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
       //Ace Rivera : temp - use section 0 first
-      return self.gameList.count
+      return self.userGamesList.count
     case 1:
-      return 0
+      return self.publicGamesList.count
     default:
       return 0
     }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.selectedGameId = self.gameList[indexPath.row].gameId
+    self.selectedGameId = self.userGamesList[indexPath.row].gameId
     self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
   }
   

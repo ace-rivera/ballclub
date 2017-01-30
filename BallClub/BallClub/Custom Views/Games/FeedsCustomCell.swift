@@ -75,6 +75,12 @@ class FeedsCustomCell: UITableViewCell {
     self.gameLocation.text = game.location.locationName
     
     self.setMemberCountOfGame(invitesArray: game.invites)
+    
+    if game.invites.count > 0 {
+      let acceptedInvitesList = Utilities.getGoingUsers(invites: game.invites)
+      self.setAttendeesOfGame(friends: acceptedInvitesList)
+      self.layoutIfNeeded()
+    }
   }
   
  
@@ -89,14 +95,16 @@ class FeedsCustomCell: UITableViewCell {
     gameMemberCount.text = "\(acceptedInvites)/\(invitesArray.count)"
   }
 
-//  func setAttendeesOfGame(friends : [String]){ //TODO: change datatype to User - Friend
-//    if friends.count == 0 {
-//      gameFriends.isHidden = true
-//      gameFriendsIcon.isHidden = true
-//    }else if friends.count >= 2 {
-//      gameFriends.text = "\(friends[0]) and \(friends[1]) are going"
-//    }else{
-//      gameFriends.text = "\(friends[0]) is going"
-//    }
-//  }
+  func setAttendeesOfGame(friends : [Player]){ //TODO: change datatype to User - Friend
+    if friends.count == 0 {
+      gameFriends.isHidden = true
+      gameFriendsIcon.isHidden = true
+    } else if friends.count == 2 {
+      gameFriends.text = "\(friends[0].firstName) and \(friends[1].firstName) are going"
+    } else if friends.count == 1 {
+      gameFriends.text = "\(friends[0].firstName) is going"
+    } else {
+      gameFriends.text = "\(friends[0].firstName) and \(friends.count-1) other friends are going)"
+    }
+  }
 }
