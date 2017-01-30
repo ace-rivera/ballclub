@@ -32,7 +32,10 @@ class MapsViewController: UIViewController {
       locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
       locationManager.startUpdatingLocation()
     }
-    
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     self.getAllLocations()
   }
   
