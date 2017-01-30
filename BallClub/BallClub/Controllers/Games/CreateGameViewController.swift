@@ -53,7 +53,6 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
     publicIcon.isSelected = false
     publicButton.isSelected = false
-    self.friendsCollectionView.isHidden = true
   }
   
   //MARK: - Helper Methods
@@ -107,6 +106,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   
   func getInviteFriendsArray(playerArray: [Player]) {
     friendsToInviteArray = playerArray
+    self.friendsCollectionView.reloadData()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -125,7 +125,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       let gameViewModel = GamesViewModel()
       if let userId = currentUser?["id"] as? Int {
         gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-          if statusCode == Constants.ResponseCodes.STATUS_CREATED {
+          if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
             let inviteViewModel = FriendsViewModel()
             for player in self.friendsToInviteArray {
               var inviteDict = [String:Any]()
@@ -233,12 +233,12 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
-        collectionCell.setImageOfFriend(imageUrlString: TestClass.Common.friendImages[indexPath.row])
+        collectionCell.setImageOfFriend(imageUrlString: self.friendsToInviteArray[indexPath.row].avatar ?? "")
         return collectionCell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return TestClass.Common.friendImages.count
+    return self.friendsToInviteArray.count
   }
 }
 

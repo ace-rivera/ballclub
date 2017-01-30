@@ -48,10 +48,6 @@ class InviteFriendsTableViewController: UITableViewController {
   
   
   // MARK: - Table view data source
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("\(self.inviteFriendsArray[indexPath.row].playerId)")
-  }
-  
   func backButtonPressed(){
     if let d = delegate {
       d.getInviteFriendsArray(playerArray: inviteFriendsArray)
@@ -100,6 +96,7 @@ class InviteFriendsTableViewController: UITableViewController {
 
 extension InviteFriendsTableViewController : FriendsListCustomCellDelegate {
   func didTapOnInviteFriend(tag: Int) {
+    print("CELL #\(tag)")
     inviteFriendsArray.append(friendsArray[tag])
     if let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as? FriendsListCustomCell {
       cell.inviteButton.isEnabled = false
