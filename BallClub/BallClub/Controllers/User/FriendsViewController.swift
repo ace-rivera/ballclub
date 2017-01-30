@@ -142,14 +142,14 @@ class FriendsViewController: UIViewController {
   
   @IBAction func didTapOnAddFriendButton(_ sender: Any) {
     Utilities.showProgressHud(withTitle: "Sending Friend REquest", inView: self.view)
-    friendsViewModel.createFriendRequest(friendId: 6) { (responseCode, message) -> (Void) in
+    friendsViewModel.createFriendRequest(friendId: player.playerId) { (responseCode, message) -> (Void) in
       Utilities.hideProgressHud()
       if responseCode == 200 || responseCode == 201 {
         self.showAlert(title: "SUCCESS", message: "Friend Request Sent!", callback: {})
+      } else if responseCode ==  422 {
+          self.showAlert(title: "ERROR", message: "Friend Request already sent", callback: {})
       } else {
-        if let m =  message {
-          self.showAlert(title: "ERROR", message: m, callback: {})
-        }
+        self.showAlert(title: "ERROR", message: "Unable to send Friend Request", callback: {})
       }
     }
   }

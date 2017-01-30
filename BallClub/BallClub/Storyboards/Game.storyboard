@@ -782,13 +782,23 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-eV-PA5">
+                                                    <rect key="frame" x="49" y="6" width="543" height="30"/>
+                                                    <connections>
+                                                        <action selector="didTapOnLocationTextField:" destination="xVY-nh-ebn" eventType="touchUpInside" id="4nj-m2-toB"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1cE-SQ-04r" firstAttribute="trailing" secondItem="tUG-sS-AfK" secondAttribute="trailingMargin" id="8Ja-ZK-9dN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Rnc-eV-PA5" secondAttribute="bottom" constant="-1" id="Ejv-cz-hRn"/>
                                                 <constraint firstItem="1cE-SQ-04r" firstAttribute="centerY" secondItem="tUG-sS-AfK" secondAttribute="centerY" id="FzC-Tu-ZMZ"/>
+                                                <constraint firstItem="Rnc-eV-PA5" firstAttribute="top" secondItem="tUG-sS-AfK" secondAttribute="topMargin" constant="-2" id="H9S-qy-p7i"/>
+                                                <constraint firstItem="Rnc-eV-PA5" firstAttribute="leading" secondItem="z6D-gu-bkY" secondAttribute="trailing" constant="8" id="IA6-7B-Fzn"/>
                                                 <constraint firstItem="1cE-SQ-04r" firstAttribute="centerY" secondItem="z6D-gu-bkY" secondAttribute="centerY" id="QfV-or-rg1"/>
                                                 <constraint firstItem="z6D-gu-bkY" firstAttribute="leading" secondItem="tUG-sS-AfK" secondAttribute="leadingMargin" constant="8" id="Wd8-yT-Gjk"/>
                                                 <constraint firstItem="1cE-SQ-04r" firstAttribute="leading" secondItem="z6D-gu-bkY" secondAttribute="trailing" constant="16" id="Wis-iE-rLa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Rnc-eV-PA5" secondAttribute="trailing" id="sFl-Tx-nOu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1271,11 +1281,12 @@
                         <outlet property="publicIcon" destination="8x9-3t-umT" id="GFh-zg-mN6"/>
                         <outlet property="reservedSwitch" destination="PaJ-aR-0X4" id="hE4-Mw-X4w"/>
                         <outlet property="startTimeButton" destination="Ra6-on-wHh" id="bis-hI-NQ3"/>
+                        <segue destination="Aip-XD-rUe" kind="show" identifier="showLocationListVC" id="A6k-UD-om6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luz-Zd-8gv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2411" y="349"/>
+            <point key="canvasLocation" x="2409.5999999999999" y="348.12593703148428"/>
         </scene>
         <!--Invite Friends Table View Controller-->
         <scene sceneID="Uti-Wg-00m">
@@ -1328,6 +1339,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Be-0C-H3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="470" y="350"/>
+        </scene>
+        <!--Location List View Controller-->
+        <scene sceneID="gbQ-ss-dyQ">
+            <objects>
+                <viewController id="Aip-XD-rUe" customClass="LocationListViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1xm-zd-05p"/>
+                        <viewControllerLayoutGuide type="bottom" id="sTI-Ec-X5U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lgv-eQ-6vx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Icd-ov-Ubi">
+                                <rect key="frame" x="0.0" y="108" width="600" height="643"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.52941176469999995" green="0.1764705882" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellIdentifier" id="Vfb-rJ-XOq">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vfb-rJ-XOq" id="LFx-97-UGp">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Aip-XD-rUe" id="1Yh-VP-mmq"/>
+                                    <outlet property="delegate" destination="Aip-XD-rUe" id="RgT-aK-37o"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="erI-7c-APX">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Aip-XD-rUe" id="LpQ-LY-TKU"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="erI-7c-APX" firstAttribute="top" secondItem="1xm-zd-05p" secondAttribute="bottom" id="23j-23-Hvb"/>
+                            <constraint firstItem="Icd-ov-Ubi" firstAttribute="top" secondItem="erI-7c-APX" secondAttribute="bottom" id="5bC-WN-h4H"/>
+                            <constraint firstItem="sTI-Ec-X5U" firstAttribute="top" secondItem="Icd-ov-Ubi" secondAttribute="bottom" id="5g2-wI-Fll"/>
+                            <constraint firstItem="Icd-ov-Ubi" firstAttribute="leading" secondItem="lgv-eQ-6vx" secondAttribute="leading" id="XJh-in-wbA"/>
+                            <constraint firstItem="erI-7c-APX" firstAttribute="leading" secondItem="lgv-eQ-6vx" secondAttribute="leadingMargin" constant="-20" id="aCO-Az-fwL"/>
+                            <constraint firstAttribute="trailing" secondItem="Icd-ov-Ubi" secondAttribute="trailing" id="nan-pm-XEj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="erI-7c-APX" secondAttribute="trailing" constant="-20" id="oom-KB-mFo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="erI-7c-APX" id="h2I-rg-68V"/>
+                        <outlet property="tableView" destination="Icd-ov-Ubi" id="4pC-q2-02f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zca-QG-nwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3419.1999999999998" y="1257.5712143928038"/>
         </scene>
     </scenes>
     <resources>

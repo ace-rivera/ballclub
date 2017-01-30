@@ -106,8 +106,8 @@ class GamesViewModel: NSObject {
     }
   }
   
-  func createGame(gameDict: [String : Any], completionBlock: GameDetailClosure? = nil) {
-    APIProvider.request(.createGame(gameDict)) { (result) in
+  func createGame(userId: Int, gameDict: [String : Any], completionBlock: GameDetailClosure? = nil) {
+    APIProvider.request(.createGame(userId, gameDict)) { (result) in
       switch result {
       case.success(let response):
         do {
