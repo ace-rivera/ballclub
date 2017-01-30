@@ -20,10 +20,10 @@ class MapsViewController: UIViewController {
     super.viewDidLoad()
     
     //Ace Rivera : testing segue
-    let locationTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.goToLocationDetail))
-    locationTapGesture.numberOfTapsRequired = 1
-    mapView.isUserInteractionEnabled = true
-    mapView.addGestureRecognizer(locationTapGesture)
+//    let locationTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.goToLocationDetail))
+//    locationTapGesture.numberOfTapsRequired = 1
+//    mapView.isUserInteractionEnabled = true
+//    mapView.addGestureRecognizer(locationTapGesture)
     
     self.locationManager.requestAlwaysAuthorization()
     self.locationManager.requestWhenInUseAuthorization()

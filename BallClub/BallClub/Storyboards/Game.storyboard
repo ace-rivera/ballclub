@@ -52,19 +52,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3kW-tc-H8M">
-                        <leftBarButtonItems>
-                            <barButtonItem enabled="NO" image="ic_navigation_previous" id="NYV-eQ-6ki">
-                                <inset key="imageInsets" minX="-10" minY="0.0" maxX="-30" maxY="0.0"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" title="THIS WEEK" id="ynK-MP-WyM">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                            <barButtonItem image="ic_navigation_next" id="BWL-7B-zN9">
-                                <inset key="imageInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="Create" id="qTv-Sv-Lxd">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -670,7 +657,7 @@
             <objects>
                 <tableViewController id="9FS-0q-87m" customClass="InvitedFriendsViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="2" id="vDm-Ey-WT5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1352,8 +1339,6 @@
         <image name="ic_invite" width="512" height="512"/>
         <image name="ic_map_filled" width="100" height="100"/>
         <image name="ic_navigation_filter" width="30" height="30"/>
-        <image name="ic_navigation_next" width="30" height="30"/>
-        <image name="ic_navigation_previous" width="30" height="30"/>
         <image name="ic_navigation_search" width="30" height="30"/>
         <image name="ic_peso" width="512" height="512"/>
         <image name="ic_private" width="512" height="512"/>
@@ -1368,6 +1353,6 @@
         <image name="player_durant" width="200" height="125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="74J-Dm-tV0"/>
+        <segue reference="w2v-na-vYe"/>
     </inferredMetricsTieBreakers>
 </document>
