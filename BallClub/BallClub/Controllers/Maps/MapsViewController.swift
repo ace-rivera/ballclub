@@ -15,6 +15,7 @@ class MapsViewController: UIViewController {
   
   var locationList = [Location]()
   let locationManager = CLLocationManager()
+  var isCenteredToCurrentLocation = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,6 +35,11 @@ class MapsViewController: UIViewController {
     }
     
     self.getAllLocations()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.isCenteredToCurrentLocation = false
   }
   
   override func didReceiveMemoryWarning() {
@@ -104,7 +110,8 @@ extension MapsViewController: MKMapViewDelegate {
 
 extension MapsViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    if let l = manager.location {
+    if let l = manager.location, !isCenteredToCurrentLocation {
+      isCenteredToCurrentLocation = true
       let locValue: CLLocationCoordinate2D = l.coordinate
       let initialLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
       centerMapOnLocation(initialLocation)
