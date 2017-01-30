@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class GameDetailViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
@@ -31,6 +32,13 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   @IBOutlet weak var goingIcon: UIButton!
   @IBOutlet weak var goingButton: UIButton!
   
+  
+  @IBOutlet weak var goingPlayersLabel: UILabel!
+  @IBOutlet weak var goingPlayerImage: UIImageView!
+  
+  @IBOutlet weak var invitedPlayersImage: UIImageView!
+  @IBOutlet weak var invitedPlayersLabel: UILabel!
+  
   var gameId: Int? {
     didSet {
       if let gameId = self.gameId {
@@ -40,6 +48,8 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   }
   var game: Game?
   var inviteId: Int!
+  var goingPlayers = [Player]()
+  var invitedPlayers = [Player]()
   let friendsViewModel = FriendsViewModel()
   
   //MARK: - Lifecycle
@@ -79,8 +89,17 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       self.gameDetails.text = game.additionalInfo ?? ""
       self.playerCount.text = "\(game.maxCapacity)"
       self.gameOwner.text = "\(game.gameCreator.firstName) invited you"
-//      self.playerNames.text =
-//      self.additionInfo.text = //Ace: For what?
+      
+      if game.invites.count > 0 {
+        self.goingPlayers = Utilities.getGoingUsers(invites: game.invites)
+        self.setAttendeesOfGame(friends: self.goingPlayers)
+        
+        self.invitedPlayers = Utilities.getInvitedPlayers(invites: game.invites)
+        self.setPendingInvites()
+      }
+      
+      self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(self.invitedPlayers.count)"
+      self.additionInfo.text = game.additionalInfo ?? ""
     }
   }
   
@@ -141,27 +160,86 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
-    collectionCell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
+    
+    collectionCell.setImageOfFriend(imageUrlString: self.invitedPlayers[indexPath.row].avatar ?? "")
     return collectionCell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return TestClass.Common.friendImages.count
+    return self.invitedPlayers.count
   }
   
   func updateGameStatus(status: Int) {
-    var invite = ["status": status,
-                  "membership": 1,
-                  "user_id": 2] // get from current user Userdefaults
-    friendsViewModel.updateInvite(inviteId: inviteId, invite: invite) { (statusCode, message) -> (Void) in
-      if statusCode ==  200 || statusCode == 201 {
-        
-      } else {
-        if let m = message {
-          self.showAlert(title: "ERROR", message: m, callback: {})
+    if let currentUser = UserDefaults.standard.value(forKey: "currentUser") as? [String : Any],
+      let userId = currentUser["id"] as? Int{
+      var invite = ["status": status,
+                    "membership": 1,
+                    "user_id": userId] // get from current user Userdefaults
+      friendsViewModel.updateInvite(inviteId: inviteId, invite: invite) { (statusCode, message) -> (Void) in
+        if statusCode ==  200 || statusCode == 201 {
+          
+        } else {
+          if let m = message {
+            self.showAlert(title: "ERROR", message: m, callback: {})
+          }
+          
         }
-        
       }
     }
+  }
+  
+  func setAttendeesOfGame(friends : [Player]){ //TODO: change datatype to User - Friend
+    if friends.count == 0 {
+      self.goingPlayersLabel.isHidden = true
+    } else if friends.count == 2 {
+      self.goingPlayersLabel.text = "\(friends[0].firstName) and \(friends[1].firstName) are going"
+    } else if friends.count == 1 {
+      self.goingPlayersLabel.text = "\(friends[0].firstName) is going"
+    } else {
+      self.goingPlayersLabel.text = "\(friends[0].firstName) and \(friends.count-1) others are going)"
+    }
+    if let imageUrl = URL(string: friends.first?.avatar ?? "") {
+      Nuke.loadImage(with: imageUrl, into: self.goingPlayerImage)
+    }
+  }
+  
+  func setPendingInvites() {
+    if let game = self.game {
+      let pendingInvites = game.invites.filter {
+        $0.status != 2
+      }
+      let pendingPlayers = Utilities.getInvitedPlayers(invites: pendingInvites)
+      
+      if pendingPlayers.count == 0 {
+        self.invitedPlayersLabel.isHidden = true
+      } else if pendingPlayers.count == 2 {
+        self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName) and \(pendingPlayers[1].firstName) are invited"
+      } else if pendingPlayers.count == 1 {
+        self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName) is invited"
+      } else {
+        self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName), \(pendingPlayers[1].firstName) and \(pendingPlayers.count-2) others are invited)"
+      }
+      
+      if let imageUrl = URL(string: pendingPlayers.first?.avatar ?? "") {
+        Nuke.loadImage(with: imageUrl, into: self.invitedPlayersImage)
+      }
+      self.playerCollection.reloadData()
+      self.displayAllInvites()
+    }
+  }
+  
+  func displayAllInvites() {
+    var names = ""
+    if self.invitedPlayers.count > 0 {
+      for index in 0..<self.invitedPlayers.count-1 {
+        names.append(self.invitedPlayers[index].firstName)
+        names.append(", ")
+      }
+      if let lastPlayer = self.invitedPlayers.last {
+        names.append(lastPlayer.firstName)
+      }
+    }
+    
+    self.playerNames.text = names
   }
 }

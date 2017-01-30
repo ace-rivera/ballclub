@@ -201,7 +201,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
-        collectionCell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
+        collectionCell.setImageOfFriend(imageUrlString: TestClass.Common.friendImages[indexPath.row])
         return collectionCell
   }
   

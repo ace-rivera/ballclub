@@ -36,6 +36,7 @@ class ContainerViewController: UIViewController {
       self.view.addSubview((self.loginViewController?.view)!)
     }
     
+    Utilities.getUsersList()
     self.setupNotifications()
   }
   
