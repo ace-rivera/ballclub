@@ -51,6 +51,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
     publicIcon.isSelected = false
     publicButton.isSelected = false
+    self.friendsCollectionView.isHidden = true
   }
   
   //MARK: - Helper Methods
@@ -107,7 +108,14 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     if isFormValid() {
       let gameViewModel = GamesViewModel()
       gameViewModel.createGame(gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-        if statusCode == Constants.ResponseCodes.STATUS_CREATED {
+        if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
+          let inviteViewModel = FriendsViewModel()
+          for player in self.friendsToInviteArray {
+            var inviteDict = [String:Any]()
+            inviteDict["user_id"] = player.playerId
+            inviteDict["game_id"] = game.gameId
+            inviteViewModel.createInvite(invite: inviteDict)
+          }
           self.showAlert(title: "Success", message: "Game created successfully", callback: {
             _ = self.navigationController?.popViewController(animated: true)
           })
