@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -901,7 +901,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBK-af-L91">
-                                                    <rect key="frame" x="531" y="19" width="36" height="36"/>
+                                                    <rect key="frame" x="490" y="19" width="36" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="36" id="E3N-Pc-3de"/>
                                                         <constraint firstAttribute="height" constant="36" id="oeG-ta-YZ3"/>
@@ -913,7 +913,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnd-Ho-iL6">
-                                                    <rect key="frame" x="521" y="52" width="56" height="30"/>
+                                                    <rect key="frame" x="479" y="52" width="56" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="56" id="6hk-45-GBb"/>
                                                         <constraint firstAttribute="height" constant="30" id="dXY-G7-mf8"/>
@@ -941,7 +941,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x9-3t-umT">
-                                                    <rect key="frame" x="44" y="21" width="34" height="34"/>
+                                                    <rect key="frame" x="74" y="21" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="eig-FG-u3x"/>
                                                         <constraint firstAttribute="width" constant="34" id="pRw-yr-o83"/>
@@ -953,7 +953,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uaq-PI-d7m">
-                                                    <rect key="frame" x="39" y="52" width="46" height="30"/>
+                                                    <rect key="frame" x="69" y="52" width="46" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="EEn-uf-Apu"/>
                                                         <constraint firstAttribute="width" constant="46" id="gWQ-8i-D0x"/>
@@ -997,14 +997,14 @@
                                                 <constraint firstItem="Mc8-fA-meB" firstAttribute="centerX" secondItem="NIz-mN-nbk" secondAttribute="centerX" id="HaH-fw-VNv"/>
                                                 <constraint firstItem="7uI-gj-7GV" firstAttribute="top" secondItem="Uaq-PI-d7m" secondAttribute="bottom" constant="1" id="IEu-0X-xe9"/>
                                                 <constraint firstItem="Uaq-PI-d7m" firstAttribute="top" secondItem="hhA-G8-QBn" secondAttribute="topMargin" constant="44" id="UeA-nn-ZSf"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wBK-af-L91" secondAttribute="trailing" constant="25" id="VQ4-tw-gPh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wBK-af-L91" secondAttribute="trailing" constant="66" id="VQ4-tw-gPh"/>
                                                 <constraint firstItem="Uaq-PI-d7m" firstAttribute="centerX" secondItem="8x9-3t-umT" secondAttribute="centerX" constant="1" id="W9Y-A8-o0f"/>
                                                 <constraint firstItem="7uI-gj-7GV" firstAttribute="centerX" secondItem="hhA-G8-QBn" secondAttribute="centerX" id="YKn-7A-bvz"/>
                                                 <constraint firstItem="7uI-gj-7GV" firstAttribute="top" secondItem="wBK-af-L91" secondAttribute="bottom" constant="28" id="a71-04-7Gj"/>
-                                                <constraint firstItem="wBK-af-L91" firstAttribute="centerX" secondItem="bnd-Ho-iL6" secondAttribute="centerX" id="aVH-X3-b0p"/>
+                                                <constraint firstItem="wBK-af-L91" firstAttribute="centerX" secondItem="bnd-Ho-iL6" secondAttribute="centerX" constant="1" id="aVH-X3-b0p"/>
                                                 <constraint firstItem="wBK-af-L91" firstAttribute="firstBaseline" secondItem="NIz-mN-nbk" secondAttribute="firstBaseline" id="diF-me-PBp"/>
                                                 <constraint firstItem="7uI-gj-7GV" firstAttribute="top" secondItem="8x9-3t-umT" secondAttribute="bottom" constant="28" id="kp8-Xw-XlZ"/>
-                                                <constraint firstItem="Uaq-PI-d7m" firstAttribute="leading" secondItem="hhA-G8-QBn" secondAttribute="leadingMargin" constant="31" id="vCe-40-0Zt"/>
+                                                <constraint firstItem="Uaq-PI-d7m" firstAttribute="leading" secondItem="hhA-G8-QBn" secondAttribute="leadingMargin" constant="61" id="vCe-40-0Zt"/>
                                                 <constraint firstItem="wBK-af-L91" firstAttribute="baseline" secondItem="NIz-mN-nbk" secondAttribute="baseline" id="zkd-kw-IGS"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1271,6 +1271,7 @@
                         <outlet property="feeTextField" destination="xsc-9a-cdj" id="kBh-DH-qeC"/>
                         <outlet property="friendsCollectionView" destination="KPq-x1-W2U" id="my0-Db-c6t"/>
                         <outlet property="gameTitleTextField" destination="UM3-5t-bSJ" id="3cF-ea-zSj"/>
+                        <outlet property="gameTypeDescriptionLabel" destination="7uI-gj-7GV" id="yXb-s8-Q1U"/>
                         <outlet property="infoTextfield" destination="UxI-8d-gM7" id="dwW-KS-RhT"/>
                         <outlet property="locationTextField" destination="1cE-SQ-04r" id="3Dx-rI-bj2"/>
                         <outlet property="playerCount" destination="YrR-C9-eTm" id="SdQ-pt-TVT"/>

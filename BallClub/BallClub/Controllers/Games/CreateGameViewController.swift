@@ -27,7 +27,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   @IBOutlet weak var friendsCollectionView: UICollectionView!
   @IBOutlet weak var reservedSwitch: UISwitch!
   @IBOutlet weak var approvalSwitch: UISwitch!
-  
+  @IBOutlet weak var gameTypeDescriptionLabel: UILabel!
   
   var gameDetailsDict = [String : Any]()
   var selectedLocation: Location?
@@ -53,6 +53,9 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
     publicIcon.isSelected = false
     publicButton.isSelected = false
+    
+    privateButton.isHidden = true
+    privateIcon.isHidden = true
   }
   
   //MARK: - Helper Methods
@@ -203,12 +206,14 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     case 0:
       publicIcon.isSelected = true
       publicButton.isSelected = true
+      gameTypeDescriptionLabel.text = "Open to all, and any player can request to join"
     case 1:
       privateIcon.isSelected = true
       privateButton.isSelected = true
     case 2:
       closedIcon.isSelected = true
       closedButton.isSelected = true
+      gameTypeDescriptionLabel.text = "Only invited players can see this game"
     default:
       break
     }
