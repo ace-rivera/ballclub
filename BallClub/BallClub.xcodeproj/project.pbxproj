@@ -70,6 +70,7 @@
 		B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BA4E75841D81452A0062DC17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4E75831D81452A0062DC17 /* Images.xcassets */; };
+		BA5CC2021E4302740035F7BE /* EditGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */; };
 		BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7777611D80F2FB003F4465 /* FriendsViewController.swift */; };
 		BA7777641D80F7AF003F4465 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7777631D80F7AF003F4465 /* Friends.storyboard */; };
 		BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */; };
@@ -155,6 +156,7 @@
 		B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BA4E75831D81452A0062DC17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGameTableViewController.swift; sourceTree = "<group>"; };
 		BA7777611D80F2FB003F4465 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		BA7777631D80F7AF003F4465 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				71D4927D1D7E908400E07DDF /* GameDetailViewController.swift */,
 				71D4927F1D7E90C000E07DDF /* InvitedFriendsViewController.swift */,
 				B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */,
+				BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */,
 				45425F161D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift in Sources */,
 				45425F191D82EE3100815B43 /* FriendsCollectionCustomView.swift in Sources */,
+				BA5CC2021E4302740035F7BE /* EditGameTableViewController.swift in Sources */,
 				BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */,
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
 				FB741E711E38587E00B233EE /* LocationSearchTable.swift in Sources */,

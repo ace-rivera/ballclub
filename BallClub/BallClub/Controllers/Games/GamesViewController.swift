@@ -15,6 +15,7 @@ class GamesViewController: UIViewController {
   var userGamesList = [Game]()
   var publicGamesList = [Game]()
   var selectedGameId: Int?
+  var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -38,6 +39,12 @@ class GamesViewController: UIViewController {
           gameDetailViewController.gameId = id
         }
       }
+    } else if segue.identifier == "showEditGameViewController" {
+      if let editGameDetailViewController: EditGameTableViewController = segue.destination as? EditGameTableViewController {
+        if let id = self.selectedGameId {
+          editGameDetailViewController.gameId = id
+        }
+      }
     }
   }
   
@@ -55,7 +62,7 @@ class GamesViewController: UIViewController {
             if statusCode2 == 200, let games2 = games2 {
               let publicGames = games2.filter {
                 $0.gameCreator.playerId != userId &&
-                $0.privacy == 0
+                  $0.privacy == 0
               }
               self.publicGamesList = publicGames
               self.gamesTableview.reloadData()
@@ -74,8 +81,8 @@ class GamesViewController: UIViewController {
   //MARK: - SetUpUI
   func setUpUI() {
     //TODO: autoresize cell study!!
-//    self.gamesTableview.estimatedRowHeight = 150.0
-//    self.gamesTableview.rowHeight = UITableViewAutomaticDimension
+    //    self.gamesTableview.estimatedRowHeight = 150.0
+    //    self.gamesTableview.rowHeight = UITableViewAutomaticDimension
     self.gamesTableview.register(UINib(nibName: "GamesCategoryHeaderView",bundle: nil), forHeaderFooterViewReuseIdentifier: "GamesCategoryHeaderView")
     self.gamesTableview.register(UINib(nibName: "FeedsCustomCell",bundle: nil), forCellReuseIdentifier: "FeedsCustomCell")
     self.gamesTableview.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.gamesTableview.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
@@ -113,8 +120,24 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.selectedGameId = self.userGamesList[indexPath.row].gameId
-    self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+    if indexPath.section == 0 {
+      if self.userGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+        self.selectedGameId = self.userGamesList[indexPath.row].gameId
+        self.performSegue(withIdentifier: "showEditGameViewController", sender: self)
+      } else {
+        self.selectedGameId = self.userGamesList[indexPath.row].gameId
+        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+      }
+      
+    } else {
+      if self.publicGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+        self.selectedGameId = self.publicGamesList[indexPath.row].gameId
+        self.performSegue(withIdentifier: "showEditGameViewController", sender: self)
+      } else {
+        self.selectedGameId = self.publicGamesList[indexPath.row].gameId
+        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+      }
+    }
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
