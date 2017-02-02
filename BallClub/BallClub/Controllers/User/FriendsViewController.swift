@@ -103,7 +103,7 @@ class FriendsViewController: UIViewController {
       Utilities.hideProgressHud()
       if (statusCode == 200 || statusCode == 201), let g = games {
         self.gamesArray = g
-        // self.tableView.reloadData()
+        self.tableView.reloadData()
       } else {
         if let m = message {
           self.showAlert(title: "ERROR", message: m, callback: {})
@@ -114,16 +114,13 @@ class FriendsViewController: UIViewController {
   
   //MARK:- IBActions
   func segmentTabChanged(segmentControl: UISegmentedControl) {
-    let selectedSegment = segmentControl.selectedSegmentIndex;
+    let selectedSegment = segmentControl.selectedSegmentIndex
     
-    if selectedSegment == 0 {
+    if selectedSegment == 0{
       tabSelected = 0
-      self.tableView.rowHeight = 60
-    }else if selectedSegment == 1{
-      tabSelected = 1
       self.tableView.rowHeight = 150
     }else{
-      tabSelected = 2
+      tabSelected = 1
       self.tableView.rowHeight = 60
     }
     
@@ -147,7 +144,7 @@ class FriendsViewController: UIViewController {
       if responseCode == 200 || responseCode == 201 {
         self.showAlert(title: "SUCCESS", message: "Friend Request Sent!", callback: {})
       } else if responseCode ==  422 {
-          self.showAlert(title: "ERROR", message: "Friend Request already sent", callback: {})
+        self.showAlert(title: "ERROR", message: "Friend Request already sent", callback: {})
       } else {
         self.showAlert(title: "ERROR", message: "Unable to send Friend Request", callback: {})
       }
@@ -170,17 +167,12 @@ class FriendsViewController: UIViewController {
 extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     if tabSelected == 0 {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "UserInviteCustomCell") as! UserInviteCustomCell
-      cell.setFriendUserName(name: TestClass.Common.friendNames[indexPath.row])
-      cell.setFriendUserImage(image: TestClass.Common.friendImages[indexPath.row])
-      cell.setFriendInviteStatus(status: "accepted your friend request")
-      cell.selectionStyle = .none
-      return cell
-    }else if tabSelected == 1{
       let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as! FeedsCustomCell
       cell.selectionStyle = .none
       cell.game = self.gamesArray[indexPath.row]
+      self.tableView.rowHeight = 150
       return cell
     }else{
       let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell
@@ -197,9 +189,8 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     if tabSelected == 0 {
-      return 3
-    } else if tabSelected == 1 {
       return self.gamesArray.count
     } else {
       return self.friendsArray.count
@@ -207,7 +198,7 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if tabSelected ==  1 {
+    if tabSelected ==  0 {
       self.selectedGameId = self.gamesArray[indexPath.row].gameId
       let storyboard = UIStoryboard.init(name: "Game", bundle: nil)
       if  let gamesVC = storyboard.instantiateViewController(withIdentifier: "gameDetailsVC") as? GameDetailViewController {

@@ -147,8 +147,7 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WFR-cA-mkV">
                                         <rect key="frame" x="20" y="9" width="343" height="29"/>
                                         <segments>
-                                            <segment title="About"/>
-                                            <segment title="Game"/>
+                                            <segment title="Games"/>
                                             <segment title="Friends"/>
                                         </segments>
                                         <color key="tintColor" red="0.92549019610000005" green="0.39607843139999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

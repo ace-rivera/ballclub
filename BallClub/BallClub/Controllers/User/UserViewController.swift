@@ -82,6 +82,12 @@ class UserViewController: UIViewController {
       definesPresentationContext = true
     }
     
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapOnCurrentUser))
+    self.userProfileImage.addGestureRecognizer(tapGesture)
+    self.playerName.addGestureRecognizer(tapGesture)
+    self.userProfileImage.isUserInteractionEnabled = true
+    self.playerName.isUserInteractionEnabled = true
+    
     getUserData()
     registerNibs()
   }
@@ -92,6 +98,8 @@ class UserViewController: UIViewController {
     self.friendsTableView.register(UINib(nibName: "UserSearchFriendsCustomCell",bundle: nil), forCellReuseIdentifier: "UserSearchFriendsCustomCell")
   }
   
+  
+  //MARK: - get User Data
   func getUserData() {
     if let player = currentUser, let firstName = player["first_name"] as? String, let lastName = player["last_name"] as? String {
       self.playerName.text = firstName + " " + lastName
@@ -106,8 +114,7 @@ class UserViewController: UIViewController {
     getPendingInvites()
     getFriendRequests()
   }
-  
-  // User pending friend requests
+
   func getFriendRequests() {
     incomingRequestsArray.removeAll()
     friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests) -> (Void) in
@@ -151,8 +158,7 @@ class UserViewController: UIViewController {
       self.friendsTableView.reloadData()
     }
   }
-  
-  //User invited games
+
   func getPendingInvites() {
     gameIvitesArray.removeAll()
     friendsViewModel.getPendingIvites { (responseCode, message, inviteArray) -> (Void) in
@@ -204,8 +210,15 @@ class UserViewController: UIViewController {
     }
   }
   
-  
-  
+  func didTapOnCurrentUser() {
+    let filteredUser = self.allPlayersArray.filter {
+      $0.playerId == currentUser?["id"] as? Int
+    }
+    if filteredUser.count > 0 {
+      selectedUser = filteredUser.first!
+    }
+    self.performSegue(withIdentifier: "FriendsProfileViewControllerSegue", sender: self)
+  }
   
   //MARK: - IBAction
   @IBAction func editProfilePressed(_ sender: AnyObject) {
@@ -217,6 +230,9 @@ class UserViewController: UIViewController {
     
   }
 
+  @IBAction func didTapOnProfileImage(_ sender: Any) {
+    self.didTapOnCurrentUser()
+  }
   @IBAction func segmentTabChanged(_ segmentControl: UISegmentedControl) {
     let selectedSegment = segmentControl.selectedSegmentIndex;
     

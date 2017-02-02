@@ -131,7 +131,7 @@
                                             <action selector="settingsButtonPressed:" destination="1Qb-0J-YXH" eventType="touchUpInside" id="qMO-5u-p5f"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="Dxd-n6-1uu">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="Dxd-n6-1uu">
                                         <rect key="frame" x="20" y="54" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5yG-9u-gHk"/>
@@ -168,6 +168,12 @@
                                             <constraint firstAttribute="height" constant="50" id="hhx-Py-cMk"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uz7-hM-ioG">
+                                        <rect key="frame" x="20" y="54" width="50" height="50"/>
+                                        <connections>
+                                            <action selector="didTapOnProfileImage:" destination="1Qb-0J-YXH" eventType="touchUpInside" id="hDj-mV-Mha"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -176,9 +182,13 @@
                                     <constraint firstAttribute="trailing" secondItem="hhy-aY-vNd" secondAttribute="trailing" constant="8" id="5Yd-gH-Y6a"/>
                                     <constraint firstItem="cJY-c1-yyJ" firstAttribute="leading" secondItem="PPm-sF-pxe" secondAttribute="leading" constant="20" id="668-g8-JQH"/>
                                     <constraint firstItem="hhy-aY-vNd" firstAttribute="top" secondItem="PPm-sF-pxe" secondAttribute="top" constant="59" id="7gE-Ux-MfZ"/>
+                                    <constraint firstItem="Uz7-hM-ioG" firstAttribute="width" secondItem="Dxd-n6-1uu" secondAttribute="width" id="Hnd-u2-kdx"/>
                                     <constraint firstItem="cJY-c1-yyJ" firstAttribute="top" secondItem="PPm-sF-pxe" secondAttribute="top" constant="17" id="IAh-DR-lQR"/>
+                                    <constraint firstItem="Uz7-hM-ioG" firstAttribute="leading" secondItem="PPm-sF-pxe" secondAttribute="leading" constant="20" id="Jkv-yB-lVv"/>
+                                    <constraint firstItem="mQw-j7-2SX" firstAttribute="top" secondItem="Uz7-hM-ioG" secondAttribute="bottom" constant="19" id="LRQ-pH-zGv"/>
                                     <constraint firstItem="hhy-aY-vNd" firstAttribute="top" secondItem="cJY-c1-yyJ" secondAttribute="bottom" constant="21" id="PAt-gl-I5b"/>
                                     <constraint firstItem="Key-sv-hlS" firstAttribute="leading" secondItem="PPm-sF-pxe" secondAttribute="leading" constant="85" id="Rwz-qg-zIP"/>
+                                    <constraint firstItem="Uz7-hM-ioG" firstAttribute="top" secondItem="cJY-c1-yyJ" secondAttribute="bottom" constant="16" id="SP7-H9-lHF"/>
                                     <constraint firstItem="v8b-xd-aE7" firstAttribute="top" secondItem="hhy-aY-vNd" secondAttribute="bottom" constant="-3" id="UBH-eb-k6d"/>
                                     <constraint firstItem="Key-sv-hlS" firstAttribute="leading" secondItem="hhy-aY-vNd" secondAttribute="leading" id="YLG-9F-FJa"/>
                                     <constraint firstItem="v8b-xd-aE7" firstAttribute="leading" secondItem="hhy-aY-vNd" secondAttribute="leading" id="Yxv-aA-EUH"/>
@@ -189,6 +199,7 @@
                                     <constraint firstItem="Dxd-n6-1uu" firstAttribute="top" secondItem="cJY-c1-yyJ" secondAttribute="bottom" constant="16" id="tXL-n0-9xc"/>
                                     <constraint firstItem="Key-sv-hlS" firstAttribute="leading" secondItem="mQw-j7-2SX" secondAttribute="trailing" constant="15" id="v6h-wR-ngT"/>
                                     <constraint firstItem="hhy-aY-vNd" firstAttribute="leading" secondItem="PPm-sF-pxe" secondAttribute="leading" constant="85" id="ywn-rh-Aym"/>
+                                    <constraint firstItem="Uz7-hM-ioG" firstAttribute="height" secondItem="Dxd-n6-1uu" secondAttribute="height" id="z4L-ls-HNa"/>
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bjX-bL-gko">
