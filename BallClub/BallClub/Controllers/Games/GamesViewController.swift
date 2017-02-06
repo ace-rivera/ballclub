@@ -15,6 +15,7 @@ class GamesViewController: UIViewController {
   var userGamesList = [Game]()
   var publicGamesList = [Game]()
   var selectedGameId: Int?
+  var isCurrentUsersGame = false
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
   //MARK: - Lifecycle
@@ -37,12 +38,7 @@ class GamesViewController: UIViewController {
       if let gameDetailViewController: GameDetailViewController = segue.destination as? GameDetailViewController {
         if let id = self.selectedGameId {
           gameDetailViewController.gameId = id
-        }
-      }
-    } else if segue.identifier == "showEditGameViewController" {
-      if let editGameDetailViewController: EditGameTableViewController = segue.destination as? EditGameTableViewController {
-        if let id = self.selectedGameId {
-          editGameDetailViewController.gameId = id
+          gameDetailViewController.isCurrentUsersGame = isCurrentUsersGame
         }
       }
     }
@@ -122,21 +118,20 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 {
       if self.userGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
-        self.selectedGameId = self.userGamesList[indexPath.row].gameId
-        self.performSegue(withIdentifier: "showEditGameViewController", sender: self)
+        isCurrentUsersGame = true
       } else {
-        self.selectedGameId = self.userGamesList[indexPath.row].gameId
-        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+       isCurrentUsersGame = false
       }
-      
+      self.selectedGameId = self.userGamesList[indexPath.row].gameId
+      self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
     } else {
       if self.publicGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
-        self.selectedGameId = self.publicGamesList[indexPath.row].gameId
-        self.performSegue(withIdentifier: "showEditGameViewController", sender: self)
+        isCurrentUsersGame = true
       } else {
-        self.selectedGameId = self.publicGamesList[indexPath.row].gameId
-        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+        isCurrentUsersGame = false
       }
+      self.selectedGameId = self.publicGamesList[indexPath.row].gameId
+      self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
     }
   }
   

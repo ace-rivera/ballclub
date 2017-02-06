@@ -41,6 +41,9 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   @IBOutlet weak var invitedPlayersLabel: UILabel!
   @IBOutlet weak var isGameReservedLabel: UILabel!
   
+  @IBOutlet weak var editGameButton: UIBarButtonItem!
+  @IBOutlet weak var deleteGameButton: UIBarButtonItem!
+  
   var gameId: Int? {
     didSet {
       if let gameId = self.gameId {
@@ -52,6 +55,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   var inviteId: Int!
   var goingPlayers = [Player]()
   var invitedPlayers = [Player]()
+  var isCurrentUsersGame = false
   let friendsViewModel = FriendsViewModel()
   
   //MARK: - Lifecycle
@@ -68,8 +72,15 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "DetailToInvitedSegue" {
       if let invitedFriendsVC: InvitedFriendsViewController = segue.destination as? InvitedFriendsViewController,
-          let game = self.game {
+        let game = self.game {
         invitedFriendsVC.invitedPlayers = game.invites
+      }
+    } else if segue.identifier == "showEditViewController" {
+      if let editVC: EditGameTableViewController = segue.destination as? EditGameTableViewController {
+        if let id = gameId {
+          editVC.gameId = id
+          editVC.selectedGame = game
+        }
       }
     }
   }
@@ -81,6 +92,12 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     self.gameDetailTableView.estimatedRowHeight = 200
     self.gameDetailTableView.rowHeight = UITableViewAutomaticDimension
     additionInfo.sizeToFit()
+    
+    if !isCurrentUsersGame {
+      self.editGameButton.tintColor = UIColor.clear
+      self.deleteGameButton.tintColor = UIColor.clear
+    }
+    
   }
   
   func setGameDetails() {
@@ -93,7 +110,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
         self.gameDate.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
         self.gameTime.text = CustomDateFormatter().gameDetailsTimeFormat(startTime: start)
       }
-
+      
       self.gameLocation.text = game.location.locationName
       self.gameTitle.text = game.title
       self.gamePrice.text = String(format: "%.2f", game.fee)
@@ -267,4 +284,25 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     
     self.playerNames.text = names
   }
+  
+  
+  @IBAction func didTapEditGame(_ sender: Any) {
+    self.performSegue(withIdentifier: "showEditViewController", sender: self)
+  }
+  
+  
+  @IBAction func didTapDeleteGame(_ sender: Any) {
+    let gamesViewModel = GamesViewModel()
+    if let id = gameId {
+      gamesViewModel.deleteGame(gameId: id) { (responseCode, message) -> (Void) in
+        if responseCode == 200 || responseCode == 201 {
+          self.showAlert(title: "SUCCESS", message: "Game has been successfully deleted", callback: {})
+          self.navigationController?.popViewController(animated: true)
+        } else {
+          self.showAlert(title: "ERROR", message: "Cannot Delete Game", callback: {})
+        }
+      }
+    }
+  }
+  
 }

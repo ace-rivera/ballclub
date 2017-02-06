@@ -37,6 +37,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   var resultSearchController: UISearchController? = nil
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var gameId: Int!
+  var selectedGame: Game?
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -58,6 +59,20 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     
     privateButton.isHidden = true
     privateIcon.isHidden = true
+    
+    if let game = selectedGame {
+      gameTitleTextField.text = game.title
+      locationTextField.text = game.location.locationName
+      reservedSwitch.isOn = game.reserved!
+      playerCount.text = String(format: "%i", game.maxCapacity ?? 0)
+      feeTextField.text = String(format: "%.2f", game.fee)
+      infoTextfield.text = game.additionalInfo
+      
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
+      
+      
+    }
   }
   
   //MARK: - Helper Methods
@@ -126,49 +141,37 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   //MARK: - IBAction
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
-    if isFormValid() {
-      let gameViewModel = GamesViewModel()
-      if let userId = currentUser?["id"] as? Int {
-        gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-          if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
-            let inviteViewModel = FriendsViewModel()
-            for player in self.friendsToInviteArray {
-              var inviteDict = [String:Any]()
-              inviteDict["user_id"] = player.playerId
-              inviteDict["game_id"] = game.gameId
-              inviteViewModel.createInvite(invite: inviteDict,
-                                           completionBlock: { (statusCode, message, invite) -> (Void) in
-              })
-            }
-            self.showAlert(title: "Success", message: "Game created successfully", callback: {
-              _ = self.navigationController?.popViewController(animated: true)
-            })
-          } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
-            self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-          } else {
-            self.showAlert(title: "Error", message: "There was an error while creating the game", callback: {})
-          }
-        })
-      } else {
-        self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-      }
-    }
+//    if isFormValid() {
+//      let gameViewModel = GamesViewModel()
+//      if let userId = currentUser?["id"] as? Int {
+//        gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
+//          if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
+//            let inviteViewModel = FriendsViewModel()
+//            for player in self.friendsToInviteArray {
+//              var inviteDict = [String:Any]()
+//              inviteDict["user_id"] = player.playerId
+//              inviteDict["game_id"] = game.gameId
+//              inviteViewModel.createInvite(invite: inviteDict,
+//                                           completionBlock: { (statusCode, message, invite) -> (Void) in
+//              })
+//            }
+//            self.showAlert(title: "Success", message: "Game created successfully", callback: {
+//              _ = self.navigationController?.popViewController(animated: true)
+//            })
+//          } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
+//            self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+//          } else {
+//            self.showAlert(title: "Error", message: "There was an error while creating the game", callback: {})
+//          }
+//        })
+//      } else {
+//        self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+//      }
+//    }
   }
   
   @IBAction func backButtonPressed(_ sender: AnyObject) {
     _ = self.navigationController?.popViewController(animated: true)
-  }
-  
-  @IBAction func didTapOnDelete(_ sender: Any) {
-    //call api delete game function and dismiss
-    gamesViewModel.deleteGame(gameId: gameId) { (responseCode, message) -> (Void) in
-      if responseCode == 200 || responseCode == 201 {
-        self.showAlert(title: "SUCCESS", message: "Game has been successfully deleted", callback: {})
-        self.navigationController?.popViewController(animated: true)
-      } else {
-        self.showAlert(title: "ERROR", message: "Cannot Delete Game", callback: {})
-      }
-    }
   }
   
   

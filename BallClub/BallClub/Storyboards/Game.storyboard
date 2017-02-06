@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -71,7 +71,6 @@
                         <segue destination="0dW-Qq-mTU" kind="show" identifier="GameDetailSegue" id="LW2-hS-gQp">
                             <nil key="action"/>
                         </segue>
-                        <segue destination="HNv-WM-M5f" kind="show" identifier="showEditGameViewController" id="fCR-oF-l99"/>
                     </connections>
                 </viewController>
                 <navigationItem id="lL5-Xu-Hz8">
@@ -647,12 +646,28 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Delete" id="Hgs-y1-L07">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="didTapDeleteGame:" destination="0dW-Qq-mTU" id="2i6-wZ-SDZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Edit" id="ERX-SE-Jp7">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="didTapEditGame:" destination="0dW-Qq-mTU" id="XsU-ss-bXx"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="900"/>
                     <connections>
                         <outlet property="additionInfo" destination="HFC-N2-CPk" id="Qkd-g0-kYk"/>
+                        <outlet property="deleteGameButton" destination="Hgs-y1-L07" id="lnv-Wx-frx"/>
+                        <outlet property="editGameButton" destination="ERX-SE-Jp7" id="BIo-xO-Kng"/>
                         <outlet property="gameDate" destination="Swk-1c-0q4" id="N1O-ZG-660"/>
                         <outlet property="gameDetailTableView" destination="Fxz-4f-fXf" id="LOg-hJ-Bij"/>
                         <outlet property="gameDetails" destination="bPz-Yo-Yyf" id="sBV-ns-3TG"/>
@@ -679,6 +694,7 @@
                         <segue destination="9FS-0q-87m" kind="show" identifier="DetailToInvitedSegue" id="74J-Dm-tV0">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="HNv-WM-M5f" kind="show" identifier="showEditViewController" id="7fU-Td-fbC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaN-Xw-N6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -973,14 +989,14 @@
                                                     <color key="textColor" red="0.90196078430000004" green="0.38823529410000002" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x9-3t-umT">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x9-3t-umT">
                                                     <rect key="frame" x="74" y="21" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="eig-FG-u3x"/>
                                                         <constraint firstAttribute="width" constant="34" id="pRw-yr-o83"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" backgroundImage="ic_public"/>
+                                                    <state key="normal" image="ic_public"/>
                                                     <connections>
                                                         <action selector="setGamePrivacy:" destination="xVY-nh-ebn" eventType="touchUpInside" id="1wP-By-J78"/>
                                                     </connections>
@@ -1307,7 +1323,7 @@
             <objects>
                 <tableViewController title="Edit Game" id="HNv-WM-M5f" customClass="EditGameTableViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="2" sectionFooterHeight="2" id="Az1-ro-8Oz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1829,38 +1845,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="yvo-n7-LtB">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="M6I-MD-gEr">
-                                        <rect key="frame" x="0.0" y="691" width="600" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M6I-MD-gEr" id="upi-pl-nGH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHY-AW-tKq">
-                                                    <rect key="frame" x="137" y="11" width="327" height="47"/>
-                                                    <color key="backgroundColor" red="0.87058823529411766" green="0.38431372549019605" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="327" id="biH-mn-W20"/>
-                                                        <constraint firstAttribute="height" constant="47" id="sI0-SG-gdv"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Delete">
-                                                        <color key="titleColor" red="1" green="0.97567191070000003" blue="0.97633026840000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="didTapOnDelete:" destination="HNv-WM-M5f" eventType="touchUpInside" id="BuZ-Sw-0p4"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="OHY-AW-tKq" firstAttribute="centerX" secondItem="upi-pl-nGH" secondAttribute="centerX" id="Ax9-kT-2uY"/>
-                                                <constraint firstItem="OHY-AW-tKq" firstAttribute="centerY" secondItem="upi-pl-nGH" secondAttribute="centerY" id="hEh-Mw-hEJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="HNv-WM-M5f" id="S62-ST-col"/>
@@ -1883,7 +1867,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="900"/>
+                    <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="approvalSwitch" destination="Ssc-Rz-emH" id="l03-aa-GDo"/>
                         <outlet property="closedButton" destination="zaU-2B-E6F" id="wJL-t6-yyU"/>
@@ -1903,11 +1887,12 @@
                         <outlet property="publicIcon" destination="Vcg-mr-EGx" id="Lza-WG-Pux"/>
                         <outlet property="reservedSwitch" destination="tTE-r9-HwN" id="FeH-oI-fK6"/>
                         <outlet property="startTimeButton" destination="ixZ-rT-Acf" id="t8i-Oz-Ldn"/>
+                        <segue destination="Aip-XD-rUe" kind="show" identifier="showLocationListVC" id="0JC-Ay-JZI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfL-wL-2Un" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3204.8000000000002" y="346.32683658170919"/>
+            <point key="canvasLocation" x="-16" y="2211"/>
         </scene>
         <!--Invite Friends Table View Controller-->
         <scene sceneID="Uti-Wg-00m">
@@ -2022,6 +2007,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Delete" width="30" height="30"/>
+        <image name="Edit" width="30" height="30"/>
         <image name="back" width="22" height="22"/>
         <image name="ic_check" width="512" height="512"/>
         <image name="ic_closed" width="512" height="512"/>
@@ -2042,4 +2029,7 @@
         <image name="player_curry" width="200" height="304"/>
         <image name="player_durant" width="200" height="125"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="A6k-UD-om6"/>
+    </inferredMetricsTieBreakers>
 </document>

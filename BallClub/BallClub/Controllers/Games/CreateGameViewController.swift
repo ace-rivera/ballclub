@@ -65,6 +65,9 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     
     self.startTimeButton.setTitle(dateFormatter.string(from: Date()), for: .normal)
     self.endTimeButton.setTitle(dateFormatter.string(from: newDate), for: .normal)
+    
+    publicIcon.setImage(UIImage(named: "ic_public"), for: .normal);
+    privateIcon.setImage(UIImage(named: "ic_private"), for: .normal);
   }
   
   //MARK: - Helper Methods
