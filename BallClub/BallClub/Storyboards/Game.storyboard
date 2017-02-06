@@ -715,7 +715,7 @@
         <!--Create Game-->
         <scene sceneID="xCt-sk-gV3">
             <objects>
-                <tableViewController id="xVY-nh-ebn" customClass="CreateGameViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="CreateGameViewController" storyboardIdentifier="CreateGameViewController" id="xVY-nh-ebn" customClass="CreateGameViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="2" sectionFooterHeight="2" id="eAZ-4H-SSQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
