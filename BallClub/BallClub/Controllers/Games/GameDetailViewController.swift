@@ -101,7 +101,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       
       if game.invites.count > 0 {
         self.goingPlayers = Utilities.getGoingUsers(invites: game.invites)
-        self.setAttendeesOfGame(friends: self.goingPlayers)
+        self.setAttendeesOfGame(friends: self.goingPlayers, maxPlayers: game.maxCapacity ?? 0)
         
         self.invitedPlayers = Utilities.getInvitedPlayers(invites: game.invites)
         self.setPendingInvites()
@@ -197,7 +197,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     }
   }
   
-  func setAttendeesOfGame(friends : [Player]){ //TODO: change datatype to User - Friend
+  func setAttendeesOfGame(friends : [Player], maxPlayers: Int){
     if friends.count == 0 {
       self.goingPlayersLabel.isHidden = true
     } else if friends.count == 2 {
