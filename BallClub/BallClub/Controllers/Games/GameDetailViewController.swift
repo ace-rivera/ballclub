@@ -20,6 +20,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   @IBOutlet weak var gamePrice: UILabel!
   @IBOutlet weak var gameTime: UILabel!
   @IBOutlet weak var gameDetails: UILabel!
+  @IBOutlet weak var gameDetailsIcon: UIImageView!
   @IBOutlet weak var playerCount: UILabel!
   @IBOutlet weak var playerNames: UILabel!
   @IBOutlet weak var gameOwner: UILabel!
@@ -38,6 +39,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   @IBOutlet weak var invitedPlayersImage: UIImageView!
   @IBOutlet weak var invitedPlayersLabel: UILabel!
+  @IBOutlet weak var isGameReservedLabel: UILabel!
   
   var gameId: Int? {
     didSet {
@@ -95,17 +97,31 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       self.gameLocation.text = game.location.locationName
       self.gameTitle.text = game.title
       self.gamePrice.text = String(format: "%.2f", game.fee)
-      self.gameDetails.text = game.additionalInfo ?? ""
       self.playerCount.text = "\(game.maxCapacity)"
       self.gameOwner.text = "\(game.gameCreator.firstName) invited you"
       
       if game.invites.count > 0 {
         self.goingPlayers = Utilities.getGoingUsers(invites: game.invites)
-        self.setAttendeesOfGame(friends: self.goingPlayers)
+        self.setAttendeesOfGame(friends: self.goingPlayers, maxPlayers: game.maxCapacity ?? 0)
         
         self.invitedPlayers = Utilities.getInvitedPlayers(invites: game.invites)
         self.setPendingInvites()
       }
+      
+      if game.privacy == 0 {
+        self.gameDetails.text = "PUBLIC GAME hosted by \(game.gameCreator.firstName) \(game.gameCreator.lastName)"
+        if let image = UIImage(named: "ic_public") {
+          self.gameDetailsIcon.image = image
+        }
+      } else {
+        self.gameDetails.text = "CLOSED GAME hosted by \(game.gameCreator.firstName) \(game.gameCreator.lastName)"
+        if let image = UIImage(named: "ic_closed") {
+          self.gameDetailsIcon.image = image
+        }
+      }
+      
+      self.isGameReservedLabel.text = (game.reserved ?? false) ? "RESERVED" : "PENDING"
+      self.isGameReservedLabel.layer.borderColor = UIColor(red: 221, green: 86, blue: 42, alpha: 1).cgColor
       
       self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(self.invitedPlayers.count)"
       self.additionInfo.text = game.additionalInfo ?? ""
@@ -197,7 +213,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     }
   }
   
-  func setAttendeesOfGame(friends : [Player]){ //TODO: change datatype to User - Friend
+  func setAttendeesOfGame(friends : [Player], maxPlayers: Int){
     if friends.count == 0 {
       self.goingPlayersLabel.isHidden = true
     } else if friends.count == 2 {

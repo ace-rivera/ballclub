@@ -74,7 +74,7 @@ class FeedsCustomCell: UITableViewCell {
     
     self.gameLocation.text = game.location.locationName
     
-    self.setMemberCountOfGame(invitesArray: game.invites)
+    self.setMemberCountOfGame(invitesArray: game.invites, maxPlayers: game.maxCapacity ?? 0)
     
     if game.invites.count > 0 {
       let acceptedInvitesList = Utilities.getGoingUsers(invites: game.invites)
@@ -84,7 +84,7 @@ class FeedsCustomCell: UITableViewCell {
   }
   
  
-  func setMemberCountOfGame(invitesArray: [Invite]) {
+  func setMemberCountOfGame(invitesArray: [Invite], maxPlayers: Int) {
     var acceptedInvites = 0
     
     for invite in invitesArray {

@@ -56,6 +56,15 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     
     privateButton.isHidden = true
     privateIcon.isHidden = true
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
+    
+    let calendar = Calendar.current
+    let newDate = calendar.date(byAdding: .hour, value: 2, to: Date()) ?? Date()
+    
+    self.startTimeButton.setTitle(dateFormatter.string(from: Date()), for: .normal)
+    self.endTimeButton.setTitle(dateFormatter.string(from: newDate), for: .normal)
   }
   
   //MARK: - Helper Methods
@@ -64,14 +73,15 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       let location = self.selectedLocation, //needs improvement, should be from get location
       let startTime = self.startTimeButton.titleLabel?.text,
       let endTime = self.endTimeButton.titleLabel?.text,
-      let fee = self.feeTextField.text else { return false }
+      let fee = self.feeTextField.text,
+      let playerCount = self.playerCount.text else { return false }
 
     //create dictionary here
     self.gameDetailsDict["title"] = title
     self.gameDetailsDict["start_time"] = startTime
     self.gameDetailsDict["end_time"] = endTime
-    self.gameDetailsDict["max_capacity"] = Int(self.playerCount.text ?? "")
-    self.gameDetailsDict["min_capacity"] = Int(self.playerCount.text ?? "")
+    self.gameDetailsDict["max_capacity"] = Int(playerCount) ?? 0
+    self.gameDetailsDict["min_capacity"] = Int(playerCount) ?? 0
     self.gameDetailsDict["fee"] = fee
     self.gameDetailsDict["additional_info"] = self.infoTextfield.text ?? ""
     self.gameDetailsDict["location_id"] = location.locationId

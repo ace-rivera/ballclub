@@ -62,7 +62,7 @@ class GamesViewController: UIViewController {
             if statusCode2 == 200, let games2 = games2 {
               let publicGames = games2.filter {
                 $0.gameCreator.playerId != userId &&
-                  $0.privacy == 0
+                  $0.privacy == 0 //how to know if closed
               }
               self.publicGamesList = publicGames
               self.gamesTableview.reloadData()

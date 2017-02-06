@@ -57,6 +57,13 @@ class MapsViewController: UIViewController {
     self.mapView.addAnnotation(currentPosition)
   }
   
+  @IBAction func didTapOnCreateGame(_ sender: Any) {
+    let storyboard = UIStoryboard(name: "Game", bundle: Bundle.main)
+    if let createGameVC = storyboard.instantiateViewController(withIdentifier: "CreateGameViewController")
+      as? CreateGameViewController {
+      self.navigationController?.pushViewController(createGameVC, animated: true)
+    }
+  }
   func getAllLocations() {
     let locationViewModel = LocationViewModel()
     locationViewModel.getLocations { (statusCode, messsage, locations) -> (Void) in
