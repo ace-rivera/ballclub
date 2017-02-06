@@ -165,8 +165,8 @@
                                                                 <constraint firstAttribute="width" constant="20" id="zj4-Hx-w58"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLOSED GAME hosted by Geraldine Forto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPz-Yo-Yyf">
-                                                            <rect key="frame" x="48" y="180" width="522" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLOSED GAME hosted by Geraldine Forto" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPz-Yo-Yyf">
+                                                            <rect key="frame" x="48" y="180" width="474" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Y0c-bx-xA7"/>
                                                             </constraints>
@@ -229,7 +229,8 @@
                                                         <constraint firstAttribute="trailing" secondItem="lly-xh-zAJ" secondAttribute="trailing" id="Kva-hX-qEP"/>
                                                         <constraint firstAttribute="bottom" secondItem="A5Z-Vw-bee" secondAttribute="bottom" constant="30" id="QIz-Yh-6cJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="A5Z-Vw-bee" secondAttribute="trailing" constant="8" id="QyB-Pv-Nbn"/>
-                                                        <constraint firstAttribute="trailing" secondItem="bPz-Yo-Yyf" secondAttribute="trailing" constant="30" id="TgV-LD-NEF"/>
+                                                        <constraint firstItem="A5Z-Vw-bee" firstAttribute="leading" secondItem="bPz-Yo-Yyf" secondAttribute="trailing" constant="-2" id="TPt-AD-iip"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bPz-Yo-Yyf" secondAttribute="trailing" constant="78" id="TgV-LD-NEF"/>
                                                         <constraint firstItem="1LN-ck-4pL" firstAttribute="top" secondItem="Ynt-gO-g3D" secondAttribute="bottom" constant="7" id="XMj-6E-67n"/>
                                                         <constraint firstAttribute="trailing" secondItem="UBW-MU-dRO" secondAttribute="trailing" constant="30" id="Zhf-wv-O1a"/>
                                                         <constraint firstItem="Ynt-gO-g3D" firstAttribute="leading" secondItem="XLa-xl-qYi" secondAttribute="leading" id="bvs-Re-LbF"/>
