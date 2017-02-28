@@ -21,6 +21,11 @@ class FeedsCustomCell: UITableViewCell {
   @IBOutlet weak var gameFriends: UILabel!
   @IBOutlet weak var gameFriendsIcon: UIImageView!
 //  @IBOutlet weak var gameFriendsCollection: UICollectionView!
+  @IBOutlet weak var suggestInviteButton: UIButton!
+  @IBOutlet weak var responseButton: UIButton!
+  @IBOutlet weak var detailView: UIView!
+  @IBOutlet weak var detailViewBottomLayout: NSLayoutConstraint!
+  var detailsShown = false
   
   var game: Game? {
     didSet {
@@ -32,6 +37,13 @@ class FeedsCustomCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    suggestInviteButton.layer.borderColor = UIColor.lightGray.cgColor
+    suggestInviteButton.layer.shadowColor = UIColor.gray.cgColor
+    responseButton.layer.borderColor = UIColor.clear.cgColor
+    responseButton.layer.shadowColor = UIColor.lightGray.cgColor
+    detailView.isHidden = true
+    detailViewBottomLayout.constant = 20.0
+    self.layoutIfNeeded()
   }
   
   //MARK: - UI Handling

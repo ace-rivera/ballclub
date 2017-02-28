@@ -17,6 +17,8 @@ class GamesViewController: UIViewController {
   var selectedGameId: Int?
   var isCurrentUsersGame = false
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
+  var selectedIndexPath : IndexPath!
+  var previousSelectedIndexPath : IndexPath!
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -76,12 +78,12 @@ class GamesViewController: UIViewController {
   
   //MARK: - SetUpUI
   func setUpUI() {
-    //TODO: autoresize cell study!!
-    //    self.gamesTableview.estimatedRowHeight = 150.0
-    //    self.gamesTableview.rowHeight = UITableViewAutomaticDimension
     self.gamesTableview.register(UINib(nibName: "GamesCategoryHeaderView",bundle: nil), forHeaderFooterViewReuseIdentifier: "GamesCategoryHeaderView")
     self.gamesTableview.register(UINib(nibName: "FeedsCustomCell",bundle: nil), forCellReuseIdentifier: "FeedsCustomCell")
     self.gamesTableview.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.gamesTableview.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
+    //TODO: autoresize cell study!!
+    self.gamesTableview.estimatedRowHeight = 150.0
+    self.gamesTableview.rowHeight = UITableViewAutomaticDimension
   }
 }
 
@@ -89,6 +91,24 @@ class GamesViewController: UIViewController {
 extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as? FeedsCustomCell {
+      if let previous = previousSelectedIndexPath {
+        if (previous == indexPath && cell.detailsShown) {
+          cell.detailsShown = false
+          cell.detailView.isHidden = true
+          cell.detailViewBottomLayout.constant = 20.0
+          self.view.layoutIfNeeded()
+        }
+      }
+      
+      if let selected = selectedIndexPath {
+        if (selected == indexPath && !cell.detailsShown) {
+          cell.detailsShown = true
+          cell.detailView.isHidden = false
+          cell.detailViewBottomLayout.constant = 70.0
+          self.view.layoutIfNeeded()
+        }
+      }
+      
       if indexPath.section == 0 {
         cell.game = self.userGamesList[indexPath.row]
       } else {
@@ -116,22 +136,39 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.section == 0 {
-      if self.userGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
-        isCurrentUsersGame = true
+    let cell : FeedsCustomCell = tableView.cellForRow(at: indexPath) as! FeedsCustomCell
+    if cell.detailsShown {
+      cell.detailsShown = false
+      if indexPath.section == 0 {
+        if self.userGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+          isCurrentUsersGame = true
+        } else {
+          isCurrentUsersGame = false
+        }
+        self.selectedGameId = self.userGamesList[indexPath.row].gameId
+        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
       } else {
-       isCurrentUsersGame = false
+        if self.publicGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+          isCurrentUsersGame = true
+        } else {
+          isCurrentUsersGame = false
+        }
+        self.selectedGameId = self.publicGamesList[indexPath.row].gameId
+        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
       }
-      self.selectedGameId = self.userGamesList[indexPath.row].gameId
-      self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
     } else {
-      if self.publicGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
-        isCurrentUsersGame = true
+      cell.detailsShown = true
+      selectedIndexPath = indexPath
+      if let previous = previousSelectedIndexPath {
+        if previous != selectedIndexPath {
+          tableView.reloadRows(at: [previous], with: UITableViewRowAnimation.automatic)
+          previousSelectedIndexPath = selectedIndexPath
+        }
       } else {
-        isCurrentUsersGame = false
+        previousSelectedIndexPath = indexPath
       }
-      self.selectedGameId = self.publicGamesList[indexPath.row].gameId
-      self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+      
+      tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
   }
   
