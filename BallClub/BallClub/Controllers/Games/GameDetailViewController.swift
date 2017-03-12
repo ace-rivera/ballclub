@@ -92,6 +92,8 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     self.gameDetailTableView.estimatedRowHeight = 200
     self.gameDetailTableView.rowHeight = UITableViewAutomaticDimension
     additionInfo.sizeToFit()
+    self.isGameReservedLabel.layer.borderColor = UIColor(red: 221.0/255.0, green: 86.0/255.0, blue: 42.0/255.0, alpha: 1).cgColor
+    self.gameDate.layer.borderColor = UIColor.lightGray.cgColor
     
     if !isCurrentUsersGame {
       self.editGameButton.tintColor = UIColor.clear
@@ -106,14 +108,16 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       dateFormatter.locale = Locale(identifier: "en_US_POSIX")
       dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
       dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-      if let start = dateFormatter.date(from: game.startTime) {
-        self.gameDate.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
-        self.gameTime.text = CustomDateFormatter().gameDetailsTimeFormat(startTime: start)
+      if let start = dateFormatter.date(from: game.startTime),
+        let end = dateFormatter.date(from: game.endTime){
+        self.gameDate.text = CustomDateFormatter().gameDetailsTitleDateFormat(detailDate: start)
+        self.gameTime.text = CustomDateFormatter().gameDetailsDateFormat(startTime: start, endTime: end)
       }
       
       self.gameLocation.text = game.location.locationName
       self.gameTitle.text = game.title
       self.gamePrice.text = String(format: "%.2f", game.fee)
+      self.gamePrice.sizeToFit()
       self.playerCount.text = "\(game.maxCapacity)"
       self.gameOwner.text = "\(game.gameCreator.firstName) invited you"
       
@@ -138,7 +142,6 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       }
       
       self.isGameReservedLabel.text = (game.reserved ?? false) ? "RESERVED" : "PENDING"
-      self.isGameReservedLabel.layer.borderColor = UIColor(red: 221, green: 86, blue: 42, alpha: 1).cgColor
       
       self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(self.invitedPlayers.count)"
       self.additionInfo.text = game.additionalInfo ?? ""
