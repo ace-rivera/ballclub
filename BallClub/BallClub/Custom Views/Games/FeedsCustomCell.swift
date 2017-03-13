@@ -41,6 +41,7 @@ class FeedsCustomCell: UITableViewCell {
     suggestInviteButton.layer.shadowColor = UIColor.gray.cgColor
     responseButton.layer.borderColor = UIColor.clear.cgColor
     responseButton.layer.shadowColor = UIColor.lightGray.cgColor
+    gameDateLabel.layer.borderColor = UIColor.gray.cgColor
     detailView.isHidden = true
     detailViewBottomLayout.constant = 20.0
     self.layoutIfNeeded()
@@ -71,7 +72,7 @@ class FeedsCustomCell: UITableViewCell {
     if let start = dateFormatter.date(from: game.startTime),
       let end = dateFormatter.date(from: game.endTime) {
       self.gameDateLabel.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
-      self.gameTime.text = CustomDateFormatter().gameDetailsDateFormat(startTime: start, endTime: end)
+      self.gameTime.text = CustomDateFormatter().feedsDetailsDateFormat(startTime: start, endTime: end)
     }
     
     self.gameTitle.text = game.title
