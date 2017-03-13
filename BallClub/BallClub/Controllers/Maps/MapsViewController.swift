@@ -14,8 +14,10 @@ class MapsViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   
   var locationList = [Location]()
+  var gameList = [Game]()
   let locationManager = CLLocationManager()
   var isCenteredToCurrentLocation = false
+  var selectedLocation: Location?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,12 +35,11 @@ class MapsViewController: UIViewController {
       locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
       locationManager.startUpdatingLocation()
     }
-    
-    self.getAllLocations()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    self.getAllGameLocations()
     self.isCenteredToCurrentLocation = false
   }
   
@@ -52,7 +53,7 @@ class MapsViewController: UIViewController {
     let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                               regionRadius * 2.0, regionRadius * 2.0)
     mapView.setRegion(coordinateRegion, animated: true)
-  
+    
     let currentPosition = LocationAnnotation(coordinate: location.coordinate, title: "MY HOME")
     self.mapView.addAnnotation(currentPosition)
   }
@@ -64,12 +65,20 @@ class MapsViewController: UIViewController {
       self.navigationController?.pushViewController(createGameVC, animated: true)
     }
   }
-  func getAllLocations() {
-    let locationViewModel = LocationViewModel()
-    locationViewModel.getLocations { (statusCode, messsage, locations) -> (Void) in
-      if let l = locations {
-        self.locationList = l
-        self.pinLocationsToMap()
+  
+  func getAllGameLocations() {
+    let gameViewModel = GamesViewModel()
+    gameViewModel.getAllGames { (statusCode, mssage, games) -> (Void) in
+      if statusCode == 200, let games = games {
+        self.gameList = games
+        for index in 0..<games.count {
+          var game = games[index]
+          game.location.tag = index
+          self.locationList.append(game.location)
+          self.pinLocationsToMap()
+        }
+      } else {
+        self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
       }
     }
   }
@@ -80,14 +89,22 @@ class MapsViewController: UIViewController {
         let coordinates = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude!)!,
                                                  longitude: CLLocationDegrees(location.longitude!)!)
         let locationAnnotation = LocationAnnotation(coordinate: coordinates, title: location.locationName!)
+        if let tag = location.tag {
+          locationAnnotation.tag = tag
+        }
         self.mapView.addAnnotation(locationAnnotation)
       }
     }
   }
   
   // MARK: - Navigation
-  func goToLocationDetail() {
-    self.performSegue(withIdentifier: "map_detail_segue", sender: self)
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "map_detail_segue" {
+      if let mapDetailVC: MapDetailViewController = segue.destination as? MapDetailViewController,
+        let loc = self.selectedLocation {
+        mapDetailVC.currentLocation = loc
+      }
+    }
   }
 }
 
@@ -99,6 +116,9 @@ extension MapsViewController: MKMapViewDelegate {
       if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) { // 2
         dequeuedView.annotation = annotation
         view = dequeuedView
+        if let tag = annotation.tag {
+          view.tag = tag
+        }
       } else {
         // 3
         view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
@@ -112,6 +132,11 @@ extension MapsViewController: MKMapViewDelegate {
       return view
     }
     return nil
+  }
+  
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    self.selectedLocation = self.locationList[view.tag]
+    self.performSegue(withIdentifier: "map_detail_segue", sender: self)
   }
 }
 

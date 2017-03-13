@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -103,8 +103,11 @@
                                                 <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi0-6J-dUQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
                                                     <subviews>
-                                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lly-xh-zAJ">
+                                                        <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lly-xh-zAJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="0dW-Qq-mTU" id="939-gY-Mao"/>
+                                                            </connections>
                                                         </mapView>
                                                         <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfe-DO-JIb">
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
@@ -673,6 +676,7 @@
                         <outlet property="gameDetails" destination="bPz-Yo-Yyf" id="sBV-ns-3TG"/>
                         <outlet property="gameDetailsIcon" destination="1LN-ck-4pL" id="Qlh-v7-bHV"/>
                         <outlet property="gameLocation" destination="XLa-xl-qYi" id="RmB-UO-Gvk"/>
+                        <outlet property="gameMap" destination="lly-xh-zAJ" id="OF4-nX-Fbn"/>
                         <outlet property="gameOwner" destination="r7k-Cm-x0D" id="gmR-Ir-O8Y"/>
                         <outlet property="gamePrice" destination="lsL-Al-FB9" id="KQa-Pp-zhA"/>
                         <outlet property="gameTime" destination="Ynt-gO-g3D" id="O0h-6T-SEX"/>

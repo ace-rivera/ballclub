@@ -8,6 +8,7 @@
 
 import UIKit
 import Nuke
+import MapKit
 
 class GameDetailViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
@@ -33,6 +34,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   @IBOutlet weak var goingIcon: UIButton!
   @IBOutlet weak var goingButton: UIButton!
   
+  @IBOutlet weak var gameMap: MKMapView!
   
   @IBOutlet weak var goingPlayersLabel: UILabel!
   @IBOutlet weak var goingPlayerImage: UIImageView!
@@ -62,6 +64,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpUI()
+    
     self.navigationController?.setNavigationBarHidden(false, animated: true)
   }
   
@@ -106,9 +109,10 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       dateFormatter.locale = Locale(identifier: "en_US_POSIX")
       dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
       dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-      if let start = dateFormatter.date(from: game.startTime) {
+      if let start = dateFormatter.date(from: game.startTime),
+        let end = dateFormatter.date(from: game.endTime) {
         self.gameDate.text = CustomDateFormatter().feedsDateFormat(feedDate: start)
-        self.gameTime.text = CustomDateFormatter().gameDetailsTimeFormat(startTime: start)
+        self.gameTime.text = CustomDateFormatter().gameDetailsDateFormat(startTime: start, endTime: end)
       }
       
       self.gameLocation.text = game.location.locationName
@@ -142,7 +146,13 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       
       self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(self.invitedPlayers.count)"
       self.additionInfo.text = game.additionalInfo ?? ""
+      
+      if let longitude = game.location.longitude,
+        let latitude = game.location.latitude {
+        self.setupGameLocation(latitude: latitude, longitude: longitude)
+      }
     }
+
   }
   
   //MARK: - Helper Methods
@@ -157,6 +167,19 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
         self.showAlert(title: "Error", message: "Unable to fetch game details", callback: {})
       }
     }
+  }
+  
+  func setupGameLocation(latitude: String, longitude: String) {
+    let latitudeValue = Double(latitude) ?? 0
+    let longitudeValue = Double(longitude) ?? 0
+    
+    let coordinates = CLLocationCoordinate2D(latitude: latitudeValue, longitude: longitudeValue)
+    let mkAnnotation = LocationAnnotation(coordinate: coordinates, title: "")
+    
+    self.gameMap.addAnnotation(mkAnnotation)
+    let span = MKCoordinateSpanMake(0.05, 0.05)
+    let region = MKCoordinateRegion(center: mkAnnotation.coordinate, span: span)
+    self.gameMap.setRegion(region, animated: true)
   }
   
   //MARK: - IBAction

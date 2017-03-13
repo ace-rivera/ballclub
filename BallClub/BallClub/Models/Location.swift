@@ -14,6 +14,7 @@ struct Location : Decodable {
   var locationName: String?
   var latitude: String?
   var longitude: String?
+  var tag: Int?
   
   
   // MARK: - Deserialization
