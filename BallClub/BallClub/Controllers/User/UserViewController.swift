@@ -44,7 +44,7 @@ class UserViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    Utilities.showProgressHud(withTitle: "Loading User Data", inView: self.view)
+   // Utilities.showProgressHud(withTitle: "Loading User Data", inView: self.view)
     self.navigationController?.setNavigationBarHidden(true, animated: true)
     currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
     getAllUsers()
@@ -117,7 +117,7 @@ class UserViewController: UIViewController {
 
   func getFriendRequests() {
     incomingRequestsArray.removeAll()
-    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests) -> (Void) in
+    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, isFriendAdded) -> (Void) in
       
       if responseCode == 200 || responseCode == 201 {
         if let requests = incomingRequests {

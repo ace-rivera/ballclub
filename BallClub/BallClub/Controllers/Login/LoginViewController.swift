@@ -99,7 +99,6 @@ class LoginViewController: UIViewController {
   func getCurrentUser(userId: Int) {
     self.playerViewModel.getUser(userId: userId, completionBlock: { (statusCode, message, player) -> (Void) in
       if (statusCode == 200 || statusCode == 201), let p = player {
-        var test = Player.toDictionary(user: p)
         UserDefaults.standard.set(Player.toDictionary(user: p), forKey: "currentUser")
         self.emailAddLabel.text = ""
         self.passwordLabel.text = ""

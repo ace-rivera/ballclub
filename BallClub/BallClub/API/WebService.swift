@@ -68,6 +68,7 @@ enum BallClub {
   case getPendingInvites()
   case updateInvite(Int, [String:Any])
   case deleteInvite(Int)
+  case getUserFriendsList(Int)
   
   //Game API Calls
   case getAllGames()
@@ -94,7 +95,7 @@ private extension String {
 }
 
 extension BallClub: TargetType {
-  var baseURL: URL { return URL(string: "http://54.238.155.220")! }
+  var baseURL: URL { return URL(string: "http://54.238.155.220:3000")! }
   
   var path: String {
     switch self {
@@ -143,6 +144,9 @@ extension BallClub: TargetType {
       return "/api/invites/\(inviteId)"
     case .deleteInvite(let inviteId):
       return "/api/invites/\(inviteId)"
+    case .getUserFriendsList(let userId):
+      return "/api/users/\(userId)/friends"
+
       
     //Game Related Calls
     case .getAllGames():

@@ -29,6 +29,7 @@ struct Player : Decodable {
   var position: String?
   var games: [Game]?
   var friendRequests: [Request]?
+  var isFriend: Bool
   
   // MARK: - Deserialization
   init?(json: JSON) {
@@ -38,7 +39,8 @@ struct Player : Decodable {
       let firstName: String = "first_name" <~~ json,
       let lastName: String = "last_name" <~~ json,
       let city: String = "city" <~~ json,
-      let gender: Int = "gender" <~~ json else { return nil }
+      let gender: Int = "gender" <~~ json,
+      let isFriend: Bool = "is_friend" <~~ json else { return nil }
     
     self.playerId = userId
     self.uid = uid
@@ -58,6 +60,7 @@ struct Player : Decodable {
     self.position = "position" <~~ json
     self.games = "games" <~~ json
     self.friendRequests = "friend_requests" <~~ json
+    self.isFriend = isFriend
 
   }
   
@@ -79,6 +82,7 @@ struct Player : Decodable {
     userDetails["favorite_team"] = user.favoriteTeam
     userDetails["favorite_player"] = user.favoritePlayer
     userDetails["position"] = user.position
+    userDetails["is_friend"] = user.isFriend
     
     return userDetails
   }

@@ -14,7 +14,7 @@ class FriendsViewModel: NSObject {
   
   public typealias DefaultRequestResponseClosure = (Int, String?) -> (Void)
   public typealias GetAllUserResponseClosure = (Int, String, [Player]?) -> (Void)
-  public typealias GetPendingRequestsResponseClosure = (Int, String, [Request]?, [Request]?) -> (Void)
+  public typealias GetPendingRequestsResponseClosure = (Int, String, [Request]?, [Request]?, Bool?) -> (Void)
   public typealias GetFriendsListResponseClosure = (Int, String?, [Player]?) -> (Void)
   public typealias GetInvitesResponseClosure = (Int, String, [Invite]?) -> (Void)
   public typealias CreateInviteResponseClosure = (Int, String, Invite?) -> (Void)
@@ -23,6 +23,8 @@ class FriendsViewModel: NSObject {
   var outgoingRequestArray = [Request]()
   var myFriendsArray = [Player]()
   var myInvites = [Invite]()
+  var userFriendsArray = [Player]()
+  var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
   func getPendingRequests(completionBlock: (GetPendingRequestsResponseClosure)? = nil ) {
     incomingRequestArray = [Request]()
@@ -32,16 +34,21 @@ class FriendsViewModel: NSObject {
       case .success(let response):
         do {
           let data = try response.mapJSON()
+          let userId = self.currentUser?["id"] as? Int
+          var isFriendAdded = false
           debugPrint("data ", data)
           
           if let requestDictionary = data as? [String: Any] {
             if let error = requestDictionary["errors"] as? NSArray, let errorMessage = error[0] as? String {
-              completionBlock!(response.statusCode, errorMessage, nil, nil)
+              completionBlock!(response.statusCode, errorMessage, nil, nil, nil)
             } else {
               
               if let incomingRequsts = requestDictionary["incoming"] as? NSArray {
                 for request in incomingRequsts {
                   if let incomingReqDictionary = request as? [String:Any], let p = Request(json:incomingReqDictionary) {
+                    
+                   
+                    
                     self.incomingRequestArray.append(p)
                   }
                 }
@@ -50,22 +57,25 @@ class FriendsViewModel: NSObject {
               if let outgoingRequsts = requestDictionary["outgoing"] as? NSArray {
                 for request in outgoingRequsts {
                   if let outgoingReqDictionary = request as? [String:Any], let p = Request(json:outgoingReqDictionary) {
+                    if(userId == p.userId) {
+                      isFriendAdded = true
+                    }
                     self.outgoingRequestArray.append(p)
                   }
                 }
               }
               
-              completionBlock!(response.statusCode, "User retrieved successfully", self.incomingRequestArray, self.outgoingRequestArray)
+              completionBlock!(response.statusCode, "User retrieved successfully", self.incomingRequestArray, self.outgoingRequestArray, isFriendAdded)
               
             }
           }
         } catch {
-          completionBlock!(response.statusCode, "Error", nil, nil)
+          completionBlock!(response.statusCode, "Error", nil, nil, nil)
         }
       case .failure(let error):
         if let compBlock = completionBlock,
           let response = error.response {
-          compBlock(response.statusCode, error.localizedDescription, nil, nil)
+          compBlock(response.statusCode, error.localizedDescription, nil, nil, nil)
         }
       }
     }
@@ -402,6 +412,40 @@ class FriendsViewModel: NSObject {
         if let compBlock = completionBlock,
           let response = error.response {
           compBlock(response.statusCode, error.localizedDescription)
+        }
+      }
+    }
+  }
+  
+  func getUserFriendsList(userId: Int, completionBlock: (GetFriendsListResponseClosure)? = nil) {
+    self.userFriendsArray = [Player]()
+    APIProvider.request(.getUserFriendsList(userId)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let dataDict = data as? NSArray {
+            //            if let error = datadict.object(forKey: "errors") as? NSArray {
+            //              completionBlock!(false, error[0] as? String)
+            //            } else {
+            //}
+            
+            for friend in dataDict {
+              if let playerDictionary = friend as? [String:Any], let p = Player(json:playerDictionary) {
+                self.userFriendsArray.append(p)
+              }
+            }
+            completionBlock!(response.statusCode, "Error", self.userFriendsArray)
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error", nil)
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+          compBlock(response.statusCode, error.localizedDescription, nil)
         }
       }
     }

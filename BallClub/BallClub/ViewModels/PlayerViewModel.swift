@@ -66,16 +66,16 @@ class PlayerViewModel: NSObject {
           let data = try response.mapJSON()
           debugPrint("data ", data)
           
-          if let playerArrray = data as? NSArray {
-//            if let error = playerDictionary["errors"] as? NSArray, let errorMessage = error[0] as? String {
-//              completionBlock!(response.statusCode, errorMessage, nil)
-//            } else {
-              if let playerDictionary = playerArrray.firstObject as? [String:Any], let p = Player(json:playerDictionary){
+          if let playerDictionary = data as? [String:Any] {
+            if let error = playerDictionary["errors"] as? NSArray, let errorMessage = error[0] as? String {
+              completionBlock!(response.statusCode, errorMessage, nil)
+            } else {
+              if let p = Player(json:playerDictionary){
                 completionBlock!(response.statusCode, "User retrieved successfully", p)
               } else {
                 completionBlock!(response.statusCode, "Cannot convert to Player object", nil)
               }
-//            }
+         }
             
           }
           

@@ -29,6 +29,7 @@ class FriendsViewController: UIViewController {
   var gamesArray = [Game]()
   let friendsViewModel = FriendsViewModel()
   let gamesViewModel = GamesViewModel()
+  var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
   //MARK:- Lifecycle
   override func viewDidLoad() {
@@ -54,10 +55,16 @@ class FriendsViewController: UIViewController {
     addFriendButton.layer.borderColor = UIColor(red: 174.0/225.0, green: 174.0/225.0, blue:174.0/225.0, alpha:1.0).cgColor
     profileImage.layer.borderColor = UIColor.white.cgColor
     profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+    let userId = currentUser?["id"] as? Int
+    
+    if(player.isFriend || (player.playerId == userId)) {
+      self.addFriendButton.isHidden = true;
+    }
     
     
     setupProfileData()
     registerNibs()
+    getFriendRequests()
   }
   
   func registerNibs(){
@@ -82,7 +89,7 @@ class FriendsViewController: UIViewController {
   
   //MARK: API Calls
   func getFriendsList() {
-    friendsViewModel.getFriendsList { (statusCode, message, players) -> (Void) in
+    friendsViewModel.getUserFriendsList(userId: player.playerId) { (statusCode, message, players) -> (Void) in
       if statusCode == 200 || statusCode == 201 {
         if let p = players {
           self.friendsArray = p
@@ -108,6 +115,24 @@ class FriendsViewController: UIViewController {
         if let m = message {
           self.showAlert(title: "ERROR", message: m, callback: {})
         }
+      }
+    }
+  }
+  
+  
+  func getFriendRequests() {    
+    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, isFriendAdded) -> (Void) in
+      
+      if responseCode == 200 || responseCode == 201 {
+        
+        if (isFriendAdded)! {
+          self.addFriendButton.setTitle("Request Sent", for: .normal)
+          self.addFriendButton.isEnabled = false
+        }
+        
+      } else {
+        Utilities.hideProgressHud()
+        self.showAlert(title: "ERROR", message: message, callback: {})
       }
     }
   }
@@ -143,6 +168,8 @@ class FriendsViewController: UIViewController {
       Utilities.hideProgressHud()
       if responseCode == 200 || responseCode == 201 {
         self.showAlert(title: "SUCCESS", message: "Friend Request Sent!", callback: {})
+        self.addFriendButton.setTitle("Request Sent", for: .normal)
+        self.addFriendButton.isEnabled = false
       } else if responseCode ==  422 {
         self.showAlert(title: "ERROR", message: "Friend Request already sent", callback: {})
       } else {
