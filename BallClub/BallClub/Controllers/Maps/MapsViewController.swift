@@ -55,7 +55,7 @@ class MapsViewController: UIViewController {
     mapView.setRegion(coordinateRegion, animated: true)
     
     let currentPosition = LocationAnnotation(coordinate: location.coordinate, title: "MY HOME")
-    self.mapView.addAnnotation(currentPosition)
+//    self.mapView.addAnnotation(currentPosition)
   }
   
   @IBAction func didTapOnCreateGame(_ sender: Any) {
@@ -135,8 +135,10 @@ extension MapsViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    self.selectedLocation = self.locationList[view.tag]
-    self.performSegue(withIdentifier: "map_detail_segue", sender: self)
+    if view.tag < self.locationList.count {
+      self.selectedLocation = self.locationList[view.tag]
+      self.performSegue(withIdentifier: "map_detail_segue", sender: self)
+    }
   }
 }
 

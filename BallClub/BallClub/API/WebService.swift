@@ -73,6 +73,7 @@ enum BallClub {
   //Game API Calls
   case getAllGames()
   case getUserGames(Int)
+  case getGamesByLocation(Int)
   case getGameDetails(Int, Int)
   case createGame(Int, [String : Any])
   case updateGame([String : Any])
@@ -150,9 +151,11 @@ extension BallClub: TargetType {
       
     //Game Related Calls
     case .getAllGames():
-      return "/api/games/all"
+      return "/api/games/"
     case .getUserGames(let userId):
       return "/api/users/\(userId)/games"
+    case .getGamesByLocation(let locationId):
+      return "/api/locations/\(locationId)/games"
     case .getGameDetails(let userId, let gameId):
       return "/api/users/\(userId)/games/\(gameId)"
     case .createGame(let userId, _):
