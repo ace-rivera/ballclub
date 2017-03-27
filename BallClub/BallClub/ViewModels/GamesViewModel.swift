@@ -50,7 +50,7 @@ class GamesViewModel: NSObject {
     var gameList = [Game]()
       APIProvider.request(.getUserGames(userId)) { (result) in
         switch result {
-        case.success(let response):
+        case .success(let response):
           do {
             let data = try response.mapJSON()
             debugPrint("data ", data)
@@ -75,6 +75,37 @@ class GamesViewModel: NSObject {
           }
         }
       }
+  }
+  
+  func getGames(withLocationId locationId: Int, completionBlock: GamesResponseClosure? = nil) {
+    var gameList = [Game]()
+    APIProvider.request(.getGamesByLocation(locationId)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          if let dataArray = data as? [[String : Any]] {
+            for gameData in dataArray {
+              //use gameData to create game
+              if let g = Game(json: gameData) {
+                gameList.append(g)
+              }
+            }
+            completionBlock!(response.statusCode, "Games Retrieved Successfully", gameList)
+          } else {
+            completionBlock!(response.statusCode, "Error", nil)
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error", nil)
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+          compBlock(response.statusCode, error.localizedDescription, nil)
+        }
+      }
+    }
   }
   
   func getGameDetails(gameId: Int, completionBlock: GameDetailClosure? = nil) {

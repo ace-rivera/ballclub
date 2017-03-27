@@ -23,6 +23,7 @@ class MapDetailViewController: UIViewController {
       }
     }
   }
+  var gameList = [Game]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,7 +35,15 @@ class MapDetailViewController: UIViewController {
   }
   
   private func setupLocationGames(loc: Location) {
-    
+    let gamesViewModel = GamesViewModel()
+    if let id = loc.locationId {
+      gamesViewModel.getGames(withLocationId: id) { (statusCode, mssage, games) -> (Void) in
+        if statusCode == 200, let games = games {
+          self.gameList = games
+          self.mapDetailTableView.reloadData()
+        }
+      }
+    }
   }
   
   @IBAction func closeButtonPressed(_ sender: AnyObject) {
@@ -52,18 +61,21 @@ class MapDetailViewController: UIViewController {
 
 extension MapDetailViewController: UITableViewDelegate,UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as! FeedsCustomCell
-    //Ace Rivera : TODO - fetch game
-    return cell
+    if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsCustomCell") as? FeedsCustomCell {
+      cell.detailsShown = false
+      cell.detailView.isHidden = true
+      cell.detailViewBottomLayout.constant = 20.0
+      
+      cell.game = self.gameList[indexPath.row]
+      
+      self.view.layoutIfNeeded()
+    }
+    
+    return UITableViewCell()
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    switch section {
-    case 0:
-      return TestClass.Feeds.FeedTitle.count
-    default:
-      return 0
-    }
+    return self.gameList.count
   }
   
   //TODO: code didselect
