@@ -84,6 +84,7 @@
 		FB741E711E38587E00B233EE /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741E701E38587E00B233EE /* LocationSearchTable.swift */; };
 		FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */; };
 		FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD27A7B1E212BE700ADE930 /* SessionManager.swift */; };
+		FBD319261E90F2AC00F92577 /* LocationMapviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD319251E90F2AC00F92577 /* LocationMapviewViewController.swift */; };
 		FBF2D37B1E2BE4500032EFFE /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2D37A1E2BE4500032EFFE /* ContainerViewController.swift */; };
 		FBF2D37D1E2BE4B60032EFFE /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2D37C1E2BE4B60032EFFE /* LoginNavigationViewController.swift */; };
 /* End PBXBuildFile section */
@@ -171,6 +172,7 @@
 		FB741E701E38587E00B233EE /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		FBD27A7B1E212BE700ADE930 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		FBD319251E90F2AC00F92577 /* LocationMapviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMapviewViewController.swift; sourceTree = "<group>"; };
 		FBF2D37A1E2BE4500032EFFE /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		FBF2D37C1E2BE4B60032EFFE /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,6 +290,7 @@
 				71D4927F1D7E90C000E07DDF /* InvitedFriendsViewController.swift */,
 				B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */,
 				BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */,
+				FBD319251E90F2AC00F92577 /* LocationMapviewViewController.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				FB741E6F1E38556E00B233EE /* CreateLocationViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
+				FBD319261E90F2AC00F92577 /* LocationMapviewViewController.swift in Sources */,
 				B873640D1E01984A00C77958 /* WebService.swift in Sources */,
 				B88A151B1E2128A10043DBBD /* GamesViewModel.swift in Sources */,
 				FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */,

@@ -74,6 +74,8 @@ enum BallClub {
   case getAllGames()
   case getUserGames(Int)
   case getGamesByLocation(Int)
+  case getAllGamesFromYearWeek(String)
+  case getUserGamesFromYearWeek(String, Int)
   case getGameDetails(Int, Int)
   case createGame(Int, [String : Any])
   case updateGame([String : Any])
@@ -156,6 +158,10 @@ extension BallClub: TargetType {
       return "/api/users/\(userId)/games"
     case .getGamesByLocation(let locationId):
       return "/api/locations/\(locationId)/games"
+    case .getAllGamesFromYearWeek(let yearWeek):
+      return "/api/games?year_week=\(yearWeek)"
+    case .getUserGamesFromYearWeek(let yearWeek, let userId):
+      return "/api/users/\(userId)/games?year_week=\(yearWeek)"
     case .getGameDetails(let userId, let gameId):
       return "/api/users/\(userId)/games/\(gameId)"
     case .createGame(let userId, _):
