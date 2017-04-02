@@ -126,9 +126,9 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showLocationListVC" {
-      if let locationListVC: LocationListViewController = segue.destination as? LocationListViewController {
-          locationListVC.delegate = self
+    if segue.identifier == "createGameToAddLocation" {
+      if let locationMapViewVC: LocationMapviewViewController = segue.destination as? LocationMapviewViewController {
+          locationMapViewVC.delegate = self
       }
     }
   }
@@ -246,7 +246,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   }
   
   @IBAction func didTapOnLocationTextField(_ sender: Any) {
-    self.performSegue(withIdentifier: "showLocationListVC", sender: self)
+    self.performSegue(withIdentifier: "createGameToAddLocation", sender: self)
   }
   
   
@@ -262,8 +262,8 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   }
 }
 
-extension CreateGameViewController: LocationListViewControllerDelegate {
-  func showSelectedLocation(location: Location) {
+extension CreateGameViewController: LocationMapViewDelegate {
+  func locationSelected(location: Location) {
     self.locationTextField.text = location.locationName
     selectedLocation = location
   }
