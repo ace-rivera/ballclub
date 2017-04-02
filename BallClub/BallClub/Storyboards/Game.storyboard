@@ -2028,27 +2028,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8Vc-b2-w8E">
-                                <rect key="frame" x="0.0" y="64" width="600" height="687"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="643"/>
                                 <connections>
                                     <outlet property="delegate" destination="6PH-lq-jeS" id="hmw-G4-Rbd"/>
                                 </connections>
                             </mapView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GGb-ry-Is9">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6PH-lq-jeS" id="vSt-Bx-nfP"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8Vc-b2-w8E" firstAttribute="top" secondItem="d9Q-sm-10t" secondAttribute="bottom" id="QYh-GS-GMC"/>
+                            <constraint firstItem="GGb-ry-Is9" firstAttribute="top" secondItem="d9Q-sm-10t" secondAttribute="bottom" id="6wM-aI-z20"/>
+                            <constraint firstItem="GGb-ry-Is9" firstAttribute="leading" secondItem="T9P-vV-4wH" secondAttribute="leadingMargin" constant="-20" id="I9D-MG-Gty"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GGb-ry-Is9" secondAttribute="trailing" constant="-20" id="IRl-8I-eqD"/>
                             <constraint firstItem="LES-gS-iV1" firstAttribute="top" secondItem="8Vc-b2-w8E" secondAttribute="bottom" id="S3g-hQ-a3K"/>
+                            <constraint firstItem="8Vc-b2-w8E" firstAttribute="top" secondItem="GGb-ry-Is9" secondAttribute="bottom" id="kZq-Vf-76f"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Vc-b2-w8E" secondAttribute="trailing" constant="-20" id="qLn-P7-9km"/>
                             <constraint firstItem="8Vc-b2-w8E" firstAttribute="leading" secondItem="T9P-vV-4wH" secondAttribute="leadingMargin" constant="-20" id="wud-gM-lie"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="locationSearchBar" destination="GGb-ry-Is9" id="MFp-wj-aDe"/>
                         <outlet property="mapView" destination="8Vc-b2-w8E" id="MwT-zE-H7D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MV2-2o-MZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3036" y="348"/>
+            <point key="canvasLocation" x="3035.1999999999998" y="347.22638680659674"/>
         </scene>
     </scenes>
     <resources>

@@ -16,6 +16,7 @@ protocol LocationMapViewDelegate {
 class LocationMapviewViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var locationSearchBar: UISearchBar!
   
   var locationList = [Location]()
   let locationManager = CLLocationManager()
@@ -137,5 +138,19 @@ extension LocationMapviewViewController: CLLocationManagerDelegate {
       let initialLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
       centerMapOnLocation(initialLocation)
     }
+  }
+}
+
+extension LocationMapviewViewController: UISearchBarDelegate {
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    
   }
 }
