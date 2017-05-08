@@ -119,7 +119,7 @@ class UserViewController: UIViewController {
 
   func getFriendRequests() {
     incomingRequestsArray.removeAll()
-    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, isFriendAdded) -> (Void) in
+    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, requestId, isFriendAdded) -> (Void) in
       
       if responseCode == 200 || responseCode == 201 {
         if let requests = incomingRequests {
@@ -254,6 +254,7 @@ class UserViewController: UIViewController {
       if let friendsVC: FriendsViewController = destinationNavigationController.topViewController as? FriendsViewController {
         if let user =  selectedUser {
           friendsVC.player = user
+          friendsVC.selectedRequest = selectedRequest
         }
       }
     }
@@ -270,7 +271,7 @@ extension UserViewController : UITableViewDelegate, UITableViewDataSource {
       if let imageString = pendingUserInvitesList[indexPath.row].avatar {
         cell.setFriendUserImage(image: imageString);
       }
-      cell.setFriendInviteStatus(status: "accepted your friend request")
+      cell.setFriendInviteStatus(status: "has invited you to a game")
       cell.tag = indexPath.row
       cell.delegate = self
       return cell
@@ -301,12 +302,9 @@ extension UserViewController : UITableViewDelegate, UITableViewDataSource {
 
 extension UserViewController : UserAddFriendCustomCellDelegate {
   func didTapOnUser(tag: Int) {
-    //push profile view controller
     self.selectedUser = pendingFriendsList[tag]
-    let storyBoard = UIStoryboard.init(name: "Friends", bundle: nil)
-    if let friendsVC = storyBoard.instantiateViewController(withIdentifier: "FriendsProfileVC") as? FriendsViewController {
-      self.navigationController?.pushViewController(friendsVC, animated: true)
-    }
+    self.selectedRequest = incomingRequestsArray[tag]
+    self.performSegue(withIdentifier: "FriendsProfileViewControllerSegue", sender: self)
     
   }
   

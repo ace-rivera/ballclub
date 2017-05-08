@@ -24,6 +24,7 @@ class FriendsViewController: UIViewController {
   var tabSelected = 0
   var player: Player!
   var selectedUser : Player!
+  var selectedRequest: Request!
   var selectedGameId: Int?
   var friendsArray = [Player]()
   var gamesArray = [Game]()
@@ -121,13 +122,18 @@ class FriendsViewController: UIViewController {
   
   
   func getFriendRequests() {    
-    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, addedFriendID) -> (Void) in
+    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, addedFriendID, isFriendAdded) -> (Void) in
       
       if responseCode == 200 || responseCode == 201 {
         
         if (self.player.playerId == addedFriendID) {
           self.addFriendButton.setTitle("Request Sent", for: .normal)
           self.addFriendButton.isEnabled = false
+        } else if let requestSent = isFriendAdded {
+            if (requestSent) {
+                self.addFriendButton.setTitle("Accept Friend", for: .normal)
+                self.addFriendButton.isEnabled = true
+            }
         }
         
       } else {
@@ -163,19 +169,36 @@ class FriendsViewController: UIViewController {
   
   
   @IBAction func didTapOnAddFriendButton(_ sender: Any) {
-    Utilities.showProgressHud(withTitle: "Sending Friend REquest", inView: self.view)
-    friendsViewModel.createFriendRequest(friendId: player.playerId) { (responseCode, message) -> (Void) in
-      Utilities.hideProgressHud()
-      if responseCode == 200 || responseCode == 201 {
-        self.showAlert(title: "SUCCESS", message: "Friend Request Sent!", callback: {})
-        self.addFriendButton.setTitle("Request Sent", for: .normal)
-        self.addFriendButton.isEnabled = false
-      } else if responseCode ==  422 {
-        self.showAlert(title: "ERROR", message: "Friend Request already sent", callback: {})
-      } else {
-        self.showAlert(title: "ERROR", message: "Unable to send Friend Request", callback: {})
-      }
+    
+    if (addFriendButton.titleLabel?.text == "Accept Friend") {
+        // Accept Friend Request
+        friendsViewModel.acceptFriendRequest(requestId: self.selectedRequest.requestId) { (statusCode, message) -> (Void) in
+            if statusCode == 200 || statusCode == 201 || statusCode == 204 {
+                self.showAlert(title: "SUCCESS", message: "You have successfully accepted this friend request", callback: {self.addFriendButton.isHidden = true})
+                self.getFriendRequests()
+            } else {
+                if let m = message {
+                    self.showAlert(title: "ERROR", message: m, callback: {})
+                }
+            }
+        }
+    } else {
+        //Send Friend Request/ Add Friend
+        Utilities.showProgressHud(withTitle: "Sending Friend Request", inView: self.view)
+        friendsViewModel.createFriendRequest(friendId: player.playerId) { (responseCode, message) -> (Void) in
+            Utilities.hideProgressHud()
+            if responseCode == 200 || responseCode == 201 {
+                self.showAlert(title: "SUCCESS", message: "Friend Request Sent!", callback: {})
+                self.addFriendButton.setTitle("Request Sent", for: .normal)
+                self.addFriendButton.isEnabled = false
+            } else if responseCode ==  422 {
+                self.showAlert(title: "ERROR", message: "Friend Request already sent", callback: {})
+            } else {
+                self.showAlert(title: "ERROR", message: "Unable to send Friend Request", callback: {})
+            }
+        }
     }
+   
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
