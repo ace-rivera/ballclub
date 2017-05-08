@@ -121,11 +121,11 @@ class FriendsViewController: UIViewController {
   
   
   func getFriendRequests() {    
-    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, isFriendAdded) -> (Void) in
+    friendsViewModel.getPendingRequests { (responseCode, message, incomingRequests, outgoingRequests, addedFriendID) -> (Void) in
       
       if responseCode == 200 || responseCode == 201 {
         
-        if (isFriendAdded)! {
+        if (self.player.playerId == addedFriendID) {
           self.addFriendButton.setTitle("Request Sent", for: .normal)
           self.addFriendButton.isEnabled = false
         }

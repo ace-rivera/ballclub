@@ -14,7 +14,7 @@ class FriendsViewModel: NSObject {
   
   public typealias DefaultRequestResponseClosure = (Int, String?) -> (Void)
   public typealias GetAllUserResponseClosure = (Int, String, [Player]?) -> (Void)
-  public typealias GetPendingRequestsResponseClosure = (Int, String, [Request]?, [Request]?, Bool?) -> (Void)
+  public typealias GetPendingRequestsResponseClosure = (Int, String, [Request]?, [Request]?, Int?) -> (Void)
   public typealias GetFriendsListResponseClosure = (Int, String?, [Player]?) -> (Void)
   public typealias GetInvitesResponseClosure = (Int, String, [Invite]?) -> (Void)
   public typealias CreateInviteResponseClosure = (Int, String, Invite?) -> (Void)
@@ -34,8 +34,7 @@ class FriendsViewModel: NSObject {
       case .success(let response):
         do {
           let data = try response.mapJSON()
-          let userId = self.currentUser?["id"] as? Int
-          var isFriendAdded = false
+          var pendingRequestFriendID = -1
           debugPrint("data ", data)
           
           if let requestDictionary = data as? [String: Any] {
@@ -57,15 +56,13 @@ class FriendsViewModel: NSObject {
               if let outgoingRequsts = requestDictionary["outgoing"] as? NSArray {
                 for request in outgoingRequsts {
                   if let outgoingReqDictionary = request as? [String:Any], let p = Request(json:outgoingReqDictionary) {
-                    if(userId == p.userId) {
-                      isFriendAdded = true
-                    }
+                    pendingRequestFriendID = p.friendId
                     self.outgoingRequestArray.append(p)
                   }
                 }
               }
               
-              completionBlock!(response.statusCode, "User retrieved successfully", self.incomingRequestArray, self.outgoingRequestArray, isFriendAdded)
+              completionBlock!(response.statusCode, "User retrieved successfully", self.incomingRequestArray, self.outgoingRequestArray, pendingRequestFriendID)
               
             }
           }

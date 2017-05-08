@@ -18,6 +18,7 @@ class UserSearchFriendsCustomCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
+    
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,6 +30,7 @@ class UserSearchFriendsCustomCell: UITableViewCell {
   //MARK:- Setters Getters
   func setFriendUserName (name : String){
     playerName.text = name
+    self.playerImageView.image = UIImage(named: "sample_profile")
   }
   
   func setFriendCity (city : String){

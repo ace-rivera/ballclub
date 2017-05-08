@@ -151,6 +151,6 @@ extension LocationMapviewViewController: UISearchBarDelegate {
   }
   
   func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    
+    return true
   }
 }

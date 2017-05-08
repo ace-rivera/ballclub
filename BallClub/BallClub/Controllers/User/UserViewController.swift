@@ -36,6 +36,7 @@ class UserViewController: UIViewController {
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    Utilities.showProgressHud(withTitle: "Loading User Details", inView: self.view)
   }
   
   
@@ -90,6 +91,7 @@ class UserViewController: UIViewController {
     
     getUserData()
     registerNibs()
+    Utilities.hideProgressHud()
   }
   
   func registerNibs(){

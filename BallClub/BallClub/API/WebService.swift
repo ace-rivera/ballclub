@@ -153,7 +153,7 @@ extension BallClub: TargetType {
       
     //Game Related Calls
     case .getAllGames():
-      return "/api/games/"
+      return "/api/games"
     case .getUserGames(let userId):
       return "/api/users/\(userId)/games"
     case .getGamesByLocation(let locationId):
