@@ -73,6 +73,8 @@
 		BA5CC2021E4302740035F7BE /* EditGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */; };
 		BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7777611D80F2FB003F4465 /* FriendsViewController.swift */; };
 		BA7777641D80F7AF003F4465 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7777631D80F7AF003F4465 /* Friends.storyboard */; };
+		BA80E4FC1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */; };
+		BA80E4FD1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */; };
 		BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
 		FB0ACCD21E3EE42600263C24 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0ACCD11E3EE42600263C24 /* LocationAnnotation.swift */; };
@@ -160,6 +162,8 @@
 		BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGameTableViewController.swift; sourceTree = "<group>"; };
 		BA7777611D80F2FB003F4465 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		BA7777631D80F7AF003F4465 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
+		BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInvitedFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
+		BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditInvitedFriendsCollectionViewCell.xib; sourceTree = "<group>"; };
 		BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				45425F151D82E2FB00815B43 /* FriendsRoundedCollectionCell.xib */,
 				45425F181D82EE3100815B43 /* FriendsCollectionCustomView.swift */,
 				45425F1A1D82EE9400815B43 /* FriendsCollectionCustomView.xib */,
+				BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */,
+				BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 				45382D631D80566F008FB3BD /* GamesCategoryHeaderView.xib in Resources */,
 				B80009BF1E2D1E300015C6BF /* FriendsListCustomCell.xib in Resources */,
 				71547A8B1D752A4300264B67 /* Assets.xcassets in Resources */,
+				BA80E4FD1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib in Resources */,
 				71547A9F1D75346700264B67 /* Main.storyboard in Resources */,
 				71547AA31D7534F100264B67 /* User.storyboard in Resources */,
 				71547A9E1D75346700264B67 /* Login.storyboard in Resources */,
@@ -663,6 +670,7 @@
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
 				B80009BE1E2D1E300015C6BF /* FriendsListCustomCell.swift in Sources */,
 				B88A151F1E2128CB0043DBBD /* LocationViewModel.swift in Sources */,
+				BA80E4FC1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
 				B80009B01E2210460015C6BF /* Request.swift in Sources */,
 				FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */,

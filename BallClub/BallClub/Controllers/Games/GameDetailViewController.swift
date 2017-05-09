@@ -86,6 +86,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
                 if let id = gameId {
                     editVC.gameId = id
                     editVC.selectedGame = currentGameSelected
+                    editVC.friendsToInviteArray = invitedPlayers
                 }
             }
         }
