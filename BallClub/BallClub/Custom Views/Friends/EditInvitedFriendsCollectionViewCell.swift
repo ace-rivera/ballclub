@@ -21,10 +21,11 @@ class EditInvitedFriendsCollectionViewCell: UICollectionViewCell {
     }
     
     func setUserName (userName: String) {
-        userNameLabel.text = "Josh"
+        userNameLabel.text = userName
     }
 
     func setImageOfFriend(imageUrlString : String) {
+      userImageView.image = UIImage(named: "sample_profile")
         if let imageUrl = URL(string: imageUrlString) {
             Nuke.loadImage(with: imageUrl, into: userImageView)
         }

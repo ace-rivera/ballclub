@@ -17,6 +17,7 @@ class InviteFriendsTableViewController: UITableViewController {
   var friendsViewModel = FriendsViewModel()
   var friendsArray = [Player]()
   var inviteFriendsArray = [Player]()
+  var currentInvitees = [Player]()
   var gameId: Int?
   var selectedUser: Player?
   var delegate : InviteFriendsTableViewControllerDelegate?
@@ -100,6 +101,7 @@ extension InviteFriendsTableViewController : FriendsListCustomCellDelegate {
     inviteFriendsArray.append(friendsArray[tag])
     if let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as? FriendsListCustomCell {
       cell.inviteButton.isEnabled = false
+      cell.inviteButton.setTitle("Invited", for: .normal)
     }
   }
 }
