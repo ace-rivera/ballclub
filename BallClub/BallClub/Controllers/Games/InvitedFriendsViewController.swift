@@ -90,19 +90,19 @@ class InvitedFriendsViewController: UITableViewController {
       cell.setImageOfFriend(imageUrlString: self.goingPlayers[indexPath.row].avatar ?? "")
       cell.setNameOfFriend(name: "\(self.goingPlayers[indexPath.row].firstName) \(self.goingPlayers[indexPath.row].lastName)")
       cell.setPositionOfFriend(position: self.goingPlayers[indexPath.row].position ?? "")
-//      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
+      cell.setLoctionOfFriend(location: self.goingPlayers[indexPath.row].city)
       
     case 1: //tentative
       cell.setImageOfFriend(imageUrlString: self.pendingPlayers[indexPath.row].avatar ?? "")
-      cell.setNameOfFriend(name: "\(self.pendingPlayers[indexPath.row].firstName) \(self.goingPlayers[indexPath.row].lastName)")
+      cell.setNameOfFriend(name: "\(self.pendingPlayers[indexPath.row].firstName) \(self.pendingPlayers[indexPath.row].lastName)")
       cell.setPositionOfFriend(position: self.pendingPlayers[indexPath.row].position ?? "")
-//      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
+      cell.setLoctionOfFriend(location: self.pendingPlayers[indexPath.row].city)
       
     case 2: //invited
       cell.setImageOfFriend(imageUrlString: self.notGoingPlayers[indexPath.row].avatar ?? "")
-      cell.setNameOfFriend(name: "\(self.notGoingPlayers[indexPath.row].firstName) \(self.goingPlayers[indexPath.row].lastName)")
+      cell.setNameOfFriend(name: "\(self.notGoingPlayers[indexPath.row].firstName) \(self.notGoingPlayers[indexPath.row].lastName)")
       cell.setPositionOfFriend(position: self.notGoingPlayers[indexPath.row].position ?? "")
-//      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
+      cell.setLoctionOfFriend(location: self.notGoingPlayers[indexPath.row].city)
     default:
       break
     }

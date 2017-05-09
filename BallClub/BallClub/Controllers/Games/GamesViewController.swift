@@ -15,6 +15,7 @@ class GamesViewController: UIViewController {
   var userGamesList = [Game]()
   var publicGamesList = [Game]()
   var selectedGameId: Int?
+  var gameCreatorId: Int?
   var isCurrentUsersGame = false
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var selectedIndexPath : IndexPath!
@@ -42,8 +43,9 @@ class GamesViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "GameDetailSegue" {
       if let gameDetailViewController: GameDetailViewController = segue.destination as? GameDetailViewController {
-        if let id = self.selectedGameId {
-          gameDetailViewController.gameId = id
+        if let gameId = self.selectedGameId, let playerId = self.gameCreatorId {
+          gameDetailViewController.gameCreatorId = playerId
+          gameDetailViewController.gameId = gameId
           gameDetailViewController.isCurrentUsersGame = isCurrentUsersGame
         }
       }
@@ -147,6 +149,7 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
           isCurrentUsersGame = false
         }
+        self.gameCreatorId = self.userGamesList[indexPath.row].gameCreator.playerId
         self.selectedGameId = self.userGamesList[indexPath.row].gameId
         self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
       } else {
@@ -155,6 +158,7 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
           isCurrentUsersGame = false
         }
+        self.gameCreatorId = self.publicGamesList[indexPath.row].gameCreator.playerId
         self.selectedGameId = self.publicGamesList[indexPath.row].gameId
         self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
       }

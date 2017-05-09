@@ -171,11 +171,8 @@ class GamesViewModel: NSObject {
     }
   }
   
-  func getGameDetails(gameId: Int, completionBlock: GameDetailClosure? = nil) {
-    if let currentUser = UserDefaults.standard.value(forKey: "currentUser") as? [String : Any],
-      let userId = currentUser["id"] as? Int {
+    func getGameDetails(userId: Int, gameId: Int, completionBlock: GameDetailClosure? = nil) {
       APIProvider.request(.getGameDetails(userId, gameId)) { (result) in
-        
         switch result {
         case.success(let response):
           do {
@@ -197,7 +194,6 @@ class GamesViewModel: NSObject {
           }
         }
       }
-    }
   }
   
   func createGame(userId: Int, gameDict: [String : Any], completionBlock: GameDetailClosure? = nil) {

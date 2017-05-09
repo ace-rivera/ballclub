@@ -333,7 +333,10 @@ extension UserViewController : UserInviteCustomCellDelegate {
   func didTapOnViewGame(tag: Int) {
     let storyBoard = UIStoryboard.init(name: "Game", bundle: nil)
     if let gameDetailsVC = storyBoard.instantiateViewController(withIdentifier: "gameDetailsVC") as? GameDetailViewController {
+      gameDetailsVC.gameId =  gameIvitesArray[tag].gameId
       gameDetailsVC.inviteId = gameIvitesArray[tag].inviteId
+      gameDetailsVC.gameCreatorId = pendingUserInvitesList[tag].playerId
+      gameDetailsVC.loadGameDetail = true
       self.navigationController?.pushViewController(gameDetailsVC, animated: true)
     }
   }
