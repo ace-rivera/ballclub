@@ -30,6 +30,15 @@ class InviteFriendsTableViewController: UITableViewController {
       Utilities.hideProgressHud()
       if (responseCode ==  200 || responseCode == 201), let player = friends {
         self.friendsArray = player
+    
+        self.friendsArray = self.friendsArray.filter( {
+            let id = $0.playerId
+            return !self.currentInvitees.contains(where: {
+                player in
+                return player.playerId == id
+            })
+        })
+        
         self.tableView.reloadData()
       } else {
         if let m = message {

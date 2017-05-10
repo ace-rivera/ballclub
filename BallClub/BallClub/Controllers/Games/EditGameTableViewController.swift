@@ -124,6 +124,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     let storyboard = UIStoryboard.init(name: "Game", bundle: nil)
     if  let inviteFriendsTVC = storyboard.instantiateViewController(withIdentifier: "InviteFriendsTVC") as? InviteFriendsTableViewController {
       inviteFriendsTVC.delegate = self
+      inviteFriendsTVC.currentInvitees = friendsToInviteArray
       
       self.navigationController?.pushViewController(inviteFriendsTVC, animated: true)
     }
