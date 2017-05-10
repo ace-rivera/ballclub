@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 protocol InviteFriendsTableViewControllerDelegate {
   func getInviteFriendsArray(playerArray: [Player])
@@ -39,6 +40,9 @@ class InviteFriendsTableViewController: UITableViewController {
             })
         })
         
+        if (self.friendsArray.count <= 0) {
+            self.initializeDelegates()
+        }
         self.tableView.reloadData()
       } else {
         if let m = message {
@@ -113,4 +117,27 @@ extension InviteFriendsTableViewController : FriendsListCustomCellDelegate {
       cell.inviteButton.setTitle("Invited", for: .normal)
     }
   }
+}
+
+extension InviteFriendsTableViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func initializeDelegates() {
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
+    }
+    
+    
+    // MARK: UI for empty data
+//    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+//        return UIImage(named:"noNotifs")
+//    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let title = "You have invited everyone on your friends list!"
+        let myAttribute = [ NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0) ]
+        let myAttrString = NSAttributedString(string: title, attributes: myAttribute)
+
+        return myAttrString
+    }
 }

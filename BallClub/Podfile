@@ -23,7 +23,7 @@ pod 'DZNEmptyDataSet'
 pod 'Popover'
 pod 'Mixpanel-swift'
 pod 'DropDown'
-
+pod 'DZNEmptyDataSet'
 end
 
 post_install do |installer|
