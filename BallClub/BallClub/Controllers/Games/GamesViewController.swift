@@ -140,7 +140,7 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell : FeedsCustomCell = tableView.cellForRow(at: indexPath) as! FeedsCustomCell
-    if cell.detailsShown { //2nd click
+    if cell.detailsShown || indexPath.section == 0 { //2nd click
       cell.detailsShown = false
       selectedIndexPath = nil
       if indexPath.section == 0 {

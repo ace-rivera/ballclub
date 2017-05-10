@@ -48,7 +48,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   
   //MARK: - SetupUI
   func setUpUI(){
-    self.friendsCollectionView.register(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
+    self.friendsCollectionView.register(UINib(nibName: "EditInvitedFriendsCollectionViewCell",bundle: nil), forCellWithReuseIdentifier: "EditInvitedFriendsCollectionViewCell")
     self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width:
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
     publicIcon.isSelected = false
@@ -116,6 +116,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     let storyboard = UIStoryboard.init(name: "Game", bundle: nil)
     if  let inviteFriendsTVC = storyboard.instantiateViewController(withIdentifier: "InviteFriendsTVC") as? InviteFriendsTableViewController {
       inviteFriendsTVC.delegate = self
+      inviteFriendsTVC.currentInvitees = friendsToInviteArray
       self.navigationController?.pushViewController(inviteFriendsTVC, animated: true)
     }
   }
@@ -139,8 +140,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
     if isFormValid() {
       let gameViewModel = GamesViewModel()
-      if let userId = currentUser?["id"] as? Int {
-        gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
+        gameViewModel.createGame(gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
           if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
             let inviteViewModel = FriendsViewModel()
             for player in self.friendsToInviteArray {
@@ -163,7 +163,6 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       } else {
         self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
       }
-    }
   }
   
   @IBAction func backButtonPressed(_ sender: AnyObject) {
@@ -252,9 +251,10 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
-        collectionCell.setImageOfFriend(imageUrlString: self.friendsToInviteArray[indexPath.row].avatar ?? "")
-        return collectionCell
+    let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditInvitedFriendsCollectionViewCell", for: indexPath as IndexPath) as! EditInvitedFriendsCollectionViewCell
+    collectionCell.setImageOfFriend(imageUrlString: self.friendsToInviteArray[indexPath.row].avatar ?? "")
+    collectionCell.setUserName(userName: friendsToInviteArray[indexPath.row].firstName)
+    return collectionCell
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

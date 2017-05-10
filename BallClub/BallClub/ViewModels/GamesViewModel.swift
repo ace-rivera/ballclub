@@ -196,8 +196,8 @@ class GamesViewModel: NSObject {
       }
   }
   
-  func createGame(userId: Int, gameDict: [String : Any], completionBlock: GameDetailClosure? = nil) {
-    APIProvider.request(.createGame(userId, gameDict)) { (result) in
+  func createGame(gameDict: [String : Any], completionBlock: GameDetailClosure? = nil) {
+    APIProvider.request(.createGame(gameDict)) { (result) in
       switch result {
       case.success(let response):
         do {
@@ -247,15 +247,14 @@ class GamesViewModel: NSObject {
   }
   
   func deleteGame(gameId: Int, completionBlock: ((Int, String?) -> (Void))? = nil) {
-    if let currentUser = UserDefaults.standard.value(forKey: "currentUser") as? [String : Any],
-      let userId = currentUser["id"] as? Int {
-      APIProvider.request(.deleteGame(userId, gameId)) { (result) in
+      APIProvider.request(.deleteGame(gameId)) { (result) in
         
         switch result {
         case.success(let response):
           do {
             let data = try response.mapJSON()
             debugPrint("data ", data)
+            completionBlock!(response.statusCode, "Success")
             
           } catch {
             completionBlock!(response.statusCode, "Error")
@@ -268,5 +267,4 @@ class GamesViewModel: NSObject {
         }
       }
     }
-  }
 }

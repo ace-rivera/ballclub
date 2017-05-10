@@ -331,12 +331,14 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     
     
     @IBAction func didTapDeleteGame(_ sender: Any) {
+        Utilities.showProgressHud(withTitle: "Deleting Game", inView: self.view)
         let gamesViewModel = GamesViewModel()
         if let id = gameId {
             gamesViewModel.deleteGame(gameId: id) { (responseCode, message) -> (Void) in
+                Utilities.hideProgressHud()
                 if responseCode == 200 || responseCode == 201 {
-                    self.showAlert(title: "SUCCESS", message: "Game has been successfully deleted", callback: {})
-                    self.navigationController?.popViewController(animated: true)
+                    self.showAlert(title: "SUCCESS", message: "Game has been successfully deleted", callback: {self.navigationController?.popViewController(animated: true)})
+                    
                 } else {
                     self.showAlert(title: "ERROR", message: "Cannot Delete Game", callback: {})
                 }
