@@ -87,6 +87,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
           editVC.gameId = id
           editVC.selectedGame = currentGameSelected
           editVC.friendsToInviteArray = invitedPlayers
+          editVC.selectedLocation = currentGameSelected?.location
           editVC.delegate =  self
         }
       }
