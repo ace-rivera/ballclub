@@ -35,12 +35,35 @@ class MapDetailViewController: UIViewController {
   }
   
   private func setupLocationGames(loc: Location) {
+    Utilities.showProgressHud(withTitle: "Retrieving Games", inView: self.view)
+    //setup map
+
+    if let longitude = Double(loc.longitude ?? ""),
+      let latitude = Double(loc.latitude ?? "") {
+      let span = MKCoordinateSpanMake(0.005, 0.005)
+      let locationCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+      
+      let region = MKCoordinateRegion(center: locationCoordinate, span: span)
+      self.mapView.setRegion(region, animated: true)
+      
+      let currentPosition = LocationAnnotation(coordinate: locationCoordinate, title: loc.locationName ?? "")
+      self.mapView.addAnnotation(currentPosition)
+    }
+    
+    //setup location details
+    self.locationName.text = loc.locationName ?? ""
+    
+    //setup game cells
     let gamesViewModel = GamesViewModel()
     if let id = loc.locationId {
       gamesViewModel.getGames(withLocationId: id) { (statusCode, mssage, games) -> (Void) in
         if statusCode == 200, let games = games {
           self.gameList = games
+          //still needs to be edited
+          let gamesThisWeek = games.count > 1 ? "GAMES THIS WEEK" : "GAME THIS WEEK"
+          self.locationGames.text = "\(games.count) \(gamesThisWeek)"
           self.mapDetailTableView.reloadData()
+          Utilities.hideProgressHud()
         }
       }
     }
@@ -54,7 +77,7 @@ class MapDetailViewController: UIViewController {
     
   }
   
-  func backButtonPressed(){
+  @IBAction func backButtonPressed(_ sender: Any) {
     _ = self.navigationController?.popViewController(animated: true)
   }
 }
@@ -69,6 +92,7 @@ extension MapDetailViewController: UITableViewDelegate,UITableViewDataSource {
       cell.game = self.gameList[indexPath.row]
       
       self.view.layoutIfNeeded()
+      return cell
     }
     
     return UITableViewCell()
@@ -78,9 +102,20 @@ extension MapDetailViewController: UITableViewDelegate,UITableViewDataSource {
     return self.gameList.count
   }
   
-  //TODO: code didselect
-  //  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-  //    self.performSegueWithIdentifier("GameDetailSegue", sender: self)
-  //  }
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let storyboard = UIStoryboard(name: "Game", bundle: Bundle.main)
+    if let gameDetailVC = storyboard.instantiateViewController(withIdentifier: "gameDetailsVC")
+      as? GameDetailViewController {
+      if indexPath.row < self.gameList.count,
+        let currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any] {
+        let game = self.gameList[indexPath.row]
+        gameDetailVC.gameCreatorId = game.gameCreator.playerId
+        gameDetailVC.gameId = game.gameId
+        
+        let userId = currentUser["id"] as? Int ?? -1
+        gameDetailVC.isCurrentUsersGame = game.gameCreator.playerId == userId
+        self.navigationController?.pushViewController(gameDetailVC, animated: true)
+      }
+    }
+  }
 }

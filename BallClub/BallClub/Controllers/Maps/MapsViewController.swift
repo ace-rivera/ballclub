@@ -18,6 +18,7 @@ class MapsViewController: UIViewController {
   let locationManager = CLLocationManager()
   var isCenteredToCurrentLocation = false
   var selectedLocation: Location?
+  var initialLocation: CLLocation?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,8 +40,14 @@ class MapsViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    self.locationList = [Location]()
     self.getAllGameLocations()
     self.isCenteredToCurrentLocation = false
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -49,22 +56,30 @@ class MapsViewController: UIViewController {
   
   // MARK: - SetupUI
   func centerMapOnLocation(_ location: CLLocation) {
-    let regionRadius: CLLocationDistance = 1000
-    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                              regionRadius * 2.0, regionRadius * 2.0)
-    mapView.setRegion(coordinateRegion, animated: true)
+    let span = MKCoordinateSpanMake(0.005, 0.005)
+    let region = MKCoordinateRegion(center: location.coordinate, span: span)
     
-    let currentPosition = LocationAnnotation(coordinate: location.coordinate, title: "MY HOME")
+    mapView.setRegion(region, animated: true)
+//    let currentPosition = LocationAnnotation(coordinate: location.coordinate, title: "MY HOME")
 //    self.mapView.addAnnotation(currentPosition)
   }
   
+  //ACE : change
   @IBAction func didTapOnCreateGame(_ sender: Any) {
-    let storyboard = UIStoryboard(name: "Game", bundle: Bundle.main)
-    if let createGameVC = storyboard.instantiateViewController(withIdentifier: "CreateGameViewController")
-      as? CreateGameViewController {
+    let storyboard = UIStoryboard(name: "Maps", bundle: Bundle.main)
+    if let createGameVC = storyboard.instantiateViewController(withIdentifier: "CreateLocationViewController")
+      as? CreateLocationViewController {
       self.navigationController?.pushViewController(createGameVC, animated: true)
     }
   }
+  
+  @IBAction func didTapOnCurrentLocation(_ sender: Any) {
+    self.isCenteredToCurrentLocation = false
+    if let l = self.initialLocation {
+      self.centerMapOnLocation(l)
+    }
+  }
+  
   
   func getAllGameLocations() {
     let gameViewModel = GamesViewModel()
@@ -75,8 +90,8 @@ class MapsViewController: UIViewController {
           var game = games[index]
           game.location.tag = index
           self.locationList.append(game.location)
-          self.pinLocationsToMap()
         }
+        self.pinLocationsToMap()
       } else {
         self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
       }
@@ -122,6 +137,7 @@ extension MapsViewController: MKMapViewDelegate {
       } else {
         // 3
         view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        view.tag = annotation.tag ?? 0
         view.canShowCallout = true
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
@@ -148,6 +164,7 @@ extension MapsViewController: CLLocationManagerDelegate {
       isCenteredToCurrentLocation = true
       let locValue: CLLocationCoordinate2D = l.coordinate
       let initialLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+      self.initialLocation = initialLocation
       centerMapOnLocation(initialLocation)
     }
   }
