@@ -12,7 +12,7 @@ protocol EditGameTableViewControllerDelegate {
   func dismissViewController()
 }
 
-class EditGameTableViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate {
+class EditGameTableViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate, LocationListViewControllerDelegate {
   
   @IBOutlet var createGameTableView: UITableView!
   @IBOutlet weak var gameTitleTextField: UITextField!
@@ -43,6 +43,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   var gameId: Int!
   var selectedGame: Game?
   var delegate : EditGameTableViewControllerDelegate?
+  var backGroundView = UIView()
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -87,7 +88,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   //MARK: - Helper Methods
   func isFormValid() -> Bool {
     guard let title = self.gameTitleTextField.text,
-    //  let location = self.selectedLocation, //needs improvement, should be from get location
+      let location = self.selectedLocation, 
       let startTime = self.startTimeButton.titleLabel?.text,
       let endTime = self.endTimeButton.titleLabel?.text,
       let fee = self.feeTextField.text else { return false }
@@ -100,7 +101,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     self.gameDetailsDict["min_capacity"] = Int(self.playerCount.text ?? "")
     self.gameDetailsDict["fee"] = fee
     self.gameDetailsDict["additional_info"] = self.infoTextfield.text ?? ""
-   // self.gameDetailsDict["location_id"] = location.locationId
+    self.gameDetailsDict["location_id"] = location.locationId
     self.gameDetailsDict["reserved"] = reservedSwitch.isOn
     
     
@@ -123,6 +124,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   func dismissDatePicker() {
     self.pickerView.removeFromSuperview()
+    self.backGroundView.removeFromSuperview()
   }
   
   func showInviteFriendsVC() {
@@ -147,6 +149,10 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
       if let locationMapViewVC: LocationMapviewViewController = segue.destination as? LocationMapviewViewController {
         locationMapViewVC.delegate = self
       }
+    } else {
+        if let locationListVC: LocationListViewController = segue.destination as? LocationListViewController {
+            locationListVC.delegate = self
+        }
     }
   }
   
@@ -190,6 +196,8 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     
   }
   @IBAction func setTimePressed(_ sender: AnyObject) {
+    self.backGroundView = UIView.init(frame: self.view.frame)
+    backGroundView.backgroundColor = UIColor.clear
     let viewFrame = CGRect(x: 8, y: UIScreen.main.bounds.height/4,
                            width: UIScreen.main.bounds.width-16,
                            height: (UIScreen.main.bounds.height/3) + 50)
@@ -207,6 +215,9 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     
     datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: .valueChanged)
     
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector (self.dismissDatePicker))
+    backGroundView.addGestureRecognizer(tapGestureRecognizer)
+    
     let doneButtonFrame = CGRect(x: 8, y: self.pickerView.frame.height-42,
                                  width: self.pickerView.frame.width-16,
                                  height: 34)
@@ -219,6 +230,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     self.pickerView.addSubview(datePicker)
     self.pickerView.addSubview(doneButton)
     
+    self.view.addSubview(backGroundView)
     self.view.addSubview(self.pickerView)
   }
   
@@ -261,7 +273,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   }
   
   @IBAction func didTapOnLocationTextField(_ sender: Any) {
-    //self.performSegue(withIdentifier: "createGameToAddLocation", sender: self)
+    self.performSegue(withIdentifier: "showLocationListVC", sender: self)
   }
   
   
@@ -275,6 +287,11 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.friendsToInviteArray.count
+  }
+    
+  func showSelectedLocation(location: Location) {
+    selectedLocation = location
+    locationTextField.text = location.locationName
   }
 }
 

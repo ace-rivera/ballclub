@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateGameViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate {
+class CreateGameViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate, LocationListViewControllerDelegate {
   
   @IBOutlet var createGameTableView: UITableView!
   @IBOutlet weak var gameTitleTextField: UITextField!
@@ -35,6 +35,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   var friendsToInviteArray = [Player]()
   var resultSearchController: UISearchController? = nil
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
+  var backGroundView = UIView()
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -110,6 +111,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   
   func dismissDatePicker() {
     self.pickerView.removeFromSuperview()
+    self.backGroundView.removeFromSuperview()
   }
   
   func showInviteFriendsVC() {
@@ -131,6 +133,10 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       if let locationMapViewVC: LocationMapviewViewController = segue.destination as? LocationMapviewViewController {
           locationMapViewVC.delegate = self
       }
+    } else {
+        if let locationListVC: LocationListViewController = segue.destination as? LocationListViewController {
+            locationListVC.delegate = self
+        }
     }
   }
   
@@ -174,6 +180,8 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     
   }
   @IBAction func setTimePressed(_ sender: AnyObject) {
+    self.backGroundView = UIView.init(frame: self.view.frame)
+    backGroundView.backgroundColor = UIColor.clear
     let viewFrame = CGRect(x: 8, y: UIScreen.main.bounds.height/4,
                           width: UIScreen.main.bounds.width-16,
                           height: (UIScreen.main.bounds.height/3) + 50)
@@ -190,6 +198,9 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     datePicker.frame = datePickerFrame
     
     datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: .valueChanged)
+    
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector (self.dismissDatePicker))
+    backGroundView.addGestureRecognizer(tapGestureRecognizer)
 
     let doneButtonFrame = CGRect(x: 8, y: self.pickerView.frame.height-42,
                                  width: self.pickerView.frame.width-16,
@@ -203,7 +214,9 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     self.pickerView.addSubview(datePicker)
     self.pickerView.addSubview(doneButton)
     
+    self.view.addSubview(backGroundView)
     self.view.addSubview(self.pickerView)
+    
   }
   
   @IBAction func setGamePrivacy(_ button: UIButton) {
@@ -245,7 +258,8 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   }
   
   @IBAction func didTapOnLocationTextField(_ sender: Any) {
-    self.performSegue(withIdentifier: "createGameToAddLocation", sender: self)
+    //self.performSegue(withIdentifier: "createGameToAddLocation", sender: self)showLocationListVC
+    self.performSegue(withIdentifier: "showLocationListVC", sender: self)
   }
   
   
@@ -260,6 +274,11 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.friendsToInviteArray.count
   }
+    
+    func showSelectedLocation(location: Location) {
+        selectedLocation = location
+        locationTextField.text = location.locationName
+    }
 }
 
 extension CreateGameViewController: LocationMapViewDelegate {
