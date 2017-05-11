@@ -15,6 +15,9 @@ protocol InviteFriendsTableViewControllerDelegate {
 
 class InviteFriendsTableViewController: UITableViewController {
   
+
+  
+  
   var friendsViewModel = FriendsViewModel()
   var friendsArray = [Player]()
   var inviteFriendsArray = [Player]()
@@ -22,7 +25,7 @@ class InviteFriendsTableViewController: UITableViewController {
   var gameId: Int?
   var selectedUser: Player?
   var delegate : InviteFriendsTableViewControllerDelegate?
-  let inviteViewModel = FriendsViewModel()
+  var isFromEditVC = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -63,6 +66,19 @@ class InviteFriendsTableViewController: UITableViewController {
   
   // MARK: - Table view data source
   func backButtonPressed(){
+    
+    if isFromEditVC {
+      Utilities.showProgressHud(withTitle: "Sending Invites", inView: self.view)
+      for player in self.inviteFriendsArray {
+        var inviteDict = [String:Any]()
+        inviteDict["user_id"] = player.playerId
+        inviteDict["game_id"] = gameId
+        friendsViewModel.createInvite(invite: inviteDict,
+                                      completionBlock: { (statusCode, message, invite) -> (Void) in
+                                        Utilities.hideProgressHud()
+        })
+      }
+    }
     if let d = delegate {
       d.getInviteFriendsArray(playerArray: inviteFriendsArray)
     }
@@ -115,6 +131,7 @@ extension InviteFriendsTableViewController : FriendsListCustomCellDelegate {
     if let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as? FriendsListCustomCell {
       cell.inviteButton.isEnabled = false
       cell.inviteButton.setTitle("Invited", for: .normal)
+      
     }
   }
 }

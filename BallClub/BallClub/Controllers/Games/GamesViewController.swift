@@ -55,6 +55,7 @@ class GamesViewController: UIViewController {
   
   //MARK: - Helper Methods
   func getGames() {
+    Utilities.showProgressHud(withTitle: "Fetching Avaliable Games", inView: self.view)
     let gameViewModel = GamesViewModel()
     if let currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any], let userId = currentUser["id"] as? Int {
       gameViewModel.getCurrentUserGames(userId: userId) { (statusCode, message, games) -> (Void) in
@@ -70,12 +71,15 @@ class GamesViewController: UIViewController {
               }
               self.publicGamesList = publicGames
               self.gamesTableview.reloadData()
+              Utilities.hideProgressHud()
             } else {
+              Utilities.hideProgressHud()
               self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
             }
           }
           //end
         } else {
+          Utilities.hideProgressHud()
           self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
         }
       }

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class EditGameTableViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate {
+protocol EditGameTableViewControllerDelegate {
+  func dismissViewController()
+}
+
+class EditGameTableViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate, LocationListViewControllerDelegate {
   
   @IBOutlet var createGameTableView: UITableView!
   @IBOutlet weak var gameTitleTextField: UITextField!
@@ -38,6 +42,8 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var gameId: Int!
   var selectedGame: Game?
+  var delegate : EditGameTableViewControllerDelegate?
+  var backGroundView = UIView()
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -82,7 +88,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   //MARK: - Helper Methods
   func isFormValid() -> Bool {
     guard let title = self.gameTitleTextField.text,
-      let location = self.selectedLocation, //needs improvement, should be from get location
+      let location = self.selectedLocation, 
       let startTime = self.startTimeButton.titleLabel?.text,
       let endTime = self.endTimeButton.titleLabel?.text,
       let fee = self.feeTextField.text else { return false }
@@ -118,6 +124,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   func dismissDatePicker() {
     self.pickerView.removeFromSuperview()
+    self.backGroundView.removeFromSuperview()
   }
   
   func showInviteFriendsVC() {
@@ -125,6 +132,8 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     if  let inviteFriendsTVC = storyboard.instantiateViewController(withIdentifier: "InviteFriendsTVC") as? InviteFriendsTableViewController {
       inviteFriendsTVC.delegate = self
       inviteFriendsTVC.currentInvitees = friendsToInviteArray
+      inviteFriendsTVC.gameId = gameId
+      inviteFriendsTVC.isFromEditVC =  true
       
       self.navigationController?.pushViewController(inviteFriendsTVC, animated: true)
     }
@@ -140,6 +149,10 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
       if let locationMapViewVC: LocationMapviewViewController = segue.destination as? LocationMapviewViewController {
         locationMapViewVC.delegate = self
       }
+    } else {
+        if let locationListVC: LocationListViewController = segue.destination as? LocationListViewController {
+            locationListVC.delegate = self
+        }
     }
   }
   
@@ -147,33 +160,30 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   //MARK: - IBAction
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
-    //    if isFormValid() {
-    //      let gameViewModel = GamesViewModel()
-    //      if let userId = currentUser?["id"] as? Int {
-    //        gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-    //          if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
-    //            let inviteViewModel = FriendsViewModel()
-    //            for player in self.friendsToInviteArray {
-    //              var inviteDict = [String:Any]()
-    //              inviteDict["user_id"] = player.playerId
-    //              inviteDict["game_id"] = game.gameId
-    //              inviteViewModel.createInvite(invite: inviteDict,
-    //                                           completionBlock: { (statusCode, message, invite) -> (Void) in
-    //              })
-    //            }
-    //            self.showAlert(title: "Success", message: "Game created successfully", callback: {
-    //              _ = self.navigationController?.popViewController(animated: true)
-    //            })
-    //          } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
-    //            self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-    //          } else {
-    //            self.showAlert(title: "Error", message: "There was an error while creating the game", callback: {})
-    //          }
-    //        })
-    //      } else {
-    //        self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-    //      }
-    //    }
+    Utilities.showProgressHud(withTitle: "Updating Game", inView: self.view)
+        if isFormValid() {
+          let gameViewModel = GamesViewModel()
+            gameViewModel.updateGame(gameId: gameId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
+              if statusCode == Constants.ResponseCodes.STATUS_CREATED || statusCode == Constants.ResponseCodes.STATUS_OK {
+                Utilities.hideProgressHud()
+                self.showAlert(title: "Success", message: "Game successfully modified", callback: {
+                  if let d = self.delegate {
+                    d.dismissViewController()
+                  }
+                  _ = self.navigationController?.popViewController(animated: true)
+                })
+              } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
+                Utilities.hideProgressHud()
+                self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+              } else {
+                Utilities.hideProgressHud()
+                self.showAlert(title: "Error", message: "There was an error while editing the game", callback: {})
+              }
+            })
+          } else {
+            Utilities.hideProgressHud()
+            self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+          }
   }
   
   @IBAction func backButtonPressed(_ sender: AnyObject) {
@@ -186,6 +196,8 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     
   }
   @IBAction func setTimePressed(_ sender: AnyObject) {
+    self.backGroundView = UIView.init(frame: self.view.frame)
+    backGroundView.backgroundColor = UIColor.clear
     let viewFrame = CGRect(x: 8, y: UIScreen.main.bounds.height/4,
                            width: UIScreen.main.bounds.width-16,
                            height: (UIScreen.main.bounds.height/3) + 50)
@@ -203,6 +215,9 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     
     datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: .valueChanged)
     
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector (self.dismissDatePicker))
+    backGroundView.addGestureRecognizer(tapGestureRecognizer)
+    
     let doneButtonFrame = CGRect(x: 8, y: self.pickerView.frame.height-42,
                                  width: self.pickerView.frame.width-16,
                                  height: 34)
@@ -215,6 +230,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     self.pickerView.addSubview(datePicker)
     self.pickerView.addSubview(doneButton)
     
+    self.view.addSubview(backGroundView)
     self.view.addSubview(self.pickerView)
   }
   
@@ -257,7 +273,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   }
   
   @IBAction func didTapOnLocationTextField(_ sender: Any) {
-    self.performSegue(withIdentifier: "createGameToAddLocation", sender: self)
+    self.performSegue(withIdentifier: "showLocationListVC", sender: self)
   }
   
   
@@ -271,6 +287,11 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.friendsToInviteArray.count
+  }
+    
+  func showSelectedLocation(location: Location) {
+    selectedLocation = location
+    locationTextField.text = location.locationName
   }
 }
 

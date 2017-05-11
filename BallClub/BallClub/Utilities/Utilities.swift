@@ -68,7 +68,7 @@ struct Utilities {
   
   static func getInvitedPlayers(invites : [Invite]) -> [Player] {
     var invitedPlayers = [Player]()
-    
+    self.getUsersList()
     for invite in invites {
       
       let filteredUser = self.allPlayersArray.filter {

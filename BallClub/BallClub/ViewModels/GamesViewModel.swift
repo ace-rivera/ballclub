@@ -221,8 +221,8 @@ class GamesViewModel: NSObject {
     }
   }
   
-  func updateGame(gameDict: [String : Any], completionBlock: GameDetailClosure? = nil) {
-    APIProvider.request(.updateGame(gameDict)) { (result) in
+  func updateGame(gameId: Int, gameDict: [String : Any], completionBlock: GameDetailClosure? = nil) {
+    APIProvider.request(.updateGame(gameId, gameDict)) { (result) in
       switch result {
       case.success(let response):
         do {

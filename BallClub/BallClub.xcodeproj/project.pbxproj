@@ -75,6 +75,7 @@
 		BA7777641D80F7AF003F4465 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7777631D80F7AF003F4465 /* Friends.storyboard */; };
 		BA80E4FC1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */; };
 		BA80E4FD1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */; };
+		BA80E4FF1EC45928003D2115 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA80E4FE1EC45927003D2115 /* UITableViewController.swift */; };
 		BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
 		FB0ACCD21E3EE42600263C24 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0ACCD11E3EE42600263C24 /* LocationAnnotation.swift */; };
@@ -164,6 +165,7 @@
 		BA7777631D80F7AF003F4465 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInvitedFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditInvitedFriendsCollectionViewCell.xib; sourceTree = "<group>"; };
+		BA80E4FE1EC45927003D2115 /* UITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				B81155F11E057FC80076B17B /* UIViewController.swift */,
+				BA80E4FE1EC45927003D2115 /* UITableViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
 				45382D671D805B9F008FB3BD /* GamesCategoryHeaderView.swift in Sources */,
 				714777A51D8000A700501492 /* CustomDateFormatter.swift in Sources */,
+				BA80E4FF1EC45928003D2115 /* UITableViewController.swift in Sources */,
 				FB0ACCD21E3EE42600263C24 /* LocationAnnotation.swift in Sources */,
 				B80009B21E22248D0015C6BF /* Invite.swift in Sources */,
 				71D4927C1D7D67BA00E07DDF /* Constants.swift in Sources */,
