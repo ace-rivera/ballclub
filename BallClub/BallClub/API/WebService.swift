@@ -12,7 +12,7 @@ import Alamofire
 
 let endpointClosure = { (target: BallClub) -> Endpoint<BallClub> in
   
-  let endpoint: Endpoint<BallClub> = Endpoint<BallClub>(URL: url(target), sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: target.parameterEncoding)
+  let endpoint: Endpoint<BallClub> = Endpoint<BallClub>(URL: url(route: target), sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: target.parameterEncoding)
   print("\n\n****************** API Call *********************")
   print("\nurl: \(endpoint.URL)")
   print("\ntarget \(target)")
@@ -268,7 +268,7 @@ extension BallClub: TargetType {
     switch self {
     case .userSignIn, .createGame, .createLocation, .updateLocation, .updateGame, .register, .updateUser,
          .createFreindRequest, .createInvite, .getToken, .updateInvite:
-      return Alamofire.JSONEncoding.prettyPrinted
+      return Alamofire.JSONEncoding.default
     default:
       return Alamofire.URLEncoding.default
     }
@@ -304,6 +304,11 @@ func stubbedResponse(_ filename: String) -> Data! {
   return (try? Data(contentsOf: URL(fileURLWithPath: path!)))
 }
 
-func url(_ route: TargetType) -> String {
-  return route.baseURL.appendingPathComponent(route.path).absoluteString
+/*func url(_ route: TargetType) -> String {
+ return route.baseURL.appendingPathComponent(route.path).absoluteString
+ }*/
+
+func url(route: TargetType) -> String {
+  let url = NSURL(string:route.path, relativeTo:route.baseURL)!
+  return url.absoluteString!
 }
