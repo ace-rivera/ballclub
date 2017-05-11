@@ -78,7 +78,7 @@ enum BallClub {
   case getUserGamesFromYearWeek(String, Int)
   case getGameDetails(Int, Int)
   case createGame([String : Any])
-  case updateGame([String : Any])
+  case updateGame(Int, [String : Any])
   case deleteGame(Int)
   
   //Friends API Calls
@@ -166,11 +166,8 @@ extension BallClub: TargetType {
       return "/api/users/\(userId)/games/\(gameId)"
     case .createGame(_):
         return "/api/games"
-    case .updateGame(let gameDict):
-      if let userId = gameDict["userId"], let gameId = gameDict["gameId"] {
-        return "/api/users/\(userId)/games/\(gameId)"
-      }
-      return ""
+    case .updateGame(let gameId, _):
+        return "/api/games/\(gameId)"
     case .deleteGame(let gameId):
       return "/api/games/\(gameId)"
     
@@ -239,7 +236,7 @@ extension BallClub: TargetType {
         let _ = gameDict["additional_info"],
         let _ = gameDict["location_id"] else { return nil }
       return ["game" : gameDict]
-    case .updateGame(let gameDict):
+    case .updateGame(_, let gameDict):
       return ["game" : gameDict]
       
     //Location Related Calls

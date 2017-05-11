@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol EditGameTableViewControllerDelegate {
+  func dismissViewController()
+}
+
 class EditGameTableViewController: UITableViewController,UICollectionViewDelegate, UICollectionViewDataSource, InviteFriendsTableViewControllerDelegate {
   
   @IBOutlet var createGameTableView: UITableView!
@@ -38,6 +42,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var gameId: Int!
   var selectedGame: Game?
+  var delegate : EditGameTableViewControllerDelegate?
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -82,7 +87,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   //MARK: - Helper Methods
   func isFormValid() -> Bool {
     guard let title = self.gameTitleTextField.text,
-      let location = self.selectedLocation, //needs improvement, should be from get location
+    //  let location = self.selectedLocation, //needs improvement, should be from get location
       let startTime = self.startTimeButton.titleLabel?.text,
       let endTime = self.endTimeButton.titleLabel?.text,
       let fee = self.feeTextField.text else { return false }
@@ -95,7 +100,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     self.gameDetailsDict["min_capacity"] = Int(self.playerCount.text ?? "")
     self.gameDetailsDict["fee"] = fee
     self.gameDetailsDict["additional_info"] = self.infoTextfield.text ?? ""
-    self.gameDetailsDict["location_id"] = location.locationId
+   // self.gameDetailsDict["location_id"] = location.locationId
     self.gameDetailsDict["reserved"] = reservedSwitch.isOn
     
     
@@ -125,6 +130,8 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     if  let inviteFriendsTVC = storyboard.instantiateViewController(withIdentifier: "InviteFriendsTVC") as? InviteFriendsTableViewController {
       inviteFriendsTVC.delegate = self
       inviteFriendsTVC.currentInvitees = friendsToInviteArray
+      inviteFriendsTVC.gameId = gameId
+      inviteFriendsTVC.isFromEditVC =  true
       
       self.navigationController?.pushViewController(inviteFriendsTVC, animated: true)
     }
@@ -147,33 +154,30 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   //MARK: - IBAction
   @IBAction func doneButtonPressed(_ sender: AnyObject) {
-    //    if isFormValid() {
-    //      let gameViewModel = GamesViewModel()
-    //      if let userId = currentUser?["id"] as? Int {
-    //        gameViewModel.createGame(userId: userId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
-    //          if statusCode == Constants.ResponseCodes.STATUS_CREATED, let game = game {
-    //            let inviteViewModel = FriendsViewModel()
-    //            for player in self.friendsToInviteArray {
-    //              var inviteDict = [String:Any]()
-    //              inviteDict["user_id"] = player.playerId
-    //              inviteDict["game_id"] = game.gameId
-    //              inviteViewModel.createInvite(invite: inviteDict,
-    //                                           completionBlock: { (statusCode, message, invite) -> (Void) in
-    //              })
-    //            }
-    //            self.showAlert(title: "Success", message: "Game created successfully", callback: {
-    //              _ = self.navigationController?.popViewController(animated: true)
-    //            })
-    //          } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
-    //            self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-    //          } else {
-    //            self.showAlert(title: "Error", message: "There was an error while creating the game", callback: {})
-    //          }
-    //        })
-    //      } else {
-    //        self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
-    //      }
-    //    }
+    Utilities.showProgressHud(withTitle: "Updating Game", inView: self.view)
+        if isFormValid() {
+          let gameViewModel = GamesViewModel()
+            gameViewModel.updateGame(gameId: gameId, gameDict: self.gameDetailsDict, completionBlock: { (statusCode, message, game) -> (Void) in
+              if statusCode == Constants.ResponseCodes.STATUS_CREATED || statusCode == Constants.ResponseCodes.STATUS_OK {
+                Utilities.hideProgressHud()
+                self.showAlert(title: "Success", message: "Game successfully modified", callback: {
+                  if let d = self.delegate {
+                    d.dismissViewController()
+                  }
+                  _ = self.navigationController?.popViewController(animated: true)
+                })
+              } else if statusCode == Constants.ResponseCodes.STATUS_MISSING_PARAMETERS {
+                Utilities.hideProgressHud()
+                self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+              } else {
+                Utilities.hideProgressHud()
+                self.showAlert(title: "Error", message: "There was an error while editing the game", callback: {})
+              }
+            })
+          } else {
+            Utilities.hideProgressHud()
+            self.showAlert(title: "Error", message: "Please fill up all required fields", callback: {})
+          }
   }
   
   @IBAction func backButtonPressed(_ sender: AnyObject) {
@@ -257,7 +261,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   }
   
   @IBAction func didTapOnLocationTextField(_ sender: Any) {
-    self.performSegue(withIdentifier: "createGameToAddLocation", sender: self)
+    //self.performSegue(withIdentifier: "createGameToAddLocation", sender: self)
   }
   
   

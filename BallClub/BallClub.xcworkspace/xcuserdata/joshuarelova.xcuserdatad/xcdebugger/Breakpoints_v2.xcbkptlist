@@ -120,12 +120,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.854396"
+                  timestampString = "516126627.509553"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
                   endingLineNumber = "177"
-                  offsetFromSymbolStart = "664">
+                  offsetFromSymbolStart = "668">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -135,7 +135,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.855661"
+                  timestampString = "516126627.513821"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
@@ -152,11 +152,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallClub/Controllers/Games/InviteFriendsTableViewController.swift"
-            timestampString = "516034701.058272"
+            timestampString = "516126433.779239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113">
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "didTapOnInviteFriend(tag:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -182,7 +184,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Custom%20Views/User/UserAddFriendCustomCell.swift"
-                  timestampString = "512279838.859019"
+                  timestampString = "516126627.526361"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
@@ -197,7 +199,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Custom%20Views/User/UserAddFriendCustomCell.swift"
-                  timestampString = "512279838.860288"
+                  timestampString = "516126627.533276"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
@@ -267,8 +269,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
             endingLineNumber = "159"
-            landmarkName = "BallClub"
-            landmarkType = "4">
+            landmarkName = "path"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -278,13 +280,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallClub/API/WebService.swift"
-            timestampString = "512274679.397968"
+            timestampString = "516121109.388441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "BallClub"
-            landmarkType = "4">
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "parameters"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -299,8 +301,40 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "createGame(userId:gameDict:completionBlock:)"
+            landmarkName = "getAllGames(fromYearWeek:completionBlock:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BallClub.GamesViewModel.getAllGames (fromYearWeek : Swift.String, completionBlock : Swift.Optional&lt;(Swift.Int, Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Array&lt;BallClub.Game&gt;&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "BallClub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/ViewModels/GamesViewModel.swift"
+                  timestampString = "516126627.571845"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BallClub.GamesViewModel.(getAllGames (fromYearWeek : Swift.String, completionBlock : Swift.Optional&lt;(Swift.Int, Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Array&lt;BallClub.Game&gt;&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "BallClub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/ViewModels/GamesViewModel.swift"
+                  timestampString = "516126627.574248"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -326,13 +360,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallClub/API/WebService.swift"
-            timestampString = "512274679.397968"
+            timestampString = "516121109.388441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "BallClub"
-            landmarkType = "4">
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "parameters"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -374,12 +408,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Login/LoginViewController.swift"
-                  timestampString = "512279838.883337"
+                  timestampString = "516126627.599126"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
                   endingLineNumber = "60"
-                  offsetFromSymbolStart = "332">
+                  offsetFromSymbolStart = "336">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -389,12 +423,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Login/LoginViewController.swift"
-                  timestampString = "512279838.884574"
+                  timestampString = "516126627.601665"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
                   endingLineNumber = "60"
-                  offsetFromSymbolStart = "388">
+                  offsetFromSymbolStart = "396">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -422,7 +456,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Login/LoginViewController.swift"
-                  timestampString = "512279838.887094"
+                  timestampString = "516126627.607707"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
@@ -437,12 +471,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Login/LoginViewController.swift"
-                  timestampString = "512279838.888316"
+                  timestampString = "516126627.610419"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
                   endingLineNumber = "66"
-                  offsetFromSymbolStart = "464">
+                  offsetFromSymbolStart = "468">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -502,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallClub/Controllers/Games/EditGameTableViewController.swift"
-            timestampString = "511026014.409348"
+            timestampString = "516124577.890806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "EditGameTableViewController"
             landmarkType = "3">
             <Locations>
@@ -518,12 +552,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Games/EditGameTableViewController.swift"
-                  timestampString = "512279838.897939"
+                  timestampString = "516126627.631311"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "124">
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "52">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -533,12 +567,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Games/EditGameTableViewController.swift"
-                  timestampString = "512279838.899188"
+                  timestampString = "516126627.633571"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "236">
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "116">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -548,11 +582,11 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Games/EditGameTableViewController.swift"
-                  timestampString = "512279838.900418"
+                  timestampString = "516126627.635639"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
                   offsetFromSymbolStart = "1400">
                </Location>
                <Location
@@ -563,11 +597,11 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Games/EditGameTableViewController.swift"
-                  timestampString = "512279838.90164"
+                  timestampString = "516126627.63784"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
                   offsetFromSymbolStart = "1456">
                </Location>
                <Location
@@ -578,11 +612,11 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/Games/EditGameTableViewController.swift"
-                  timestampString = "512279838.902857"
+                  timestampString = "516126627.640677"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
                   offsetFromSymbolStart = "1400">
                </Location>
             </Locations>
@@ -595,11 +629,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallClub/Controllers/Games/EditGameTableViewController.swift"
-            timestampString = "511026030.472181"
+            timestampString = "516124577.890806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "setUpUI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -611,11 +645,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallClub/Controllers/Games/EditGameTableViewController.swift"
-            timestampString = "511026044.1751"
+            timestampString = "516124577.890806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -643,12 +677,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.911055"
+                  timestampString = "516126627.664017"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
                   endingLineNumber = "33"
-                  offsetFromSymbolStart = "124">
+                  offsetFromSymbolStart = "52">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -658,12 +692,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.912285"
+                  timestampString = "516126627.666141"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
                   endingLineNumber = "33"
-                  offsetFromSymbolStart = "236">
+                  offsetFromSymbolStart = "116">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -673,7 +707,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.913509"
+                  timestampString = "516126627.668356"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -688,7 +722,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.914752"
+                  timestampString = "516126627.670552"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -703,7 +737,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.915977"
+                  timestampString = "516126627.672978"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -752,7 +786,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.925097"
+                  timestampString = "516126627.685921"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
@@ -767,12 +801,12 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.926378"
+                  timestampString = "516126627.688579"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
                   endingLineNumber = "58"
-                  offsetFromSymbolStart = "736">
+                  offsetFromSymbolStart = "516">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -800,7 +834,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.929045"
+                  timestampString = "516126627.694719"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "236"
@@ -815,7 +849,7 @@
                   moduleName = "BallClub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/EditProfileTableViewController.swift"
-                  timestampString = "512279838.930309"
+                  timestampString = "516126627.697208"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "236"
@@ -865,38 +899,6 @@
             endingLineNumber = "92"
             landmarkName = "getFriendsList()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BallClub.FriendsViewController.getFriendsList () -&gt; ()"
-                  moduleName = "BallClub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/FriendsViewController.swift"
-                  timestampString = "512279838.938808"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BallClub.FriendsViewController.(getFriendsList () -&gt; ()).(closure #1)"
-                  moduleName = "BallClub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/Controllers/User/FriendsViewController.swift"
-                  timestampString = "512279838.940133"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -928,6 +930,166 @@
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "setupUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/ViewModels/GamesViewModel.swift"
+            timestampString = "516119926.822485"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "updateGame(gameId:gameDict:completionBlock:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BallClub.GamesViewModel.updateGame (gameId : Swift.Int, gameDict : Swift.Dictionary&lt;Swift.String, Any&gt;, completionBlock : Swift.Optional&lt;(Swift.Int, Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;BallClub.Game&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "BallClub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/ViewModels/GamesViewModel.swift"
+                  timestampString = "516126627.724158"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "225"
+                  endingLineNumber = "225"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BallClub.GamesViewModel.(updateGame (gameId : Swift.Int, gameDict : Swift.Dictionary&lt;Swift.String, Any&gt;, completionBlock : Swift.Optional&lt;(Swift.Int, Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;BallClub.Game&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "BallClub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joshuarelova/ballclub/BallClub/BallClub/ViewModels/GamesViewModel.swift"
+                  timestampString = "516126627.726881"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/Controllers/Games/EditGameTableViewController.swift"
+            timestampString = "516124577.890806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "isFormValid()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/ViewModels/GamesViewModel.swift"
+            timestampString = "516119966.452725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "updateGame(gameId:gameDict:completionBlock:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/API/WebService.swift"
+            timestampString = "516121345.00581"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "path"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/API/WebService.swift"
+            timestampString = "516121924.983381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "parameters"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/Controllers/Games/EditGameTableViewController.swift"
+            timestampString = "516126626.447662"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "doneButtonPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/Utilities/Utilities.swift"
+            timestampString = "516124992.247944"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "getInvitedPlayers(invites:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BallClub/Controllers/Games/InviteFriendsTableViewController.swift"
+            timestampString = "516126525.26252"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "backButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
