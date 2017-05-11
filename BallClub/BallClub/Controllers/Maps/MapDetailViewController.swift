@@ -61,7 +61,7 @@ class MapDetailViewController: UIViewController {
           self.gameList = games
           //still needs to be edited
           let gamesThisWeek = games.count > 1 ? "GAMES THIS WEEK" : "GAME THIS WEEK"
-          self.locationGames.text = "\(games.count) GAMES THIS WEEK"
+          self.locationGames.text = "\(games.count) \(gamesThisWeek)"
           self.mapDetailTableView.reloadData()
           Utilities.hideProgressHud()
         }

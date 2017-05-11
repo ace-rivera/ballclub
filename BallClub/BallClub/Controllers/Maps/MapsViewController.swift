@@ -40,8 +40,14 @@ class MapsViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    self.locationList = [Location]()
     self.getAllGameLocations()
     self.isCenteredToCurrentLocation = false
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -84,8 +90,8 @@ class MapsViewController: UIViewController {
           var game = games[index]
           game.location.tag = index
           self.locationList.append(game.location)
-          self.pinLocationsToMap()
         }
+        self.pinLocationsToMap()
       } else {
         self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
       }
@@ -131,6 +137,7 @@ extension MapsViewController: MKMapViewDelegate {
       } else {
         // 3
         view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        view.tag = annotation.tag ?? 0
         view.canShowCallout = true
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
