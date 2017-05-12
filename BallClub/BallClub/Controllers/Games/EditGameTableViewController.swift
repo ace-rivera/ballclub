@@ -44,6 +44,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   var selectedGame: Game?
   var delegate : EditGameTableViewControllerDelegate?
   var backGroundView = UIView()
+  var isGamePrivate = 0
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -60,8 +61,16 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     self.friendsCollectionView.register(UINib(nibName: "EditInvitedFriendsCollectionViewCell",bundle: nil), forCellWithReuseIdentifier: "EditInvitedFriendsCollectionViewCell")
     self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width:
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
-    publicIcon.isSelected = false
-    publicButton.isSelected = false
+    
+    if let p = selectedGame?.privacy {
+        if p == 0 {
+            publicIcon.isSelected = true
+            publicButton.isSelected = true
+        } else {
+            closedIcon.isSelected = true
+            closedButton.isSelected = true
+        }
+    }
     
     privateButton.isHidden = true
     privateIcon.isHidden = true
@@ -103,6 +112,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     self.gameDetailsDict["additional_info"] = self.infoTextfield.text ?? ""
     self.gameDetailsDict["location_id"] = location.locationId
     self.gameDetailsDict["reserved"] = reservedSwitch.isOn
+    self.gameDetailsDict["privacy"] = isGamePrivate
     
     
     
@@ -247,6 +257,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
       publicIcon.isSelected = true
       publicButton.isSelected = true
       gameTypeDescriptionLabel.text = "Open to all, and any player can request to join"
+      isGamePrivate = 0
     case 1:
       privateIcon.isSelected = true
       privateButton.isSelected = true
@@ -254,6 +265,7 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
       closedIcon.isSelected = true
       closedButton.isSelected = true
       gameTypeDescriptionLabel.text = "Only invited players can see this game"
+      isGamePrivate = 1
     default:
       break
     }

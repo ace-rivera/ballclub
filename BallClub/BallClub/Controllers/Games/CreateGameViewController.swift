@@ -36,6 +36,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   var resultSearchController: UISearchController? = nil
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var backGroundView = UIView()
+  var isGamePrivate = 0
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -90,6 +91,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     self.gameDetailsDict["additional_info"] = self.infoTextfield.text ?? ""
     self.gameDetailsDict["location_id"] = location.locationId
     self.gameDetailsDict["reserved"] = reservedSwitch.isOn
+    self.gameDetailsDict["privacy"] = isGamePrivate
     
     
 
@@ -232,6 +234,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       publicIcon.isSelected = true
       publicButton.isSelected = true
       gameTypeDescriptionLabel.text = "Open to all, and any player can request to join"
+      isGamePrivate = 0
     case 1:
       privateIcon.isSelected = true
       privateButton.isSelected = true
@@ -239,6 +242,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
       closedIcon.isSelected = true
       closedButton.isSelected = true
       gameTypeDescriptionLabel.text = "Only invited players can see this game"
+      isGamePrivate = 1
     default:
       break
     }
