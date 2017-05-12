@@ -86,7 +86,7 @@ class SessionManager: NSObject {
       let loginTime = UserDefaults.standard.value(forKey: "loginTime") as? Date {
       
       let calendar = Calendar.current
-      let minutes = Int(expiry) ?? 0
+      let seconds = Int(expiry) ?? 0
       let dateAfterAddingTTL = calendar.date(byAdding: .second, value: seconds, to: loginTime) ?? Date()
       
       let timeNow = Date()
