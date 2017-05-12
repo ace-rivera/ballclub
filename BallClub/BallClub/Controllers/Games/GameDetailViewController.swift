@@ -273,7 +273,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   func setAttendeesOfGame(friends : [Player], maxPlayers: Int){
     if friends.count == 0 {
-      self.goingPlayersLabel.isHidden = true
+      self.goingPlayersLabel.text = "No one has yet to confirm"
     } else if friends.count == 2 {
       self.goingPlayersLabel.text = "\(friends[0].firstName) and \(friends[1].firstName) are going"
     } else if friends.count == 1 {
@@ -294,7 +294,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       let pendingPlayers = Utilities.getInvitedPlayers(invites: pendingInvites)
       
       if pendingPlayers.count == 0 {
-        self.invitedPlayersLabel.isHidden = true
+        self.invitedPlayersLabel.text = "You have not yet invited any users to this game!"
       } else if pendingPlayers.count == 2 {
         self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName) and \(pendingPlayers[1].firstName) are invited"
       } else if pendingPlayers.count == 1 {

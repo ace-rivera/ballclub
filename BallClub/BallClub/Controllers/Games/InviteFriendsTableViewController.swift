@@ -14,10 +14,7 @@ protocol InviteFriendsTableViewControllerDelegate {
 }
 
 class InviteFriendsTableViewController: UITableViewController {
-  
-
-  
-  
+    
   var friendsViewModel = FriendsViewModel()
   var friendsArray = [Player]()
   var inviteFriendsArray = [Player]()
@@ -112,6 +109,8 @@ class InviteFriendsTableViewController: UITableViewController {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsListCustomCell") as? FriendsListCustomCell {
       cell.playerName.text = friendsArray[indexPath.row].firstName
       cell.playerCity.text = friendsArray[indexPath.row].city
+      cell.setImageOfFriend(imageUrlString: friendsArray[indexPath.row].avatar ?? "")
+      cell.inviteButton.layer.borderColor = Constants.CustomColor.customOrangeColor.cgColor
       
       cell.tag = indexPath.row
       cell.delegate = self
@@ -131,6 +130,8 @@ extension InviteFriendsTableViewController : FriendsListCustomCellDelegate {
     if let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as? FriendsListCustomCell {
       cell.inviteButton.isEnabled = false
       cell.inviteButton.setTitle("Invited", for: .normal)
+        cell.inviteButton.setTitleColor(UIColor.init(red: 121.0/255.0, green: 121.0/255.0, blue: 121.0/255.0, alpha: 0.50), for: .disabled)
+      cell.inviteButton.layer.borderColor = UIColor.init(red: 121.0/255.0, green: 121.0/255.0, blue: 121.0/255.0, alpha: 0.50).cgColor
       
     }
   }
