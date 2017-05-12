@@ -96,6 +96,8 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   //MARK: - SetUpUI
   func setUpUI(){
+    self.editGameButton.tintColor = UIColor.white
+    self.deleteGameButton.tintColor = UIColor.white
     self.playerCollection.register(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
     self.gameDetailTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.gameDetailTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
     self.gameDetailTableView.estimatedRowHeight = 200

@@ -12,7 +12,6 @@ import Gloss
 struct Player : Decodable {
   
   var playerId: Int
-  var uid: String
   var emailAddress: String
   var firstName: String
   var lastName: String
@@ -34,7 +33,6 @@ struct Player : Decodable {
   // MARK: - Deserialization
   init?(json: JSON) {
     guard let userId: Int = "id" <~~ json,
-      let uid: String = "uid" <~~ json,
       let email: String = "email" <~~ json,
       let firstName: String = "first_name" <~~ json,
       let lastName: String = "last_name" <~~ json,
@@ -43,7 +41,6 @@ struct Player : Decodable {
       let isFriend: Bool = "is_friend" <~~ json else { return nil }
     
     self.playerId = userId
-    self.uid = uid
     self.emailAddress = email
     self.firstName = firstName
     self.lastName = lastName
@@ -67,7 +64,6 @@ struct Player : Decodable {
   static func toDictionary(user: Player) -> [String: Any] {
     var userDetails = [String:Any]()
     userDetails["id"] = user.playerId
-    userDetails["uid"] = user.uid
     userDetails["email"] = user.emailAddress
     userDetails["first_name"] = user.firstName
     userDetails["last_name"] = user.lastName
