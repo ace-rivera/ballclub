@@ -11,6 +11,7 @@ import MapKit
 
 protocol CreateLocationViewControllerDelegate {
   func dropPinZoomIn(placemark:MKPlacemark)
+  func dismissViewControllerWithLocation(createdLocation: Location)
 }
 
 class CreateLocationViewController: UIViewController {
@@ -22,6 +23,7 @@ class CreateLocationViewController: UIViewController {
   let locationManager = CLLocationManager()
   var resultSearchController: UISearchController? = nil
   var selectedPin:MKPlacemark? = nil
+  var delegate : CreateLocationViewControllerDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,7 +47,7 @@ class CreateLocationViewController: UIViewController {
     
     if let searchBarController = self.resultSearchController {
       let searchBar = searchBarController.searchBar
-      let searchBarFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40.0)
+      let searchBarFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40.0)
       
       searchBar.sizeToFit()
       searchBar.placeholder = "Type Location"
@@ -89,6 +91,11 @@ class CreateLocationViewController: UIViewController {
       if statusCode == Constants.ResponseCodes.STATUS_CREATED
         || statusCode == Constants.ResponseCodes.STATUS_OK {
         self.showAlert(title: "Success", message: "Location created successfully", callback: {
+            
+            if let d = self.delegate, let l = location {
+                d.dismissViewControllerWithLocation(createdLocation: l)
+            }
+          
           self.navigationController?.popViewController(animated: true)
         })
       } else {
@@ -123,6 +130,8 @@ extension CreateLocationViewController: CLLocationManagerDelegate {
 }
 
 extension CreateLocationViewController: CreateLocationViewControllerDelegate {
+    func dismissViewControllerWithLocation(createdLocation: Location) {}
+
   func dropPinZoomIn(placemark:MKPlacemark){
     // cache the pin
     selectedPin = placemark
