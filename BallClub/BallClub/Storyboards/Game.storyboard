@@ -2026,11 +2026,20 @@
                     <connections>
                         <outlet property="searchBar" destination="erI-7c-APX" id="h2I-rg-68V"/>
                         <outlet property="tableView" destination="Icd-ov-Ubi" id="4pC-q2-02f"/>
+                        <segue destination="SuQ-hL-98v" kind="show" identifier="ShowCreateLocationVC" id="KfI-ld-P7d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zca-QG-nwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2427" y="1303"/>
+        </scene>
+        <!--CreateLocationViewController-->
+        <scene sceneID="PmT-EM-zq6">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CreateLocationViewController" storyboardName="Maps" referencedIdentifier="CreateLocationViewController" id="SuQ-hL-98v" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2pc-Ij-wVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2426" y="1975"/>
         </scene>
         <!--Location Mapview View Controller-->
         <scene sceneID="ECz-XI-UCX">

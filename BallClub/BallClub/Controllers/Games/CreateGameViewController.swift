@@ -138,6 +138,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     } else {
         if let locationListVC: LocationListViewController = segue.destination as? LocationListViewController {
             locationListVC.delegate = self
+            locationListVC.isFromCreateGameVC = true
         }
     }
   }

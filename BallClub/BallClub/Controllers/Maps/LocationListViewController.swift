@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 protocol LocationListViewControllerDelegate {
     func showSelectedLocation(location: Location)
@@ -20,12 +21,17 @@ class LocationListViewController : UIViewController {
     var locationList = [Location]()
     var locationCopy = [Location]()
     var delegate : LocationListViewControllerDelegate?
+    var isFromCreateGameVC = false
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.removeHeaderSpace()
         
+        if isFromCreateGameVC {
+            let button1 = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(navigateToCreateLocation))
+            self.navigationItem.rightBarButtonItem  = button1
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,6 +68,18 @@ class LocationListViewController : UIViewController {
                 self.tableView.reloadData()
             } else {
                 self.showAlert(title: "Error", message: "Unable to fetch locations.", callback: {})
+            }
+        }
+    }
+    
+    func navigateToCreateLocation() {
+        self.performSegue(withIdentifier: "ShowCreateLocationVC", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCreateLocationVC" {
+            if let locationMapViewVC: CreateLocationViewController = segue.destination as? CreateLocationViewController {
+                locationMapViewVC.delegate = self
             }
         }
     }
@@ -105,6 +123,17 @@ extension LocationListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let d = delegate {
             d.showSelectedLocation(location: locationList[indexPath.row])
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+extension LocationListViewController: CreateLocationViewControllerDelegate {
+    func dropPinZoomIn(placemark: MKPlacemark) {}
+    
+    func dismissViewControllerWithLocation(createdLocation: Location) {
+        if let d = delegate {
+            d.showSelectedLocation(location: createdLocation)
             self.navigationController?.popViewController(animated: true)
         }
     }
