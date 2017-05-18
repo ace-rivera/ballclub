@@ -21,7 +21,7 @@ class GamesCategoryHeaderView: UITableViewHeaderFooterView {
   }
   
   func updateUI(){
-    if category == "MY GAMES" {
+    if category == "PRIVATE" {
       categoryImage.image = UIImage(named: "ic_private")
       categoryFlag.image = UIImage(named: "blue")
     } else {

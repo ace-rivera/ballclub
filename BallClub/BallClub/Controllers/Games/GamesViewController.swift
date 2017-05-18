@@ -12,23 +12,31 @@ class GamesViewController: UIViewController {
   
   @IBOutlet weak var gamesTableview: UITableView!
   
+  @IBOutlet weak var currentWeekTitle: UIBarButtonItem!
   var userGamesList = [Game]()
   var publicGamesList = [Game]()
+  var closedGamesList = [Game]()
   var selectedGameId: Int?
   var gameCreatorId: Int?
   var isCurrentUsersGame = false
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var selectedIndexPath : IndexPath!
+  var currentDate: String!
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpUI()
+   
+    let week = NSCalendar.current.component(.weekOfYear, from: Date())
+    let year = NSCalendar.current.component(.year, from: Date())
+
+    self.currentDate = "\(year)\(week)"
+    self.getGamesFromYearWeek(yearWeek: self.currentDate)
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.getGames()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -55,36 +63,69 @@ class GamesViewController: UIViewController {
   
   
   //MARK: - Helper Methods
-  func getGames() {
+//  func getGames() {
+//    Utilities.showProgressHud(withTitle: "Fetching Avaliable Games", inView: self.view)
+//    let gameViewModel = GamesViewModel()
+//    if let currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any], let userId = currentUser["id"] as? Int {
+//      gameViewModel.getCurrentUserGames(userId: userId) { (statusCode, message, games) -> (Void) in
+//        if statusCode == 200, let games = games {
+//          self.userGamesList = games
+//          self.gamesTableview.reloadData()
+//          //start
+//          gameViewModel.getAllGames { (statusCode2, mssage2, games2) -> (Void) in
+//            if statusCode2 == 200, let games2 = games2 {
+//              let publicGames = games2.filter {
+//                $0.gameCreator.playerId != userId &&
+//                  $0.privacy == 0 //how to know if closed
+//              }
+//              self.publicGamesList = publicGames
+//              self.gamesTableview.reloadData()
+//              Utilities.hideProgressHud()
+//            } else {
+//              Utilities.hideProgressHud()
+//              self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
+//            }
+//          }
+//          //end
+//        } else {
+//          Utilities.hideProgressHud()
+//          self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
+//        }
+//      }
+//    }
+//  }
+  
+  func getGamesFromYearWeek(yearWeek: String) {
     Utilities.showProgressHud(withTitle: "Fetching Avaliable Games", inView: self.view)
     let gameViewModel = GamesViewModel()
     if let currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any], let userId = currentUser["id"] as? Int {
-      gameViewModel.getCurrentUserGames(userId: userId) { (statusCode, message, games) -> (Void) in
+      gameViewModel.getCurrentUserGames(fromYearWeek: yearWeek, userId: userId, completionBlock: { (statusCode, message, games) -> (Void) in
         if statusCode == 200, let games = games {
           self.userGamesList = games
-          self.gamesTableview.reloadData()
-          //start
-          gameViewModel.getAllGames { (statusCode2, mssage2, games2) -> (Void) in
-            if statusCode2 == 200, let games2 = games2 {
-              let publicGames = games2.filter {
-                $0.gameCreator.playerId != userId &&
-                  $0.privacy == 0 //how to know if closed
-              }
-              self.publicGamesList = publicGames
-              self.gamesTableview.reloadData()
-              Utilities.hideProgressHud()
-            } else {
-              Utilities.hideProgressHud()
-              self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
+          for game in games {
+            switch game.privacy {
+            case 0:
+              self.publicGamesList.append(game)
+            case 1:
+              self.closedGamesList.append(game)
+            default:
+              self.publicGamesList.append(game)
             }
           }
-          //end
+          self.gamesTableview.reloadData()
+          Utilities.hideProgressHud()
         } else {
           Utilities.hideProgressHud()
           self.showAlert(title: "Error", message: "Unable to fetch games", callback: {})
         }
-      }
+      })
     }
+  }
+  
+  func resetData() {
+    self.userGamesList = [Game]()
+    self.publicGamesList = [Game]()
+    self.closedGamesList = [Game]()
   }
   
   //MARK: - SetUpUI
@@ -95,6 +136,20 @@ class GamesViewController: UIViewController {
     //TODO: autoresize cell study!!
     self.gamesTableview.estimatedRowHeight = 150.0
     self.gamesTableview.rowHeight = UITableViewAutomaticDimension
+  }
+  
+  @IBAction func didTapOnPreviousWeek(_ sender: Any) {
+    self.resetData()
+    let currDate = Int(self.currentDate) ?? 0
+    self.currentDate = "\(currDate-1)"
+    self.getGamesFromYearWeek(yearWeek: self.currentDate)
+  }
+  
+  @IBAction func didTapOnNextWeek(_ sender: Any) {
+    self.resetData()
+    let currDate = Int(self.currentDate) ?? 0
+    self.currentDate = "\(currDate+1)"
+    self.getGamesFromYearWeek(yearWeek: self.currentDate)
   }
 }
 
@@ -115,9 +170,12 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
         }
       }
       
-      if indexPath.section == 0 {
-        cell.game = self.userGamesList[indexPath.row]
-      } else {
+      switch indexPath.section {
+      case 0:
+        cell.game = self.publicGamesList[indexPath.row]
+      case 1:
+        cell.game = self.closedGamesList[indexPath.row]
+      default:
         cell.game = self.publicGamesList[indexPath.row]
       }
       
@@ -128,16 +186,16 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 2 //my games, public games
+    return 2 //my public, closed
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
       //Ace Rivera : temp - use section 0 first
-      return self.userGamesList.count
-    case 1:
       return self.publicGamesList.count
+    case 1:
+      return self.closedGamesList.count
     default:
       return 0
     }
@@ -149,15 +207,6 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
       cell.detailsShown = false
       selectedIndexPath = nil
       if indexPath.section == 0 {
-        if self.userGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
-          isCurrentUsersGame = true
-        } else {
-          isCurrentUsersGame = false
-        }
-        self.gameCreatorId = self.userGamesList[indexPath.row].gameCreator.playerId
-        self.selectedGameId = self.userGamesList[indexPath.row].gameId
-        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
-      } else {
         if self.publicGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
           isCurrentUsersGame = true
         } else {
@@ -165,6 +214,15 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
         }
         self.gameCreatorId = self.publicGamesList[indexPath.row].gameCreator.playerId
         self.selectedGameId = self.publicGamesList[indexPath.row].gameId
+        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+      } else if indexPath.section == 1 {
+        if self.closedGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+          isCurrentUsersGame = true
+        } else {
+          isCurrentUsersGame = false
+        }
+        self.gameCreatorId = self.closedGamesList[indexPath.row].gameCreator.playerId
+        self.selectedGameId = self.closedGamesList[indexPath.row].gameId
         self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
       }
     } else { //expand
@@ -179,9 +237,9 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
     let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "GamesCategoryHeaderView") as! GamesCategoryHeaderView
     switch section {
     case 0:
-      header.category = "MY GAMES"
+      header.category = "PUBLIC"
     case 1:
-      header.category = "PUBLIC GAMES"
+      header.category = "CLOSED"
     default:
       break
     }
