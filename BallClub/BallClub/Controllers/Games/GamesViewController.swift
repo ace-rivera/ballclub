@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class GamesViewController: UIViewController {
   
@@ -112,6 +113,11 @@ class GamesViewController: UIViewController {
               self.publicGamesList.append(game)
             }
           }
+          
+          if (self.publicGamesList.count == 0 && self.closedGamesList.count == 0) {
+                self.initializeDelegates()
+          }
+            
           self.gamesTableview.reloadData()
           Utilities.hideProgressHud()
         } else {
@@ -186,7 +192,12 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 2 //my public, closed
+    if (self.publicGamesList.count == 0 && self.closedGamesList.count == 0) {
+        return 0
+    } else {
+        return 2 //my public, closed
+    }
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -251,4 +262,28 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 40
   }
+}
+
+extension GamesViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func initializeDelegates() {
+        self.gamesTableview.emptyDataSetSource = self
+        self.gamesTableview.emptyDataSetDelegate = self
+    }
+    
+    
+    // MARK: UI for empty data
+//    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+//        return UIImage(named:"noNotifs")
+//    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let title = "There are no games for this week!"
+        let myAttribute = [ NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0) ]
+        let myAttrString = NSAttributedString(string: title, attributes: myAttribute)
+        
+        
+        
+        return myAttrString
+    }
 }

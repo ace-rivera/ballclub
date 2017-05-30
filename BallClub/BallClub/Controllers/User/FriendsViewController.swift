@@ -8,6 +8,7 @@
 
 import UIKit
 import Nuke
+import DZNEmptyDataSet
 
 class FriendsViewController: UIViewController {
   
@@ -116,7 +117,12 @@ class FriendsViewController: UIViewController {
     gamesViewModel.getCurrentUserGames(userId: player.playerId) { (statusCode, message, games) -> (Void) in
       Utilities.hideProgressHud()
       if (statusCode == 200 || statusCode == 201), let g = games {
-        self.gamesArray = g
+        let userId = self.currentUser?["id"] as? Int
+        if((self.player.isFriend || (self.player.playerId == userId)) && g.count > 0) {
+            self.gamesArray = g
+        } else {
+            self.initializeDelegates()
+        }
         self.tableView.reloadData()
       } else {
         if let m = message {
@@ -253,8 +259,19 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     if tabSelected == 0 {
+      if (self.gamesArray.count == 0) {
+        self.tableView.separatorColor = UIColor.clear
+      } else {
+        self.tableView.separatorColor = UIColor.lightGray
+      }
+        
       return self.gamesArray.count
     } else {
+      if (self.friendsArray.count == 0) {
+        self.tableView.separatorColor = UIColor.clear
+      } else {
+        self.tableView.separatorColor = UIColor.darkGray
+      }
       return self.friendsArray.count
     }
   }
@@ -279,4 +296,34 @@ extension FriendsViewController : FriendStatusCustomCellDelegate {
       self.navigationController?.pushViewController(friendsVC, animated: true)
     }
   }
+}
+
+extension FriendsViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func initializeDelegates() {
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+    }
+    
+    
+    // MARK: UI for empty data
+    //    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+    //        return UIImage(named:"noNotifs")
+    //    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        var title = ""
+        if (player.isFriend) {
+            title = player.firstName + " has no games as of the moment"
+        } else {
+            title = "Cannot View" + " " + player.firstName + "'s Games"  
+        }
+        
+        let myAttribute = [ NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0) ]
+        let myAttrString = NSAttributedString(string: title, attributes: myAttribute)
+        
+        
+        
+        return myAttrString
+    }
 }
