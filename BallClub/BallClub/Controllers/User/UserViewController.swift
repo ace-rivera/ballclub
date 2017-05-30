@@ -224,7 +224,7 @@ class UserViewController: UIViewController {
   
   //MARK: - IBAction
   @IBAction func editProfilePressed(_ sender: AnyObject) {
-    
+    self.didTapOnCurrentUser()
   }
  
   @IBAction func settingsButtonPressed(_ sender: Any) {

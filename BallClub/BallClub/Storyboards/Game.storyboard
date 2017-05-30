@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pbT-sM-LxJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="56" width="383" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gC3-Cl-DEV" id="hcV-B7-BKK">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -743,7 +743,7 @@
                                 <rect key="frame" x="0.0" y="56" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="foT-GL-PWT" id="J8O-Hj-6zh">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -984,6 +984,7 @@
                                                     </constraints>
                                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" backgroundImage="ic_closed"/>
+                                                    <state key="selected" backgroundImage="ic_closed_pre"/>
                                                     <connections>
                                                         <action selector="setGamePrivacy:" destination="xVY-nh-ebn" eventType="touchUpInside" id="vef-4J-Byo"/>
                                                     </connections>
@@ -1024,6 +1025,7 @@
                                                     </constraints>
                                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" image="ic_public"/>
+                                                    <state key="selected" image="ic_public_pre"/>
                                                     <connections>
                                                         <action selector="setGamePrivacy:" destination="xVY-nh-ebn" eventType="touchUpInside" id="1wP-By-J78"/>
                                                     </connections>
@@ -1535,14 +1537,15 @@
                                                         <action selector="setGamePrivacy:" destination="HNv-WM-M5f" eventType="touchUpInside" id="YyO-pY-3hV"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-eK-Cse">
+                                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-eK-Cse">
                                                     <rect key="frame" x="490" y="19" width="36" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="36" id="HYp-i8-p9H"/>
                                                         <constraint firstAttribute="height" constant="36" id="Mwk-Hy-DLx"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" backgroundImage="ic_closed"/>
+                                                    <state key="normal" image="ic_closed" backgroundImage="            "/>
+                                                    <state key="selected" image="ic_closed_pre"/>
                                                     <connections>
                                                         <action selector="setGamePrivacy:" destination="HNv-WM-M5f" eventType="touchUpInside" id="cSO-xy-7mz"/>
                                                     </connections>
@@ -1575,14 +1578,15 @@
                                                     <color key="textColor" red="0.90196078430000004" green="0.38823529410000002" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcg-mr-EGx">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcg-mr-EGx">
                                                     <rect key="frame" x="74" y="21" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="GuY-Uz-lx5"/>
                                                         <constraint firstAttribute="width" constant="34" id="Neh-TG-692"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" backgroundImage="ic_public"/>
+                                                    <state key="normal" image="ic_public"/>
+                                                    <state key="selected" image="ic_public_pre"/>
                                                     <connections>
                                                         <action selector="setGamePrivacy:" destination="HNv-WM-M5f" eventType="touchUpInside" id="uvQ-wK-NSF"/>
                                                     </connections>
@@ -2089,11 +2093,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Delete" width="30" height="30"/>
-        <image name="Edit" width="30" height="30"/>
+        <image name="            " width="16" height="16"/>
+        <image name="Delete" width="100" height="100"/>
+        <image name="Edit" width="100" height="100"/>
         <image name="back" width="22" height="22"/>
         <image name="ic_check" width="512" height="512"/>
         <image name="ic_closed" width="512" height="512"/>
+        <image name="ic_closed_pre" width="512" height="512"/>
         <image name="ic_game_ios" width="480" height="480"/>
         <image name="ic_info" width="512" height="512"/>
         <image name="ic_invite" width="512" height="512"/>
@@ -2105,6 +2111,7 @@
         <image name="ic_peso" width="512" height="512"/>
         <image name="ic_private" width="512" height="512"/>
         <image name="ic_public" width="512" height="512"/>
+        <image name="ic_public_pre" width="512" height="512"/>
         <image name="ic_reject" width="512" height="512"/>
         <image name="ic_schedule" width="512" height="512"/>
         <image name="ic_tabbar_game" width="30" height="30"/>

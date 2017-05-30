@@ -153,12 +153,11 @@
                                             <constraint firstAttribute="height" constant="30" id="Lki-1a-RL0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="View/Edit your profile">
+                                        <state key="normal" title="View your profile">
                                             <color key="titleColor" red="0.14117647059999999" green="0.1450980392" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="editProfilePressed:" destination="1Qb-0J-YXH" eventType="touchUpInside" id="V8X-j0-gZm"/>
-                                            <segue destination="NpR-vH-Scr" kind="show" id="gKX-wG-VRh"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_settings" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-j7-2SX">
@@ -323,9 +322,9 @@
         <!--Edit Profile-->
         <scene sceneID="Mfi-CP-qSB">
             <objects>
-                <tableViewController title="Edit Profile" id="NpR-vH-Scr" customClass="EditProfileTableViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditVC" title="Edit Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NpR-vH-Scr" customClass="EditProfileTableViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SED-c2-r30">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="801"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.12941176469999999" green="0.1333333333" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>

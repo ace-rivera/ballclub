@@ -41,6 +41,10 @@ class UserAddFriendCustomCell: UITableViewCell {
     userName.text = name
   }
   
+  func setFriendsPosition (position: String) {
+    
+  }
+  
   func setFriendUserImage (image : String){
     if let url = URL(string: image) {
       Nuke.loadImage(with: url, into: self.userProfileImage)

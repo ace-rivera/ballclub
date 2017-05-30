@@ -20,12 +20,14 @@ class FriendsViewController: UIViewController {
   @IBOutlet weak var homeCityLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var segmentControl: UISegmentedControl!
+  @IBOutlet weak var editButton: UIBarButtonItem!
   
   var tabSelected = 0
   var player: Player!
   var selectedUser : Player!
   var selectedRequest: Request!
   var selectedGameId: Int?
+  var gameCreatorId: Int?
   var friendsArray = [Player]()
   var gamesArray = [Game]()
   let friendsViewModel = FriendsViewModel()
@@ -60,6 +62,10 @@ class FriendsViewController: UIViewController {
     
     if(player.isFriend || (player.playerId == userId)) {
       self.addFriendButton.isHidden = true;
+    }
+    
+    if (player.playerId != userId) {
+     self.editButton.tintColor = UIColor.clear
     }
     
     
@@ -202,17 +208,22 @@ class FriendsViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "GameDetailSegue" {
+    if segue.identifier == "showGameDetailsVC" {
       if let gameDetailViewController: GameDetailViewController = segue.destination as? GameDetailViewController {
-        if let id = self.selectedGameId {
-          gameDetailViewController.gameId = id
+        if let gameId = self.selectedGameId, let playerId = self.gameCreatorId {
+          gameDetailViewController.gameCreatorId = playerId
+          gameDetailViewController.gameId = gameId
         }
       }
-    }
+    } 
+  }
+  
+  
+  @IBAction func showEditVC(_ sender: Any) {
+    self.performSegue(withIdentifier: "showEditVC", sender: self)
   }
   
 }
-
 
 extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
   
@@ -228,6 +239,7 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: "FriendStatusCustomCell") as! FriendStatusCustomCell
       cell.setFriendUserName(name: self.friendsArray[indexPath.row].firstName)
       cell.setuserCity(city: self.friendsArray[indexPath.row].city)
+      cell.setFriendsPosition(position: self.friendsArray[indexPath.row].position ?? "G")
       if let imageString = self.friendsArray[indexPath.row].avatar {
         cell.setFriendUserImage(image: imageString)
       }
@@ -250,16 +262,11 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tabSelected ==  0 {
       self.selectedGameId = self.gamesArray[indexPath.row].gameId
-      let storyboard = UIStoryboard.init(name: "Game", bundle: nil)
-      if  let gamesVC = storyboard.instantiateViewController(withIdentifier: "gameDetailsVC") as? GameDetailViewController {
-        if let id = self.selectedGameId {
-          gamesVC.gameId = id
-          self.navigationController?.pushViewController(gamesVC, animated: true)
-        }
-        
-      }
+      self.gameCreatorId = self.gamesArray[indexPath.row].gameCreator.playerId
+      self.performSegue(withIdentifier: "showGameDetailsVC", sender: self)
     }
   }
+  
 }
 
 

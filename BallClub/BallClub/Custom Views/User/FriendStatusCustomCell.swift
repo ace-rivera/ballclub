@@ -39,6 +39,10 @@ class FriendStatusCustomCell: UITableViewCell {
     userName.text = name
   }
   
+  func setFriendsPosition (position: String) {
+    userPositionImageView.setTitle(position, for: .normal)
+  }
+  
   func setFriendUserImage (image : String){
     if let url = URL(string: image) {
       Nuke.loadImage(with: url, into: self.userImageView)
