@@ -105,6 +105,8 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     additionInfo.sizeToFit()
     self.isGameReservedLabel.layer.borderColor = UIColor(red: 221.0/255.0, green: 86.0/255.0, blue: 42.0/255.0, alpha: 1).cgColor
     self.gameDate.layer.borderColor = UIColor.lightGray.cgColor
+    tentativeIcon.isHidden = true
+    tentativeButton.isHidden = true
     
     if !isCurrentUsersGame {
       self.editGameButton.tintColor = UIColor.clear
@@ -220,8 +222,8 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       notGoingButton.isSelected = true
     case 1:
       self.updateGameStatus(status: button.tag)
-      tentativeIcon.isSelected = true
-      tentativeButton.isSelected = true
+      notGoingIcon.isSelected = true
+      notGoingButton.isSelected = true
     case 2:
       self.updateGameStatus(status: button.tag)
       goingIcon.isSelected = true
