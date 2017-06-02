@@ -37,6 +37,8 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   var backGroundView = UIView()
   var isGamePrivate = 0
+  var dateFormatter = DateFormatter()
+  var calendar = Calendar.current
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -53,23 +55,17 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     self.friendsCollectionView.register(UINib(nibName: "EditInvitedFriendsCollectionViewCell",bundle: nil), forCellWithReuseIdentifier: "EditInvitedFriendsCollectionViewCell")
     self.createGameTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width:
       self.createGameTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
-    publicIcon.isSelected = false
-    publicButton.isSelected = false
+    publicIcon.isSelected = true
+    publicButton.isSelected = true
     
     privateButton.isHidden = true
     privateIcon.isHidden = true
     
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
-    
-    let calendar = Calendar.current
+    dateFormatter.dateFormat = "MMMM dd, yyyy hh:mm a"
     let newDate = calendar.date(byAdding: .hour, value: 2, to: Date()) ?? Date()
     
     self.startTimeButton.setTitle(dateFormatter.string(from: Date()), for: .normal)
     self.endTimeButton.setTitle(dateFormatter.string(from: newDate), for: .normal)
-    
-    publicIcon.setImage(UIImage(named: "ic_public"), for: .normal);
-    privateIcon.setImage(UIImage(named: "ic_private"), for: .normal);
   }
   
   //MARK: - Helper Methods
@@ -103,9 +99,11 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
+    let newDate = calendar.date(byAdding: .hour, value: 2, to: sender.date) ?? Date()
     
     if sender.tag == 1000 {
       self.startTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+      self.endTimeButton.setTitle(dateFormatter.string(from: newDate), for: .normal)
     } else {
       self.endTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
     }
@@ -194,6 +192,11 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     let datePicker = UIDatePicker()
     datePicker.datePickerMode = .dateAndTime
     datePicker.tag = sender.tag
+    dateFormatter.dateFormat = "MMMM dd, yyyy hh:mm a"
+    dateFormatter.timeZone = NSTimeZone.local
+    
+    let dateStr = sender.titleLabel??.text ?? ""
+    datePicker.date = dateFormatter.date(from: dateStr) ?? Date()
 
     let datePickerFrame = CGRect(x: 0, y: 0,
                        width: self.pickerView.frame.width,
