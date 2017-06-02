@@ -98,7 +98,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   func setUpUI(){
     self.editGameButton.tintColor = UIColor.white
     self.deleteGameButton.tintColor = UIColor.white
-    self.playerCollection.register(UINib(nibName: "FriendsRoundedCollectionCell",bundle: nil), forCellWithReuseIdentifier: "FriendsRoundedCollectionCell")
+    self.playerCollection.register(UINib(nibName: "EditInvitedFriendsCollectionViewCell",bundle: nil), forCellWithReuseIdentifier: "EditInvitedFriendsCollectionViewCell")
     self.gameDetailTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.gameDetailTableView.bounds.size.width, height: 0.01)) //remove header - extra space above tableview
     self.gameDetailTableView.estimatedRowHeight = 200
     self.gameDetailTableView.rowHeight = UITableViewAutomaticDimension
@@ -140,10 +140,13 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       
       if game.invites.count > 0 {
         self.goingPlayers = Utilities.getGoingUsers(invites: game.invites)
-        self.setAttendeesOfGame(friends: self.goingPlayers, maxPlayers: game.maxCapacity ?? 0)
+        //self.setAttendeesOfGame(friends: self.goingPlayers, maxPlayers: game.maxCapacity ?? 0)
         
         self.invitedPlayers = Utilities.getInvitedPlayers(invites: game.invites)
-        self.setPendingInvites()
+        //self.setPendingInvites()
+        self.playerCollection.reloadData()
+        self.displayAllInvites()
+        
       }
       
       if game.privacy == 0 {
@@ -240,9 +243,9 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   //MARK: - Collection View Delegate
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsRoundedCollectionCell", for: indexPath as IndexPath) as! FriendsRoundedCollectionCell
-    
+    let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditInvitedFriendsCollectionViewCell", for: indexPath as IndexPath) as! EditInvitedFriendsCollectionViewCell
     collectionCell.setImageOfFriend(imageUrlString: self.invitedPlayers[indexPath.row].avatar ?? "")
+    collectionCell.setUserName(userName: self.invitedPlayers[indexPath.row].firstName)
     return collectionCell
   }
   
@@ -274,47 +277,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     }
     
   }
-  
-  func setAttendeesOfGame(friends : [Player], maxPlayers: Int){
-    if friends.count == 0 {
-      self.goingPlayersLabel.text = "No one has yet to confirm"
-    } else if friends.count == 2 {
-      self.goingPlayersLabel.text = "\(friends[0].firstName) and \(friends[1].firstName) are going"
-    } else if friends.count == 1 {
-      self.goingPlayersLabel.text = "\(friends[0].firstName) is going"
-    } else {
-      self.goingPlayersLabel.text = "\(friends[0].firstName) and \(friends.count-1) others are going)"
-    }
-    if let imageUrl = URL(string: friends.first?.avatar ?? "") {
-      Nuke.loadImage(with: imageUrl, into: self.goingPlayerImage)
-    }
-  }
-  
-  func setPendingInvites() {
-    if let game = self.currentGameSelected {
-      let pendingInvites = game.invites.filter {
-        $0.status != 2
-      }
-      let pendingPlayers = Utilities.getInvitedPlayers(invites: pendingInvites)
-      
-      if pendingPlayers.count == 0 {
-        self.invitedPlayersLabel.text = "You have not yet invited any users to this game!"
-      } else if pendingPlayers.count == 2 {
-        self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName) and \(pendingPlayers[1].firstName) are invited"
-      } else if pendingPlayers.count == 1 {
-        self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName) is invited"
-      } else {
-        self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName), \(pendingPlayers[1].firstName) and \(pendingPlayers.count-2) others are invited)"
-      }
-      
-      if let imageUrl = URL(string: pendingPlayers.first?.avatar ?? "") {
-        Nuke.loadImage(with: imageUrl, into: self.invitedPlayersImage)
-      }
-      self.playerCollection.reloadData()
-      self.displayAllInvites()
-    }
-  }
-  
+
   func displayAllInvites() {
     var names = ""
     if self.invitedPlayers.count > 0 {
@@ -327,7 +290,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       }
     }
     
-    self.playerNames.text = names
+    //self.playerNames.text = names
   }
   
   
@@ -362,5 +325,47 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   func dismissViewController() {
     self.navigationController?.popViewController(animated: true)
   }
+    
+  //MARK - methods for future user
+    func setAttendeesOfGame(friends : [Player], maxPlayers: Int){
+        if friends.count == 0 {
+            self.goingPlayersLabel.text = "No one has yet to confirm"
+        } else if friends.count == 2 {
+            self.goingPlayersLabel.text = "\(friends[0].firstName) and \(friends[1].firstName) are going"
+        } else if friends.count == 1 {
+            self.goingPlayersLabel.text = "\(friends[0].firstName) is going"
+        } else {
+            self.goingPlayersLabel.text = "\(friends[0].firstName) and \(friends.count-1) others are going)"
+        }
+        if let imageUrl = URL(string: friends.first?.avatar ?? "") {
+            Nuke.loadImage(with: imageUrl, into: self.goingPlayerImage)
+        }
+    }
+    
+    func setPendingInvites() {
+        if let game = self.currentGameSelected {
+            let pendingInvites = game.invites.filter {
+                $0.status != 2
+            }
+            let pendingPlayers = Utilities.getInvitedPlayers(invites: pendingInvites)
+            
+            if pendingPlayers.count == 0 {
+                self.invitedPlayersLabel.text = "You have not yet invited any users to this game!"
+            } else if pendingPlayers.count == 2 {
+                self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName) and \(pendingPlayers[1].firstName) are invited"
+            } else if pendingPlayers.count == 1 {
+                self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName) is invited"
+            } else {
+                self.invitedPlayersLabel.text = "\(pendingPlayers[0].firstName), \(pendingPlayers[1].firstName) and \(pendingPlayers.count-2) others are invited)"
+            }
+            
+            if let imageUrl = URL(string: pendingPlayers.first?.avatar ?? "") {
+                Nuke.loadImage(with: imageUrl, into: self.invitedPlayersImage)
+            }
+            self.playerCollection.reloadData()
+            self.displayAllInvites()
+        }
+    }
+
   
 }

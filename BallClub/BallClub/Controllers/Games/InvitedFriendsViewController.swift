@@ -89,7 +89,7 @@ class InvitedFriendsViewController: UITableViewController {
     case 0: //going
       cell.setImageOfFriend(imageUrlString: self.goingPlayers[indexPath.row].avatar ?? "")
       cell.setNameOfFriend(name: "\(self.goingPlayers[indexPath.row].firstName) \(self.goingPlayers[indexPath.row].lastName)")
-      cell.setPositionOfFriend(position: self.goingPlayers[indexPath.row].position ?? "")
+      cell.setPositionOfFriend(position: self.goingPlayers[indexPath.row].position ?? "G")
       cell.setLoctionOfFriend(location: self.goingPlayers[indexPath.row].city)
       
     case 1: //tentative
