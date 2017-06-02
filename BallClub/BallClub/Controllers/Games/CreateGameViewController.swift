@@ -98,7 +98,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
   func datePickerValueChanged(sender:UIDatePicker) {
     
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
+    dateFormatter.dateFormat = "MMMM dd, yyyy hh:mm a"
     let newDate = calendar.date(byAdding: .hour, value: 2, to: sender.date) ?? Date()
     
     if sender.tag == 1000 {
@@ -197,6 +197,7 @@ class CreateGameViewController: UITableViewController,UICollectionViewDelegate, 
     
     let dateStr = sender.titleLabel??.text ?? ""
     datePicker.date = dateFormatter.date(from: dateStr) ?? Date()
+
 
     let datePickerFrame = CGRect(x: 0, y: 0,
                        width: self.pickerView.frame.width,

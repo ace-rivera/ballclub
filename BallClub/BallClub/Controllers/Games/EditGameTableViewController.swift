@@ -45,7 +45,9 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   var delegate : EditGameTableViewControllerDelegate?
   var backGroundView = UIView()
   var isGamePrivate = 0
-  
+  var dateFormatter = DateFormatter()
+  var calendar = Calendar.current
+    
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -87,9 +89,15 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
       feeTextField.text = String(format: "%.2f", game.fee)
       infoTextfield.text = game.additionalInfo
       
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
-      
+     
+      dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+      dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+      dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+      if let start = dateFormatter.date(from: game.startTime),
+        let end = dateFormatter.date(from: game.endTime) {
+        self.startTimeButton.setTitle(CustomDateFormatter().createGameDateFormat(feedDate: start), for: .normal)
+        self.endTimeButton.setTitle(CustomDateFormatter().createGameDateFormat(feedDate: end), for: .normal)
+      }
       
     }
   }
@@ -121,14 +129,15 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
   
   
   func datePickerValueChanged(sender:UIDatePicker) {
-    
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMMM dd, YYYY hh:mm a"
+    dateFormatter.dateFormat = "MMMM dd, yyyy hh:mm a"
+    let newDate = calendar.date(byAdding: .hour, value: 2, to: sender.date) ?? Date()
     
     if sender.tag == 1000 {
-      self.startTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+        self.startTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+        self.endTimeButton.setTitle(dateFormatter.string(from: newDate), for: .normal)
     } else {
-      self.endTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+        self.endTimeButton.setTitle(dateFormatter.string(from: sender.date), for: .normal)
     }
   }
   
@@ -217,6 +226,12 @@ class EditGameTableViewController: UITableViewController,UICollectionViewDelegat
     let datePicker = UIDatePicker()
     datePicker.datePickerMode = .dateAndTime
     datePicker.tag = sender.tag
+    
+    dateFormatter.dateFormat = "MMMM dd,yyyy hh:mm a"
+    dateFormatter.timeZone = NSTimeZone.local
+    
+    let dateStr = sender.titleLabel??.text ?? ""
+    datePicker.date = dateFormatter.date(from: dateStr) ?? Date()
     
     let datePickerFrame = CGRect(x: 0, y: 0,
                                  width: self.pickerView.frame.width,
