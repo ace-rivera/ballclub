@@ -35,8 +35,10 @@ class SettingsTableViewController: UITableViewController {
   
   // MARK: - Table view data source
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if (indexPath.row == 0) {
       SessionManager.sharedInstance.logout()
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notifications.didLogoutNotification), object: nil)
+    }
   }
   
   func backButtonPressed(){

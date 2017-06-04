@@ -62,6 +62,7 @@
 		B81155F21E057FC80076B17B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F11E057FC80076B17B /* UIViewController.swift */; };
 		B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */; };
 		B81155F91E0581500076B17B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F81E0581500076B17B /* Utilities.swift */; };
+		B81BB3FC1EE469D800D191B5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81BB3FB1EE469D800D191B5 /* ChangePasswordViewController.swift */; };
 		B873640D1E01984A00C77958 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873640C1E01984A00C77958 /* WebService.swift */; };
 		B88A15191E2128780043DBBD /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A15181E2128780043DBBD /* RegistrationViewModel.swift */; };
 		B88A151B1E2128A10043DBBD /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A151A1E2128A10043DBBD /* GamesViewModel.swift */; };
@@ -152,6 +153,7 @@
 		B81155F11E057FC80076B17B /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		B81155F81E0581500076B17B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B81BB3FB1EE469D800D191B5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B873640C1E01984A00C77958 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		B88A15181E2128780043DBBD /* RegistrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		B88A151A1E2128A10043DBBD /* GamesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				BA7777611D80F2FB003F4465 /* FriendsViewController.swift */,
 				B80009B81E27D1150015C6BF /* UserSearchResultTableViewController.swift */,
 				B80009C01E2D27000015C6BF /* SettingsTableViewController.swift */,
+				B81BB3FB1EE469D800D191B5 /* ChangePasswordViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */,
 				FB741E6F1E38556E00B233EE /* CreateLocationViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
+				B81BB3FC1EE469D800D191B5 /* ChangePasswordViewController.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
 				FBD319261E90F2AC00F92577 /* LocationMapviewViewController.swift in Sources */,
 				B873640D1E01984A00C77958 /* WebService.swift in Sources */,
