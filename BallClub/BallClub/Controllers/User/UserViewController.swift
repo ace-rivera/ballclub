@@ -37,7 +37,6 @@ class UserViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.showProgressHud(withTitle: "Loading User Details", inView: self.view)
     }
     
     
@@ -46,7 +45,7 @@ class UserViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // Utilities.showProgressHud(withTitle: "Loading User Data", inView: self.view)
+        Utilities.showProgressHud(withTitle: "Loading User Details", inView: self.view)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
         getAllUsers()
@@ -192,9 +191,9 @@ class UserViewController: UIViewController {
                     if let p = player {
                         self.pendingUserInvitesList.append(p)
                         
-                        if i == self.gameIvitesArray.count - 1 {
-                            Utilities.hideProgressHud()
+                        if i == self.gameIvitesArray.count - 1 {               
                             self.friendsTableView.reloadData()
+                            Utilities.hideProgressHud()
                         }
                         
                     }
