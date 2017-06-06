@@ -49,6 +49,7 @@ class UserViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
         getAllUsers()
+      
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,6 +65,7 @@ class UserViewController: UIViewController {
             
             searchTable.playersArray = allPlayersArray
             searchTable.tempArray = allPlayersArray
+            searchTable.friendRequestArray = incomingRequestsArray
             searchTable.delegate = self
         }
         
@@ -113,7 +115,6 @@ class UserViewController: UIViewController {
             }
         }
         getPendingInvites()
-        getFriendRequests()
     }
     
     // MARK: - Friend Requests API calls
@@ -125,6 +126,7 @@ class UserViewController: UIViewController {
                 if let requests = incomingRequests {
                     self.incomingRequestsArray = requests
                     self.getInvitee()
+                    self.setUpUI()
                 }
             } else {
                 Utilities.hideProgressHud()
@@ -162,7 +164,7 @@ class UserViewController: UIViewController {
         playerViewModel.getAllUsers { (responseCode, message, playersArray) -> (Void) in
             if (responseCode == 200 || responseCode == 201), let players = playersArray {
                 self.allPlayersArray =  players
-                self.setUpUI()
+                self.getFriendRequests()
             } else {
                 Utilities.hideProgressHud()
                 self.showAlert(title: "Error", message: message, callback: {})

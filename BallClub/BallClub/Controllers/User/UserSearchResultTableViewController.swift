@@ -12,6 +12,7 @@ class UserSearchResultTableViewController: UITableViewController {
   
   var playersArray = [Player]()
   var tempArray = [Player]()
+  var friendRequestArray = [Request]()
   var selectedUser : Player?
   var delegate: AnyObject? = nil
   
@@ -24,6 +25,7 @@ extension UserSearchResultTableViewController {
       if let friendsVC: FriendsViewController = destinationNavigationController.topViewController as? FriendsViewController {
         if let user =  selectedUser {
           friendsVC.player = user
+          friendsVC.pendingFriendRequests = friendRequestArray
         }
       }
     }

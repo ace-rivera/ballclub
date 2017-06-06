@@ -35,6 +35,10 @@ class FriendsViewController: UIViewController {
   let gamesViewModel = GamesViewModel()
   var currentUser = UserDefaults.standard.object(forKey: "currentUser") as? [String:Any]
   
+  //variables for getting selectedRequest when nil
+  var pendingFriendRequests = [Request]()
+  
+  
   //MARK:- Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -69,6 +73,9 @@ class FriendsViewController: UIViewController {
      self.editButton.tintColor = UIColor.clear
     }
     
+    if selectedRequest == nil && pendingFriendRequests.count > 0 {
+      selectedRequest = getSelectedRequest(invites: pendingFriendRequests)
+    }
     
     setupProfileData()
     registerNibs()
@@ -188,6 +195,8 @@ class FriendsViewController: UIViewController {
             if statusCode == 200 || statusCode == 201 || statusCode == 204 {
                 self.showAlert(title: "SUCCESS", message: "You have successfully accepted this friend request", callback: {self.addFriendButton.isHidden = true})
                 self.getFriendRequests()
+                self.getFriendsList()
+                self.getGamesList()
             } else {
                 if let m = message {
                     self.showAlert(title: "ERROR", message: m, callback: {})
@@ -284,6 +293,19 @@ extension FriendsViewController : UITableViewDelegate, UITableViewDataSource {
     }
   }
   
+  func getSelectedRequest(invites : [Request]) -> Request {
+
+    for invite in invites {
+      if let id = currentUser?["id"] as? Int {
+        if id == invite.userId {
+          return invite
+        }
+      }
+    }
+    
+    return invites[0]
+  }
+  
 }
 
 
@@ -314,7 +336,12 @@ extension FriendsViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var title = ""
         if (player.isFriend) {
+          if tabSelected == 0 {
             title = player.firstName + " has no games as of the moment"
+          } else {
+            title = player.firstName + " currently has no friends"
+          }
+          
         } else {
             title = "Cannot View" + " " + player.firstName + "'s Games"  
         }
