@@ -45,7 +45,7 @@ class GamesViewController: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     Utilities.hideProgressHud()
-    self.gamesTableview.reloadData() //used to hide details of selected cell
+    self.resetData()
   }
   
   override func didReceiveMemoryWarning() {
