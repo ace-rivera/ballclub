@@ -66,9 +66,12 @@ class MapsViewController: UIViewController {
   
   //ACE : change
   @IBAction func didTapOnCreateGame(_ sender: Any) {
-    let storyboard = UIStoryboard(name: "Maps", bundle: Bundle.main)
-    if let createGameVC = storyboard.instantiateViewController(withIdentifier: "CreateLocationViewController")
-      as? CreateLocationViewController {
+    let storyboard = UIStoryboard(name: "Game", bundle: Bundle.main)
+    if let createGameVC = storyboard.instantiateViewController(withIdentifier: "CreateGameViewController")
+      as? CreateGameViewController {
+//    let storyboard = UIStoryboard(name: "Maps", bundle: Bundle.main)
+//    if let createGameVC = storyboard.instantiateViewController(withIdentifier: "CreateLocationViewController")
+//      as? CreateLocationViewController {
       self.navigationController?.pushViewController(createGameVC, animated: true)
     }
   }

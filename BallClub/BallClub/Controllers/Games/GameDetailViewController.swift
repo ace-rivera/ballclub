@@ -14,6 +14,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   @IBOutlet var gameDetailTableView: UITableView!
   
+  @IBOutlet weak var mapHeaderView: UIView!
   @IBOutlet weak var locationImage: UIImageView!
   @IBOutlet weak var gameDate: UILabel!
   @IBOutlet weak var gameTitle: UILabel!
@@ -45,6 +46,9 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   @IBOutlet weak var editGameButton: UIBarButtonItem!
   @IBOutlet weak var deleteGameButton: UIBarButtonItem!
+  
+  
+  @IBOutlet weak var choicesCell: UITableViewCell!
   
   var gameId: Int? {
     didSet {
@@ -91,6 +95,13 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
           editVC.delegate =  self
         }
       }
+    } else if segue.identifier == "gameDetailToSingleMap" {
+      if let singleMapVC: SingleMapViewController = segue.destination as? SingleMapViewController {
+        if let game = self.currentGameSelected {
+          singleMapVC.latitude = Double(game.location.latitude ?? "0") ?? 0.0
+          singleMapVC.longitude = Double(game.location.longitude ?? "0") ?? 0.0
+        }
+      }
     }
   }
   
@@ -116,7 +127,10 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     if let gameId = self.gameId, let playerId = gameCreatorId, loadGameDetail {
       self.initializeGameDetails(userId: playerId, gameId: gameId)
     }
-    
+   
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector (self.showSingleMapView))
+    tapGesture.numberOfTapsRequired = 1
+    self.mapHeaderView.addGestureRecognizer(tapGesture)
   }
   
   func setGameDetails() {
@@ -163,7 +177,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       
       self.isGameReservedLabel.text = (game.reserved ?? false) ? "RESERVED" : "PENDING"
       
-      self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(self.invitedPlayers.count)"
+      self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(game.maxCapacity ?? 0)"
       self.additionInfo.text = game.additionalInfo ?? ""
       
       if let longitude = game.location.longitude,
@@ -186,6 +200,10 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
         self.showAlert(title: "Error", message: "Unable to fetch game details", callback: {})
       }
     }
+  }
+  
+  func showSingleMapView() {
+    self.performSegue(withIdentifier: "gameDetailToSingleMap", sender: self)
   }
   
   func setupGameLocation(latitude: String, longitude: String) {
@@ -366,6 +384,13 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
             self.displayAllInvites()
         }
     }
+}
 
-  
+extension GameDetailViewController {
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if indexPath.section == 0 && indexPath.row == 1 && self.isCurrentUsersGame {
+      return 0
+    }
+    return super.tableView(tableView, heightForRowAt: indexPath)
+  }
 }
