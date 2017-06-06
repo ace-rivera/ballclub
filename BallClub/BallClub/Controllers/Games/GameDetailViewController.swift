@@ -46,6 +46,9 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   @IBOutlet weak var editGameButton: UIBarButtonItem!
   @IBOutlet weak var deleteGameButton: UIBarButtonItem!
   
+  
+  @IBOutlet weak var choicesCell: UITableViewCell!
+  
   var gameId: Int? {
     didSet {
       if let gameId = self.gameId, let playerId = gameCreatorId {
@@ -163,7 +166,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
       
       self.isGameReservedLabel.text = (game.reserved ?? false) ? "RESERVED" : "PENDING"
       
-      self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(self.invitedPlayers.count)"
+      self.playerCount.text = "PLAYERS \(self.goingPlayers.count)/\(game.maxCapacity ?? 0)"
       self.additionInfo.text = game.additionalInfo ?? ""
       
       if let longitude = game.location.longitude,
@@ -366,6 +369,13 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
             self.displayAllInvites()
         }
     }
+}
 
-  
+extension GameDetailViewController {
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if indexPath.section == 0 && indexPath.row == 1 && self.isCurrentUsersGame {
+      return 0
+    }
+    return super.tableView(tableView, heightForRowAt: indexPath)
+  }
 }

@@ -105,7 +105,7 @@ class FeedsCustomCell: UITableViewCell {
         acceptedInvites += 1
       }
     }
-    gameMemberCount.text = "\(acceptedInvites)/\(invitesArray.count)"
+    gameMemberCount.text = "\(acceptedInvites)/\(maxPlayers)"
   }
 
   func setAttendeesOfGame(friends : [Player]){ //TODO: change datatype to User - Friend
@@ -117,7 +117,7 @@ class FeedsCustomCell: UITableViewCell {
     } else if friends.count == 1 {
       gameFriends.text = "\(friends[0].firstName) is going"
     } else {
-      gameFriends.text = "\(friends[0].firstName) and \(friends.count-1) other friends are going)"
+      gameFriends.text = "\(friends[0].firstName) and \(friends.count-1) other friends are going"
     }
   }
 }
