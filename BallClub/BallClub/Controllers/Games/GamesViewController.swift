@@ -18,6 +18,12 @@ class GamesViewController: UIViewController {
   var publicGamesList = [Game]()
   var closedGamesList = [Game]()
   var completedGamesList = [Game]()
+  
+  var filteredPublicGames = [Game]()
+  var filteredUserGames = [Game]()
+  var filteredCompletedGames = [Game]()
+  
+  var isSearchEnabled = false
   var selectedGameId: Int?
   var gameCreatorId: Int?
   var isCurrentUsersGame = false
@@ -46,6 +52,7 @@ class GamesViewController: UIViewController {
     super.viewWillDisappear(animated)
     Utilities.hideProgressHud()
     self.resetData()
+    self.isSearchEnabled = false
   }
   
   override func didReceiveMemoryWarning() {
@@ -204,13 +211,29 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
       
       switch indexPath.section {
       case 0:
-        cell.game = self.publicGamesList[indexPath.row]
+        if self.isSearchEnabled {
+          cell.game = self.filteredPublicGames[indexPath.row]
+        } else {
+          cell.game = self.publicGamesList[indexPath.row]
+        }
       case 1:
-        cell.game = self.userGamesList[indexPath.row]
+        if self.isSearchEnabled {
+          cell.game = self.filteredUserGames[indexPath.row]
+        } else {
+          cell.game = self.userGamesList[indexPath.row]
+        }
       case 2:
-        cell.game = self.completedGamesList[indexPath.row]
+        if self.isSearchEnabled {
+          cell.game = self.filteredCompletedGames[indexPath.row]
+        } else {
+          cell.game = self.completedGamesList[indexPath.row]
+        }
       default:
-        cell.game = self.publicGamesList[indexPath.row]
+        if self.isSearchEnabled {
+          cell.game = self.filteredPublicGames[indexPath.row]
+        } else {
+          cell.game = self.publicGamesList[indexPath.row]
+        }
       }
       
       self.view.layoutIfNeeded()
@@ -226,12 +249,23 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
-      //Ace Rivera : temp - use section 0 first
-      return self.publicGamesList.count
+      if self.isSearchEnabled {
+        return self.filteredPublicGames.count
+      } else {
+        return self.publicGamesList.count
+      }
     case 1:
-      return self.userGamesList.count
+      if self.isSearchEnabled {
+        return self.filteredUserGames.count
+      } else {
+        return self.userGamesList.count
+      }
     case 2:
-      return self.completedGamesList.count
+      if self.isSearchEnabled {
+        return self.filteredCompletedGames.count
+      } else {
+        return self.completedGamesList.count
+      }
     default:
       return 0
     }
@@ -239,32 +273,80 @@ extension GamesViewController : UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell : FeedsCustomCell = tableView.cellForRow(at: indexPath) as! FeedsCustomCell
-    if cell.detailsShown || indexPath.section != 0 { //2nd click
-      cell.detailsShown = false
-      selectedIndexPath = nil
-      if indexPath.section == 0 {
-        if self.publicGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
-          isCurrentUsersGame = true
-        } else {
-          isCurrentUsersGame = false
+    if self.isSearchEnabled {
+      if cell.detailsShown || indexPath.section != 0 { //2nd click
+        cell.detailsShown = false
+        selectedIndexPath = nil
+        if indexPath.section == 0 {
+          if self.filteredPublicGames[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+            isCurrentUsersGame = true
+          } else {
+            isCurrentUsersGame = false
+          }
+          self.gameCreatorId = self.filteredPublicGames[indexPath.row].gameCreator.playerId
+          self.selectedGameId = self.filteredPublicGames[indexPath.row].gameId
+          self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+        } else if indexPath.section == 1 {
+          if self.filteredUserGames[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+            isCurrentUsersGame = true
+          } else {
+            isCurrentUsersGame = false
+          }
+          self.gameCreatorId = self.filteredUserGames[indexPath.row].gameCreator.playerId
+          self.selectedGameId = self.filteredUserGames[indexPath.row].gameId
+          self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+        } else if indexPath.section == 2 {
+          if self.filteredCompletedGames[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+            isCurrentUsersGame = true
+          } else {
+            isCurrentUsersGame = false
+          }
+          self.gameCreatorId = self.filteredCompletedGames[indexPath.row].gameCreator.playerId
+          self.selectedGameId = self.filteredCompletedGames[indexPath.row].gameId
+          self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
         }
-        self.gameCreatorId = self.publicGamesList[indexPath.row].gameCreator.playerId
-        self.selectedGameId = self.publicGamesList[indexPath.row].gameId
-        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
-      } else if indexPath.section == 1 {
-        if self.closedGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
-          isCurrentUsersGame = true
-        } else {
-          isCurrentUsersGame = false
-        }
-        self.gameCreatorId = self.closedGamesList[indexPath.row].gameCreator.playerId
-        self.selectedGameId = self.closedGamesList[indexPath.row].gameId
-        self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+      } else { //expand
+        cell.detailsShown = true
+        selectedIndexPath = indexPath
+        tableView.reloadData()
       }
-    } else { //expand
-      cell.detailsShown = true
-      selectedIndexPath = indexPath
-      tableView.reloadData()
+    } else {
+      if cell.detailsShown || indexPath.section != 0 { //2nd click
+        cell.detailsShown = false
+        selectedIndexPath = nil
+        if indexPath.section == 0 {
+          if self.publicGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+            isCurrentUsersGame = true
+          } else {
+            isCurrentUsersGame = false
+          }
+          self.gameCreatorId = self.publicGamesList[indexPath.row].gameCreator.playerId
+          self.selectedGameId = self.publicGamesList[indexPath.row].gameId
+          self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+        } else if indexPath.section == 1 {
+          if self.userGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+            isCurrentUsersGame = true
+          } else {
+            isCurrentUsersGame = false
+          }
+          self.gameCreatorId = self.userGamesList[indexPath.row].gameCreator.playerId
+          self.selectedGameId = self.userGamesList[indexPath.row].gameId
+          self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+        } else if indexPath.section == 2 {
+          if self.completedGamesList[indexPath.row].gameCreator.playerId == currentUser?["id"] as? Int {
+            isCurrentUsersGame = true
+          } else {
+            isCurrentUsersGame = false
+          }
+          self.gameCreatorId = self.completedGamesList[indexPath.row].gameCreator.playerId
+          self.selectedGameId = self.completedGamesList[indexPath.row].gameId
+          self.performSegue(withIdentifier: "GameDetailSegue", sender: self)
+        }
+      } else { //expand
+        cell.detailsShown = true
+        selectedIndexPath = indexPath
+        tableView.reloadData()
+      }
     }
   }
   
@@ -310,4 +392,40 @@ extension GamesViewController : DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
         
         return myAttrString
     }
+}
+
+extension GamesViewController : UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    print("\(searchText)")
+    if searchText.characters.count > 0 {
+      self.isSearchEnabled = true
+    } else {
+      self.isSearchEnabled = false
+    }
+    
+    if self.isSearchEnabled {
+      let publicGames = self.publicGamesList.filter {
+        $0.title.lowercased().contains(searchText.lowercased()) ||
+          $0.gameCreator.lastName.lowercased().contains(searchText.lowercased()) ||
+          $0.gameCreator.firstName.lowercased().contains(searchText.lowercased())
+      }
+      self.filteredPublicGames = publicGames
+      
+      let userGames = self.userGamesList.filter {
+        $0.title.lowercased().contains(searchText.lowercased()) ||
+          $0.gameCreator.lastName.lowercased().contains(searchText.lowercased()) ||
+          $0.gameCreator.firstName.lowercased().contains(searchText.lowercased())
+      }
+      self.filteredUserGames = userGames
+      
+      let completedGames = self.completedGamesList.filter {
+        $0.title.lowercased().contains(searchText.lowercased()) ||
+          $0.gameCreator.lastName.lowercased().contains(searchText.lowercased()) ||
+          $0.gameCreator.firstName.lowercased().contains(searchText.lowercased())
+      }
+      self.filteredCompletedGames = completedGames
+    }
+    self.gamesTableview.reloadData()
+    
+  }
 }

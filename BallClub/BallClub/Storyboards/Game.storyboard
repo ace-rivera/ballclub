@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="150" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="u5j-Lq-2Mk">
-                                <rect key="frame" x="-4" y="64" width="383" height="554"/>
+                                <rect key="frame" x="-4" y="108" width="383" height="510"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="gC3-Cl-DEV">
@@ -42,12 +42,22 @@
                                     <outlet property="delegate" destination="xMW-hG-Ppf" id="5Hd-cD-m8t"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kNc-cx-auk">
+                                <rect key="frame" x="-4" y="64" width="383" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xMW-hG-Ppf" id="9rH-KV-sil"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="u5j-Lq-2Mk" firstAttribute="leading" secondItem="Alv-g2-tum" secondAttribute="leadingMargin" constant="-20" id="0Uu-UI-ZMV"/>
-                            <constraint firstItem="u5j-Lq-2Mk" firstAttribute="top" secondItem="QBh-Ou-cNV" secondAttribute="bottom" id="6Wb-QI-Gxp"/>
+                            <constraint firstItem="kNc-cx-auk" firstAttribute="leading" secondItem="Alv-g2-tum" secondAttribute="leadingMargin" constant="-20" id="V5D-6X-Aov"/>
+                            <constraint firstItem="kNc-cx-auk" firstAttribute="top" secondItem="QBh-Ou-cNV" secondAttribute="bottom" id="XeU-ts-Ngr"/>
+                            <constraint firstItem="u5j-Lq-2Mk" firstAttribute="top" secondItem="kNc-cx-auk" secondAttribute="bottom" id="hwo-Oj-6DC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="u5j-Lq-2Mk" secondAttribute="trailing" constant="-20" id="mgL-XH-QxE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kNc-cx-auk" secondAttribute="trailing" constant="-20" id="y1d-wM-jER"/>
                             <constraint firstItem="Bik-Tq-xvN" firstAttribute="top" secondItem="u5j-Lq-2Mk" secondAttribute="bottom" id="yKA-zI-BOH"/>
                         </constraints>
                     </view>
@@ -69,19 +79,14 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Create" id="qTv-Sv-Lxd">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="xVY-nh-ebn" kind="show" id="y1M-PC-dCe">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="ic_navigation_search" id="l1w-h1-L20">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="qTv-Sv-Lxd">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="xVY-nh-ebn" kind="show" id="y1M-PC-dCe">
+                                    <nil key="action"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="currentWeekTitle" destination="hTZ-Hy-Fcq" id="Xq9-G0-eEr"/>
@@ -98,7 +103,7 @@
                 </navigationItem>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLv-cc-aJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="349"/>
+            <point key="canvasLocation" x="704.79999999999995" y="348.57571214392806"/>
         </scene>
         <!--Single Map View Controller-->
         <scene sceneID="wnm-cs-ZK7">
@@ -2059,7 +2064,6 @@
         <image name="ic_navigation_filter" width="30" height="30"/>
         <image name="ic_navigation_next" width="30" height="30"/>
         <image name="ic_navigation_previous" width="30" height="30"/>
-        <image name="ic_navigation_search" width="30" height="30"/>
         <image name="ic_peso" width="512" height="512"/>
         <image name="ic_private" width="512" height="512"/>
         <image name="ic_public" width="512" height="512"/>
