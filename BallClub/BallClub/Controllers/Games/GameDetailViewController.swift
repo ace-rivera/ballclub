@@ -14,6 +14,7 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
   
   @IBOutlet var gameDetailTableView: UITableView!
   
+  @IBOutlet weak var mapHeaderView: UIView!
   @IBOutlet weak var locationImage: UIImageView!
   @IBOutlet weak var gameDate: UILabel!
   @IBOutlet weak var gameTitle: UILabel!
@@ -94,6 +95,13 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
           editVC.delegate =  self
         }
       }
+    } else if segue.identifier == "gameDetailToSingleMap" {
+      if let singleMapVC: SingleMapViewController = segue.destination as? SingleMapViewController {
+        if let game = self.currentGameSelected {
+          singleMapVC.latitude = Double(game.location.latitude ?? "0") ?? 0.0
+          singleMapVC.longitude = Double(game.location.longitude ?? "0") ?? 0.0
+        }
+      }
     }
   }
   
@@ -119,7 +127,10 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
     if let gameId = self.gameId, let playerId = gameCreatorId, loadGameDetail {
       self.initializeGameDetails(userId: playerId, gameId: gameId)
     }
-    
+   
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector (self.showSingleMapView))
+    tapGesture.numberOfTapsRequired = 1
+    self.mapHeaderView.addGestureRecognizer(tapGesture)
   }
   
   func setGameDetails() {
@@ -189,6 +200,10 @@ class GameDetailViewController: UITableViewController, UICollectionViewDelegate,
         self.showAlert(title: "Error", message: "Unable to fetch game details", callback: {})
       }
     }
+  }
+  
+  func showSingleMapView() {
+    self.performSegue(withIdentifier: "gameDetailToSingleMap", sender: self)
   }
   
   func setupGameLocation(latitude: String, longitude: String) {

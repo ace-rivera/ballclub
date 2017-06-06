@@ -79,6 +79,7 @@
 		BA80E4FF1EC45928003D2115 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA80E4FE1EC45927003D2115 /* UITableViewController.swift */; };
 		BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
+		FB066BCC1EE6C57B00882A4D /* SingleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB066BCB1EE6C57B00882A4D /* SingleMapViewController.swift */; };
 		FB0ACCD21E3EE42600263C24 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0ACCD11E3EE42600263C24 /* LocationAnnotation.swift */; };
 		FB0D41711E2D0EFE0073CE44 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */; };
 		FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E281D7FE45800D6D2F4 /* Game.swift */; };
@@ -171,6 +172,7 @@
 		BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
+		FB066BCB1EE6C57B00882A4D /* SingleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleMapViewController.swift; sourceTree = "<group>"; };
 		FB0ACCD11E3EE42600263C24 /* LocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		FB5E3E281D7FE45800D6D2F4 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Models/Game.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */,
 				BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */,
 				FBD319251E90F2AC00F92577 /* LocationMapviewViewController.swift */,
+				FB066BCB1EE6C57B00882A4D /* SingleMapViewController.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */,
 				FB741E6F1E38556E00B233EE /* CreateLocationViewController.swift in Sources */,
+				FB066BCC1EE6C57B00882A4D /* SingleMapViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
 				B81BB3FC1EE469D800D191B5 /* ChangePasswordViewController.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,

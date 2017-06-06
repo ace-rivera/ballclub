@@ -100,6 +100,52 @@
             </objects>
             <point key="canvasLocation" x="705" y="349"/>
         </scene>
+        <!--Single Map View Controller-->
+        <scene sceneID="wnm-cs-ZK7">
+            <objects>
+                <viewController id="jbE-H7-Xo2" customClass="SingleMapViewController" customModule="BallClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WF1-vR-hLl"/>
+                        <viewControllerLayoutGuide type="bottom" id="c06-TU-DNo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4qS-SF-eyr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mKw-V8-nfy">
+                                <rect key="frame" x="0.0" y="64" width="600" height="836"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c06-TU-DNo" firstAttribute="top" secondItem="mKw-V8-nfy" secondAttribute="bottom" id="1eW-eb-MwG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mKw-V8-nfy" secondAttribute="trailing" constant="-20" id="dhl-I7-MIY"/>
+                            <constraint firstItem="mKw-V8-nfy" firstAttribute="top" secondItem="WF1-vR-hLl" secondAttribute="bottom" id="kEb-DH-oBA"/>
+                            <constraint firstItem="mKw-V8-nfy" firstAttribute="leading" secondItem="4qS-SF-eyr" secondAttribute="leadingMargin" constant="-20" id="spF-HC-EgL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qjl-aq-CzZ">
+                        <leftBarButtonItems>
+                            <barButtonItem image="back" id="W6l-vX-Blt">
+                                <inset key="imageInsets" minX="-10" minY="0.0" maxX="-35" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="jbE-H7-Xo2" id="w2w-8O-ol5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Back" id="BUQ-5B-wOM">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="mKw-V8-nfy" id="wam-yo-cVC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N5i-Lv-HCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1131.2" y="1306.1469265367318"/>
+        </scene>
         <!--Game Detail View Controller-->
         <scene sceneID="GPr-lf-aMt">
             <objects>
@@ -118,7 +164,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="229"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi0-6J-dUQ">
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi0-6J-dUQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
                                                     <subviews>
                                                         <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lly-xh-zAJ">
@@ -617,6 +663,7 @@
                         <outlet property="goingButton" destination="4U3-SR-G5w" id="4It-pb-Dyc"/>
                         <outlet property="goingIcon" destination="c3y-K9-yZV" id="gA0-K9-UnO"/>
                         <outlet property="isGameReservedLabel" destination="A5Z-Vw-bee" id="hzl-Tm-PJl"/>
+                        <outlet property="mapHeaderView" destination="Mi0-6J-dUQ" id="DoQ-UM-6sC"/>
                         <outlet property="notGoingButton" destination="6hk-XN-nvx" id="cVC-4y-v6h"/>
                         <outlet property="notGoingIcon" destination="0RC-cc-B1t" id="JvH-m7-bZ5"/>
                         <outlet property="playerCollection" destination="y7K-HM-ZxK" id="EIx-Vf-swd"/>
@@ -627,6 +674,7 @@
                             <nil key="action"/>
                         </segue>
                         <segue destination="HNv-WM-M5f" kind="show" identifier="showEditViewController" id="7fU-Td-fbC"/>
+                        <segue destination="jbE-H7-Xo2" kind="show" identifier="gameDetailToSingleMap" id="Jqf-3O-yl5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaN-Xw-N6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
