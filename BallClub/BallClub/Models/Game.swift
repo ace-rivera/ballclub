@@ -14,13 +14,15 @@ struct Game : Decodable {
   var title: String
   var startTime: String
   var endTime: String
-  var reserved: Bool
-  var minCapacity: Int
-  var maxCapacity: Int
-  var fee: Double?
+  var reserved: Bool?
+  var minCapacity: Int?
+  var maxCapacity: Int?
+  var fee: Double
+  var privacy: Int
   var additionalInfo: String?
-//  var gameCreator: User
-//  var location: Location
+  var gameCreator: Player
+  var location: Location
+  var invites: [Invite]
 
   // MARK: - Deserialization
   init?(json: JSON) {
@@ -28,23 +30,24 @@ struct Game : Decodable {
       let title: String = "title" <~~ json,
       let startTime: String = "start_time" <~~ json,
       let endTime: String = "end_time" <~~ json,
-      let reserved: Bool = "reserved" <~~ json,
-      let minCapacity: Int = "min_capacity" <~~ json,
-      let maxCapacity: Int = "max_capacity" <~~ json,
-      let fee: Double = "fee" <~~ json else { return nil }
-//      let gameCreator: Int = "user" <~~ json,
-//      let location: Int = "location" <~~ json else { return nil }
+      let fee: Double = "fee" <~~ json,
+      let privacy: Int = "privacy" <~~ json,
+      let gameCreator: Player = "user" <~~ json,
+      let location: Location = "location" <~~ json,
+      let invites: [Invite] = "invites" <~~ json else { return nil }
     
     self.gameId = gameId
     self.title = title
     self.startTime = startTime
     self.endTime = endTime
-    self.reserved = reserved
-    self.minCapacity = minCapacity
-    self.maxCapacity = maxCapacity
+    self.minCapacity = "min_capacity" <~~ json
+    self.maxCapacity = "max_capacity" <~~ json
     self.fee = fee
-//    self.gameCreator = gameCreator
-//    self.location = location
+    self.privacy = privacy
+    self.gameCreator = gameCreator
+    self.location = location
+    self.invites = invites
+    self.reserved = "reserved" <~~ json
     self.additionalInfo = "additional_info" <~~ json
     
   }

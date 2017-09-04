@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class FriendsRoundedCollectionCell: UICollectionViewCell {
   
@@ -16,8 +17,10 @@ class FriendsRoundedCollectionCell: UICollectionViewCell {
     super.awakeFromNib()
   }
   
-  func setImageOfFriend(imageName : String) {
-    friendsImage.image = UIImage(named: imageName)
+  func setImageOfFriend(imageUrlString : String) {
+    if let imageUrl = URL(string: imageUrlString) {
+      Nuke.loadImage(with: imageUrl, into: friendsImage)
+    }
   }
   
 }

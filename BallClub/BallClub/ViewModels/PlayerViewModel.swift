@@ -12,46 +12,13 @@ import Gloss
 
 class PlayerViewModel: NSObject {
   
-  public typealias UserSignInResponseClosure = (Bool, String?) -> (Void)
-  public typealias GetAllUserResponseClosure = (Bool, String, [Player]?) -> (Void)
-  public typealias GetCurrentUserResponseClosure = (Bool, String, Player?) -> (Void)
+  public typealias UpdateUserResponseClosure = (Int, String?) -> (Void)
+  public typealias GetAllUserResponseClosure = (Int, String, [Player]?) -> (Void)
+  public typealias GetCurrentUserResponseClosure = (Int, String, Player?) -> (Void)
   var allUsersArray = [Player]()
-  var currentUser: Player?
-  
-  func playerSign(emailAddress: String, password: String, completionBlock: (UserSignInResponseClosure)? = nil) {
-    APIProvider.request(.userSignIn(emailAddress, password)) { (result) in
-      switch result {
-      case .success(let response):
-        do {
-          let data = try response.mapJSON()
-          debugPrint("data ", data)
-          
-          if let datadict = data as? NSDictionary {
-            if let error = datadict.object(forKey: "errors") as? NSArray {
-              completionBlock!(false, error[0] as? String)
-            } else {
-              let userDetail = datadict.object(forKey: "data") as? [String:Any]
-              
-              if let playerDictionary = userDetail, let p = Player(json: playerDictionary) {
-                self.currentUser = p
-                completionBlock!(true,"Success")
-              } else {
-                completionBlock!(false, "Error")
-              }
-            }
-            
-          }
-          
-        } catch {
-          completionBlock!(false, "Error")
-        }
-      case .failure(let error):
-        completionBlock!(false, error.localizedDescription)
-      }
-    }
-  }
-  
+
   func getAllUsers(completionBlock: (GetAllUserResponseClosure)? = nil) {
+    allUsersArray = [Player]()
     APIProvider.request(.getAllUsers()) { (result) in
       switch result {
       case .success(let response):
@@ -71,19 +38,22 @@ class PlayerViewModel: NSObject {
               }
               
               if self.allUsersArray.count > 0 {
-                completionBlock!(true,"Success",self.allUsersArray)
+                completionBlock!(response.statusCode,"Success",self.allUsersArray)
               } else {
-                completionBlock!(false, "Error", nil)
+                completionBlock!(response.statusCode, "Error", nil)
               }
            // }
             
           }
           
         } catch {
-          completionBlock!(false, "Error", nil)
+          completionBlock!(response.statusCode, "Error", nil)
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription, nil)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription, nil)
+        }
       }
     }
   }
@@ -96,27 +66,85 @@ class PlayerViewModel: NSObject {
           let data = try response.mapJSON()
           debugPrint("data ", data)
           
-          if let playerDictionary = data as? [String: Any] {
+          if let playerDictionary = data as? [String:Any] {
             if let error = playerDictionary["errors"] as? NSArray, let errorMessage = error[0] as? String {
-              completionBlock!(false, errorMessage, nil)
+              completionBlock!(response.statusCode, errorMessage, nil)
             } else {
-              if let p = Player(json: playerDictionary){
-                completionBlock!(true, "User retrieved successfully", p)
+              if let p = Player(json:playerDictionary){
+                completionBlock!(response.statusCode, "User retrieved successfully", p)
               } else {
-                completionBlock!(false, "Cannot convert to Player object", nil)
+                completionBlock!(response.statusCode, "Cannot convert to Player object", nil)
               }
-            }
+         }
             
           }
           
         } catch {
-          completionBlock!(false, "Error", nil)
+          completionBlock!(response.statusCode, "Error", nil)
         }
       case .failure(let error):
-        completionBlock!(false, error.localizedDescription, nil)
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription, nil)
+        }
       }
     }
   }
   
+  func updateUser(userId: Int, userCredentials: [String:Any], completionBlock: (UpdateUserResponseClosure)? = nil) {
+    APIProvider.request(.updateUser(userId, userCredentials)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let datadict = data as? NSDictionary {
+            if let error = datadict.object(forKey: "errors") as? NSArray {
+              completionBlock!(1, error[0] as? String)
+            } else {
+              //TO-DO save new curren user dictionaru to userDefaults
+              completionBlock!(response.statusCode,"Success")
+            }
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error")
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription)
+        }
+      }
+    }
+  }
+  
+  func deleteUser(userId: Int, completionBlock: (UpdateUserResponseClosure)? = nil) {
+    APIProvider.request(.destroyUser(userId)) { (result) in
+      switch result {
+      case .success(let response):
+        do {
+          let data = try response.mapJSON()
+          debugPrint("data ", data)
+          
+          if let datadict = data as? NSDictionary {
+            if let error = datadict.object(forKey: "errors") as? NSArray {
+              completionBlock!(response.statusCode, error[0] as? String)
+            } else {
+              completionBlock!(response.statusCode,"Success")
+            }
+          }
+        } catch {
+          completionBlock!(response.statusCode, "Error")
+        }
+      case .failure(let error):
+        if let compBlock = completionBlock,
+          let response = error.response {
+        compBlock(response.statusCode, error.localizedDescription)
+        }
+      }
+    }
+  }
+
   
 }

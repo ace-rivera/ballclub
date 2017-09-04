@@ -6,22 +6,27 @@
 //  Copyright © 2016 Geraldine Forto. All rights reserved.
 //
 
-import MapKit
+import Gloss
 
-class Location: NSObject, MKAnnotation {
-    let title: String?
-    let locationName: String
-    let discipline: String
-    let coordinate: CLLocationCoordinate2D
-    let annotationImageName: String
+struct Location : Decodable {
+  
+  var locationId: Int?
+  var locationName: String?
+  var latitude: String?
+  var longitude: String?
+  var tag: Int?
+  
+  
+  // MARK: - Deserialization
+  init?(json: JSON) {
+//    guard let locationId: Int = "id" <~~ json,
+//      let locationName: String = "name" <~~ json,
+//      let latitude: Double = "latitude" <~~ json,
+//      let longitude: Double = "longitude" <~~ json else { return nil }
     
-    init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D, annotationImageName: String) {
-        self.title = title
-        self.locationName = locationName
-        self.discipline = discipline
-        self.coordinate = coordinate
-        self.annotationImageName = annotationImageName
-        
-        super.init()
-    }
+    self.locationId = "id" <~~ json
+    self.locationName = "name" <~~ json
+    self.latitude = "latitude" <~~ json
+    self.longitude = "longitude" <~~ json
+  }
 }

@@ -32,4 +32,18 @@ extension UIViewController {
     
     self.present(alert, animated: true, completion: nil)
   }
+  
+  func showAlertWithDefaultButtons(title: String, message: String, callback: @escaping () -> ()) {
+    
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+      alertAction in
+      callback()
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+    
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  
 }

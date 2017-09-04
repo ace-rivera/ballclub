@@ -12,6 +12,19 @@ class InvitedFriendsViewController: UITableViewController {
   
   @IBOutlet var friendsTableView: UITableView!
   
+  var invitedPlayers: [Invite]? {
+    didSet {
+      self.sortInvites()
+    }
+  }
+  var goingInvites = [Invite]()
+  var notGoingInvites = [Invite]()
+  var pendingInvites = [Invite]()
+  
+  var goingPlayers = [Player]()
+  var notGoingPlayers = [Player]()
+  var pendingPlayers = [Player]()
+  
   //MARK: - Lifecycle
   override func viewDidLoad() {
     setUpUI()
@@ -19,6 +32,28 @@ class InvitedFriendsViewController: UITableViewController {
   
   func setUpUI() {
     registerNibs()
+  }
+  
+  func sortInvites() {
+    if let invites = invitedPlayers {
+      for invite in invites {
+        switch invite.status {
+        case 0:
+          pendingInvites.append(invite)
+        case 1:
+          notGoingInvites.append(invite)
+        case 2:
+          goingInvites.append(invite)
+        default:
+          break
+        }
+      }
+    }
+    goingPlayers = Utilities.getInvitedPlayers(invites: self.goingInvites)
+    notGoingPlayers = Utilities.getInvitedPlayers(invites: self.notGoingInvites)
+    pendingPlayers = Utilities.getInvitedPlayers(invites: self.pendingInvites)
+    
+    self.tableView.reloadData()
   }
   
   func registerNibs() {
@@ -38,11 +73,11 @@ class InvitedFriendsViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
-      return TestClass.Game.goingFriends.count
+      return self.goingPlayers.count
     case 1:
-      return TestClass.Game.tentativeFriends.count
+      return self.pendingPlayers.count
     case 2:
-      return TestClass.Game.invitedFriends.count
+      return self.notGoingPlayers.count
     default:
       return 0
     }
@@ -52,22 +87,22 @@ class InvitedFriendsViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "InvitedFriendsCustomCell") as! InvitedFriendsCustomCell
     switch indexPath.section {
     case 0: //going
-      cell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
-      cell.setNameOfFriend(name: TestClass.Common.friendNames[indexPath.row])
-      cell.setPositionOfFriend(position: TestClass.Common.friendPositions[indexPath.row])
-      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
+      cell.setImageOfFriend(imageUrlString: self.goingPlayers[indexPath.row].avatar ?? "")
+      cell.setNameOfFriend(name: "\(self.goingPlayers[indexPath.row].firstName) \(self.goingPlayers[indexPath.row].lastName)")
+      cell.setPositionOfFriend(position: self.goingPlayers[indexPath.row].position ?? "G")
+      cell.setLoctionOfFriend(location: self.goingPlayers[indexPath.row].city)
       
     case 1: //tentative
-      cell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
-      cell.setNameOfFriend(name: TestClass.Game.tentativeFriends[indexPath.row])
-      cell.setPositionOfFriend(position: TestClass.Common.friendPositions[indexPath.row])
-      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
+      cell.setImageOfFriend(imageUrlString: self.pendingPlayers[indexPath.row].avatar ?? "")
+      cell.setNameOfFriend(name: "\(self.pendingPlayers[indexPath.row].firstName) \(self.pendingPlayers[indexPath.row].lastName)")
+      cell.setPositionOfFriend(position: self.pendingPlayers[indexPath.row].position ?? "")
+      cell.setLoctionOfFriend(location: self.pendingPlayers[indexPath.row].city)
       
     case 2: //invited
-      cell.setImageOfFriend(imageName: TestClass.Common.friendImages[indexPath.row])
-      cell.setNameOfFriend(name: TestClass.Game.invitedFriends[indexPath.row])
-      cell.setPositionOfFriend(position: TestClass.Common.friendPositions[indexPath.row])
-      cell.setLoctionOfFriend(location: TestClass.Common.friendLocations[indexPath.row])
+      cell.setImageOfFriend(imageUrlString: self.notGoingPlayers[indexPath.row].avatar ?? "")
+      cell.setNameOfFriend(name: "\(self.notGoingPlayers[indexPath.row].firstName) \(self.notGoingPlayers[indexPath.row].lastName)")
+      cell.setPositionOfFriend(position: self.notGoingPlayers[indexPath.row].position ?? "")
+      cell.setLoctionOfFriend(location: self.notGoingPlayers[indexPath.row].city)
     default:
       break
     }
@@ -80,9 +115,9 @@ class InvitedFriendsViewController: UITableViewController {
     case 0:
       return "GOING"
     case 1:
-      return "TENTATIVE"
+      return "PENDING"
     case 2:
-      return "INVITED"
+      return "NOT GOING"
     default:
       return ""
     }
@@ -91,15 +126,4 @@ class InvitedFriendsViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 40
   }
-  
-//  override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//    let view = UIView()
-//    view.backgroundColor = UIColor.clearColor()
-//    var label = UILabel()
-//    label.textColor = Constants.CustomColor.tabBarBackgroundColor
-//    view.addSubview(label)
-//    
-//    return view
-//  }
-  
 }

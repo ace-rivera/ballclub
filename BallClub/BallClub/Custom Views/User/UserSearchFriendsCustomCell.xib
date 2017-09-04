@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserSearchFriendsCustomCell" rowHeight="50" id="t7L-gh-rQF" customClass="UserSearchFriendsCustomCell" customModule="BallClub" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t7L-gh-rQF" id="qr9-Tj-V6J">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="9kw-qh-yF8">
+                        <rect key="frame" x="15" y="7" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="45a-Xk-bhk"/>
+                            <constraint firstAttribute="width" constant="35" id="CUT-o6-8yH"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="17"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Russell Westbrook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2W-op-e36">
+                        <rect key="frame" x="63" y="8" width="244" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="EEi-U8-R28"/>
+                            <constraint firstAttribute="width" constant="244" id="dkH-YA-FXm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="accepted your request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkk-Uy-kcH">
+                        <rect key="frame" x="63" y="25" width="244" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="2ok-HR-VHO"/>
+                            <constraint firstAttribute="width" constant="244" id="hI6-Kn-tck"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tkk-Uy-kcH" firstAttribute="leading" secondItem="9kw-qh-yF8" secondAttribute="trailing" constant="13" id="6h7-eA-8S4"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="9kw-qh-yF8" secondAttribute="leading" constant="-7" id="DZw-yt-T2B"/>
+                    <constraint firstItem="tkk-Uy-kcH" firstAttribute="leading" secondItem="qr9-Tj-V6J" secondAttribute="leading" constant="63" id="JgT-kW-o0F"/>
+                    <constraint firstItem="H2W-op-e36" firstAttribute="top" secondItem="qr9-Tj-V6J" secondAttribute="topMargin" id="Pwq-Iq-g8b"/>
+                    <constraint firstItem="tkk-Uy-kcH" firstAttribute="leading" secondItem="H2W-op-e36" secondAttribute="leading" id="hbl-hj-1sB"/>
+                    <constraint firstItem="tkk-Uy-kcH" firstAttribute="top" secondItem="qr9-Tj-V6J" secondAttribute="topMargin" constant="17" id="nAA-qy-ywa"/>
+                    <constraint firstItem="9kw-qh-yF8" firstAttribute="centerY" secondItem="qr9-Tj-V6J" secondAttribute="centerY" id="syZ-vV-AzX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="homeCity" destination="tkk-Uy-kcH" id="xEg-93-v3D"/>
+                <outlet property="playerImageView" destination="9kw-qh-yF8" id="qCy-5Y-hLh"/>
+                <outlet property="playerName" destination="H2W-op-e36" id="rSg-xr-Va1"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="341"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sample_profile" width="400" height="400"/>
+    </resources>
+</document>

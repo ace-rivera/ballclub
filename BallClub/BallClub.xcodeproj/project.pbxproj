@@ -50,9 +50,19 @@
 		71D492821D7E926B00E07DDF /* InvitedFriendsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492811D7E926B00E07DDF /* InvitedFriendsCustomCell.swift */; };
 		71D492841D7E927B00E07DDF /* InvitedFriendsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */; };
 		71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D492871D7EB26800E07DDF /* PositionCustomButton.swift */; };
+		B80009B01E2210460015C6BF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009AF1E2210460015C6BF /* Request.swift */; };
+		B80009B21E22248D0015C6BF /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009B11E22248D0015C6BF /* Invite.swift */; };
+		B80009B61E2696A40015C6BF /* UserSearchFriendsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009B41E2696A40015C6BF /* UserSearchFriendsCustomCell.swift */; };
+		B80009B71E2696A40015C6BF /* UserSearchFriendsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80009B51E2696A40015C6BF /* UserSearchFriendsCustomCell.xib */; };
+		B80009B91E27D1150015C6BF /* UserSearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009B81E27D1150015C6BF /* UserSearchResultTableViewController.swift */; };
+		B80009BB1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */; };
+		B80009BE1E2D1E300015C6BF /* FriendsListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009BC1E2D1E300015C6BF /* FriendsListCustomCell.swift */; };
+		B80009BF1E2D1E300015C6BF /* FriendsListCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80009BD1E2D1E300015C6BF /* FriendsListCustomCell.xib */; };
+		B80009C11E2D27000015C6BF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80009C01E2D27000015C6BF /* SettingsTableViewController.swift */; };
 		B81155F21E057FC80076B17B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F11E057FC80076B17B /* UIViewController.swift */; };
 		B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */; };
 		B81155F91E0581500076B17B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81155F81E0581500076B17B /* Utilities.swift */; };
+		B81BB3FC1EE469D800D191B5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81BB3FB1EE469D800D191B5 /* ChangePasswordViewController.swift */; };
 		B873640D1E01984A00C77958 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873640C1E01984A00C77958 /* WebService.swift */; };
 		B88A15191E2128780043DBBD /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A15181E2128780043DBBD /* RegistrationViewModel.swift */; };
 		B88A151B1E2128A10043DBBD /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A151A1E2128A10043DBBD /* GamesViewModel.swift */; };
@@ -61,15 +71,27 @@
 		B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */; };
 		BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */; };
 		BA4E75841D81452A0062DC17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA4E75831D81452A0062DC17 /* Images.xcassets */; };
+		BA5CC2021E4302740035F7BE /* EditGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */; };
 		BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7777611D80F2FB003F4465 /* FriendsViewController.swift */; };
 		BA7777641D80F7AF003F4465 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7777631D80F7AF003F4465 /* Friends.storyboard */; };
+		BA80E4FC1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */; };
+		BA80E4FD1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */; };
+		BA80E4FF1EC45928003D2115 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA80E4FE1EC45927003D2115 /* UITableViewController.swift */; };
 		BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */; };
 		BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF2D171D76799F00660C8E /* SignUpViewController.swift */; };
+		FB066BCC1EE6C57B00882A4D /* SingleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB066BCB1EE6C57B00882A4D /* SingleMapViewController.swift */; };
+		FB0ACCD21E3EE42600263C24 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0ACCD11E3EE42600263C24 /* LocationAnnotation.swift */; };
+		FB0D41711E2D0EFE0073CE44 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */; };
 		FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E281D7FE45800D6D2F4 /* Game.swift */; };
 		FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E291D7FE45800D6D2F4 /* Location.swift */; };
 		FB5E3E2D1D7FE45800D6D2F4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */; };
+		FB741E6F1E38556E00B233EE /* CreateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741E6E1E38556E00B233EE /* CreateLocationViewController.swift */; };
+		FB741E711E38587E00B233EE /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB741E701E38587E00B233EE /* LocationSearchTable.swift */; };
 		FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */; };
 		FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD27A7B1E212BE700ADE930 /* SessionManager.swift */; };
+		FBD319261E90F2AC00F92577 /* LocationMapviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD319251E90F2AC00F92577 /* LocationMapviewViewController.swift */; };
+		FBF2D37B1E2BE4500032EFFE /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2D37A1E2BE4500032EFFE /* ContainerViewController.swift */; };
+		FBF2D37D1E2BE4B60032EFFE /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2D37C1E2BE4B60032EFFE /* LoginNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,9 +141,20 @@
 		71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedFriendsCustomCell.xib; sourceTree = "<group>"; };
 		71D492871D7EB26800E07DDF /* PositionCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionCustomButton.swift; sourceTree = "<group>"; };
 		AEDC7BDAF556A3E6BA96A607 /* Pods_BallClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80009AF1E2210460015C6BF /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		B80009B11E22248D0015C6BF /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		B80009B31E23D4990015C6BF /* BallClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BallClub.entitlements; sourceTree = "<group>"; };
+		B80009B41E2696A40015C6BF /* UserSearchFriendsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchFriendsCustomCell.swift; sourceTree = "<group>"; };
+		B80009B51E2696A40015C6BF /* UserSearchFriendsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchFriendsCustomCell.xib; sourceTree = "<group>"; };
+		B80009B81E27D1150015C6BF /* UserSearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewController.swift; sourceTree = "<group>"; };
+		B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsTableViewController.swift; sourceTree = "<group>"; };
+		B80009BC1E2D1E300015C6BF /* FriendsListCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListCustomCell.swift; sourceTree = "<group>"; };
+		B80009BD1E2D1E300015C6BF /* FriendsListCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsListCustomCell.xib; sourceTree = "<group>"; };
+		B80009C01E2D27000015C6BF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B81155F11E057FC80076B17B /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B81155F41E0580280076B17B /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
 		B81155F81E0581500076B17B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B81BB3FB1EE469D800D191B5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B873640C1E01984A00C77958 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		B88A15181E2128780043DBBD /* RegistrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		B88A151A1E2128A10043DBBD /* GamesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
@@ -130,16 +163,28 @@
 		B8F387D61E055D0700FD8336 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		BA4E75831D81452A0062DC17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGameTableViewController.swift; sourceTree = "<group>"; };
 		BA7777611D80F2FB003F4465 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		BA7777631D80F7AF003F4465 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
+		BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditInvitedFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
+		BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditInvitedFriendsCollectionViewCell.xib; sourceTree = "<group>"; };
+		BA80E4FE1EC45927003D2115 /* UITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		BAEF2D171D76799F00660C8E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBB189F273D2A53EF45327A0 /* Pods-BallClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-BallClub/Pods-BallClub.release.xcconfig"; sourceTree = "<group>"; };
+		FB066BCB1EE6C57B00882A4D /* SingleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleMapViewController.swift; sourceTree = "<group>"; };
+		FB0ACCD11E3EE42600263C24 /* LocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
+		FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		FB5E3E281D7FE45800D6D2F4 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Models/Game.swift; sourceTree = "<group>"; };
 		FB5E3E291D7FE45800D6D2F4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Models/Player.swift; sourceTree = "<group>"; };
+		FB741E6E1E38556E00B233EE /* CreateLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLocationViewController.swift; sourceTree = "<group>"; };
+		FB741E701E38587E00B233EE /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		FBD27A7B1E212BE700ADE930 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		FBD319251E90F2AC00F92577 /* LocationMapviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMapviewViewController.swift; sourceTree = "<group>"; };
+		FBF2D37A1E2BE4500032EFFE /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		FBF2D37C1E2BE4B60032EFFE /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +210,8 @@
 				45425F151D82E2FB00815B43 /* FriendsRoundedCollectionCell.xib */,
 				45425F181D82EE3100815B43 /* FriendsCollectionCustomView.swift */,
 				45425F1A1D82EE9400815B43 /* FriendsCollectionCustomView.xib */,
+				BA80E4FA1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift */,
+				BA80E4FB1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -199,6 +246,7 @@
 		71547A7F1D752A4300264B67 /* BallClub */ = {
 			isa = PBXGroup;
 			children = (
+				B80009B31E23D4990015C6BF /* BallClub.entitlements */,
 				B81155F61E05812B0076B17B /* Utilities */,
 				B81155F31E0580080076B17B /* Protocols */,
 				B81155F01E057F9E0076B17B /* Extensions */,
@@ -252,6 +300,10 @@
 				71547B2A1D75949800264B67 /* CreateGameViewController.swift */,
 				71D4927D1D7E908400E07DDF /* GameDetailViewController.swift */,
 				71D4927F1D7E90C000E07DDF /* InvitedFriendsViewController.swift */,
+				B80009BA1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift */,
+				BA5CC2011E4302740035F7BE /* EditGameTableViewController.swift */,
+				FBD319251E90F2AC00F92577 /* LocationMapviewViewController.swift */,
+				FB066BCB1EE6C57B00882A4D /* SingleMapViewController.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -262,6 +314,7 @@
 				71547AFC1D753C1200264B67 /* LoginViewController.swift */,
 				BAEF2D171D76799F00660C8E /* SignUpViewController.swift */,
 				BA1276161D7D426400CB66AC /* CreateProfileTableViewController.swift */,
+				FBF2D37C1E2BE4B60032EFFE /* LoginNavigationViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -269,8 +322,11 @@
 		71547AF31D753A9A00264B67 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				FB0D41701E2D0EFE0073CE44 /* LocationListViewController.swift */,
 				71547AFE1D753C1C00264B67 /* MapsViewController.swift */,
 				FB8B217C1D7EAD2E00B462CA /* MapDetailViewController.swift */,
+				FB741E6E1E38556E00B233EE /* CreateLocationViewController.swift */,
+				FB741E701E38587E00B233EE /* LocationSearchTable.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -289,6 +345,9 @@
 				71547B021D753C3300264B67 /* UserViewController.swift */,
 				BAC48B711D7FF12100A3F0DB /* EditProfileTableViewController.swift */,
 				BA7777611D80F2FB003F4465 /* FriendsViewController.swift */,
+				B80009B81E27D1150015C6BF /* UserSearchResultTableViewController.swift */,
+				B80009C01E2D27000015C6BF /* SettingsTableViewController.swift */,
+				B81BB3FB1EE469D800D191B5 /* ChangePasswordViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -315,6 +374,8 @@
 				71D492831D7E927B00E07DDF /* InvitedFriendsCustomCell.xib */,
 				45382D661D805B9F008FB3BD /* GamesCategoryHeaderView.swift */,
 				45382D621D80566F008FB3BD /* GamesCategoryHeaderView.xib */,
+				B80009BC1E2D1E300015C6BF /* FriendsListCustomCell.swift */,
+				B80009BD1E2D1E300015C6BF /* FriendsListCustomCell.xib */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -343,6 +404,8 @@
 				713BFD651D76B42D00A49BC6 /* UserAddFriendCustomCell.xib */,
 				713BFD681D76BB3900A49BC6 /* FriendStatusCustomCell.swift */,
 				713BFD691D76BB3900A49BC6 /* FriendStatusCustomCell.xib */,
+				B80009B41E2696A40015C6BF /* UserSearchFriendsCustomCell.swift */,
+				B80009B51E2696A40015C6BF /* UserSearchFriendsCustomCell.xib */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -351,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				71547B2F1D76707100264B67 /* MainViewController.swift */,
+				FBF2D37A1E2BE4500032EFFE /* ContainerViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -368,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				B81155F11E057FC80076B17B /* UIViewController.swift */,
+				BA80E4FE1EC45927003D2115 /* UITableViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,6 +492,9 @@
 				FB5E3E281D7FE45800D6D2F4 /* Game.swift */,
 				FB5E3E291D7FE45800D6D2F4 /* Location.swift */,
 				FB5E3E2A1D7FE45800D6D2F4 /* Player.swift */,
+				B80009AF1E2210460015C6BF /* Request.swift */,
+				B80009B11E22248D0015C6BF /* Invite.swift */,
+				FB0ACCD11E3EE42600263C24 /* LocationAnnotation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -466,7 +534,14 @@
 				TargetAttributes = {
 					71547A7C1D752A4300264B67 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 7QCAJCEL67;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -504,9 +579,12 @@
 				BA4E75841D81452A0062DC17 /* Images.xcassets in Resources */,
 				714777A31D7FF1E300501492 /* FeedsCustomCell.xib in Resources */,
 				713BFD631D76B3E000A49BC6 /* UserInviteCustomCell.xib in Resources */,
+				B80009B71E2696A40015C6BF /* UserSearchFriendsCustomCell.xib in Resources */,
 				BA7777641D80F7AF003F4465 /* Friends.storyboard in Resources */,
 				45382D631D80566F008FB3BD /* GamesCategoryHeaderView.xib in Resources */,
+				B80009BF1E2D1E300015C6BF /* FriendsListCustomCell.xib in Resources */,
 				71547A8B1D752A4300264B67 /* Assets.xcassets in Resources */,
+				BA80E4FD1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.xib in Resources */,
 				71547A9F1D75346700264B67 /* Main.storyboard in Resources */,
 				71547AA31D7534F100264B67 /* User.storyboard in Resources */,
 				71547A9E1D75346700264B67 /* Login.storyboard in Resources */,
@@ -573,6 +651,9 @@
 				71547AFD1D753C1200264B67 /* LoginViewController.swift in Sources */,
 				45382D671D805B9F008FB3BD /* GamesCategoryHeaderView.swift in Sources */,
 				714777A51D8000A700501492 /* CustomDateFormatter.swift in Sources */,
+				BA80E4FF1EC45928003D2115 /* UITableViewController.swift in Sources */,
+				FB0ACCD21E3EE42600263C24 /* LocationAnnotation.swift in Sources */,
+				B80009B21E22248D0015C6BF /* Invite.swift in Sources */,
 				71D4927C1D7D67BA00E07DDF /* Constants.swift in Sources */,
 				B81155F91E0581500076B17B /* Utilities.swift in Sources */,
 				71547B301D76707100264B67 /* MainViewController.swift in Sources */,
@@ -580,34 +661,50 @@
 				B81155F21E057FC80076B17B /* UIViewController.swift in Sources */,
 				FB5E3E2C1D7FE45800D6D2F4 /* Location.swift in Sources */,
 				B88A151D1E2128B50043DBBD /* FriendsViewModel.swift in Sources */,
+				B80009B61E2696A40015C6BF /* UserSearchFriendsCustomCell.swift in Sources */,
+				FBF2D37B1E2BE4500032EFFE /* ContainerViewController.swift in Sources */,
 				71547AFF1D753C1C00264B67 /* MapsViewController.swift in Sources */,
+				B80009B91E27D1150015C6BF /* UserSearchResultTableViewController.swift in Sources */,
 				71547B2B1D75949800264B67 /* CreateGameViewController.swift in Sources */,
+				B80009BB1E2D18CE0015C6BF /* InviteFriendsTableViewController.swift in Sources */,
 				BA7777621D80F2FB003F4465 /* FriendsViewController.swift in Sources */,
 				713BFD621D76B3E000A49BC6 /* UserInviteCustomCell.swift in Sources */,
 				B81155F51E0580280076B17B /* StoryboardIdentifiable.swift in Sources */,
 				45425F161D82E2FB00815B43 /* FriendsRoundedCollectionCell.swift in Sources */,
 				45425F191D82EE3100815B43 /* FriendsCollectionCustomView.swift in Sources */,
+				BA5CC2021E4302740035F7BE /* EditGameTableViewController.swift in Sources */,
 				BAC48B721D7FF12100A3F0DB /* EditProfileTableViewController.swift in Sources */,
 				BAEF2D181D76799F00660C8E /* SignUpViewController.swift in Sources */,
+				FB741E711E38587E00B233EE /* LocationSearchTable.swift in Sources */,
 				71D492881D7EB26800E07DDF /* PositionCustomButton.swift in Sources */,
 				71547A811D752A4300264B67 /* AppDelegate.swift in Sources */,
+				B80009BE1E2D1E300015C6BF /* FriendsListCustomCell.swift in Sources */,
 				B88A151F1E2128CB0043DBBD /* LocationViewModel.swift in Sources */,
+				BA80E4FC1EC1A46B003D2115 /* EditInvitedFriendsCollectionViewCell.swift in Sources */,
 				71547B011D753C2900264B67 /* MessagingViewController.swift in Sources */,
+				B80009B01E2210460015C6BF /* Request.swift in Sources */,
 				FB5E3E2B1D7FE45800D6D2F4 /* Game.swift in Sources */,
 				B8F387D71E055D0700FD8336 /* PlayerViewModel.swift in Sources */,
+				FBF2D37D1E2BE4B60032EFFE /* LoginNavigationViewController.swift in Sources */,
 				B88A15191E2128780043DBBD /* RegistrationViewModel.swift in Sources */,
+				B80009C11E2D27000015C6BF /* SettingsTableViewController.swift in Sources */,
 				71547A891D752A4300264B67 /* BallClub.xcdatamodeld in Sources */,
 				71D492801D7E90C000E07DDF /* InvitedFriendsViewController.swift in Sources */,
 				BA1276171D7D426400CB66AC /* CreateProfileTableViewController.swift in Sources */,
 				FBD27A7C1E212BE700ADE930 /* SessionManager.swift in Sources */,
+				FB741E6F1E38556E00B233EE /* CreateLocationViewController.swift in Sources */,
+				FB066BCC1EE6C57B00882A4D /* SingleMapViewController.swift in Sources */,
 				713BFD6A1D76BB3900A49BC6 /* FriendStatusCustomCell.swift in Sources */,
+				B81BB3FC1EE469D800D191B5 /* ChangePasswordViewController.swift in Sources */,
 				714777A21D7FF1E300501492 /* FeedsCustomCell.swift in Sources */,
+				FBD319261E90F2AC00F92577 /* LocationMapviewViewController.swift in Sources */,
 				B873640D1E01984A00C77958 /* WebService.swift in Sources */,
 				B88A151B1E2128A10043DBBD /* GamesViewModel.swift in Sources */,
 				FB8B217D1D7EAD2E00B462CA /* MapDetailViewController.swift in Sources */,
 				71D4927E1D7E908400E07DDF /* GameDetailViewController.swift in Sources */,
 				71547AFB1D753C0600264B67 /* GamesViewController.swift in Sources */,
 				FB5E3E2D1D7FE45800D6D2F4 /* Player.swift in Sources */,
+				FB0D41711E2D0EFE0073CE44 /* LocationListViewController.swift in Sources */,
 				713BFD661D76B42D00A49BC6 /* UserAddFriendCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,8 +822,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BallClub/BallClub.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7QCAJCEL67;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -749,8 +848,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BallClub/BallClub.entitlements;
 				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7QCAJCEL67;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

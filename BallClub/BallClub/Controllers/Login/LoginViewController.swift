@@ -1,4 +1,4 @@
-//
+	//
 //  LoginViewController.swift
 //  BallClub
 //
@@ -17,8 +17,11 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var emailAddLabel: UITextField!
   @IBOutlet weak var backgroundImage: UIImageView!
   @IBOutlet weak var appLogo: UIImageView!
+  @IBOutlet weak var fbLoginButton: UIButton!
+  
   
   var registrationViewModel = RegistrationViewModel()
+  var playerViewModel = PlayerViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,6 +41,8 @@ class LoginViewController: UIViewController {
                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
     passwordLabel.attributedPlaceholder = NSAttributedString(string:"Password",
                                                              attributes:[NSForegroundColorAttributeName: UIColor.lightGray])
+    
+    fbLoginButton.isHidden = true
   }
   
   override func didReceiveMemoryWarning() {
@@ -47,14 +52,29 @@ class LoginViewController: UIViewController {
   
   //MARK: - IBAction
   @IBAction func loginButtonPressed(_ sender: AnyObject) {
+    Utilities.showProgressHud(withTitle: "Logging In", inView: self.view)
     if let email = emailAddLabel.text, let password = passwordLabel.text {
-      registrationViewModel.playerSign(emailAddress: email, password: password) { (success, message) -> (Void) in
-        if success == true {
-          self.performSegue(withIdentifier: "LoginToMainSegue", sender: self)
-        } else {
+      registrationViewModel.playerSign(emailAddress: email, password: password) { (responseCode, message, accessToken, client, userId) -> (Void) in
+        if responseCode == 400 || responseCode == 401 {
+          Utilities.hideProgressHud()
           if let m = message {
             self.showAlert(title: "ERROR", message: m, callback: {})
           }
+        } else {
+          self.registrationViewModel.getToken(clientId: Constants.clientId, clientSecret: Constants.clientSecret, grantType: Constants.grantType, completionBlock: { (responseCode, message, token) -> (Void) in
+            Utilities.hideProgressHud()
+            if (responseCode == 200 || responseCode == 201), let t = token, let accessToken = accessToken, let client = client, let id = userId {
+              UserDefaults.standard.set(t, forKey: "Token")
+              SessionManager.sharedInstance.saveSession(username: email, token: t, accessToken: accessToken, client: client)
+              UserDefaults.standard.set(email, forKey: "UserEmailAddress")
+              self.getCurrentUser(userId: id)
+            } else {
+              if let m = message {
+                self.showAlert(title: "Error", message: m, callback: {})
+              }
+            }
+          })
+          
         }
       }
     }
@@ -74,6 +94,19 @@ class LoginViewController: UIViewController {
         self.getFacebookUserInfo()
       }
     }
+  }
+  
+  func getCurrentUser(userId: Int) {
+    self.playerViewModel.getUser(userId: userId, completionBlock: { (statusCode, message, player) -> (Void) in
+      if (statusCode == 200 || statusCode == 201), let p = player {
+        UserDefaults.standard.set(Player.toDictionary(user: p), forKey: "currentUser")
+        self.emailAddLabel.text = ""
+        self.passwordLabel.text = ""
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notifications.didLoginNotification), object: nil)
+      } else {
+        self.showAlert(title: "ERROT", message: message, callback: {})
+      }
+    })
   }
   
   func getFacebookUserInfo(){

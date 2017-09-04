@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class InvitedFriendsCustomCell: UITableViewCell {
   @IBOutlet weak var friendProfileImage: UIImageView!
@@ -23,8 +24,11 @@ class InvitedFriendsCustomCell: UITableViewCell {
   }
   
   //MARK:- Setters Getters
-  func setImageOfFriend(imageName : String) {
-    friendProfileImage.image = UIImage(named: imageName)
+  func setImageOfFriend(imageUrlString : String) {
+    friendProfileImage.image = UIImage(named: "sample_profile")
+    if let imageUrl = URL(string: imageUrlString) {
+      Nuke.loadImage(with: imageUrl, into: friendProfileImage)
+    }
   }
   
   func setPositionOfFriend(position : String) {
